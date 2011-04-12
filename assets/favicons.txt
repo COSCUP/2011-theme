@@ -1,0 +1,10 @@
+＃ http://timc.idv.tw/canvas-css-sprites/en/
+
+coscup: http://coscup.org/2011/favicon.ico
+facebook: http://www.facebook.com/favicon.ico
+twitter: http://twitter.com/favicon.ico
+plurk: http://www.plurk.com/favicon.ico
+gcal: http://www.phenodays.com/images/share-google-calendar.gif
+flickr: http://www.flickr.com/favicon.ico
+rss: http://idealady.com/themes/cp_global_images/rss_icon.png
+wordpress: http://www.wordpress.org/favicon.ico

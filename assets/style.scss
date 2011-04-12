@@ -63,6 +63,15 @@ body {
 	// background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);
 }
 
+a {
+	color: #333;
+	text-decoration: none;
+	&:hover {
+		color: #666;
+		text-decoration: underline;
+	}
+}
+
 $header_height: 75 * 4px;
 $header_tb: 30px;
 $h_left: 7;
@@ -347,19 +356,41 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		
 		> #connect_box {
 			position: absolute;
-			top: $line_height;
-			height: $line_height * 6 + $msg_height / 2 - $connect_h / 2 - $msg_arrow;
+			top: $line_height * 0.5;
 			right: ( $col + $gutter / 2 );
-			width: ( $col * 6 + $gutter * 6);
+			height: $line_height * 6.5 + $msg_height / 2 - $connect_h / 2 - $msg_arrow - 8 * 2px;
+			width: ( $col * 5 + $gutter * 5) - 8 * 2px;
+			padding: 8px;
 			background: $dark;
 			background: rgba($dark, 0.75);
 			@include prefix(border-radius, 8px);
 			color: #fff;
 
-			display: none; // opacity and transition won't work here
+			display: none; // opacity and transition wont work here
 
 			&.show {
 				display: block;
+			}
+
+			ul {
+				margin: 0; padding: 0;
+				list-style: none;
+				> li {
+					border-bottom: 1px dashed #fff;
+					&:last-child {
+						border-bottom: none;
+					}
+					> a {
+						color: #fff;
+						font-weight: bold;
+						text-decoration: none!important;
+						> span.sprite {
+							display: inline-block;
+							vertical-align: -3px;
+							margin-right: 6px;
+						}
+					}
+				}
 			}
 
 			&:after {
@@ -524,3 +555,13 @@ html[lang="zh-TW"] #content {
 		}
 	}
 }
+
+.sprite {display: block; background: transparent url('favicons.png') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
+.coscup { background-position: 0 0;}
+.facebook { background-position: -18px 0;}
+.twitter { background-position: -36px 0;}
+.plurk { background-position: -54px 0;}
+.gcal { background-position: -72px 0;}
+.flickr { background-position: -90px 0;}
+.rss { background-position: -108px 0;}
+.wordpress { background-position: -126px 0;}

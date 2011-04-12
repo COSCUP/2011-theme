@@ -8,6 +8,13 @@ body {
   line-height: 22px;
   background: #f8f8f8; }
 
+a {
+  color: #333;
+  text-decoration: none; }
+  a:hover {
+    color: #666;
+    text-decoration: underline; }
+
 .images > a {
   display: block;
   float: left;
@@ -263,10 +270,11 @@ body {
         -o-transition: -o-transform 0.3s ease-in; }
     #header > .info > #connect_box {
       position: absolute;
-      top: 22px;
-      height: 122.578px;
+      top: 11px;
       right: 35px;
-      width: 240px;
+      height: 117.578px;
+      width: 184px;
+      padding: 8px;
       background: #42b535;
       background: rgba(66, 181, 53, 0.75);
       -moz-border-radius: 8px;
@@ -278,6 +286,22 @@ body {
       display: none; }
       #header > .info > #connect_box.show {
         display: block; }
+      #header > .info > #connect_box ul {
+        margin: 0;
+        padding: 0;
+        list-style: none; }
+        #header > .info > #connect_box ul > li {
+          border-bottom: 1px dashed #fff; }
+          #header > .info > #connect_box ul > li:last-child {
+            border-bottom: none; }
+          #header > .info > #connect_box ul > li > a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none!important; }
+            #header > .info > #connect_box ul > li > a > span.sprite {
+              display: inline-block;
+              vertical-align: -3px;
+              margin-right: 6px; }
       #header > .info > #connect_box:after {
         content: '';
         position: absolute;
@@ -403,3 +427,34 @@ html[lang="zh-TW"] #content {
       padding: 0;
       margin: 0;
       text-align: right; }
+
+.sprite {
+  display: block;
+  background: transparent url("favicons.png") no-repeat;
+  text-indent: -10000px;
+  width: 16px;
+  height: 16px; }
+
+.coscup {
+  background-position: 0 0; }
+
+.facebook {
+  background-position: -18px 0; }
+
+.twitter {
+  background-position: -36px 0; }
+
+.plurk {
+  background-position: -54px 0; }
+
+.gcal {
+  background-position: -72px 0; }
+
+.flickr {
+  background-position: -90px 0; }
+
+.rss {
+  background-position: -108px 0; }
+
+.wordpress {
+  background-position: -126px 0; }
