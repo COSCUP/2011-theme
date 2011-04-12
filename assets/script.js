@@ -13,7 +13,13 @@ jQuery(function ($) {
 			photos: [].concat(
 				yuren_54.shuffle(),
 				photos.shuffle().slice(0, 15*4 - yuren_54.length)
-			)
+			),
+			beforeImageLoad: function ($img, i) {
+				$img.css('opacity', 0);
+			},
+			imageLoad: function ($img, i) {
+				$img.css('opacity', 0.5);
+			}
 		}
 	);
 
@@ -23,7 +29,13 @@ jQuery(function ($) {
 	$images_footer.imageTile(
 		{
 			num: 15,
-			photos: yuren_54
+			photos: yuren_54,
+			beforeImageLoad: function ($img, i) {
+				$img.css('opacity', 0);
+			},
+			imageLoad: function ($img, i) {
+				$img.css('opacity', 0.5);
+			}
 		}
 	);
 
@@ -32,7 +44,13 @@ jQuery(function ($) {
 	$('#sidebar2 > .images').imageTile(
 		{
 			num: 12,
-			photos: yuren_54
+			photos: yuren_54,
+			beforeImageLoad: function ($img, i) {
+				$img.css('opacity', 0);
+			},
+			imageLoad: function ($img, i) {
+				$img.css('opacity', 1);
+			}
 		}
 	);
 	

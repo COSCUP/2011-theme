@@ -14,22 +14,21 @@ body {
   margin: 0;
   padding: 0;
   width: 75px;
-  height: 75px;
-  opacity: 0.5;
-  -moz-transition: opacity 0.2s ease-out;
-  -webkit-transition: opacity 0.2s ease-out;
-  -ms-transition: opacity 0.2s ease-out;
-  -o-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out; }
-  .images > a:hover {
+  height: 75px; }
+  .images > a > img {
+    -moz-transition: opacity 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out;
+    -ms-transition: opacity 0.2s ease-out;
+    -o-transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out;
+    border: none; }
+  .images > a:hover > img {
     -moz-transition: opacity 0.2s ease-in;
     -webkit-transition: opacity 0.2s ease-in;
     -ms-transition: opacity 0.2s ease-in;
     -o-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in;
-    opacity: 1; }
-.images img {
-  border: none; }
+    opacity: 1!important; }
 
 #header, #footer {
   width: 1110px;
@@ -79,7 +78,7 @@ body {
         left: 5px;
         width: 270px;
         height: 107.115px;
-        background: transparent url("coscup.svg") center center no-repeat;
+        background: transparent url("coscup.png") center center no-repeat;
         background-size: cover;
         text-indent: -10000px; }
     #header > .info > #title {
@@ -87,6 +86,7 @@ body {
       top: 129.115px;
       left: 40px;
       font-size: 110%;
+      line-height: 140%;
       font-weight: bold;
       width: 306.4px;
       text-align: center;
@@ -102,9 +102,10 @@ body {
     #header > .info > #date {
       position: absolute;
       left: 360px;
-      top: 88px;
+      top: 55px;
       font-weight: bold;
       font-size: 380%;
+      line-height: 140%;
       width: 710px;
       white-space: nowrap;
       color: #42b535; }
@@ -133,6 +134,7 @@ body {
       width: 710px; }
       #header > .info > #nav a {
         color: #333;
+        font-weight: bold;
         -moz-transition: background, color 0.2s ease-out;
         -webkit-transition: background, color 0.2s ease-out;
         -ms-transition: background, color 0.2s ease-out;
@@ -393,7 +395,6 @@ html[lang="zh-TW"] #content {
       height: 249px;
       margin: 0 -8px 0 0; }
       #content > #sidebar2 > .images > a {
-        opacity: 1;
         width: 66px;
         margin: 0 8px 8px 0;
         overflow: hidden; }

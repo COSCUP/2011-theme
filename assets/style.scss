@@ -77,15 +77,16 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		margin: 0; padding: 0;
 		width: 75px;
 		height: 75px;
-		opacity: 0.5;
-		@include prefix(transition, opacity .2s ease-out);
-		&:hover {
-			@include prefix(transition, opacity .2s ease-in);
-			opacity: 1;
+		> img {
+			@include prefix(transition, opacity .2s ease-out);
+			border: none;
 		}
-	}
-	img {
-		border: none;
+		&:hover {
+			> img {
+				@include prefix(transition, opacity .2s ease-in);
+				opacity: 1!important;
+			}
+		}
 	}
 }
 
@@ -138,7 +139,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 				left: $gutter / 2;
 				width: $h_left_width;
 				height: $h_left_width / 2.52066;
-				background: transparent url('coscup.svg') center center no-repeat;
+				background: transparent url('coscup.png') center center no-repeat;
 				background-size: cover;
 				text-indent: -10000px;
 			}
@@ -149,6 +150,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 			top: $line_height + $h_left_width / 2.52066;
 			left: $col + $gutter;
 			font-size: 110%;
+			line-height: 140%;
 			font-weight: bold;
 			width: $h_left_width + ($h_left_width - $font_size * 1.1 * 5) / 5; // 最後一個字的 letter-spacing
 			text-align: center;
@@ -177,10 +179,11 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		> #date {
 			position: absolute;
 			left: ( $col + $gutter ) * ($h_left + 2);
-			top: $line_height * 4;
+			top: $line_height * 2.5;
 			font-weight: bold;
 			//font-style: italic;
 			font-size: 380%;
+			line-height: 140%;
 			width: $h_right_width;
 			white-space: nowrap;
 			color: $dark;
@@ -217,6 +220,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 			width: $h_right_width;
 			a {
 				color: #333;
+				font-weight: bold;
 				$val: background, color .2s ease-out;
 				@include prefix(transition, $val);
 				&:hover {
@@ -502,7 +506,6 @@ html[lang="zh-TW"] #content {
 			//margin: ($line_height / 2) (- $img_gutter) ($line_height / 2) 0;
 			margin: 0 (- $img_gutter) 0 0;
 			> a {
-				opacity: 1;
 				width: 75 - 3 - $img_gutter*3/4;
 				margin: 0 $img_gutter $img_gutter 0;
 				overflow: hidden;
