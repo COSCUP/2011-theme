@@ -1,0 +1,523 @@
+@charset "UTF-8";
+
+@import url(http://fonts.googleapis.com/css?family=Cabin);
+
+$col: 30px;
+$gutter: 10px;
+$width: 28;
+$sidebar_width: 6;
+$sidebar2_width: 8;
+
+$logo_color: #389F2D;
+$dark: #42b535;
+$light: #C7D7A0;
+$light_yellow: #f3ff32;
+$fluor: #86e17c;
+$bright: #bfffb8;
+
+$font_size: 16px;
+$line_height: 22px;
+
+@mixin grid($w) {
+	@include gridNoMargin($w);
+	margin-left: $gutter/2;
+	margin-right: $gutter/2;
+}
+
+@mixin gridNoMargin($w) {
+	width: $col*$w+$gutter*($w - 1);
+}
+
+@mixin largeFont {
+	// 特別 style 用字，不一定是大字
+	font-family: 'Cabin', arial, sans-serif;	
+}
+
+@mixin prefix($prop, $val) {
+	-moz-#{$prop}: $val;
+	-webkit-#{$prop}: $val;
+	-ms-#{$prop}: $val;
+	-o-#{$prop}: $val;
+	#{$prop}: $val;
+}
+
+@mixin transtrans($val) {
+	-moz-transition: -moz-transform #{$val};
+	-webkit-transition: -webkit-transform #{$val};
+	-ms-transition: -ms-transform #{$val}; // IE9
+	-o-transition: -o-transform  #{$val};
+}
+
+html {
+}
+
+body {
+	width: $width * ( $col + $gutter );
+	margin: 0 auto;
+	padding: 0;
+
+	font: $font_size sans-serif;
+	line-height: $line_height;
+	background: #f8f8f8;
+	// background-image: -webkit-gradient(radial, 32% center, 0, 32% center, 900, from(#fff), to(#aaa));
+	// background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);
+}
+
+$header_height: 75 * 4px;
+$header_tb: 30px;
+$h_left: 7;
+
+$h_left_width: $col * $h_left + $gutter * ( $h_left - 1 );
+$h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter;
+
+.images {
+	> a {
+		display: block;
+		float: left;
+		margin: 0; padding: 0;
+		width: 75px;
+		height: 75px;
+		opacity: 0.5;
+		@include prefix(transition, opacity .2s ease-out);
+		&:hover {
+			@include prefix(transition, opacity .2s ease-in);
+			opacity: 1;
+		}
+	}
+	img {
+		border: none;
+	}
+}
+
+#header, #footer {
+	@include grid($width);
+	@include largeFont;
+	background-color: #ddd;
+	border-top: 8px solid $dark;
+	border-bottom: 8px solid $dark;
+	@include prefix(box-shadow, 0 0 5px #333);
+	position: relative;
+	overflow: hidden;
+	
+	> .images {
+		position: absolute;
+		top: 0; left: -7.5px;
+		width: 75 * 15px;
+		height: $header_height;
+	}
+	
+	> .info {
+		position: absolute;
+		background: #f0f0f0; // IE7 (must use bg: instead of bg-color: )
+		background: rgba(255,255,255,0.85);
+		width: 100%;
+
+		> h1, p {
+			margin: 0; padding: 0;
+		}
+	}
+}
+
+#header {
+	height: $header_height;
+	
+	> .info {
+		top: $header_tb;
+		height: $header_height - $header-tb * 2;
+
+		> h1 {
+			position: absolute;
+			left: $col + $gutter - $gutter / 2;
+			top: $line_height - $gutter / 2;
+			width: $h_left_width + $gutter;
+			height: $header_height - $header-tb * 2 - $line_height * 2 + $gutter / 2;
+			background: rgba(#fff, 0.75);
+			> a {
+				position: absolute;
+				top: $gutter / 2;
+				left: $gutter / 2;
+				width: $h_left_width;
+				height: $h_left_width / 2.52066;
+				background: transparent url('coscup.svg') center center no-repeat;
+				background-size: cover;
+				text-indent: -10000px;
+			}
+		}
+		
+		> #title {
+			position: absolute;
+			top: $line_height + $h_left_width / 2.52066;
+			left: $col + $gutter;
+			font-size: 110%;
+			font-weight: bold;
+			width: $h_left_width + ($h_left_width - $font_size * 1.1 * 5) / 5; // 最後一個字的 letter-spacing
+			text-align: center;
+			letter-spacing: ($h_left_width - $font_size * 1.1 * 5) / 5;
+			white-space: nowrap;
+		}
+		
+		> #title_en {
+			position: absolute;
+			top: $line_height + $h_left_width / 2.52066 + $font_size * 2;
+			left: $col + $gutter;
+			width: $h_left_width;
+			text-align: justify;
+			color: #666;
+			> #coders {
+			
+			}
+			> #users {
+			
+			}
+			> #promoters {
+			
+			}
+		}
+		
+		> #date {
+			position: absolute;
+			left: ( $col + $gutter ) * ($h_left + 2);
+			top: $line_height * 4;
+			font-weight: bold;
+			//font-style: italic;
+			font-size: 380%;
+			width: $h_right_width;
+			white-space: nowrap;
+			color: $dark;
+			//text-shadow: 0 0 4px #000;
+		}
+
+		> #language, > #nav {
+			position: absolute;
+			top: $line_height * 1.5;
+			a {
+				text-decoration: none;
+				display: block;
+				width: $col * 2 + $gutter - 1px;
+				margin: 0 ($gutter / 2);
+			}
+			> ul {
+				margin: 0; padding: 0;
+				list-style: none;
+				> li {
+					float: left;
+					text-align: center;
+					height: $line_height;
+					border-right: 1px dashed #999;
+					border-right: 1px dashed rgba(0, 0, 0, 0.3);
+					&:last-child {
+						border-right: none;
+					}
+				}
+			}
+		}
+
+		> #nav {
+			left: ( $col + $gutter ) * ($h_left + 2) - ($gutter / 2);
+			width: $h_right_width;
+			a {
+				color: #333;
+				$val: background, color .2s ease-out;
+				@include prefix(transition, $val);
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			li > ul {
+				display: none;
+				opacity: 0;
+			}
+			li.parent > a, li.current > a {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+			li:hover a, li.selected a {
+				color: #fff;
+				background: #999;
+				background: rgba(#000, 0.65);
+				$val: background, color .2s ease-in;
+				@include prefix(transition, $val);
+			}
+			li:hover > ul, li.selected > ul {
+				display: block;
+				opacity: 1;
+
+				width: $col * 2 + $gutter - 1px;
+				margin: 0 ($gutter / 2); padding: 0;
+				> li {
+					list-style: none;
+					padding-top: 1px;
+					> a {
+						color: #ddd;
+						margin: 0;
+						font-weight: normal;
+						&:hover {
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+		> #language {
+			right: ( $col + $gutter ) - ($gutter / 2);
+			a {
+				color: #666;
+				background: $light;
+				background: rgba($light, 0.5);
+				font-size: 85%;
+				width: $col * 2 + $gutter;
+				@include prefix(border-radius, 8px);
+				@include prefix(transition, background .2s ease-out);
+
+				&:hover {
+					background: $light;
+					background: rgba($light, 0.8);
+					@include prefix(transition, background .2s ease-in);
+				}
+			}
+			li {
+				border-right: none!important;
+				padding-right: 2px;
+			}
+			li:last-child {
+				padding-right: 0;
+			}
+		}
+
+		$msg_arrow: $line_height / 2;
+		$connect: 50px;
+		$connect_h: $connect * 1.21686747;
+		
+		$msg_height: $header_height - $header_tb * 2
+		- ($line_height * 7)
+		- $line_height;
+		$msg_arrow: $line_height / 2;
+		
+		> #message {
+			position: absolute;
+			left: ( $col + $gutter ) * ($h_left + 2);
+			top: $line_height * 7;
+			//top: $line_height + $h_left_width / 2.52066 + $font_size * 2;
+			width: $h_right_width - $msg_arrow - $connect - $line_height * 2;
+			height: $msg_height - $line_height * 2;
+			//padding: ($line_height / 2) $line_height;
+			padding: $line_height;
+			background: $light;
+			background: rgba($light, 0.5);
+			@include prefix(border-radius, 8px);
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%; margin-top: -$msg_arrow;
+				right: -$msg_arrow * 2;
+				width: 0; height: 0;
+				border: $msg_arrow solid transparent;
+				border-left: $msg_arrow solid rgba($light, 0.5);
+			}
+			
+			color: #333;
+			
+			em {
+				font-weight: bold;
+				font-style: normal;
+				color: #000;
+			}
+		}
+		#connect {
+			position: absolute;
+			right: ( $col + $gutter );
+			width: $connect; height: $connect_h;
+			background: transparent url('coscup-mascot-icon.png');
+			background-size: cover;
+			top: $line_height * 7 + $msg_height / 2;
+			margin-top: - ($connect_h / 2);
+			text-indent: -10000px;
+			@include prefix(transform, rotate(10deg));
+			@include transtrans(.3s ease-out);
+
+			&:hover {
+				@include prefix(transform, rotate(0deg));
+				@include transtrans(.3s ease-in);
+			}
+		}
+		
+		> #connect_box {
+			position: absolute;
+			top: $line_height;
+			height: $line_height * 6 + $msg_height / 2 - $connect_h / 2 - $msg_arrow;
+			right: ( $col + $gutter / 2 );
+			width: ( $col * 6 + $gutter * 6);
+			background: $dark;
+			background: rgba($dark, 0.75);
+			@include prefix(border-radius, 8px);
+			color: #fff;
+
+			display: none; // opacity and transition won't work here
+
+			&.show {
+				display: block;
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				right: $connect / 2 + $gutter / 2; margin-right: -$msg_arrow;
+				bottom: -$msg_arrow * 2;
+				width: 0; height: 0;
+				border: $msg_arrow solid transparent;
+				border-top: $msg_arrow solid rgba($dark, 0.75);
+			}
+		}
+	}
+}
+
+$footer_tb: 15px;
+
+#footer {
+	height: 75px;
+	clear: both;
+
+	> .info {
+		top: $footer_tb;
+		height: 75px - $footer_tb * 2;
+		color: #333;
+		font-size: 85%;
+
+		> #copyright, > #tagline, > #archives {
+			position: absolute;
+			top: (75px - $footer_tb * 2) / 2 - $line_height / 2;
+			@include gridNoMargin(8);
+		}
+		
+		> #copyright {
+			left: ($col + $gutter);
+		}
+
+		> #tagline {
+			left: ($col + $gutter) * 10;
+			@include gridNoMargin(8);
+			text-align: center;
+			> .heart {
+				color: violet;
+			}
+		}
+
+		> #archives {
+			right: ($col + $gutter);
+			text-align: right;
+			a {
+				color: #333;
+				text-decoration: none;
+				&:hover {
+					color: #000;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+#sidebar {
+	float: right;
+	margin-bottom: $line_height;
+
+	@include grid($sidebar_width);
+	@include largeFont;
+
+	background-color: #fff;
+	@include prefix(box-shadow, 0 0 5px #ccc);
+
+	.sponsors {
+		//padding: $line_height 0;
+		> h2 {
+			//text-transform: uppercase;
+			font-size: 100%;
+			padding: 0 ($line_height / 2);
+			text-align: center;
+			border-bottom: 3px solid $dark;
+			background-color: $light;
+			margin: 0;
+			padding-top: $line_height / 2;
+		}
+		> ul {
+			margin: 0; padding: 0;
+			list-style: none;
+			> li {
+				margin: 0;
+				border-bottom: 3px solid $light;
+				> a {
+					display: block;
+					width: 178px;
+					padding: (80px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
+					height: 72px;
+					> img {
+						border: none;
+						display: block;
+						width: 178px;
+						height: 72px;
+					}
+				}
+			}
+		}
+	}
+}
+
+html[lang="zh-TW"] #content {
+	text-align: justify;
+}
+
+#content {
+	float: left;
+	@include grid($width - $sidebar_width);
+	> #sidebar2 {
+		float: right;
+		background-color: $light;
+		@include prefix(box-shadow, 0 0 5px #ccc);
+		width: ($col * $sidebar2_width + $gutter  * ($sidebar2_width - 1)) - $line_height;
+		margin-left: $gutter;
+		padding: $line_height ($line_height / 2);
+		> h2 {
+			font-size: 100%;
+			margin: $line_height (-$line_height / 2);
+			padding: 0 ($line_height / 2);
+			//background-color: rgba(#000, 0.75);
+			//color: #fff;
+			border-bottom: 3px solid $dark;
+		}
+		> .intro {
+			margin: 0;
+			padding: ($line_height / 2);
+			background-color: $dark;
+			color: #fff;
+			text-align: justify;
+			> p {
+				margin: 0; padding: 0;
+			}
+		}
+		
+		$img_gutter: 8px;
+		
+		> .images {
+			height: (75px + $img_gutter) * 3;
+			//margin: ($line_height / 2) (- $img_gutter) ($line_height / 2) 0;
+			margin: 0 (- $img_gutter) 0 0;
+			> a {
+				opacity: 1;
+				width: 75 - 3 - $img_gutter*3/4;
+				margin: 0 $img_gutter $img_gutter 0;
+				overflow: hidden;
+			}
+		}
+		> .video {
+			//margin: ($line_height / 2) 0;
+		}
+		> .more {
+			clear: both;
+			padding: 0; margin: 0;
+			text-align: right;
+			> a {
+				
+			}
+		}
+	}
+}
