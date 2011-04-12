@@ -15,6 +15,9 @@ a {
     color: #666;
     text-decoration: underline; }
 
+h1, h2, h3 {
+  font-family: 'Cabin', arial, sans-serif; }
+
 .images > a {
   display: block;
   float: left;

@@ -72,6 +72,10 @@ a {
 	}
 }
 
+h1, h2, h3 {
+	@include largeFont;
+}
+
 $header_height: 75 * 4px;
 $header_tb: 30px;
 $h_left: 7;
