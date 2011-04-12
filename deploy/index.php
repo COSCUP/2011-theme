@@ -17,5 +17,5 @@ if (!file_exists('./config.inc.php')) {
 
 require('./config.inc.php');
 
-system('svn update ' . $root);
+system('svn update ' . $root . '; svn info ' . $root . ';');
 
