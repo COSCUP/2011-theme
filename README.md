@@ -49,4 +49,10 @@ COSCUP blog 用的佈景主題
 ## Commit Rule
 
 覺得不用 review 的就自己 commit，覺得需要就送 pull request，
-我也有可能會 review 完之後叫你自己 push 上來。
+*自由心證*。我也有可能會 review 完之後叫你自己 push 上來。
+
+### 自動 Deploy
+
+前述的 deploy script 已經設定在 Github 的 post-receive URL：
+http://help.github.com/post-receive-hooks/
+所以 commit 會直接 live。
