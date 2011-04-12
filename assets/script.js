@@ -2,6 +2,24 @@
 
 jQuery(function ($) {
 
+	// CSS hover menu alternative for touch devices
+	// Need to test on actual device
+	
+	$('#nav > ul > li').bind(
+		'touchstart',
+		function () {
+			var $this = $(this);
+			$this.addClass('selected');
+			$(document.body).bind(
+				'touchend',
+				function (ev) {
+					$this.removeClass('selected');
+					$(this).unbind(ev);
+				}
+			);
+		}
+	);
+
 	// Image tiles on header / footer
 	
 	var $images = $('<div id="images" class="images" />');
