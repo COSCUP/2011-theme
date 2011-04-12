@@ -14,6 +14,7 @@ COSCUP 2011 佈景主題
 假頁面，從 empty.html 這邊開始抄需要的 HTML 做佈景主題。
 
 請在 mockup 搜尋 "assets" 這個字取代路徑 + 把引用的 script 加上 .min.js。
+*最後請記得上 Google Analytics*。
 
 ### deploy
 
