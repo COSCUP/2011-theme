@@ -425,6 +425,31 @@ html[lang="zh-TW"] #content {
       margin: 0;
       text-align: right; }
 
+@media screen and (max-width: 1120px) {
+  body {
+    width: 1000px; }
+
+  #header, #footer {
+    width: 990px;
+    margin-left: 5px;
+    margin-right: 5px; }
+    #header > .info > #date, #footer > .info > #date {
+      width: 590px; }
+    #header > .info > #message, #footer > .info > #message {
+      width: 485px; }
+
+  #sidebar {
+    width: 190px;
+    margin-left: 5px;
+    margin-right: 5px; }
+    #sidebar .sponsors > ul > li > a {
+      padding: 4px 6px; }
+
+  #content {
+    width: 790px;
+    margin-left: 5px;
+    margin-right: 5px; } }
+
 .sprite {
   display: block;
   background: transparent url("favicons.png") no-repeat;

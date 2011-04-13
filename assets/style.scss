@@ -132,14 +132,23 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 	}
 }
 
+$info_top: $line_height - $gutter / 2;
+$date_height: $font_size * 3.5 * 1.4;
+
+$msg_arrow: $line_height / 2;
+$connect: 50px;
+$connect_h: $connect * 1.21686747;
+
+$msg_top: $info_top + $line_height + $date_height + $gutter / 2;
+$msg_height: $header_height - $header-tb * 2 - $msg_top - $info_top;
+$msg_arrow: $line_height / 2;
+
 #header {
 	height: $header_height;
 	
 	> .info {
 		top: $header_tb;
 		height: $header_height - $header-tb * 2;
-
-		$info_top: $line_height - $gutter / 2;
 
 		> h1 {
 			position: absolute;
@@ -190,8 +199,6 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 			
 			}
 		}
-		
-		$date_height: $font_size * 3.5 * 1.4;
 
 		> #date {
 			position: absolute;
@@ -305,14 +312,6 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 				padding-right: 0;
 			}
 		}
-
-		$msg_arrow: $line_height / 2;
-		$connect: 50px;
-		$connect_h: $connect * 1.21686747;
-		
-		$msg_top: $info_top + $line_height + $date_height + $gutter / 2;
-		$msg_height: $header_height - $header-tb * 2 - $msg_top - $info_top;
-		$msg_arrow: $line_height / 2;
 		
 		> #message {
 			position: absolute;
@@ -561,6 +560,39 @@ html[lang="zh-TW"] #content {
 			}
 		}
 	}
+}
+
+@media screen and (max-width: 1120px) {
+	$width: 25;
+	$sidebar_width: 5;
+	
+	body {
+		width: $width * ( $col + $gutter );
+	}
+
+	$h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter;
+
+	#header, #footer {
+		@include grid($width);
+		> .info > #date {
+			width: $h_right_width;
+		}
+		> .info > #message {
+			width: $h_right_width - $msg_arrow - $connect - $line_height * 2;
+		}
+	}
+
+	#sidebar {
+		@include grid($sidebar_width);
+		.sponsors > ul > li > a {
+			padding: (80px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
+		}
+	}
+
+	#content {
+		@include grid($width - $sidebar_width);
+	}
+
 }
 
 .sprite {display: block; background: transparent url('favicons.png') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
