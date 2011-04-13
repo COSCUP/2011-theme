@@ -60,7 +60,7 @@ h1, h2, h3 {
     top: 0;
     left: -7.5px;
     width: 1125px;
-    height: 300px; }
+    height: 225px; }
   #header > .info, #footer > .info {
     position: absolute;
     background: #f0f0f0;
@@ -71,16 +71,16 @@ h1, h2, h3 {
       padding: 0; }
 
 #header {
-  height: 300px; }
+  height: 225px; }
   #header > .info {
-    top: 30px;
-    height: 240px; }
+    top: 15px;
+    height: 195px; }
     #header > .info > h1 {
       position: absolute;
       left: 35px;
       top: 17px;
       width: 280px;
-      height: 201px;
+      height: 161px;
       background: rgba(255, 255, 255, 0.75); }
       #header > .info > h1 > a {
         position: absolute;
@@ -93,7 +93,7 @@ h1, h2, h3 {
         text-indent: -10000px; }
     #header > .info > #title {
       position: absolute;
-      top: 129.115px;
+      top: 117.115px;
       left: 40px;
       font-size: 110%;
       line-height: 140%;
@@ -104,7 +104,7 @@ h1, h2, h3 {
       white-space: nowrap; }
     #header > .info > #title_en {
       position: absolute;
-      top: 161.115px;
+      top: 139.115px;
       left: 40px;
       width: 270px;
       text-align: justify;
@@ -112,16 +112,17 @@ h1, h2, h3 {
     #header > .info > #date {
       position: absolute;
       left: 360px;
-      top: 55px;
+      top: 39px;
       font-weight: bold;
-      font-size: 380%;
+      font-size: 350%;
       line-height: 140%;
       width: 710px;
+      height: 78.4px;
       white-space: nowrap;
       color: #42b535; }
     #header > .info > #language, #header > .info > #nav {
       position: absolute;
-      top: 33px; }
+      top: 17px; }
       #header > .info > #language a, #header > .info > #nav a {
         text-decoration: none;
         display: block;
@@ -216,10 +217,10 @@ h1, h2, h3 {
     #header > .info > #message {
       position: absolute;
       left: 360px;
-      top: 154px;
+      top: 122.4px;
       width: 605px;
-      height: 20px;
-      padding: 22px;
+      height: 22px;
+      padding: 16.8px 22px;
       background: #c7d7a0;
       background: rgba(199, 215, 160, 0.5);
       -moz-border-radius: 8px;
@@ -231,6 +232,8 @@ h1, h2, h3 {
       #header > .info > #message:after {
         content: '';
         position: absolute;
+        top: 0;
+        right: 0;
         top: 50%;
         margin-top: -11px;
         right: -22px;
@@ -249,9 +252,10 @@ h1, h2, h3 {
       height: 60.843px;
       background: transparent url("coscup-mascot-icon.png");
       background-size: cover;
-      top: 186px;
+      top: 150.2px;
       margin-top: -30.422px;
       text-indent: -10000px;
+      z-index: 2;
       -moz-transform: rotate(10deg);
       -webkit-transform: rotate(10deg);
       -ms-transform: rotate(10deg);
@@ -275,7 +279,7 @@ h1, h2, h3 {
       position: absolute;
       top: 11px;
       right: 35px;
-      height: 117.578px;
+      height: 113.378px;
       width: 184px;
       padding: 8px;
       background: #42b535;
@@ -305,16 +309,6 @@ h1, h2, h3 {
               display: inline-block;
               vertical-align: -3px;
               margin-right: 6px; }
-      #header > .info > #connect_box:after {
-        content: '';
-        position: absolute;
-        right: 30px;
-        margin-right: -11px;
-        bottom: -22px;
-        width: 0;
-        height: 0;
-        border: 11px solid transparent;
-        border-top: 11px solid rgba(66, 181, 53, 0.75); }
 
 #footer {
   height: 75px;

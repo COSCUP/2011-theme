@@ -76,8 +76,8 @@ h1, h2, h3 {
 	@include largeFont;
 }
 
-$header_height: 75 * 4px;
-$header_tb: 30px;
+$header_height: 75 * 3px;
+$header_tb: 15px;
 $h_left: 7;
 
 $h_left_width: $col * $h_left + $gutter * ( $h_left - 1 );
@@ -139,12 +139,14 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		top: $header_tb;
 		height: $header_height - $header-tb * 2;
 
+		$info_top: $line_height - $gutter / 2;
+
 		> h1 {
 			position: absolute;
 			left: $col + $gutter - $gutter / 2;
-			top: $line_height - $gutter / 2;
+			top: $info_top;
 			width: $h_left_width + $gutter;
-			height: $header_height - $header-tb * 2 - $line_height * 2 + $gutter / 2;
+			height: $header_height - $header_tb * 2 - $line_height * 2 + $gutter;
 			background: rgba(#fff, 0.75);
 			> a {
 				position: absolute;
@@ -160,7 +162,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		
 		> #title {
 			position: absolute;
-			top: $line_height + $h_left_width / 2.52066;
+			top: $line_height * 0 + $h_left_width / 2.52066 + 10px;
 			left: $col + $gutter;
 			font-size: 110%;
 			line-height: 140%;
@@ -173,7 +175,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		
 		> #title_en {
 			position: absolute;
-			top: $line_height + $h_left_width / 2.52066 + $font_size * 2;
+			top: $line_height * 0 + $h_left_width / 2.52066 + $font_size * 2;
 			left: $col + $gutter;
 			width: $h_left_width;
 			text-align: justify;
@@ -189,15 +191,18 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 			}
 		}
 		
+		$date_height: $font_size * 3.5 * 1.4;
+
 		> #date {
 			position: absolute;
 			left: ( $col + $gutter ) * ($h_left + 2);
-			top: $line_height * 2.5;
+			top: $info_top + $line_height;
 			font-weight: bold;
 			//font-style: italic;
-			font-size: 380%;
+			font-size: 350%;
 			line-height: 140%;
 			width: $h_right_width;
+			height: $date_height;
 			white-space: nowrap;
 			color: $dark;
 			//text-shadow: 0 0 4px #000;
@@ -205,7 +210,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 
 		> #language, > #nav {
 			position: absolute;
-			top: $line_height * 1.5;
+			top: $info_top;
 			a {
 				text-decoration: none;
 				display: block;
@@ -305,26 +310,23 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 		$connect: 50px;
 		$connect_h: $connect * 1.21686747;
 		
-		$msg_height: $header_height - $header_tb * 2
-		- ($line_height * 7)
-		- $line_height;
+		$msg_top: $info_top + $line_height + $date_height + $gutter / 2;
+		$msg_height: $header_height - $header-tb * 2 - $msg_top - $info_top;
 		$msg_arrow: $line_height / 2;
 		
 		> #message {
 			position: absolute;
 			left: ( $col + $gutter ) * ($h_left + 2);
-			top: $line_height * 7;
-			//top: $line_height + $h_left_width / 2.52066 + $font_size * 2;
+			top: $msg_top;
 			width: $h_right_width - $msg_arrow - $connect - $line_height * 2;
-			height: $msg_height - $line_height * 2;
-			//padding: ($line_height / 2) $line_height;
-			padding: $line_height;
+			height: $line_height;
+			padding: ($msg_height - $line_height) / 2 $line_height;
 			background: $light;
 			background: rgba($light, 0.5);
 			@include prefix(border-radius, 8px);
 			&:after {
 				content: '';
-				position: absolute;
+				position: absolute; top: 0; right: 0;
 				top: 50%; margin-top: -$msg_arrow;
 				right: -$msg_arrow * 2;
 				width: 0; height: 0;
@@ -340,15 +342,17 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 				color: #000;
 			}
 		}
+
 		#connect {
 			position: absolute;
 			right: ( $col + $gutter );
 			width: $connect; height: $connect_h;
 			background: transparent url('coscup-mascot-icon.png');
 			background-size: cover;
-			top: $line_height * 7 + $msg_height / 2;
+			top: $msg_top + $msg_height / 2;
 			margin-top: - ($connect_h / 2);
 			text-indent: -10000px;
+			z-index: 2;
 			@include prefix(transform, rotate(10deg));
 			@include transtrans(.3s ease-out);
 
@@ -396,16 +400,15 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 					}
 				}
 			}
-
-			&:after {
-				content: '';
-				position: absolute;
-				right: $connect / 2 + $gutter / 2; margin-right: -$msg_arrow;
-				bottom: -$msg_arrow * 2;
-				width: 0; height: 0;
-				border: $msg_arrow solid transparent;
-				border-top: $msg_arrow solid rgba($dark, 0.75);
-			}
+//			&:after {
+//				content: '';
+//				position: absolute;
+//				right: $connect / 2 + $gutter / 2; margin-right: -$msg_arrow;
+//				bottom: -$msg_arrow * 2;
+//				width: 0; height: 0;
+//				border: $msg_arrow solid transparent;
+//				border-top: $msg_arrow solid rgba($dark, 0.75);
+//			}
 		}
 	}
 }

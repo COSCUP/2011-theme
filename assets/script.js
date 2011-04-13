@@ -27,11 +27,8 @@ jQuery(function ($) {
 	
 	$images.imageTile(
 		{
-			num: 15*4,
-			photos: [].concat(
-				yuren_54.shuffle(),
-				photos.shuffle().slice(0, 15*4 - yuren_54.length)
-			),
+			num: 15*3,
+			photos: yuren_54,
 			beforeImageLoad: function ($img, i) {
 				$img.css('opacity', 0);
 			},
