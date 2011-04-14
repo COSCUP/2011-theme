@@ -94,17 +94,17 @@ h1, h2, h3 {
     #header > .info > #date {
       position: absolute;
       left: 360px;
-      top: 39px;
+      bottom: 17px;
       font-weight: bold;
-      font-size: 350%;
-      line-height: 140%;
+      font-size: 180%;
+      line-height: 125%;
       width: 710px;
       -moz-transition: width 0.2s;
       -webkit-transition: width 0.2s;
       -ms-transition: width 0.2s;
       -o-transition: width 0.2s;
       transition: width 0.2s;
-      height: 78.4px;
+      height: 36px;
       white-space: nowrap;
       color: #42b535; }
     #header > .info > #language, #header > .info > #nav {
@@ -204,15 +204,17 @@ h1, h2, h3 {
     #header > .info > #message {
       position: absolute;
       left: 360px;
-      top: 122.4px;
+      top: 55px;
       width: 605px;
       -moz-transition: width 0.2s;
       -webkit-transition: width 0.2s;
       -ms-transition: width 0.2s;
       -o-transition: width 0.2s;
       transition: width 0.2s;
-      height: 22px;
-      padding: 16.8px 22px;
+      height: 33px;
+      font-size: 150%;
+      line-height: 125%;
+      padding: 21.5px 22px;
       background: #c7d7a0;
       background: rgba(199, 215, 160, 0.5);
       -moz-border-radius: 8px;
@@ -237,70 +239,36 @@ h1, h2, h3 {
         font-weight: bold;
         font-style: normal;
         color: #000; }
-    #header > .info #connect {
+    #header > .info #mascot_icon {
       position: absolute;
       right: 40px;
       width: 50px;
       height: 60.843px;
       background: transparent url("coscup-mascot-icon.png");
       background-size: cover;
-      top: 150.2px;
+      top: 93px;
       margin-top: -30.422px;
       text-indent: -10000px;
-      z-index: 2;
       -moz-transform: rotate(10deg);
       -webkit-transform: rotate(10deg);
       -ms-transform: rotate(10deg);
       -o-transform: rotate(10deg);
-      transform: rotate(10deg);
-      -moz-transition: -moz-transform 0.3s ease-out;
-      -webkit-transition: -webkit-transform 0.3s ease-out;
-      -ms-transition: -ms-transform 0.3s ease-out;
-      -o-transition: -o-transform 0.3s ease-out; }
-      #header > .info #connect:hover {
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-        -moz-transition: -moz-transform 0.3s ease-in;
-        -webkit-transition: -webkit-transform 0.3s ease-in;
-        -ms-transition: -ms-transform 0.3s ease-in;
-        -o-transition: -o-transform 0.3s ease-in; }
+      transform: rotate(10deg); }
     #header > .info > #connect_box {
       position: absolute;
-      top: 11px;
-      right: 35px;
-      height: 113.378px;
-      width: 184px;
-      padding: 8px;
-      background: #42b535;
-      background: rgba(66, 181, 53, 0.75);
-      -moz-border-radius: 8px;
-      -webkit-border-radius: 8px;
-      -ms-border-radius: 8px;
-      -o-border-radius: 8px;
-      border-radius: 8px;
-      color: #fff;
-      display: none; }
-      #header > .info > #connect_box.show {
-        display: block; }
+      bottom: 17px;
+      right: 40px;
+      height: 16px;
+      width: 120px; }
       #header > .info > #connect_box ul {
         margin: 0;
         padding: 0;
         list-style: none; }
         #header > .info > #connect_box ul > li {
-          border-bottom: 1px dashed #fff; }
-          #header > .info > #connect_box ul > li:last-child {
-            border-bottom: none; }
-          #header > .info > #connect_box ul > li > a {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none!important; }
-            #header > .info > #connect_box ul > li > a > span.sprite {
-              display: inline-block;
-              vertical-align: -3px;
-              margin-right: 6px; }
+          float: left;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px; }
 
 #footer {
   height: 75px;

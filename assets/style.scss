@@ -108,14 +108,14 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 }
 
 $info_top: $line_height - $gutter / 2;
-$date_height: $font_size * 3.5 * 1.4;
+$date_height: $font_size * 1.8 * 1.25;
 
 $msg_arrow: $line_height / 2;
-$connect: 50px;
-$connect_h: $connect * 1.21686747;
+$mascot_icon: 50px;
+$mascot_icon_h: $mascot_icon * 1.21686747;
 
-$msg_top: $info_top + $line_height + $date_height + $gutter / 2;
-$msg_height: $header_height - $header-tb * 2 - $msg_top - $info_top;
+$msg_top: $info_top + $line_height + $gutter / 2 + $line_height*0.5;
+$msg_height: $header_height - $date_height - $header_tb * 2 - $msg_top - $info_top - $line_height*0.5;
 $msg_arrow: $line_height / 2;
 
 #header {
@@ -178,11 +178,11 @@ $msg_arrow: $line_height / 2;
 		> #date {
 			position: absolute;
 			left: ( $col + $gutter ) * ($h_left + 2);
-			top: $info_top + $line_height;
+			bottom: $info_top;
 			font-weight: bold;
 			//font-style: italic;
-			font-size: 350%;
-			line-height: 140%;
+			font-size: 180%;
+			line-height: 125%;
 			width: $h_right_width;
 			@include prefix(transition, width .2s);
 			height: $date_height;
@@ -293,10 +293,12 @@ $msg_arrow: $line_height / 2;
 			position: absolute;
 			left: ( $col + $gutter ) * ($h_left + 2);
 			top: $msg_top;
-			width: $h_right_width - $msg_arrow - $connect - $line_height * 2;
+			width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
 			@include prefix(transition, width .2s);
-			height: $line_height;
-			padding: ($msg_height - $line_height) / 2 $line_height;
+			height: $line_height*1.5;
+			font-size: 150%;
+			line-height: 125%;
+			padding: ($msg_height - $line_height*1.5) / 2 $line_height;
 			background: $light;
 			background: rgba($light, 0.5);
 			@include prefix(border-radius, 8px);
@@ -319,67 +321,38 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 
-		#connect {
+		#mascot_icon {
 			position: absolute;
 			right: ( $col + $gutter );
-			width: $connect; height: $connect_h;
+			width: $mascot_icon; height: $mascot_icon_h;
 			background: transparent url('coscup-mascot-icon.png');
 			background-size: cover;
 			top: $msg_top + $msg_height / 2;
-			margin-top: - ($connect_h / 2);
+			margin-top: - ($mascot_icon_h / 2);
 			text-indent: -10000px;
-			z-index: 2;
 			@include prefix(transform, rotate(10deg));
-			@include transtrans(.3s ease-out);
-
-			&:hover {
-				@include prefix(transform, rotate(0deg));
-				@include transtrans(.3s ease-in);
-			}
 		}
 		
 		> #connect_box {
 			position: absolute;
-			top: $line_height * 0.5;
-			right: ( $col + $gutter / 2 );
-			height: $line_height * 6.5 + $msg_height / 2 - $connect_h / 2 - $msg_arrow - 8 * 2px;
-			width: ( $col * 5 + $gutter * 5) - 8 * 2px;
-			padding: 8px;
-			background: $dark;
-			background: rgba($dark, 0.75);
-			@include prefix(border-radius, 8px);
-			color: #fff;
-
-			display: none; // opacity and transition wont work here
-
-			&.show {
-				display: block;
-			}
+			bottom: $info_top;
+			right: ( $col + $gutter );
+			height: 16px;
+			width: (16 + 8) * 5px;
 
 			ul {
 				margin: 0; padding: 0;
 				list-style: none;
 				> li {
-					border-bottom: 1px dashed #fff;
-					&:last-child {
-						border-bottom: none;
-					}
-					> a {
-						color: #fff;
-						font-weight: bold;
-						text-decoration: none!important;
-						> span.sprite {
-							display: inline-block;
-							vertical-align: -3px;
-							margin-right: 6px;
-						}
-					}
+					float: left;
+					margin-left: 8px;
+					width: 16px; height: 16px;
 				}
 			}
 //			&:after {
 //				content: '';
 //				position: absolute;
-//				right: $connect / 2 + $gutter / 2; margin-right: -$msg_arrow;
+//				right: $mascot_icon / 2 + $gutter / 2; margin-right: -$msg_arrow;
 //				bottom: -$msg_arrow * 2;
 //				width: 0; height: 0;
 //				border: $msg_arrow solid transparent;
@@ -564,7 +537,7 @@ html[lang="zh-TW"] #content {
 			width: $h_right_width;
 		}
 		> .info > #message {
-			width: $h_right_width - $msg_arrow - $connect - $line_height * 2;
+			width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
 		}
 	}
 
