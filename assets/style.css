@@ -129,7 +129,8 @@ h1, h2, h3 {
             border-right: none; }
     #header > .info > #nav {
       left: 355px;
-      width: 710px; }
+      width: 710px;
+      z-index: 3; }
       #header > .info > #nav a {
         color: #333;
         font-weight: bold;
@@ -206,13 +207,14 @@ h1, h2, h3 {
       left: 360px;
       top: 55px;
       width: 605px;
-      -moz-transition: width 0.2s;
-      -webkit-transition: width 0.2s;
-      -ms-transition: width 0.2s;
-      -o-transition: width 0.2s;
-      transition: width 0.2s;
+      -moz-transition: width 0.2s, font-size 0.2s;
+      -webkit-transition: width 0.2s, font-size 0.2s;
+      -ms-transition: width 0.2s, font-size 0.2s;
+      -o-transition: width 0.2s, font-size 0.2s;
+      transition: width 0.2s, font-size 0.2s;
       height: 33px;
       font-size: 150%;
+      white-space: nowrap;
       line-height: 125%;
       padding: 21.5px 22px;
       background: #c7d7a0;
@@ -417,7 +419,10 @@ html[lang="zh-TW"] #content {
     #header > .info > #date, #footer > .info > #date {
       width: 590px; }
     #header > .info > #message, #footer > .info > #message {
-      width: 485px; }
+      width: 485px;
+      font-size: 120%;
+      height: 26.4px;
+      padding: 24.8px 22px; }
 
   #sidebar {
     width: 190px;

@@ -219,6 +219,7 @@ $msg_arrow: $line_height / 2;
 		> #nav {
 			left: ( $col + $gutter ) * ($h_left + 2) - ($gutter / 2);
 			width: $h_right_width;
+			z-index: 3;
 			a {
 				color: #333;
 				font-weight: bold;
@@ -294,9 +295,11 @@ $msg_arrow: $line_height / 2;
 			left: ( $col + $gutter ) * ($h_left + 2);
 			top: $msg_top;
 			width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
-			@include prefix(transition, width .2s);
+			$val: width .2s, font-size .2s;
+			@include prefix(transition, $val);
 			height: $line_height*1.5;
 			font-size: 150%;
+			white-space: nowrap;
 			line-height: 125%;
 			padding: ($msg_height - $line_height*1.5) / 2 $line_height;
 			background: $light;
@@ -538,6 +541,9 @@ html[lang="zh-TW"] #content {
 		}
 		> .info > #message {
 			width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
+			font-size: 120%;
+			height: $line_height*1.2;
+			padding: ($msg_height - $line_height*1.2) / 2 $line_height;
 		}
 	}
 
