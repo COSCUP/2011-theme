@@ -84,43 +84,16 @@ $h_left: 7;
 $h_left_width: $col * $h_left + $gutter * ( $h_left - 1 );
 $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter;
 
-.images {
-	> a {
-		display: block;
-		float: left;
-		margin: 0; padding: 0;
-		width: 75px;
-		height: 75px;
-		> img {
-			@include prefix(transition, opacity .2s ease-out);
-			border: none;
-		}
-		&:hover {
-			> img {
-				@include prefix(transition, opacity .2s ease-in);
-				opacity: 1!important;
-			}
-		}
-	}
-}
-
 #header, #footer {
 	@include grid($width);
 	@include prefix(transition, width .2s);
 	@include largeFont;
-	background-color: #ddd;
+	background: #ddd url('./coscup-tile-bg.jpg') center center no-repeat;
 	border-top: 8px solid $dark;
 	border-bottom: 8px solid $dark;
 	@include prefix(box-shadow, 0 0 5px #333);
 	position: relative;
 	overflow: hidden;
-	
-	> .images {
-		position: absolute;
-		top: 0; left: -7.5px;
-		width: 75 * 15px;
-		height: $header_height;
-	}
 	
 	> .info {
 		position: absolute;
@@ -550,9 +523,15 @@ html[lang="zh-TW"] #content {
 			//margin: ($line_height / 2) (- $img_gutter) ($line_height / 2) 0;
 			margin: 0 (- $img_gutter) 0 0;
 			> a {
-				width: 75 - 3 - $img_gutter*3/4;
-				margin: 0 $img_gutter $img_gutter 0;
+				display: block;
+				float: left;
+				margin: 0 $img_gutter $img_gutter 0; padding: 0;
 				overflow: hidden;
+				width: 75 - 3 - $img_gutter*3/4;
+				height: 75px;
+				> img {
+					border: none;
+				}
 			}
 		}
 		> .video {

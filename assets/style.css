@@ -23,28 +23,6 @@ a {
 h1, h2, h3 {
   font-family: 'Cabin', arial, sans-serif; }
 
-.images > a {
-  display: block;
-  float: left;
-  margin: 0;
-  padding: 0;
-  width: 75px;
-  height: 75px; }
-  .images > a > img {
-    -moz-transition: opacity 0.2s ease-out;
-    -webkit-transition: opacity 0.2s ease-out;
-    -ms-transition: opacity 0.2s ease-out;
-    -o-transition: opacity 0.2s ease-out;
-    transition: opacity 0.2s ease-out;
-    border: none; }
-  .images > a:hover > img {
-    -moz-transition: opacity 0.2s ease-in;
-    -webkit-transition: opacity 0.2s ease-in;
-    -ms-transition: opacity 0.2s ease-in;
-    -o-transition: opacity 0.2s ease-in;
-    transition: opacity 0.2s ease-in;
-    opacity: 1!important; }
-
 #header, #footer {
   width: 1110px;
   margin-left: 5px;
@@ -55,7 +33,7 @@ h1, h2, h3 {
   -o-transition: width 0.2s;
   transition: width 0.2s;
   font-family: 'Cabin', arial, sans-serif;
-  background-color: #ddd;
+  background: #dddddd url("./coscup-tile-bg.jpg") center center no-repeat;
   border-top: 8px solid #42b535;
   border-bottom: 8px solid #42b535;
   -moz-box-shadow: 0 0 5px #333333;
@@ -65,12 +43,6 @@ h1, h2, h3 {
   box-shadow: 0 0 5px #333333;
   position: relative;
   overflow: hidden; }
-  #header > .images, #footer > .images {
-    position: absolute;
-    top: 0;
-    left: -7.5px;
-    width: 1125px;
-    height: 225px; }
   #header > .info, #footer > .info {
     position: absolute;
     background: #f0f0f0;
@@ -451,9 +423,15 @@ html[lang="zh-TW"] #content {
       height: 249px;
       margin: 0 -8px 0 0; }
       #content > #sidebar2 > .images > a {
-        width: 66px;
+        display: block;
+        float: left;
         margin: 0 8px 8px 0;
-        overflow: hidden; }
+        padding: 0;
+        overflow: hidden;
+        width: 66px;
+        height: 75px; }
+        #content > #sidebar2 > .images > a > img {
+          border: none; }
     #content > #sidebar2 > .more {
       clear: both;
       padding: 0;

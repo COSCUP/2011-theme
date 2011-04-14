@@ -20,38 +20,14 @@ jQuery(function ($) {
 		}
 	);
 
-	// Image tiles on header / footer
-	
-	var $images = $('<div id="images" class="images" />');
-	$('#header').prepend($images);
-	
-	$images.imageTile(
-		{
-			num: 15*3,
-			photos: yuren_54,
-			beforeImageLoad: function ($img, i) {
-				$img.css('opacity', 0);
-			},
-			imageLoad: function ($img, i) {
-				$img.css('opacity', 0.5);
-			}
-		}
+	$('#header').css(
+		'background-position',
+		'center -' + (75*Math.floor(Math.random()*4)).toString(10) + 'px'
 	);
 
-	var $images_footer = $('<div id="images_footer" class="images" />');
-	$('#footer').prepend($images_footer);
-	
-	$images_footer.imageTile(
-		{
-			num: 15,
-			photos: yuren_54,
-			beforeImageLoad: function ($img, i) {
-				$img.css('opacity', 0);
-			},
-			imageLoad: function ($img, i) {
-				$img.css('opacity', 0.5);
-			}
-		}
+	$('#footer').css(
+		'background-position',
+		'center -' + (75*Math.floor(Math.random()*6)).toString(10) + 'px'
 	);
 
 	// imagesTile on #sidebar2
@@ -159,74 +135,10 @@ var yuren_54 = [
 	{"photo_url":"4142/4933698859_b3bf1e05f3","link_url":"46509322@N00/4933698859","title":"DSC_8365"}
 ];
 
-// http://www.flickr.com/groups/coscup2010/
-// top (photos.length) by interestingness sorted by Flickr
-var photos = [
-	{"photo_url":"4095/4892560806_e80909b4b2","link_url":"96595297@N00/4892560806","title":"DSC_8124"},
-	{"photo_url":"4096/4891960997_87dd8be37e","link_url":"96595297@N00/4891960997","title":"DSC_8137"},
-	{"photo_url":"4120/4892566468_8ce966100c","link_url":"96595297@N00/4892566468","title":"DSC_8078"},
-	{"photo_url":"4079/4898188833_f957ddfd5b","link_url":"46509322@N00/4898188833","title":"YRJ_2213.jpg"},
-	{"photo_url":"4073/4907684666_82b4b16fb4","link_url":"54331619@N00/4907684666","title":"COSCUP 2010 Day 1"},
-	{"photo_url":"4138/4912813643_ab64a192c0","link_url":"54331619@N00/4912813643","title":"COSCUP Day 2"},
-	{"photo_url":"4114/4892533724_255a0db780","link_url":"96595297@N00/4892533724","title":"DSC_8318"},
-	{"photo_url":"4075/4889441807_3a86c8bf67","link_url":"12452841@N00/4889441807","title":"P8140746"},
-	{"photo_url":"4141/4891029920_10978b42a0","link_url":"12452841@N00/4891029920","title":"P8140800"},
-	{"photo_url":"4140/4907688780_cdd0f13076","link_url":"54331619@N00/4907688780","title":"COSCUP 2010 Day 1"},
-	{"photo_url":"4077/4889986198_1174d7e285","link_url":"12452841@N00/4889986198","title":"P8140718"},
-	{"photo_url":"4134/4893573695_bd7cf4c7b6","link_url":"12452841@N00/4893573695","title":"P8151046"},
-	{"photo_url":"4100/4890342242_c037669f69","link_url":"12452841@N00/4890342242","title":"P8140797"},
-	{"photo_url":"4122/4890313820_d887bbdb35","link_url":"12452841@N00/4890313820","title":"P8140779"},
-	{"photo_url":"4073/4892563466_96ec98e91b","link_url":"96595297@N00/4892563466","title":"DSC_8100"},
-	{"photo_url":"4074/4898980628_a2c3b14609","link_url":"46509322@N00/4898980628","title":"YRJ_2556.jpg"},
-	{"photo_url":"4099/4888299238_baa8934bf5","link_url":"26842510@N00/4888299238","title":"DSC_4025"},
-	{"photo_url":"4080/4897846537_06feb367ea","link_url":"46509322@N00/4897846537","title":"YRJ_1610.jpg"},
-	{"photo_url":"4073/4893868208_f42cec6af7","link_url":"12452841@N00/4893868208","title":"P8150958"},
-	{"photo_url":"4077/4890798944_48fa8a2199","link_url":"19902918@N00/4890798944","title":"DSCF1247"},
-	{"photo_url":"4139/4888418258_e681984bd8","link_url":"46509322@N00/4888418258","title":"記錄與場地"},
-	{"photo_url":"4138/4903778188_bc23cf45ee","link_url":"38664137@N07/4903778188","title":"DPP_0016"},
-	{"photo_url":"4121/4891971845_91b4b8278c","link_url":"96595297@N00/4891971845","title":"DSC_8048"},
-	{"photo_url":"4118/4890700531_4a30d1bc08","link_url":"12452841@N00/4890700531","title":"P8140883"},
-	{"photo_url":"4074/4905410896_58614cbc5d","link_url":"54331619@N00/4905410896","title":"COSCUP 2010 Day 1"},
-	{"photo_url":"4073/4892536894_19a80bdd8e","link_url":"96595297@N00/4892536894","title":"DSC_8299"},
-	{"photo_url":"4094/4900715179_e8d85d7ef7","link_url":"54331619@N00/4900715179","title":"COSCUP 2010 Day 1"},
-	{"photo_url":"4095/4907112377_e5b479ce90","link_url":"54331619@N00/4907112377","title":"COSCUP 2010 Day 1 - Ubuntu BoF"},
-	{"photo_url":"4079/4898843432_9954670e8a","link_url":"46509322@N00/4898843432","title":"YRJ_2301.jpg"},
-	{"photo_url":"4098/4892555766_865079954f","link_url":"96595297@N00/4892555766","title":"DSC_8165"},
-	{"photo_url":"4119/4891329746_971b0ab754","link_url":"12452841@N00/4891329746","title":"P8140892"},
-	{"photo_url":"4075/4907084063_512af25cf5","link_url":"54331619@N00/4907084063","title":"COSCUP 2010 Day 1"},
-	{"photo_url":"4118/4888300606_80c2f8ca15","link_url":"26842510@N00/4888300606","title":"DSC_4039"},
-	{"photo_url":"4073/4898493879_df52f71b0a","link_url":"46509322@N00/4898493879","title":"YRJ_2758.jpg"},
-	{"photo_url":"4117/4897993917_23b69ceaa9","link_url":"64165297@N00/4897993917","title":"好有勵志片的 fu"},
-	{"photo_url":"4082/4898263101_9f2ba8b959","link_url":"46509322@N00/4898263101","title":"YRJ_2314.jpg"},
-	{"photo_url":"4119/4890579449_aa26cf851b","link_url":"12452841@N00/4890579449","title":"P8140850"},
-	{"photo_url":"4139/4903649894_ef83276b1e","link_url":"38664137@N07/4903649894","title":"full2"},
-	{"photo_url":"4099/4898009373_9cd73a0abf","link_url":"46509322@N00/4898009373","title":"YRJ_1965.jpg"},
-	{"photo_url":"4081/4894172424_7242fe1b5f","link_url":"12452841@N00/4894172424","title":"P8151047"},
-	{"photo_url":"4119/4897943909_8ef961262f","link_url":"46509322@N00/4897943909","title":"YRJ_1827.jpg"},
-	{"photo_url":"4076/4891963871_13f3e6b2fc","link_url":"96595297@N00/4891963871","title":"DSC_8110"},
-	{"photo_url":"4077/4912818611_92a804ccb1","link_url":"54331619@N00/4912818611","title":"COSCUP Day 2"},
-	{"photo_url":"4102/4890198991_d9e7813c2f","link_url":"19902918@N00/4890198991","title":"DSCF1091"},
-	{"photo_url":"4096/4898141929_db97e43b81","link_url":"46509322@N00/4898141929","title":"YRJ_2119.jpg"},
-	{"photo_url":"4099/4891943527_ac9e1b728c","link_url":"96595297@N00/4891943527","title":"DSC_8259"},
-	{"photo_url":"4142/4891934793_bfb09156d2","link_url":"96595297@N00/4891934793","title":"DSC_8316"},
-	{"photo_url":"4075/4891969331_1592f993d6","link_url":"96595297@N00/4891969331","title":"DSC_8064"},
-	{"photo_url":"4138/4893214677_bba59df5f7","link_url":"12452841@N00/4893214677","title":"P8150938"},
-	{"photo_url":"4078/4897741695_70c4f5f7cb","link_url":"46509322@N00/4897741695","title":"YRJ_1439.jpg"},
-	{"photo_url":"4116/4893221101_64a4153f3c","link_url":"12452841@N00/4893221101","title":"P8150940"}
-];
-
 jQuery.each(
 	yuren_54,
 	function (i, photo) {
 		yuren_54[i].photo_url = 'http://farm5.static.flickr.com/' + photo.photo_url + '_s.jpg';
 		yuren_54[i].link_url = 'http://www.flickr.com/photos/' + photo.link_url;
-	}
-);
-
-jQuery.each(
-	photos,
-	function (i, photo) {
-		photos[i].photo_url = 'http://farm5.static.flickr.com/' + photo.photo_url + '_s.jpg';
-		photos[i].link_url = 'http://www.flickr.com/photos/' + photo.link_url;
 	}
 );
