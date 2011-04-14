@@ -1,0 +1,20 @@
+name = COSCUP 2011
+description = COSCUP 2011 theme
+version = 0.1
+core = 6.x
+engine = phptemplate
+
+regions[content_top] = Content top
+regions[header_block] = Header
+regions[navigation_bar] = Navigation Bar
+regions[sidebar] = Sidebar
+regions[footer_block] = Footer
+regions[content_bottom] = Content bottom
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = favicon
+features[] = primary_links
+
+settings[coscup2011_rebuild_registry]     = 1
