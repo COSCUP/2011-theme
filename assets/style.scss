@@ -53,6 +53,7 @@ html {
 
 body {
 	width: $width * ( $col + $gutter );
+	@include prefix(transition, width .2s);
 	margin: 0 auto;
 	padding: 0;
 
@@ -105,6 +106,7 @@ $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter
 
 #header, #footer {
 	@include grid($width);
+	@include prefix(transition, width .2s);
 	@include largeFont;
 	background-color: #ddd;
 	border-top: 8px solid $dark;
@@ -209,6 +211,7 @@ $msg_arrow: $line_height / 2;
 			font-size: 350%;
 			line-height: 140%;
 			width: $h_right_width;
+			@include prefix(transition, width .2s);
 			height: $date_height;
 			white-space: nowrap;
 			color: $dark;
@@ -318,6 +321,7 @@ $msg_arrow: $line_height / 2;
 			left: ( $col + $gutter ) * ($h_left + 2);
 			top: $msg_top;
 			width: $h_right_width - $msg_arrow - $connect - $line_height * 2;
+			@include prefix(transition, width .2s);
 			height: $line_height;
 			padding: ($msg_height - $line_height) / 2 $line_height;
 			background: $light;
@@ -463,6 +467,7 @@ $footer_tb: 15px;
 	margin-bottom: $line_height;
 
 	@include grid($sidebar_width);
+	@include prefix(transition, width .2s);
 	@include largeFont;
 
 	background-color: #fff;
@@ -490,6 +495,7 @@ $footer_tb: 15px;
 					display: block;
 					width: 178px;
 					padding: (80px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
+					@include prefix(transition, padding .2s);
 					height: 72px;
 					> img {
 						border: none;
@@ -510,6 +516,7 @@ html[lang="zh-TW"] #content {
 #content {
 	float: left;
 	@include grid($width - $sidebar_width);
+	@include prefix(transition, width .2s);
 	> #sidebar2 {
 		float: right;
 		background-color: $light;

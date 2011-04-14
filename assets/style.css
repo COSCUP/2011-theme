@@ -2,6 +2,11 @@
 @import url(http://fonts.googleapis.com/css?family=Cabin);
 body {
   width: 1120px;
+  -moz-transition: width 0.2s;
+  -webkit-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  transition: width 0.2s;
   margin: 0 auto;
   padding: 0;
   font: 16px sans-serif;
@@ -44,6 +49,11 @@ h1, h2, h3 {
   width: 1110px;
   margin-left: 5px;
   margin-right: 5px;
+  -moz-transition: width 0.2s;
+  -webkit-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  transition: width 0.2s;
   font-family: 'Cabin', arial, sans-serif;
   background-color: #ddd;
   border-top: 8px solid #42b535;
@@ -117,6 +127,11 @@ h1, h2, h3 {
       font-size: 350%;
       line-height: 140%;
       width: 710px;
+      -moz-transition: width 0.2s;
+      -webkit-transition: width 0.2s;
+      -ms-transition: width 0.2s;
+      -o-transition: width 0.2s;
+      transition: width 0.2s;
       height: 78.4px;
       white-space: nowrap;
       color: #42b535; }
@@ -219,6 +234,11 @@ h1, h2, h3 {
       left: 360px;
       top: 122.4px;
       width: 605px;
+      -moz-transition: width 0.2s;
+      -webkit-transition: width 0.2s;
+      -ms-transition: width 0.2s;
+      -o-transition: width 0.2s;
+      transition: width 0.2s;
       height: 22px;
       padding: 16.8px 22px;
       background: #c7d7a0;
@@ -346,6 +366,11 @@ h1, h2, h3 {
   width: 230px;
   margin-left: 5px;
   margin-right: 5px;
+  -moz-transition: width 0.2s;
+  -webkit-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  transition: width 0.2s;
   font-family: 'Cabin', arial, sans-serif;
   background-color: #fff;
   -moz-box-shadow: 0 0 5px #cccccc;
@@ -372,6 +397,11 @@ h1, h2, h3 {
         display: block;
         width: 178px;
         padding: 4px 26px;
+        -moz-transition: padding 0.2s;
+        -webkit-transition: padding 0.2s;
+        -ms-transition: padding 0.2s;
+        -o-transition: padding 0.2s;
+        transition: padding 0.2s;
         height: 72px; }
         #sidebar .sponsors > ul > li > a > img {
           border: none;
@@ -386,7 +416,12 @@ html[lang="zh-TW"] #content {
   float: left;
   width: 870px;
   margin-left: 5px;
-  margin-right: 5px; }
+  margin-right: 5px;
+  -moz-transition: width 0.2s;
+  -webkit-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  transition: width 0.2s; }
   #content > #sidebar2 {
     float: right;
     background-color: #c7d7a0;
