@@ -464,10 +464,12 @@ html[lang="zh-TW"] #content {
 
 #content {
 	float: left;
+	padding-top: $gutter / 2;
 	@include grid($width - $sidebar_width);
 	@include prefix(transition, width .2s);
 	> #sidebar2 {
 		float: right;
+		margin-top: - $gutter / 2;
 		background-color: $light;
 		@include prefix(box-shadow, 0 0 5px #ccc);
 		width: ($col * $sidebar2_width + $gutter  * ($sidebar2_width - 1)) - $line_height;
