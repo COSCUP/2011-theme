@@ -230,54 +230,58 @@ $msg_arrow: $line_height / 2;
 				&:hover {
 					text-decoration: underline;
 				}
+				html[lang="en"] & {
+					font-size: 92%;
+				}
+			}
+			li.parent, li.current {
+				> a {
+					font-weight: bold;
+					text-decoration: underline;
+				}
 			}
 			li > ul {
 				display: none;
-				opacity: 0;
-			}
-			li.parent > a, li.current > a {
-				font-weight: bold;
-				text-decoration: underline;
-			}
-			li:hover a, li.selected a {
-				color: #fff;
-				background: #999;
-				background: rgba(#000, 0.65);
-				$val: background, color .2s ease-in;
-				@include prefix(transition, $val);
 			}
 			li:hover, li.selected {
 				width: $col * 2 + $gutter * 2 - 1px;
 				overflow: visible;
-			}
-			li:hover > ul, li.selected > ul {
-				display: block;
-				//position: absolute;
-				opacity: 1;
-				//top: $line_height;
-				width: $col * 4 + $gutter * 4;
-				left: 0;
-				//width: $col * 2 + $gutter * 1;
-				margin: 0 ($gutter / 2);
-				//margin: 0;
-				padding: 0;
-				> li {
-					list-style: none;
-					float: left;
+				a {
+					color: #fff;
 					background: #999;
 					background: rgba(#000, 0.65);
-					margin: 0;
-					border-top: 1px solid #fff;
-					border-right: 1px solid #fff;
-					width: auto;
-					//min-width: $col * 2 + $gutter * 1 - 1px;
-					> a {
-						color: #ddd;
-						font-weight: normal;
-						display: inline;
-						background: none;
-						&:hover {
-							color: #fff;
+					$val: background, color .2s ease-in;
+					@include prefix(transition, $val);
+				}
+				> ul {
+					display: block;
+					//position: absolute;
+					opacity: 1;
+					//top: $line_height;
+					width: $col * 4 + $gutter * 4;
+					left: 0;
+					//width: $col * 2 + $gutter * 1;
+					margin: 0 ($gutter / 2);
+					//margin: 0;
+					padding: 0;
+					> li {
+						list-style: none;
+						float: left;
+						background: #999;
+						background: rgba(#000, 0.65);
+						margin: 0;
+						border-top: 1px solid #fff;
+						border-right: 1px solid #fff;
+						width: auto;
+						//min-width: $col * 2 + $gutter * 1 - 1px;
+						> a {
+							color: #ddd;
+							font-weight: normal;
+							display: inline;
+							background: none;
+							&:hover {
+								color: #fff;
+							}
 						}
 					}
 				}
@@ -303,9 +307,10 @@ $msg_arrow: $line_height / 2;
 			li {
 				border-right: none!important;
 				padding-right: 2px;
-			}
-			li:last-child {
-				padding-right: 0;
+
+				&:last-child {
+					padding-right: 0;
+				}
 			}
 		}
 		
@@ -482,10 +487,6 @@ $footer_tb: 15px;
 	}
 }
 
-html[lang="zh-TW"] #content {
-	text-align: justify;
-}
-
 #content {
 	float: left;
 	padding-top: $gutter / 2;
@@ -493,6 +494,10 @@ html[lang="zh-TW"] #content {
 	
 	body.no_sidebar > & {
 		@include grid($width);
+	}
+	
+	html[lang="zh-TW"] & {
+		text-align: justify;
 	}
 	
 	@include prefix(transition, width .2s);

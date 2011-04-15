@@ -143,47 +143,48 @@ h1, h2, h3 {
         transition: background, color 0.2s ease-out; }
         #header > .info > #nav a:hover {
           text-decoration: underline; }
-      #header > .info > #nav li > ul {
-        display: none;
-        opacity: 0; }
+        html[lang="en"] #header > .info > #nav a {
+          font-size: 92%; }
       #header > .info > #nav li.parent > a, #header > .info > #nav li.current > a {
         font-weight: bold;
         text-decoration: underline; }
-      #header > .info > #nav li:hover a, #header > .info > #nav li.selected a {
-        color: #fff;
-        background: #999;
-        background: rgba(0, 0, 0, 0.65);
-        -moz-transition: background, color 0.2s ease-in;
-        -webkit-transition: background, color 0.2s ease-in;
-        -ms-transition: background, color 0.2s ease-in;
-        -o-transition: background, color 0.2s ease-in;
-        transition: background, color 0.2s ease-in; }
+      #header > .info > #nav li > ul {
+        display: none; }
       #header > .info > #nav li:hover, #header > .info > #nav li.selected {
         width: 79px;
         overflow: visible; }
-      #header > .info > #nav li:hover > ul, #header > .info > #nav li.selected > ul {
-        display: block;
-        opacity: 1;
-        width: 160px;
-        left: 0;
-        margin: 0 5px;
-        padding: 0; }
-        #header > .info > #nav li:hover > ul > li, #header > .info > #nav li.selected > ul > li {
-          list-style: none;
-          float: left;
+        #header > .info > #nav li:hover a, #header > .info > #nav li.selected a {
+          color: #fff;
           background: #999;
           background: rgba(0, 0, 0, 0.65);
-          margin: 0;
-          border-top: 1px solid #fff;
-          border-right: 1px solid #fff;
-          width: auto; }
-          #header > .info > #nav li:hover > ul > li > a, #header > .info > #nav li.selected > ul > li > a {
-            color: #ddd;
-            font-weight: normal;
-            display: inline;
-            background: none; }
-            #header > .info > #nav li:hover > ul > li > a:hover, #header > .info > #nav li.selected > ul > li > a:hover {
-              color: #fff; }
+          -moz-transition: background, color 0.2s ease-in;
+          -webkit-transition: background, color 0.2s ease-in;
+          -ms-transition: background, color 0.2s ease-in;
+          -o-transition: background, color 0.2s ease-in;
+          transition: background, color 0.2s ease-in; }
+        #header > .info > #nav li:hover > ul, #header > .info > #nav li.selected > ul {
+          display: block;
+          opacity: 1;
+          width: 160px;
+          left: 0;
+          margin: 0 5px;
+          padding: 0; }
+          #header > .info > #nav li:hover > ul > li, #header > .info > #nav li.selected > ul > li {
+            list-style: none;
+            float: left;
+            background: #999;
+            background: rgba(0, 0, 0, 0.65);
+            margin: 0;
+            border-top: 1px solid #fff;
+            border-right: 1px solid #fff;
+            width: auto; }
+            #header > .info > #nav li:hover > ul > li > a, #header > .info > #nav li.selected > ul > li > a {
+              color: #ddd;
+              font-weight: normal;
+              display: inline;
+              background: none; }
+              #header > .info > #nav li:hover > ul > li > a:hover, #header > .info > #nav li.selected > ul > li > a:hover {
+                color: #fff; }
     #header > .info > #language {
       right: 35px; }
       #header > .info > #language a {
@@ -213,8 +214,8 @@ h1, h2, h3 {
       #header > .info > #language li {
         border-right: none!important;
         padding-right: 2px; }
-      #header > .info > #language li:last-child {
-        padding-right: 0; }
+        #header > .info > #language li:last-child {
+          padding-right: 0; }
     #header > .info > #message {
       position: absolute;
       left: 360px;
@@ -366,9 +367,6 @@ h1, h2, h3 {
           width: 178px;
           height: 72px; }
 
-html[lang="zh-TW"] #content {
-  text-align: justify; }
-
 #content {
   float: left;
   padding-top: 5px;
@@ -384,6 +382,8 @@ html[lang="zh-TW"] #content {
     width: 1110px;
     margin-left: 5px;
     margin-right: 5px; }
+  html[lang="zh-TW"] #content {
+    text-align: justify; }
   #content > #sidebar2 {
     float: right;
     margin-top: -5px;
