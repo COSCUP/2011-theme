@@ -2,8 +2,6 @@
 include_once "i18n.php";
 $theme_assets_uri = "http://coscup.org/2011-theme/assets/";
 $lc = new i18n;
-$home_uri_l10n = "http://coscup.org/";
-$contact_us_l10n = "http://coscup.org/zh-tw/contact-us";
 switch($this->current[0])
 {
 	case "en":
@@ -43,7 +41,7 @@ switch($this->current[0])
 <body>
 <div id="header">
 	<div class="info">
-		<h1><a href="<?php echo $lc->_("HOME_URI");?>" title="<?php echo $lc->_("首頁");?>">COSCUP</a></h1>
+		<h1><a href="<?php echo $home_path.$lc->_("HOME_URI_APPENDS");?>" title="<?php echo $lc->_("首頁");?>">COSCUP</a></h1>
 		<p id="title"><?php echo $lc->_("開源人年會");?></p>
 		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span id="users">Users</span> and <span id="promoters">Promoters</span></p>
 		<p id="date" title="<?php echo $lc->_("2011 年 8 月 20 - 21 日");?>">8/20 - 21, 2011 :: <?php echo $lc->_("台灣台北"); ?></p>
@@ -82,7 +80,7 @@ switch($this->current[0])
 </div>
 <div id="footer">
 	<div class="info">
-		<p id="copyright">&copy; 2011 COSCUP. <a href="<?php echo $lc->_("CONTACT_URI"); ?>">Contact us</a>.</p>
+		<p id="copyright">&copy; 2011 COSCUP. <a href="<?php echo $home_path.$lc->_("CONTACT_URI_APPENDS"); ?>">Contact us</a>.</p>
 		<p id="tagline">We <span class="heart">(heart)</span> Open.</p>
 		<p id="archives">
 			<a href="http://coscup.org/2006/">2006</a>
