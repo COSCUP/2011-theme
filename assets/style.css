@@ -320,6 +320,8 @@ h1, h2, h3 {
   -ms-box-shadow: 0 0 5px #cccccc;
   -o-box-shadow: 0 0 5px #cccccc;
   box-shadow: 0 0 5px #cccccc; }
+  body.no_sidebar > #sidebar {
+    display: none; }
   #sidebar .sponsors > h2 {
     font-size: 100%;
     padding: 0 11px;
@@ -365,6 +367,10 @@ html[lang="zh-TW"] #content {
   -ms-transition: width 0.2s;
   -o-transition: width 0.2s;
   transition: width 0.2s; }
+  body.no_sidebar > #content {
+    width: 1110px;
+    margin-left: 5px;
+    margin-right: 5px; }
   #content > #sidebar2 {
     float: right;
     margin-top: -5px;
@@ -436,7 +442,11 @@ html[lang="zh-TW"] #content {
   #content {
     width: 790px;
     margin-left: 5px;
-    margin-right: 5px; } }
+    margin-right: 5px; }
+    body.no_sidebar > #content {
+      width: 990px;
+      margin-left: 5px;
+      margin-right: 5px; } }
 
 .sprite {
   display: block;

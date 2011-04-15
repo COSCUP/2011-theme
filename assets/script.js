@@ -2,6 +2,22 @@
 
 jQuery(function ($) {
 
+	if ($('#nav.empty').length) {
+		// Fetch site nav from remove JSON api
+		
+	}
+	
+	if ($('#sidebar > .sponsors.empty').length) {
+		// Fetch sponsors from remove JSON api
+		
+	}
+	
+	if ($('#sidebar > .sponsors:not(.empty)').length
+		&& $('#sidebar > .sponsors:not(.empty)').children().length === 0) {
+		// We have no sponsors yet :( hide the block
+		$(document.body).addClass('no_sidebar');
+	}
+
 	// CSS hover menu alternative for touch devices
 	// Need to test on actual device
 	

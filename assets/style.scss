@@ -416,6 +416,11 @@ $footer_tb: 15px;
 	margin-bottom: $line_height;
 
 	@include grid($sidebar_width);
+	
+	body.no_sidebar > & {
+		display: none;
+	}
+	
 	@include prefix(transition, width .2s);
 	@include largeFont;
 
@@ -466,6 +471,11 @@ html[lang="zh-TW"] #content {
 	float: left;
 	padding-top: $gutter / 2;
 	@include grid($width - $sidebar_width);
+	
+	body.no_sidebar > & {
+		@include grid($width);
+	}
+	
 	@include prefix(transition, width .2s);
 	> #sidebar2 {
 		float: right;
@@ -558,6 +568,10 @@ html[lang="zh-TW"] #content {
 
 	#content {
 		@include grid($width - $sidebar_width);
+		
+		body.no_sidebar > & {
+			@include grid($width);
+		}
 	}
 
 }
