@@ -14,7 +14,7 @@ class i18n
 		 '部落格 RSS Feed' => 'Blog RSS Feed',
 		 '2011 年 8 月 20 - 21 日' => 'August 20th - 21st, 2011',
 		 'HOME_URI' => 'http://coscup.org/2011/en/',
-		 'CONTACT_URI' => 'http://coscup.org/2011/en/contact.html'
+		 'CONTACT_URI' => 'http://coscup.org/2011/en/contact/'
 		 ),
 	'zh-CN' => array(
 		 '首頁' => '首页',
@@ -26,11 +26,11 @@ class i18n
 		 '小啄在噗浪' => '小啄在噗浪',
 		 '部落格 RSS Feed' => '部落格 RSS Feed',
 		 'HOME_URI' => 'http://coscup.org/2011/zh-cn/',
-		 'CONTACT_URI' => 'http://coscup.org/2011/zh-cn/contact.html'
+		 'CONTACT_URI' => 'http://coscup.org/2011/zh-cn/contact/'
 		 ),
 	'zh-TW' => array(
 		 'HOME_URI' => 'http://coscup.org/2011/zh-tw/',
-		 'CONTACT_URI' => 'http://coscup.org/2011/zh-tw/contact.html'
+		 'CONTACT_URI' => 'http://coscup.org/2011/zh-tw/contact/'
 		 )
 	);
 
