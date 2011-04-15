@@ -28,13 +28,16 @@ php 程式，自動從 github 用 svn 拉檔案到 shared hosting 環境
 
 COSCUP blog 用的佈景主題
 
+### marksite
+
+主網站用佈景主題
+
 ### wordpress
 
 今年不會用到（希望不會）
 
 ### 其他
 
-* 主網站的佈景主題放在自己的 https://github.com/COSCUP/coscup2011-src
 * 報名系統也是 https://code.google.com/p/eva-fun/
 
 ## 原則
