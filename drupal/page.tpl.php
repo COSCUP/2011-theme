@@ -14,7 +14,7 @@
 </head>
 
 <body class="<?php print $body_classes; ?>">
-<div id="header" class="header">
+<div id="header">
 	<div class="info">
 		<h1><a href="#" title="首頁">COSCUP</a></h1>
 		<p id="title">開源人年會</p>
@@ -54,6 +54,12 @@ target="_blank"><span class="sprite rss"></span></a></li>
 </div>
 	
 <div id="content">
+
+<?php  if ($tabs) { ?>
+	<div class="nav tabs">
+<?php	print $tabs; ?>
+	</div>
+<?php  } ?>
 
 <?php	print $content; ?>
 			
