@@ -75,7 +75,20 @@ switch($this->current[0])
 </div>
 <div id="sidebar">
 	<div class="sponsors">
-		<?php echo $this->block['sponsors']; ?>
+<?php 
+switch($this->current[0])
+{
+	case "zh-tw":
+		echo $this->block['sponsors-zh-tw']; 
+		break;
+	case "zh-cn":
+		echo $this->block['sponsors-zh-cn']; 
+		break;
+	default:
+		echo $this->block['sponsors']; 
+		break;
+}
+?>
 	</div>
 </div>
 <div id="footer">
