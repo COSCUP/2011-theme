@@ -17,6 +17,16 @@ jQuery(function ($) {
 		// We have no sponsors yet :( hide the block
 		$(document.body).addClass('no_sidebar');
 	}
+	
+	
+	// Analytics tracking for Sponsors
+	$('#sponsors a').bind(
+		'click',
+		function () {
+			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2011', this.href]);
+			return true;
+		}
+	);
 
 	// CSS hover menu alternative for touch devices
 	// Need to test on actual device
