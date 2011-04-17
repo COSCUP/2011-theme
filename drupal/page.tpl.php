@@ -60,7 +60,7 @@ target="_blank"><span class="sprite rss"></span></a></li>
 </div>
 
 <div id="sidebar"> 
-	<div class="sponsors" class="empty"> 
+	<div class="sponsors empty"> 
 		<!-- 上面的 class="empty" 會觸發 script 拉遠端資料顯示 --> 
 	</div> 
 </div>

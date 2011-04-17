@@ -2,14 +2,72 @@
 
 jQuery(function ($) {
 
+	var lang = $('html').attr('lang').toLowerCase();
+
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
-		
+		$.getJSON(
+			'http://coscup.org/2011-beta/api/menu/?callback=?',
+			function (data) {
+				var $nav = $('#nav').removeClass('empty');
+				$nav.html(data[lang]);
+			}
+		);
 	}
 	
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
-		
+		$.getJSON(
+			'http://coscup.org/2011-beta/api/sponsors/?callback=?',
+			function (data) {
+				var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
+				var titles = (
+					{
+						'en' : {
+							'diamond' : 'Diamond Level Sponsors',
+							'gold' : 'Gold Level Sponsors',
+							'silver' : 'Silver Level Sponsors',
+							'bronze' : 'Bronze Level Sponsors',
+							'media' : 'Media Partners'
+						},
+						'zh-tw' : {
+							'diamond' : '鑽石級贊助商',
+							'gold' : '黃金級贊助商',
+							'silver' : '白銀級贊助商',
+							'bronze' : '青銅級贊助商',
+							'media' : '媒體夥伴'
+						},
+						'zh-cn' : {
+							'diamond' : '钻石级赞助商',
+							'gold' : '黄金级赞助商',
+							'silver' : '白银级赞助商',
+							'bronze' : '青铜级赞助商',
+							'media' : '媒体伙伴'
+						}
+					}
+				)[lang];
+			
+				$.each(
+					data,
+					function (level, sponsors) {
+						$sponsors.append('<h2>' + titles[level] + '</h2>');
+						var $u = $('<ul />');
+						$.each(
+							sponsors,
+							function (i, sponsor) {
+								// Assume that there is no special chars to escape
+								$u.append(
+									'<li><a href="' + sponsor.url + '" target="_blank">'
+									+ '<img title="' + sponsor.name[lang] + '" src="' + sponsor.logoUrl + '" />'
+									+ '</a></li>'
+								);
+							}
+						);
+						$sponsors.append($u);
+					}
+				);
+			}
+		);
 	}
 	
 	if ($('#sidebar > .sponsors:not(.empty)').length
