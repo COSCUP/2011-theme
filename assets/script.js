@@ -70,35 +70,6 @@ jQuery(function ($) {
 			}
 		}
 	);
-	
-	// connect_box
-
-	var $connect_box = $('#connect_box'),
-	ctimer;
-	$('#connect').bind(
-		'click',
-		function (ev) {
-			ev.preventDefault();
-			$connect_box.toggleClass('show', !$connect_box.is(':visible'));
-		}
-	).add($connect_box).bind(
-		'mouseenter',
-		function () {
-			clearTimeout(ctimer);
-			if (!$connect_box.is(':visible')) $connect_box.addClass('show');
-		}
-	).bind(
-		'mouseleave',
-		function () {
-			ctimer = setTimeout(
-				function () {
-					$connect_box.removeClass('show');
-				},
-				200
-			);
-		}
-	);
-	
 });
 
 
