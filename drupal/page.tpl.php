@@ -10,6 +10,7 @@
 ?>
 <!-- COSCUP 2011 -->
 <link type="text/css" rel="stylesheet" media="all" href="http://coscup.org/2011-theme/assets/style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
 </head>
 
