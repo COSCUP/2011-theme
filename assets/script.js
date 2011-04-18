@@ -78,7 +78,7 @@ jQuery(function ($) {
 	
 	
 	// Analytics tracking for Sponsors
-	$('#sponsors a').bind(
+	$('.sponsors a').live(
 		'click',
 		function () {
 			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2011', this.href]);
