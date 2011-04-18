@@ -1,0 +1,75 @@
+// SCSS Partial that includes variables and both desktop and mobile
+
+@import url(http://fonts.googleapis.com/css?family=Cabin:regular,bold);
+
+$col: 30px;
+$gutter: 10px;
+$width: 28;
+$sidebar_width: 6;
+$sidebar2_width: 8;
+
+$logo_color: #389F2D;
+$dark: #42b535;
+$light: #C7D7A0;
+$light_yellow: #f3ff32;
+$fluor: #86e17c;
+$bright: #bfffb8;
+
+$font_size: 16px;
+$line_height: 22px;
+
+@mixin grid($w) {
+	@include gridNoMargin($w);
+	margin-left: $gutter/2;
+	margin-right: $gutter/2;
+}
+
+@mixin gridNoMargin($w) {
+	width: $col*$w+$gutter*($w - 1);
+}
+
+@mixin largeFont {
+	// 特別 style 用字，不一定是大字
+	font-family: 'Cabin', arial, sans-serif;	
+}
+
+@mixin prefix($prop, $val) {
+	-moz-#{$prop}: $val;
+	-webkit-#{$prop}: $val;
+	-ms-#{$prop}: $val;
+	-o-#{$prop}: $val;
+	#{$prop}: $val;
+}
+
+@mixin transtrans($val) {
+	-moz-transition: -moz-transform #{$val};
+	-webkit-transition: -webkit-transform #{$val};
+	-ms-transition: -ms-transform #{$val}; // IE9
+	-o-transition: -o-transform  #{$val};
+}
+
+html {
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+	&:hover {
+		color: #666;
+		text-decoration: underline;
+	}
+}
+
+h1, h2, h3 {
+	@include largeFont;
+}
+
+.sprite {display: block; background: transparent url('favicons.png') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
+.coscup { background-position: 0 0;}
+.facebook { background-position: -18px 0;}
+.twitter { background-position: -36px 0;}
+.plurk { background-position: -54px 0;}
+.gcal { background-position: -72px 0;}
+.flickr { background-position: -90px 0;}
+.rss { background-position: -108px 0;}
+.wordpress { background-position: -126px 0;}

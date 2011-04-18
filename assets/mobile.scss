@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+@import "shared";
+
+@media screen and (max-width: 480px) {
+	// mobile layout
+
+	body {
+		//width: 100%;
+		@include prefix(transition, width .2s);
+		margin: 0 5px;
+		padding: 0;
+		font: $font_size sans-serif;
+		line-height: $line_height;
+		background: #f8f8f8;
+	}
+	
+	#header, #content, #footer {
+		margin: 0 -5px; padding: 0;
+	}
+	
+	#header, #footer {
+		background: #ddd;
+		border-top: 8px solid $dark;
+		border-bottom: 8px solid $dark;
+		background: #ddd url('./coscup-tile-bg.jpg') center center;
+		@include prefix(box-shadow, 0 0 5px #333);
+		> .info {
+			background: rgba(255,255,255,0.85);
+			margin: $gutter / 2 0;
+		}
+	}
+	
+	#header {
+		> .info {
+			background: rgba(255,255,255,0.85);
+			margin: $gutter / 2 0;
+			padding-top: $gutter / 2;
+			padding-bottom: ($gutter / 2 + $line_height + 6);
+			> h1 {
+				margin: $gutter / 2; padding: 0;
+				background: transparent url('coscup.png') center center no-repeat;
+				background-size: contain;
+				float: left; width: 40%; height: 60px;
+				> a {
+					display: block;
+					width: 100%; height: 100%;
+					text-indent: -10000%;
+				}
+			}
+			> #date {
+				margin: $gutter / 2; padding: $gutter /2 0;
+				color: $dark;
+				background-color: #fff;
+				font-size: bold;
+				@include largeFont;
+				height: 60px;
+				font-size: 24px;
+				line-height: 30px;
+			}
+			> #nav, #language {
+				clear: both;
+				padding: 10px 20px;
+				ul {
+					list-style: none;
+					margin: 0; padding: 0;
+					width: 100%;
+				}
+				li > a {
+					display: block;
+					padding: 6px;
+					border: 1px solid #ccc;
+					height: 24px;
+					color: #000;
+					text-decoration: none;
+					font-size: 20px;
+					line-height: 24px;
+					white-space: nowrap;
+					@include prefix(border-radius, 8px);
+					background-color: #ddd;
+				}
+				li li > a {
+					background-color: #eee;
+					text-indent: 10px;
+				}
+			}
+			> #language {
+				width: (60 + 12 + 8) * 3px;
+				margin: 0 auto;
+				li > a {
+					width: 72px;
+					padding: 6px 0;
+					font-size: $font_size;
+					line-height: $line_height;
+					height: $line_height;
+					float: left;
+					text-align: center;
+					background-color: $light;
+					border: none;
+					margin: 0 4px;
+				}
+			}
+		}
+	}
+	
+	#footer {
+		> .info > p {
+			margin: 0;
+			padding: $gutter / 2;
+		}
+		#archives {
+			text-align: right;
+			a {
+				color: #333;
+				text-decoration: none;
+				&:hover {
+					color: #000;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	
+	#message, #mascot_icon, #connect_box, #sidebar, #sidebar2, #title, #title_en, #tagline {
+		display: none;
+	}
+}

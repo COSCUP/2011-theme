@@ -1,55 +1,6 @@
 @charset "UTF-8";
 
-@import url(http://fonts.googleapis.com/css?family=Cabin:regular,bold);
-
-$col: 30px;
-$gutter: 10px;
-$width: 28;
-$sidebar_width: 6;
-$sidebar2_width: 8;
-
-$logo_color: #389F2D;
-$dark: #42b535;
-$light: #C7D7A0;
-$light_yellow: #f3ff32;
-$fluor: #86e17c;
-$bright: #bfffb8;
-
-$font_size: 16px;
-$line_height: 22px;
-
-@mixin grid($w) {
-	@include gridNoMargin($w);
-	margin-left: $gutter/2;
-	margin-right: $gutter/2;
-}
-
-@mixin gridNoMargin($w) {
-	width: $col*$w+$gutter*($w - 1);
-}
-
-@mixin largeFont {
-	// 特別 style 用字，不一定是大字
-	font-family: 'Cabin', arial, sans-serif;	
-}
-
-@mixin prefix($prop, $val) {
-	-moz-#{$prop}: $val;
-	-webkit-#{$prop}: $val;
-	-ms-#{$prop}: $val;
-	-o-#{$prop}: $val;
-	#{$prop}: $val;
-}
-
-@mixin transtrans($val) {
-	-moz-transition: -moz-transform #{$val};
-	-webkit-transition: -webkit-transform #{$val};
-	-ms-transition: -ms-transform #{$val}; // IE9
-	-o-transition: -o-transform  #{$val};
-}
-
-html {
-}
+@import "shared";
 
 // Variables needed for desktop and 1024px desktop
 
@@ -70,147 +21,9 @@ $mascot_icon_h: $mascot_icon * 1.21686747;
 $msg_top: $info_top + $line_height + $gutter / 2 + $line_height*0.5;
 $msg_height: $header_height - $date_height - $header_tb * 2 - $msg_top - $info_top - $line_height*0.5;
 $msg_arrow: $line_height / 2;
-	
-a {
-	color: #333;
-	text-decoration: none;
-	&:hover {
-		color: #666;
-		text-decoration: underline;
-	}
-}
 
-h1, h2, h3 {
-	@include largeFont;
-}
-
-@media screen and (max-width: 480px) {
-	// mobile layout
-
-	body {
-		//width: 100%;
-		@include prefix(transition, width .2s);
-		margin: 0 5px;
-		padding: 0;
-		font: $font_size sans-serif;
-		line-height: $line_height;
-		background: #f8f8f8;
-	}
-	
-	#header, #content, #footer {
-		width: 100%;
-		margin: 0; padding: 0;
-	}
-	
-	#header, #footer {
-		background: #ddd;
-		border-top: 8px solid $dark;
-		border-bottom: 8px solid $dark;
-		background: #ddd url('./coscup-tile-bg.jpg') center center;
-		@include prefix(box-shadow, 0 0 5px #333);
-		> .info {
-			background: rgba(255,255,255,0.85);
-			margin: $gutter / 2 0;
-		}
-	}
-	
-	#header {
-		> .info {
-			background: rgba(255,255,255,0.85);
-			margin: $gutter / 2 0;
-			padding-top: $gutter / 2;
-			padding-bottom: ($gutter / 2 + $line_height + 6);
-			> h1 {
-				margin: $gutter / 2; padding: 0;
-				background: transparent url('coscup.png') center center no-repeat;
-				background-size: contain;
-				float: left; width: 40%; height: 60px;
-				> a {
-					display: block;
-					width: 100%; height: 100%;
-					text-indent: -10000%;
-				}
-			}
-			> #date {
-				margin: $gutter / 2; padding: $gutter /2 0;
-				color: $dark;
-				background-color: #fff;
-				font-size: bold;
-				@include largeFont;
-				height: 60px;
-				font-size: 24px;
-				line-height: 30px;
-			}
-			> #nav, #language {
-				clear: both;
-				padding: 10px 20px;
-				ul {
-					list-style: none;
-					margin: 0; padding: 0;
-					width: 100%;
-				}
-				li > a {
-					display: block;
-					padding: 6px;
-					border: 1px solid #ccc;
-					height: 24px;
-					color: #000;
-					text-decoration: none;
-					font-size: 20px;
-					line-height: 24px;
-					white-space: nowrap;
-					@include prefix(border-radius, 8px);
-					background-color: #ddd;
-				}
-				li li > a {
-					background-color: #eee;
-					text-indent: 10px;
-				}
-			}
-			> #language {
-				width: (60 + 12 + 8) * 3px;
-				margin: 0 auto;
-				li > a {
-					width: 72px;
-					padding: 6px 0;
-					font-size: $font_size;
-					line-height: $line_height;
-					height: $line_height;
-					float: left;
-					text-align: center;
-					background-color: $light;
-					border: none;
-					margin: 0 4px;
-				}
-			}
-		}
-	}
-	
-	#footer {
-		> .info > p {
-			margin: 0;
-			padding: $gutter / 2;
-		}
-		#archives {
-			text-align: right;
-			a {
-				color: #333;
-				text-decoration: none;
-				&:hover {
-					color: #000;
-					text-decoration: underline;
-				}
-			}
-		}
-	}
-	
-	#message, #mascot_icon, #connect_box, #sidebar, #sidebar2, #title, #title_en, #tagline {
-		display: none;
-	}
-}
-
-@media screen and (min-width: 481px) {
-	// desktop layout
+//@media screen and (min-width: 481px) {
+// desktop layout (@media is given in <link>)
 
 	body {
 		width: $width * ( $col + $gutter );
@@ -691,7 +504,7 @@ h1, h2, h3 {
 		}
 	}
 
-}
+//}
 
 @media screen and (min-width: 481px) and (max-width: 1180px) {
 	// 1024xp desktop layout
@@ -734,13 +547,3 @@ h1, h2, h3 {
 	}
 
 }
-
-.sprite {display: block; background: transparent url('favicons.png') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
-.coscup { background-position: 0 0;}
-.facebook { background-position: -18px 0;}
-.twitter { background-position: -36px 0;}
-.plurk { background-position: -54px 0;}
-.gcal { background-position: -72px 0;}
-.flickr { background-position: -90px 0;}
-.rss { background-position: -108px 0;}
-.wordpress { background-position: -126px 0;}

@@ -9,8 +9,10 @@
 //	print $scripts;
 ?>
 <!-- COSCUP 2011 -->
-<link type="text/css" rel="stylesheet" media="all" href="http://coscup.org/2011-theme/assets/style.css" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/mobile.css" media="screen and (max-width: 480px)" />
+<link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen and (min-width: 481px)" />
+<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen"/><![endif]-->
+<meta name="viewport" content="width=device-width">
 <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
 <script type="text/javascript">
 
