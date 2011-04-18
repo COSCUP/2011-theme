@@ -43,9 +43,9 @@ id="users">Users</span> and <span id="promoters">Promoters</span></p>
 		</div>
 		<div id="language">
 			<ul>
-				<li><a href="#">English</a></li>
-				<li><a href="#">正體中文</a></li>
-				<li><a href="#">简体中文</a></li>
+				<li><a href="#" lang="en">English</a></li>
+				<li><a href="#" lang="zh-TW">正體中文</a></li>
+				<li><a href="#" lang="zh-CN">简体中文</a></li>
 			</ul>
 		</div>
 		<div id="message">
