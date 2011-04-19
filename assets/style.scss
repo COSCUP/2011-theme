@@ -446,7 +446,7 @@ $msg_arrow: $line_height / 2;
 			@include grid($width);
 		}
 		
-		html[lang="zh-TW"],
+		html[lang="zh-TW"] &,
 		html[lang="zh-CN"] & {
 			text-align: justify;
 		}
