@@ -55,7 +55,9 @@ switch($this->current[0])
 		</div>
 		<div id="language">
 			<ul>
-				<?php echo $this->menu(0); ?>
+				<li><a href="<?php echo $home_path ?>en/" lang="en">English</a></li>
+				<li><a href="<?php echo $home_path ?>zh-tw/" lang="zh-TW">正體中文</a></li>
+				<li><a href="<?php echo $home_path ?>zh-cn/" lang="zh-CN">简体中文</a></li>
 			</ul>
 		</div>
 		<div id="message">
