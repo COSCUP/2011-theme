@@ -163,7 +163,7 @@ $msg_arrow: $line_height / 2;
 	
 			> #nav {
 				left: ( $col + $gutter ) * ($h_left + 2) - ($gutter / 2);
-				width: $h_right_width;
+				width: $h_right_width - ($gutter * 3 + $col * 2);
 				z-index: 3;
 				a {
 					color: #333;
@@ -240,6 +240,13 @@ $msg_arrow: $line_height / 2;
 					width: $col * 2 + $gutter;
 					@include prefix(border-radius, 8px);
 					@include prefix(transition, background .2s ease-out);
+					
+					word-break: break-all;
+					white-space: normal;
+					overflow: hidden;
+					width: $col - 5 * 2px;
+					height: $line_height;
+					padding: 0 4px;
 	
 					&:hover {
 						background: $light;
@@ -520,14 +527,19 @@ $msg_arrow: $line_height / 2;
 
 	#header, #footer {
 		@include grid($width);
-		> .info > #date {
-			width: $h_right_width;
-		}
-		> .info > #message {
-			width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
-			font-size: 120%;
-			height: $line_height*1.2;
-			padding: ($msg_height - $line_height*1.2) / 2 $line_height;
+		> .info {
+			> #nav {
+				width: $h_right_width - ($gutter * 2 + $col * 3);
+			}
+			> #date {
+				width: $h_right_width;
+			}
+			> #message {
+				width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
+				font-size: 120%;
+				height: $line_height*1.2;
+				padding: ($msg_height - $line_height*1.2) / 2 $line_height;
+			}
 		}
 	}
 

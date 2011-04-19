@@ -162,7 +162,7 @@ body {
             border-right: none; }
     #header > .info > #nav {
       left: 355px;
-      width: 710px;
+      width: 620px;
       z-index: 3; }
       #header > .info > #nav a {
         color: #333;
@@ -233,7 +233,13 @@ body {
         -webkit-transition: background 0.2s ease-out;
         -ms-transition: background 0.2s ease-out;
         -o-transition: background 0.2s ease-out;
-        transition: background 0.2s ease-out; }
+        transition: background 0.2s ease-out;
+        word-break: break-all;
+        white-space: normal;
+        overflow: hidden;
+        width: 20px;
+        height: 22px;
+        padding: 0 4px; }
         #header > .info > #language a:hover {
           background: #c7d7a0;
           background: rgba(199, 215, 160, 0.8);
@@ -468,6 +474,8 @@ body {
     width: 990px;
     margin-left: 5px;
     margin-right: 5px; }
+    #header > .info > #nav, #footer > .info > #nav {
+      width: 480px; }
     #header > .info > #date, #footer > .info > #date {
       width: 590px; }
     #header > .info > #message, #footer > .info > #message {
