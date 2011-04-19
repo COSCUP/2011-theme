@@ -54,9 +54,12 @@
 				background: transparent url('coscup.png') center center no-repeat;
 				background-size: contain;
 				float: left; width: 40%; height: 60px;
+				overflow: visible;
 				> a {
 					display: block;
-					width: 100%; height: 100%;
+					width: 240%; height: 100%;
+					position: relative;
+					z-index: 4;
 					text-indent: -10000%;
 				}
 			}
