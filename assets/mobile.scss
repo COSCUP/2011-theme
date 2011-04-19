@@ -89,12 +89,63 @@
 					font-size: 20px;
 					line-height: 24px;
 					white-space: nowrap;
-					@include prefix(border-radius, 8px);
-					background-color: #ddd;
+					background-color: #eee;
 				}
 				li li > a {
-					background-color: #eee;
+					background-color: #fff;
 					text-indent: 10px;
+				}
+				li.current > a {
+					background-color: #333;
+					border-color: #333;
+					color: #fff;
+				}
+			}
+			> #nav > ul {
+				@include prefix(border-radius, 8px);
+				> li {
+					&:first-child {
+						&,
+						> a {
+							-moz-border-radius-topleft: 8px;
+							-moz-border-radius-topright: 8px;
+							-webkit-border-top-left-radius: 8px;
+							-webkit-border-top-right-radius: 8px;
+							border-top-left-radius: 8px 8px;
+							border-top-right-radius: 8px 8px;
+						}
+					}
+					&:last-child {
+						&,
+						//> a:last-child, // only matches link w/o sub-menu
+						> a, // match link with or w/o sub-menu (for now)
+						> ul > li:last-child, // match last item of the sub-menu
+						> ul > li:last-child > a { // ... and its link
+							-moz-border-radius-bottomleft: 8px;
+							-moz-border-radius-bottomright: 8px;
+							-webkit-border-bottom-left-radius: 8px;
+							-webkit-border-bottom-right-radius: 8px;
+							border-bottom-left-radius: 8px 8px;
+							border-bottom-right-radius: 8px 8px;
+						}
+						&.current > a, &.current-ancestor > a { // when there is a sub-menu
+							@include prefix(border-radius, 0);
+						}
+						&.current > a:last-child, &.current-ancestor > a:last-child { // when there actually isnt
+							-moz-border-radius-bottomleft: 8px;
+							-moz-border-radius-bottomright: 8px;
+							-webkit-border-bottom-left-radius: 8px;
+							-webkit-border-bottom-right-radius: 8px;
+							border-bottom-left-radius: 8px 8px;
+							border-bottom-right-radius: 8px 8px;
+						}
+					}
+					> ul {
+						display: none;
+					}
+					&.current > ul, &.current-ancestor > ul {
+						display: block;
+					}
 				}
 			}
 			> #language {
@@ -109,6 +160,7 @@
 					float: left;
 					text-align: center;
 					background-color: $light;
+					@include prefix(border-radius, 8px);
 					border: none;
 					margin: 0 4px;
 				}

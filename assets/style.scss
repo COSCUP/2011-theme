@@ -177,7 +177,7 @@ $msg_arrow: $line_height / 2;
 						font-size: 92%;
 					}
 				}
-				li.parent, li.current {
+				li.current-ancestor, li.current {
 					> a {
 						font-weight: bold;
 						text-decoration: underline;

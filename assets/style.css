@@ -176,7 +176,7 @@ body {
           text-decoration: underline; }
         html[lang="en"] #header > .info > #nav a {
           font-size: 92%; }
-      #header > .info > #nav li.parent > a, #header > .info > #nav li.current > a {
+      #header > .info > #nav li.current-ancestor > a, #header > .info > #nav li.current > a {
         font-weight: bold;
         text-decoration: underline; }
       #header > .info > #nav li > ul {

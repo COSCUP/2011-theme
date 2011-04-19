@@ -139,15 +139,55 @@ h1, h2, h3 {
         font-size: 20px;
         line-height: 24px;
         white-space: nowrap;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        -ms-border-radius: 8px;
-        -o-border-radius: 8px;
-        border-radius: 8px;
-        background-color: #ddd; }
+        background-color: #eee; }
       #header > .info > #nav li li > a, #header > .info #language li li > a {
-        background-color: #eee;
+        background-color: #fff;
         text-indent: 10px; }
+      #header > .info > #nav li.current > a, #header > .info #language li.current > a {
+        background-color: #333;
+        border-color: #333;
+        color: #fff; }
+    #header > .info > #nav > ul {
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+      border-radius: 8px; }
+      #header > .info > #nav > ul > li:first-child,
+      #header > .info > #nav > ul > li:first-child > a {
+        -moz-border-radius-topleft: 8px;
+        -moz-border-radius-topright: 8px;
+        -webkit-border-top-left-radius: 8px;
+        -webkit-border-top-right-radius: 8px;
+        border-top-left-radius: 8px 8px;
+        border-top-right-radius: 8px 8px; }
+      #header > .info > #nav > ul > li:last-child,
+      #header > .info > #nav > ul > li:last-child > a,
+      #header > .info > #nav > ul > li:last-child > ul > li:last-child,
+      #header > .info > #nav > ul > li:last-child > ul > li:last-child > a {
+        -moz-border-radius-bottomleft: 8px;
+        -moz-border-radius-bottomright: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+        -webkit-border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px 8px;
+        border-bottom-right-radius: 8px 8px; }
+      #header > .info > #nav > ul > li:last-child.current > a, #header > .info > #nav > ul > li:last-child.current-ancestor > a {
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+        border-radius: 0; }
+      #header > .info > #nav > ul > li:last-child.current > a:last-child, #header > .info > #nav > ul > li:last-child.current-ancestor > a:last-child {
+        -moz-border-radius-bottomleft: 8px;
+        -moz-border-radius-bottomright: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+        -webkit-border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px 8px;
+        border-bottom-right-radius: 8px 8px; }
+      #header > .info > #nav > ul > li > ul {
+        display: none; }
+      #header > .info > #nav > ul > li.current > ul, #header > .info > #nav > ul > li.current-ancestor > ul {
+        display: block; }
     #header > .info > #language {
       width: 240px;
       margin: 0 auto; }
@@ -160,6 +200,11 @@ h1, h2, h3 {
         float: left;
         text-align: center;
         background-color: #c7d7a0;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+        border-radius: 8px;
         border: none;
         margin: 0 4px; }
 
