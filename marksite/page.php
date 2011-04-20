@@ -114,7 +114,7 @@ switch($this->current[0])
 </div>
 <div id="footer">
 	<div class="info">
-		<p id="copyright">&copy; 2011 COSCUP. <a href="<?php echo $home_path.$lc->_("CONTACT_URI_APPENDS"); ?>">Contact us</a>.</p>
+		<p id="copyright"><?php echo $lc->_("COPYRIGHT"); ?></p>
 		<p id="tagline">We <span class="heart">(heart)</span> Open.</p>
 		<p id="archives">
 			<a href="http://coscup.org/2006/">2006</a>
