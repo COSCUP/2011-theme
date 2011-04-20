@@ -95,6 +95,22 @@ switch($this->current[0])
 }
 ?>
 	</div>
+	<div class="sponsors-after">
+<?php 
+switch($this->current[0])
+{
+	case "zh-tw":
+		echo $this->block['sponsors-after-zh-tw']; 
+		break;
+	case "zh-cn":
+		echo $this->block['sponsors-after-zh-cn']; 
+		break;
+	default:
+		echo $this->block['sponsors-after']; 
+		break;
+}
+?>
+	</div>
 </div>
 <div id="footer">
 	<div class="info">
