@@ -35,9 +35,8 @@
 	<div class="info">
 		<h1><a href="#" title="首頁">COSCUP</a></h1>
 		<p id="title">開源人年會</p>
-		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span 
-id="users">Users</span> and <span id="promoters">Promoters</span></p>
-		<p id="date" title="2011 年 8 月 20 - 21 日">8/20 - 21, 2011 :: 台灣台北</p>
+		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span id="users">Users</span> and <span id="promoters">Promoters</span></p>
+		<p id="date_place" title="2011 年 8 月 20 - 21 日"><span id="date">8/20 - 21, 2011</span><span id="place">台灣台北</a></p>
 		<div id="nav" class="empty">
 		<!-- 上面的 class="empty" 會觸發 script 拉遠端資料顯示 -->
 		</div>
@@ -54,17 +53,11 @@ id="users">Users</span> and <span id="promoters">Promoters</span></p>
 		<p id="mascot_icon"></p>
 		<div id="connect_box">
 			<ul>
-				<li><a title="加到 Google 日曆" target="_blank" 
-href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=COSCUP+2011&amp;dates=20110820T010000Z/20110821T100000Z&amp;details=http%3A%2F%2Fcoscup.org/2011/&amp;trp=true&amp;sprop=http%3A%2F%2Fcoscup.org/2011/&amp;sprop=name:COSCUP"><span 
-class="sprite gcal"></span></a></li>
-				<li><a title="Facebook 粉絲團" href="https://www.facebook.com/coscup" 
-target="_blank"><span class="sprite facebook"></span></a></li>
-				<li><a title="小啄在 Twitter" href="https://twitter.com/coscup" 
-target="_blank"><span class="sprite twitter"></span></a></li>
-				<li><a title="小啄在噗浪" href="http://www.plurk.com/coscup" 
-target="_blank"><span class="sprite plurk"></span></a></li>
-				<li><a title="部落格 RSS Feed" href="http://feeds.feedburner.com/coscup" 
-target="_blank"><span class="sprite rss"></span></a></li>
+				<li><a title="加到 Google 日曆" target="_blank" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=COSCUP+2011&amp;dates=20110820T010000Z/20110821T100000Z&amp;details=http%3A%2F%2Fcoscup.org/2011/&amp;trp=true&amp;sprop=http%3A%2F%2Fcoscup.org/2011/&amp;sprop=name:COSCUP"><span class="sprite gcal"></span></a></li>
+				<li><a title="Facebook 粉絲團" href="https://www.facebook.com/coscup" target="_blank"><span class="sprite facebook"></span></a></li>
+				<li><a title="Twitter" href="https://twitter.com/coscup" target="_blank"><span class="sprite twitter"></span></a></li>
+				<li><a title="噗浪" href="http://www.plurk.com/coscup" target="_blank"><span class="sprite plurk"></span></a></li>
+				<li><a title="部落格 RSS Feed" href="http://feeds.feedburner.com/coscup" target="_blank"><span class="sprite rss"></span></a></li>
 			</ul>
 		</div>
 	</div>

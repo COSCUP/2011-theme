@@ -63,7 +63,7 @@
 					text-indent: -10000%;
 				}
 			}
-			> #date {
+			> #date_place {
 				margin: $gutter / 2; padding: $gutter /2 0;
 				color: $dark;
 				background-color: #fff;
@@ -73,6 +73,11 @@
 				height: 60px;
 				font-size: 24px;
 				line-height: 30px;
+				> #date, > #place {
+					display: block;
+					white-space: nowrap;
+					overflow: hidden;
+				}
 			}
 			> #nav, #language {
 				clear: both;

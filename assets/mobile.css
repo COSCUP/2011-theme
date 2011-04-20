@@ -109,7 +109,7 @@ h1, h2, h3 {
         position: relative;
         z-index: 4;
         text-indent: -10000%; }
-    #header > .info > #date {
+    #header > .info > #date_place {
       margin: 5px;
       padding: 5px 0;
       color: #42b535;
@@ -124,6 +124,10 @@ h1, h2, h3 {
       height: 60px;
       font-size: 24px;
       line-height: 30px; }
+      #header > .info > #date_place > #date, #header > .info > #date_place > #place {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden; }
     #header > .info > #nav, #header > .info #language {
       clear: both;
       padding: 10px 20px; }

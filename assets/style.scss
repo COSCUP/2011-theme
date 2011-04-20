@@ -12,14 +12,14 @@ $h_left_width: $col * $h_left + $gutter * ( $h_left - 1 );
 $h_right_width: ($width - $h_left - 3) * $col + ($width - $h_left - 4) * $gutter;
 
 $info_top: $line_height - $gutter / 2;
-$date_height: $font_size * 1.8 * 1.25;
+$date_place_height: $font_size * 1.8 * 1.25;
 
 $msg_arrow: $line_height / 2;
 $mascot_icon: 50px;
 $mascot_icon_h: $mascot_icon * 1.21686747;
 
 $msg_top: $info_top + $line_height + $gutter / 2 + $line_height*0.5;
-$msg_height: $header_height - $date_height - $header_tb * 2 - $msg_top - $info_top - $line_height*0.5;
+$msg_height: $header_height - $date_place_height - $header_tb * 2 - $msg_top - $info_top - $line_height*0.5;
 $msg_arrow: $line_height / 2;
 
 //@media screen and (min-width: 481px) {
@@ -118,7 +118,7 @@ $msg_arrow: $line_height / 2;
 				}
 			}
 	
-			> #date {
+			> #date_place {
 				position: absolute;
 				left: ( $col + $gutter ) * ($h_left + 2);
 				bottom: $info_top;
@@ -128,10 +128,13 @@ $msg_arrow: $line_height / 2;
 				line-height: 125%;
 				width: $h_right_width;
 				@include prefix(transition, width .2s);
-				height: $date_height;
+				height: $date_place_height;
 				white-space: nowrap;
 				color: $dark;
 				//text-shadow: 0 0 4px #000;
+				> #date:after {
+					content: " :: ";
+				}
 			}
 	
 			> #language, > #nav {
@@ -272,7 +275,7 @@ $msg_arrow: $line_height / 2;
 				$val: width .2s, font-size .2s;
 				@include prefix(transition, $val);
 				height: $line_height*1.5;
-				font-size: 150%;
+				font-size: 130%;
 				white-space: nowrap;
 				line-height: 125%;
 				padding: ($msg_height - $line_height*1.5) / 2 $line_height;
@@ -289,9 +292,10 @@ $msg_arrow: $line_height / 2;
 					border-left: $msg_arrow solid rgba($light, 0.5);
 				}
 				
-				color: #333;
+				color: #666;
 				
 				em {
+					font-size: 115%;
 					font-weight: bold;
 					font-style: normal;
 					color: #000;
@@ -473,9 +477,15 @@ $msg_arrow: $line_height / 2;
 				padding: ($line_height / 2);
 				background-color: $dark;
 				color: #fff;
-				text-align: justify;
+				html[lang="zh-TW"] &,
+				html[lang="zh-CN"] & {
+					text-align: justify;
+				}
 				> p {
 					margin: 0; padding: 0;
+				}
+				> .more > a {
+					color: #ddd;
 				}
 			}
 			
@@ -500,10 +510,11 @@ $msg_arrow: $line_height / 2;
 			> .video {
 				//margin: ($line_height / 2) 0;
 			}
-			> .more {
+			.more {
 				clear: both;
 				padding: 0; margin: 0;
 				text-align: right;
+				font-size: 92%;
 				> a {
 					
 				}
@@ -531,12 +542,12 @@ $msg_arrow: $line_height / 2;
 			> #nav {
 				width: $h_right_width - ($gutter * 2 + $col * 3);
 			}
-			> #date {
+			> #date_place {
 				width: $h_right_width;
 			}
 			> #message {
 				width: $h_right_width - $msg_arrow - $mascot_icon - $line_height * 2;
-				font-size: 120%;
+				font-size: 100%;
 				height: $line_height*1.2;
 				padding: ($msg_height - $line_height*1.2) / 2 $line_height;
 			}
