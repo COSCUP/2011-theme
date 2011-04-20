@@ -405,7 +405,7 @@ $msg_arrow: $line_height / 2;
 		background-color: #fff;
 		@include prefix(box-shadow, 0 0 5px #ccc);
 	
-		.sponsors {
+		.sponsors, .sponsors-after {
 			//padding: $line_height 0;
 			> h2 {
 				//text-transform: uppercase;

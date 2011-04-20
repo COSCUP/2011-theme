@@ -376,7 +376,7 @@ body {
   box-shadow: 0 0 5px #cccccc; }
   body.no_sidebar > #sidebar {
     display: none; }
-  #sidebar .sponsors > h2 {
+  #sidebar .sponsors > h2, #sidebar .sponsors-after > h2 {
     font-size: 100%;
     padding: 0 11px;
     text-align: center;
@@ -384,14 +384,14 @@ body {
     background-color: #c7d7a0;
     margin: 0;
     padding-top: 11px; }
-  #sidebar .sponsors > ul {
+  #sidebar .sponsors > ul, #sidebar .sponsors-after > ul {
     margin: 0;
     padding: 0;
     list-style: none; }
-    #sidebar .sponsors > ul > li {
+    #sidebar .sponsors > ul > li, #sidebar .sponsors-after > ul > li {
       margin: 0;
       border-bottom: 3px solid #c7d7a0; }
-      #sidebar .sponsors > ul > li > a {
+      #sidebar .sponsors > ul > li > a, #sidebar .sponsors-after > ul > li > a {
         display: block;
         width: 178px;
         padding: 4px 26px;
@@ -401,7 +401,7 @@ body {
         -o-transition: padding 0.2s;
         transition: padding 0.2s;
         height: 72px; }
-        #sidebar .sponsors > ul > li > a > img {
+        #sidebar .sponsors > ul > li > a > img, #sidebar .sponsors-after > ul > li > a > img {
           border: none;
           display: block;
           width: 178px;
