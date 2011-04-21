@@ -69,12 +69,14 @@ jQuery(function ($) {
 			}
 		);
 	}
-	
+
+	/*
 	if ($('#sidebar > .sponsors:not(.empty)').length
 		&& $('#sidebar > .sponsors:not(.empty)').children().length === 0) {
 		// We have no sponsors yet :( hide the block
 		$(document.body).addClass('no_sidebar');
 	}
+	*/
 	
 	
 	// Analytics tracking for Sponsors
