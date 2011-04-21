@@ -438,6 +438,9 @@ $msg_arrow: $line_height / 2;
 					}
 				}
 			}
+			> p {
+				margin: $line_height ($line_height / 2);
+			}
 		}
 	}
 	

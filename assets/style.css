@@ -406,6 +406,8 @@ body {
           display: block;
           width: 178px;
           height: 72px; }
+  #sidebar .sponsors > p, #sidebar .sponsors-after > p {
+    margin: 22px 11px; }
 
 #content {
   float: left;
