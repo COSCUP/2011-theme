@@ -23,12 +23,6 @@
 	#content {
 		margin: 0; padding: 0;
 		@include prefix(transition, 0);
-
-		html[lang="zh-TW"] &,
-		html[lang="zh-CN"] & {
-			text-align: justify;
-		}
-
 	}
 	
 	#header, #footer {
