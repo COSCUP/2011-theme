@@ -12,16 +12,25 @@
     <meta name="viewport" content="width=device-width" />
     <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />	
 <b:skin><![CDATA[
+
+/* Variable definitions
+   ====================
+   <Variable name="startSide" description="Side where text starts in blog language"
+             type="automatic" default="left" value="left">
+   <Variable name="endSide" description="Side where text ends in blog language"
+             type="automatic" default="right" value="right">
+*/
+
 #main-wrapper {
   width: 410px;
-  float: left;
+  float: $startSide;
   word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
   overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
   }
 
 #sidebar-wrapper {
   width: 300px;
-  float: right;
+  float: $endSide;
   word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
   overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
 }
