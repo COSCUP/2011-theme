@@ -33,20 +33,22 @@
 <body class="<?php print $body_classes; ?>">
 <div id="header">
 	<div class="info">
-		<h1><a href="#" title="首頁">COSCUP</a></h1>
+		<h1><a href="http://coscup.org/2011/" title="首頁">COSCUP</a></h1>
 		<p id="title">開源人年會</p>
 		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span id="users">Users</span> and <span id="promoters">Promoters</span></p>
 		<p id="date_place" title="2011 年 8 月 20 - 21 日"><span id="date">8/20 - 21, 2011</span><span id="place">台灣台北</a></p>
 		<div id="nav" class="empty">
 		<!-- 上面的 class="empty" 會觸發 script 拉遠端資料顯示 -->
 		</div>
+		<!--
 		<div id="language">
 			<ul>
-				<li><a href="#" lang="en">English</a></li>
-				<li><a href="#" lang="zh-TW">正體中文</a></li>
-				<li><a href="#" lang="zh-CN">简体中文</a></li>
+				<li><a href="#" title="English" lang="en">English</a></li>
+				<li><a href="#" title="正體中文" lang="zh-TW">正體中文</a></li>
+				<li><a href="#" title="简体中文" lang="zh-CN">简体中文</a></li>
 			</ul>
 		</div>
+		-->
 		<div id="message">
 			<p>Come on rock with <em>Gadgets beyond Smartphones</em>!</p>
 		</div>
