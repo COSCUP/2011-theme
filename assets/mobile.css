@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Cabin:regular,bold);
 a {
   color: #333;
   text-decoration: none; }
@@ -76,7 +75,7 @@ h1, h2, h3 {
     background: #ddd;
     border-top: 8px solid #42b535;
     border-bottom: 8px solid #42b535;
-    background: #dddddd url("./coscup-tile-bg.jpg") center center;
+    background: #dddddd url("./coscup-tile-bg-s.jpg") center center;
     -moz-box-shadow: 0 0 5px #333333;
     -webkit-box-shadow: 0 0 5px #333333;
     -ms-box-shadow: 0 0 5px #333333;
@@ -113,7 +112,6 @@ h1, h2, h3 {
       color: #42b535;
       background-color: #fff;
       font-size: bold;
-      font-family: 'Cabin', arial, sans-serif;
       -moz-transition: 0;
       -webkit-transition: 0;
       -ms-transition: 0;

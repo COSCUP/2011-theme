@@ -29,7 +29,7 @@
 		background: #ddd;
 		border-top: 8px solid $dark;
 		border-bottom: 8px solid $dark;
-		background: #ddd url('./coscup-tile-bg.jpg') center center;
+		background: #ddd url('./coscup-tile-bg-s.jpg') center center;
 		@include prefix(box-shadow, 0 0 5px #333);
 		> .info {
 			background: rgba(255,255,255,0.85);
@@ -62,7 +62,6 @@
 				color: $dark;
 				background-color: #fff;
 				font-size: bold;
-				@include largeFont;
 				@include prefix(transition, 0);
 				height: 60px;
 				font-size: 24px;
