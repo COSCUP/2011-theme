@@ -166,7 +166,7 @@ $msg_arrow: $line_height / 2;
 	
 			> #nav {
 				left: ( $col + $gutter ) * ($h_left + 2) - ($gutter / 2);
-				width: $h_right_width - ($gutter * 3 + $col * 2);
+				width: $h_right_width - ($gutter * 2 + $col * 3);
 				z-index: 3;
 				a {
 					color: #333;
