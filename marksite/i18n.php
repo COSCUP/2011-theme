@@ -8,9 +8,9 @@ class i18n
 		 '首頁' => 'Home',
 		 '台灣台北' => 'Taipei, Taiwan',
 		 '加到 Google 日曆' => 'Add to Google Calendar',
-		 'Facebook 粉絲團' => 'Facebook',
-		 '小啄在 Twitter' => 'Twitter',
-		 '小啄在噗浪' => 'Plurk',
+		 'Facebook 粉絲團' => 'Facebook Page',
+		 'Twitter' => 'Twitter',
+		 '噗浪' => 'Plurk',
 		 '部落格 RSS Feed' => 'Blog RSS Feed',
 		 '2011 年 8 月 20 - 21 日' => 'August 20th - 21st, 2011',
 		 'HOME_URI_APPENDS' => 'en/',
@@ -22,15 +22,15 @@ class i18n
 		 '台灣台北' => '台湾台北',
 		 '加到 Google 日曆' => '加到 Google 日历',
 		 'Facebook 粉絲團' => 'Facebook 粉丝团',
-		 '小啄在 Twitter' => '小啄在 Twitter',
-		 '小啄在噗浪' => '小啄在噗浪',
+		 'Twitter' => 'Twitter',
+		 '噗浪' => '噗浪',
 		 '部落格 RSS Feed' => '部落格 RSS Feed',
 		 'HOME_URI_APPENDS' => 'zh-cn/',
-		 'COPYRIGHT' => '&copy; 2011 COSCUP. <a href="http://coscup.org/2011-beta/zh-cn/contact/">Contact us</a>.'
+		 'COPYRIGHT' => '&copy; 2011 COSCUP。<a href="http://coscup.org/2011-beta/zh-cn/contact/">联系我们</a>。'
 		 ),
 	'zh-TW' => array(
 		 'HOME_URI_APPENDS' => 'zh-tw/',
-		 'COPYRIGHT' => '&copy; 2011 COSCUP. <a href="http://coscup.org/2011-beta/zh-tw/contact/">Contact us</a>.'
+		 'COPYRIGHT' => '&copy; 2011 COSCUP。<a href="http://coscup.org/2011-beta/zh-tw/contact/">聯絡我們</a>。'
 		 )
 	);
 
