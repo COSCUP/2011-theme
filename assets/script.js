@@ -2,7 +2,7 @@
 
 jQuery(function ($) {
 
-	var lang = $('html').attr('lang').toLowerCase();
+	var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase();
 
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
