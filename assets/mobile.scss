@@ -44,32 +44,29 @@
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
 			> h1 {
-				margin: $gutter / 2; padding: 0;
-				background: transparent url('coscup.png') center center no-repeat;
-				background-size: contain;
-				float: left; width: 40%; height: 60px;
+				margin: $gutter $gutter /2 $gutter / 2 $gutter; padding: 0;
+				background: transparent url('coscup-140x48.png') center center no-repeat;
+				float: left; width: 140px; height: 72px;
 				overflow: visible;
 				> a {
 					display: block;
-					width: 240%; height: 100%;
+					width: 210%; height: 100%;
 					position: relative;
 					z-index: 4;
 					text-indent: -10000%;
 				}
 			}
 			> #date_place {
-				margin: $gutter / 2; padding: $gutter /2 0;
+				margin: $gutter / 2; padding: 15px 0;
 				color: $dark;
 				background-color: #fff;
 				font-size: bold;
 				@include prefix(transition, 0);
-				height: 60px;
-				font-size: 24px;
-				line-height: 30px;
+				min-height: 72px - 15*2px + $gutter;
+				font-size: 22px;
+				line-height: 26px;
 				> #date, > #place {
 					display: block;
-					white-space: nowrap;
-					overflow: hidden;
 				}
 			}
 			> #nav, #language {
