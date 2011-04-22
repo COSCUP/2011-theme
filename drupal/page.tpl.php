@@ -14,6 +14,12 @@
 <!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen"/><![endif]-->
 <meta name="viewport" content="width=device-width" />
 <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<link rel="apple-touch-icon" href="http://coscup.org/2011-theme/assets/coscup-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="http://coscup.org/2011-theme/assets/coscup-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="http://coscup.org/2011-theme/assets/coscup-icon-iphone4.png" />
 </head>
 
 <body class="<?php print $body_classes; ?>">
