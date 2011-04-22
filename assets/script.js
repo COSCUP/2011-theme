@@ -20,15 +20,17 @@ jQuery(function ($) {
 
 		var $sponsors = $('#sidebar > .sponsors a');
 		
-		$('#nav').after(
-			$('<p id="mobileSponsorLogo" />').append(
-				$sponsors.eq(
-					Math.floor(
-						$sponsors.length * Math.random()
-					)
-				).clone()
-			)
-		);
+		if ($sponsors.length) {
+			$('#nav').after(
+				$('<p id="mobileSponsorLogo" />').append(
+					$sponsors.eq(
+						Math.floor(
+							$sponsors.length * Math.random()
+						)
+					).clone()
+				)
+			);
+		}
 	}
 	
 	if ($('#sidebar > .sponsors.empty').length) {
