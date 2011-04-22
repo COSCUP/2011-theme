@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Cabin:regular,bold);
 a {
   color: #333;
   text-decoration: none; }
@@ -40,7 +41,6 @@ h1, h2, h3 {
 .wordpress {
   background-position: -126px 0; }
 
-@import url(http://fonts.googleapis.com/css?family=Cabin:regular,bold);
 body {
   width: 1120px;
   -moz-transition: width 0.2s;
