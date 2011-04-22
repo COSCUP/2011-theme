@@ -116,16 +116,12 @@ jQuery(function ($) {
 		'center -' + (75*Math.floor(Math.random()*6)).toString(10) + 'px'
 	);
 
-	// imagesTile on #sidebar2
-	// don't execute in mobile layout to save bandwidth
-
-	var $images = $('#sidebar2 > .images:visible');
-
-	if ($images.length) {
-		$.getScript(
+	function fullLoad() {
+		// imagesTile on #sidebar2
+		if ($('#sidebar2 > .images').length) $.getScript(
 			'http://coscup.org/2011-theme/assets/imagetile.min.js',
 			function () {
-				$images.imageTile(
+				$('#sidebar2 > .images').imageTile(
 					{
 						num: 12,
 						photos: yuren_54,
@@ -139,5 +135,46 @@ jQuery(function ($) {
 				);
 			}
 		);
+	}
+
+	function deferLoad() {
+		$('#sidebar2 iframe').each(
+			function () {
+				$(this).attr('data-src', this.src);
+				this.src = '';
+			}
+		);
+	}
+	
+	function resumeLoad() {
+		$('#sidebar2 iframe').each(
+			function () {
+				if ($(this).attr('data-src')) this.src = $(this).attr('data-src');
+			}
+		);
+	}
+
+	// Find out if we are currently on mobile layout
+	// if so, defer/stop imagetile and iframe from loading
+	// removing 'src' in <img> won't help so not doing it
+	if (!$('#title:visible').length) {
+		
+		$(window).bind(
+			'resize.defer',
+			function () {
+				if (!$('#title:visible').length) return; // still in Mobile
+				$(this).unbind('resize.defer');
+
+				// load desktop stuff and stuff unloaded;
+				fullLoad();
+				resumeLoad();
+			}
+		);
+
+		// unload stuff
+		deferLoad();
+	} else {
+		// load desktop stuff
+		fullLoad();
 	}
 });
