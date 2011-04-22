@@ -91,16 +91,16 @@ h1, h2, h3 {
     padding-top: 5px;
     padding-bottom: 33px; }
     #header > .info > h1 {
-      margin: 10px 5px 5px 10px;
+      margin: 10px 5px 5px 0;
       padding: 0;
-      background: transparent url("coscup-140x48.png") center center no-repeat;
+      background: transparent url("coscup-140x48.png") center right no-repeat;
       float: left;
-      width: 140px;
+      width: 50%;
       height: 72px;
       overflow: visible; }
       #header > .info > h1 > a {
         display: block;
-        width: 210%;
+        width: 200%;
         height: 100%;
         position: relative;
         z-index: 4;
@@ -120,7 +120,8 @@ h1, h2, h3 {
       font-size: 22px;
       line-height: 26px; }
       #header > .info > #date_place > #date, #header > .info > #date_place > #place {
-        display: block; }
+        display: block;
+        margin-left: 50%; }
     #header > .info > #nav, #header > .info #language {
       clear: both;
       padding: 10px 20px; }
@@ -131,13 +132,13 @@ h1, h2, h3 {
         width: 100%; }
       #header > .info > #nav li > a, #header > .info #language li > a {
         display: block;
-        padding: 6px;
+        padding: 6px 12px;
         border: 1px solid #ccc;
         margin-top: -1px;
         height: 24px;
         color: #000;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 24px;
         white-space: nowrap;
         background-color: #eee; }

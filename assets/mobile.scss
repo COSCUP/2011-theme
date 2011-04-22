@@ -44,13 +44,13 @@
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
 			> h1 {
-				margin: $gutter $gutter /2 $gutter / 2 $gutter; padding: 0;
-				background: transparent url('coscup-140x48.png') center center no-repeat;
-				float: left; width: 140px; height: 72px;
+				margin: $gutter $gutter /2 $gutter / 2 0; padding: 0;
+				background: transparent url('coscup-140x48.png') center right no-repeat;
+				float: left; width: 50%; height: 72px;
 				overflow: visible;
 				> a {
 					display: block;
-					width: 210%; height: 100%;
+					width: 200%; height: 100%;
 					position: relative;
 					z-index: 4;
 					text-indent: -10000%;
@@ -67,6 +67,7 @@
 				line-height: 26px;
 				> #date, > #place {
 					display: block;
+					margin-left: 50%;
 				}
 			}
 			> #nav, #language {
@@ -79,13 +80,13 @@
 				}
 				li > a {
 					display: block;
-					padding: 6px;
+					padding: 6px 12px;
 					border: 1px solid #ccc;
 					margin-top: -1px;
 					height: 24px;
 					color: #000;
 					text-decoration: none;
-					font-size: 20px;
+					font-size: 18px;
 					line-height: 24px;
 					white-space: nowrap;
 					background-color: #eee;
