@@ -84,6 +84,5 @@
 
 <?php print $closure; ?>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script type="text/javascript" src="http://coscup.org/2011-theme/assets/jquery.imagetile.js"></script>
 <script type="text/javascript" src="http://coscup.org/2011-theme/assets/script.js"></script>
 </body></html>

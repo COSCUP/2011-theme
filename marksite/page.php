@@ -126,7 +126,6 @@ switch($this->current[0])
 	</div>
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo $theme_assets_uri; ?>jquery.imagetile.min.js"></script>
 <script type="text/javascript" src="<?php echo $theme_assets_uri; ?>script.min.js"></script>
 </body>
 </html>
