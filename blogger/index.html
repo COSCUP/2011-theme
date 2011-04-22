@@ -33,10 +33,19 @@
 }
 
 #sidebar-wrapper {
-    width: 300px;
+    width: 288px;
     float: $endSide;
     word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
     overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+	margin-top: -5px;
+    background-color: #c7d7a0;
+    -moz-box-shadow: 0 0 5px #cccccc;
+    -webkit-box-shadow: 0 0 5px #cccccc;
+    -ms-box-shadow: 0 0 5px #cccccc;
+    -o-box-shadow: 0 0 5px #cccccc;
+    box-shadow: 0 0 5px #cccccc;
+    margin-left: 10px;
+    padding: 22px 11px;
 }
 ]]></b:skin>
 <!-- Google Analytics js code -->
@@ -102,7 +111,7 @@
       </div>
 
       <div id='sidebar-wrapper'>
-        <b:section class='sidebar' id='sidebar_2' preferred='yes'>
+        <b:section id='sidebar2' preferred='yes'>
 <b:widget id='HTML3' locked='false' title='' type='HTML'/>
 <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
 </b:section>
