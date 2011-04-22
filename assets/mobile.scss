@@ -44,9 +44,9 @@
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
 			> h1 {
-				margin: $gutter $gutter /2 $gutter / 2 0; padding: 0;
+				margin: $gutter $gutter $gutter / 2 0; padding: 0;
 				background: transparent url('coscup-140x48.png') center right no-repeat;
-				float: left; width: 50%; height: 72px;
+				float: left; width: 47%; height: 72px;
 				overflow: visible;
 				> a {
 					display: block;
@@ -67,7 +67,10 @@
 				line-height: 26px;
 				> #date, > #place {
 					display: block;
-					margin-left: 50%;
+					margin-left: 47%;
+					width: 50%;
+					white-space: nowrap;
+					overflow: hidden;
 				}
 			}
 			> #nav, #language {
