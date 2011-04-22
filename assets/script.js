@@ -158,7 +158,9 @@ jQuery(function ($) {
 	// if so, defer/stop imagetile and iframe from loading
 	// removing 'src' in <img> won't help so not doing it
 	if (!$('#title:visible').length) {
-		
+
+		if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', this.href]);
+
 		$(window).bind(
 			'resize.defer',
 			function () {
