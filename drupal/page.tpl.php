@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/mobile.css" media="screen and (max-width: 480px)" />
 <link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen and (min-width: 481px)" />
 <!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen"/><![endif]-->
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width" />
 <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
 <script type="text/javascript">
 
@@ -36,7 +36,7 @@
 		<h1><a href="http://coscup.org/2011/" title="首頁">COSCUP</a></h1>
 		<p id="title">開源人年會</p>
 		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span id="users">Users</span> and <span id="promoters">Promoters</span></p>
-		<p id="date_place" title="2011 年 8 月 20 - 21 日"><span id="date">8/20 - 21, 2011</span><span id="place">台灣台北</a></p>
+		<p id="date_place" title="2011 年 8 月 20 - 21 日"><span id="date">8/20 - 21, 2011</span><span id="place">台灣台北</span></p>
 		<div id="nav" class="empty">
 		<!-- 上面的 class="empty" 會觸發 script 拉遠端資料顯示 -->
 		</div>
