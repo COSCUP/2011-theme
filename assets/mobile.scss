@@ -150,6 +150,23 @@
 					}
 				}
 			}
+			
+			> #mobileSponsorLogo {
+				margin: 0 $gutter / 2; padding: $gutter / 2 0;
+				background-color: #fff;
+				text-align: center;
+				height: 72px;
+				> a {
+					display: block;
+					width: 100%;
+					height: 100%;
+					> img {
+						width: 178px;
+						height: 72px;
+					}
+				}
+			}
+
 			> #language {
 				width: (60 + 12 + 8) * 3px;
 				margin: 0 auto;

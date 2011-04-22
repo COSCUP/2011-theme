@@ -269,6 +269,10 @@ $msg_arrow: $line_height / 2;
 				}
 			}
 			
+			> #mobileSponsorLogo {
+				display: none;
+			}
+
 			> #message {
 				position: absolute;
 				left: ( $col + $gutter ) * ($h_left + 2);

@@ -15,6 +15,22 @@ jQuery(function ($) {
 		);
 	}
 	
+	function mobileSponsorLogo() {
+		// 先寫隨機選的，銷售組要給正確的分級演算法
+
+		var $sponsors = $('#sidebar > .sponsors a');
+		
+		$('#nav').after(
+			$('<p id="mobileSponsorLogo" />').append(
+				$sponsors.eq(
+					Math.floor(
+						$sponsors.length * Math.random()
+					)
+				).clone()
+			)
+		);
+	}
+	
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
 		$.getJSON(
@@ -66,8 +82,12 @@ jQuery(function ($) {
 						$sponsors.append($u);
 					}
 				);
+				
+				mobileSponsorLogo();
 			}
 		);
+	} else {
+		mobileSponsorLogo();
 	}
 
 	/*
@@ -80,10 +100,17 @@ jQuery(function ($) {
 	
 	
 	// Analytics tracking for Sponsors
-	$('.sponsors a').live(
+	$('.sponsors a, #mobileSponsorLogo a').live(
 		'click',
 		function () {
 			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2011', this.href]);
+			return true;
+		}
+	);
+	$('#mobileSponsorLogo a').live(
+		'click',
+		function () {
+			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2011 (Mobile only)', this.href]);
 			return true;
 		}
 	);

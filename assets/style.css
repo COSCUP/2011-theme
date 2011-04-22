@@ -255,6 +255,8 @@ body {
         padding-right: 2px; }
         #header > .info > #language li:last-child {
           padding-right: 0; }
+    #header > .info > #mobileSponsorLogo {
+      display: none; }
     #header > .info > #message {
       position: absolute;
       left: 360px;
