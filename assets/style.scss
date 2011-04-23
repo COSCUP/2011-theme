@@ -374,6 +374,8 @@ $msg_arrow: $line_height / 2;
 			> #tagline {
 				left: ($col + $gutter) * 10;
 				@include gridNoMargin(8);
+				$val: width .2s, left .2s;
+				@include prefix(transition, $val);
 				text-align: center;
 				> .heart {
 					color: violet;
@@ -547,6 +549,8 @@ $msg_arrow: $line_height / 2;
 
 	#header, #footer {
 		@include grid($width);
+	}
+	#header {
 		> .info {
 			> #nav {
 				width: $h_right_width - ($gutter * 2 + $col * 3);
@@ -559,6 +563,14 @@ $msg_arrow: $line_height / 2;
 				font-size: 100%;
 				height: $line_height*1.2;
 				padding: ($msg_height - $line_height*1.2) / 2 $line_height;
+			}
+		}
+	}
+	#footer {
+		> .info {
+			> #tagline {
+				left: ($col + $gutter) * 8;
+				@include gridNoMargin(9);
 			}
 		}
 	}

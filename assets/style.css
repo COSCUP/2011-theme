@@ -345,6 +345,11 @@ body {
     #footer > .info > #tagline {
       left: 400px;
       width: 310px;
+      -moz-transition: width 0.2s, left 0.2s;
+      -webkit-transition: width 0.2s, left 0.2s;
+      -ms-transition: width 0.2s, left 0.2s;
+      -o-transition: width 0.2s, left 0.2s;
+      transition: width 0.2s, left 0.2s;
       text-align: center; }
       #footer > .info > #tagline > .heart {
         color: violet; }
@@ -485,15 +490,20 @@ body {
     width: 990px;
     margin-left: 5px;
     margin-right: 5px; }
-    #header > .info > #nav, #footer > .info > #nav {
-      width: 480px; }
-    #header > .info > #date_place, #footer > .info > #date_place {
-      width: 590px; }
-    #header > .info > #message, #footer > .info > #message {
-      width: 485px;
-      font-size: 100%;
-      height: 26.4px;
-      padding: 24.8px 22px; }
+
+  #header > .info > #nav {
+    width: 480px; }
+  #header > .info > #date_place {
+    width: 590px; }
+  #header > .info > #message {
+    width: 485px;
+    font-size: 100%;
+    height: 26.4px;
+    padding: 24.8px 22px; }
+
+  #footer > .info > #tagline {
+    left: 320px;
+    width: 350px; }
 
   #sidebar {
     width: 190px;
