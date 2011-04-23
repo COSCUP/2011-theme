@@ -23,6 +23,20 @@
 	#content {
 		margin: 0; padding: 0;
 		@include prefix(transition, 0);
+		> #sidebar2 {
+			background-color: $light;
+			@include prefix(box-shadow, 0 0 5px #ccc);
+			margin: $line_height 0;
+			padding: $line_height ($line_height / 2);
+			> h2 {
+				font-size: 100%;
+				margin: $line_height (-$line_height / 2);
+				padding: 0 ($line_height / 2);
+				//background-color: rgba(#000, 0.75);
+				//color: #fff;
+				border-bottom: 3px solid $dark;
+			}
+		}
 	}
 	
 	#header, #footer {
@@ -206,7 +220,7 @@
 		}
 	}
 	
-	#message, #mascot_icon, #connect_box, #sidebar, #sidebar2, #title, #title_en, #tagline {
+	#message, #mascot_icon, #connect_box, #sidebar, .hideInMobile, #title, #title_en, #tagline {
 		display: none;
 	}
 }

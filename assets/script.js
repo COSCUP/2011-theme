@@ -167,7 +167,7 @@ jQuery(function ($) {
 	}
 
 	function deferLoad() {
-		$('#sidebar2 iframe').each(
+		$('.hideInMobile iframe').each(
 			function () {
 				$(this).attr('data-src', this.src);
 				this.src = '';
