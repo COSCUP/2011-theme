@@ -89,7 +89,9 @@ h1, h2, h3 {
       content: '．'; }
 
   html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
-    text-align: justify; } }
+    text-align: justify; }
+  #content > iframe:first-child {
+    margin-top: 22px; } }
 
 @media screen {
   body {
@@ -484,6 +486,8 @@ h1, h2, h3 {
       margin-right: 5px; }
     html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
       text-align: justify; }
+    #content > iframe:first-child {
+      margin-top: 22px; }
     #content > #sidebar2 {
       float: right;
       margin-top: -5px;

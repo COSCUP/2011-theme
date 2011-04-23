@@ -89,6 +89,9 @@ $msg_arrow: $line_height / 2;
 		html[lang="zh-CN"] & {
 			text-align: justify;
 		}
+		> iframe:first-child {
+			margin-top: $line_height;
+		}
 	}
 }
 
@@ -536,6 +539,11 @@ $msg_arrow: $line_height / 2;
 		}
 		
 		@include prefix(transition, width .2s);
+		
+		> iframe:first-child {
+			margin-top: $line_height;
+		}
+
 		> #sidebar2 {
 			float: right;
 			margin-top: - $gutter / 2;
