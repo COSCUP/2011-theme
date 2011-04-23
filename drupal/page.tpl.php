@@ -10,8 +10,8 @@
 ?>
 <!-- COSCUP 2011 -->
 <link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/mobile.css" media="screen and (max-width: 480px)" />
-<link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen and (min-width: 481px)" />
-<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="screen"/><![endif]-->
+<link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="print, screen and (min-width: 481px)" />
+<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="http://coscup.org/2011-theme/assets/style.css" media="print, screen"/><![endif]-->
 <meta name="viewport" content="width=device-width" />
 <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -24,8 +24,77 @@ $msg_top: $info_top + $line_height + $gutter / 2 + $line_height*0.5;
 $msg_height: $header_height - $date_place_height - $header_tb * 2 - $msg_top - $info_top - $line_height*0.5;
 $msg_arrow: $line_height / 2;
 
+@media print {
+
+	body {
+		font: $font_size serif;
+		line-height: $line_height;
+	}
+
+	a {
+		color: #000;
+		text-decoration: underline;
+	}
+
+	#date_place,
+	#nav,
+	#mobileSponsorLogo,
+	#language,
+	#message,
+	#mascot_icon,
+	#connect_box,
+	#sidebar,
+	.hideInMobile,
+	#tagline, #archives {
+		display: none;
+	}
+	#header, #footer {
+		@include largeFont;
+		border-top: 4px solid $dark;
+		border-bottom: 4px solid $dark;
+		padding: 0 5px;
+	}
+	#header {
+		//height: $line_height * 3;
+		> .info {
+			> h1 {
+				display: inline-block;
+				vertical-align: top;
+				height: $line_height * 2;
+				font-size: 200%;
+				line-height: $line_height * 2;
+				padding: $line_height / 2 0;
+				margin: 0;
+				> a {
+					color: $dark;
+					text-decoration: none;
+				}
+			}
+			> #title, #title_en {
+				//float: left;
+				display: inline-block;
+				vertical-align: top;
+				&:before {
+					content: '．';
+				}
+				height: $line_height;
+				padding: $line_height 0;
+				margin: 0;
+			}
+		}
+	}
+	
+	#content {
+		html[lang="zh-TW"] &,
+		html[lang="zh-CN"] & {
+			text-align: justify;
+		}
+	}
+}
+
 //@media screen and (min-width: 481px) {
 // desktop layout (@media is given in <link>)
+@media screen { // For IE7/8
 
 	body {
 		width: $width * ( $col + $gutter );
@@ -532,8 +601,7 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 	}
-
-//}
+}
 
 @media screen and (min-width: 481px) and (max-width: 1180px) {
 	// 1024xp desktop layout
