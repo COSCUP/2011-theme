@@ -21,7 +21,7 @@ switch($this->current[0])
 <head>
 	<meta charset=UTF-8>
 	<title><?php echo $title; ?> | COSCUP 2011</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>mobile.css" media="screen and (max-width: 480px)" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>mobile.css" media="handheld, screen and (max-width: 480px)" />
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen and (min-width: 481px)" />
 	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen"/><![endif]-->
     <link rel="shortcut icon" href="<?php echo $theme_assets_uri;?>favicon.ico" type="image/x-icon" />

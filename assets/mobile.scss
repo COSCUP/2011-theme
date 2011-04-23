@@ -2,7 +2,7 @@
 
 @import "shared";
 
-@media screen and (max-width: 480px) {
+@media handheld, screen and (max-width: 480px) {
 	// mobile layout
 
 	body {

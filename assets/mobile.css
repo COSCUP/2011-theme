@@ -40,7 +40,7 @@ h1, h2, h3 {
 .wordpress {
   background-position: -126px 0; }
 
-@media screen and (max-width: 480px) {
+@media handheld, screen and (max-width: 480px) {
   body {
     -moz-transition: 0;
     -webkit-transition: 0;
