@@ -173,7 +173,7 @@ $msg_arrow: $line_height / 2;
 				a {
 					color: #333;
 					font-weight: bold;
-					$val: background, color .2s ease-out;
+					$val: background .2s ease-out, color .2s ease-out;
 					@include prefix(transition, $val);
 					&:hover {
 						text-decoration: underline;
@@ -198,7 +198,7 @@ $msg_arrow: $line_height / 2;
 						color: #fff;
 						background: #999;
 						background: rgba(#000, 0.65);
-						$val: background, color .2s ease-in;
+						$val: background .2s ease-in, color .2s ease-in;
 						@include prefix(transition, $val);
 					}
 					> ul {

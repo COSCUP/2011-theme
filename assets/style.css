@@ -169,11 +169,11 @@ body {
       #header > .info > #nav a {
         color: #333;
         font-weight: bold;
-        -moz-transition: background, color 0.2s ease-out;
-        -webkit-transition: background, color 0.2s ease-out;
-        -ms-transition: background, color 0.2s ease-out;
-        -o-transition: background, color 0.2s ease-out;
-        transition: background, color 0.2s ease-out; }
+        -moz-transition: background 0.2s ease-out, color 0.2s ease-out;
+        -webkit-transition: background 0.2s ease-out, color 0.2s ease-out;
+        -ms-transition: background 0.2s ease-out, color 0.2s ease-out;
+        -o-transition: background 0.2s ease-out, color 0.2s ease-out;
+        transition: background 0.2s ease-out, color 0.2s ease-out; }
         #header > .info > #nav a:hover {
           text-decoration: underline; }
         html[lang="en"] #header > .info > #nav a {
@@ -190,11 +190,11 @@ body {
           color: #fff;
           background: #999;
           background: rgba(0, 0, 0, 0.65);
-          -moz-transition: background, color 0.2s ease-in;
-          -webkit-transition: background, color 0.2s ease-in;
-          -ms-transition: background, color 0.2s ease-in;
-          -o-transition: background, color 0.2s ease-in;
-          transition: background, color 0.2s ease-in; }
+          -moz-transition: background 0.2s ease-in, color 0.2s ease-in;
+          -webkit-transition: background 0.2s ease-in, color 0.2s ease-in;
+          -ms-transition: background 0.2s ease-in, color 0.2s ease-in;
+          -o-transition: background 0.2s ease-in, color 0.2s ease-in;
+          transition: background 0.2s ease-in, color 0.2s ease-in; }
         #header > .info > #nav li:hover > ul, #header > .info > #nav li.selected > ul {
           display: block;
           opacity: 1;
