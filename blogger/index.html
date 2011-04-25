@@ -29,39 +29,12 @@
     display: none;
 }
 
-#main-wrapper {
-    width: 480px;
-    float: $startSide;
-    word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
-    overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
-    padding: 22px 11px;
-}
-
-.post-title, .entry-title {
-    -moz-transition: width 0.2s;
-    -webkit-transition: width 0.2s;
-    -ms-transition: width 0.2s;
-    -o-transition: width 0.2s;
-    transition: width 0.2s;
-    background: #42B535;
-    -moz-box-shadow: 0 0 5px #333333;
-    -webkit-box-shadow: 0 0 5px #333333;
-    -ms-box-shadow: 0 0 5px #333333;
-    -o-box-shadow: 0 0 5px #333333;
-    box-shadow: 0 0 5px #333333;
-    padding-left:15px;
+.post-title, .entry-title > a {
+    text-decoration: underline;
 }
 @media handheld, screen and (max-width: 480px) {
 #content > #sidebar2, #blog-pager, .blog-feeds {
     display: none;}
-
-#main-wrapper {
-    width: 400px;
-    float: $startSide;
-    word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
-    overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
-    padding: 22px 11px;}
-}
 
 ]]></b:skin>
 <!-- Google Analytics js code -->
@@ -113,21 +86,20 @@
 </div>
 <div id="content">
 <!-- content // -->
-    <div id='crosscol-wrapper' style='text-align:center'>
-        <b:section class='crosscol' id='crosscol'/>
-    </div>
 
-    <div id='main-wrapper'>
-        <b:section id='main-blogger' showaddelement='no'>
-        <b:widget id='Blog1' locked='true' title='網誌文章' type='Blog'/>
-        <b:widget id='HTML1' locked='false' title='Disqus for pofeng test' type='HTML'/>
+    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+        <b:section id='sidebar2' preferred='yes'>
+        <b:widget id='HTML3' locked='false' title='' type='HTML'/>
+        <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
         </b:section>
-    </div>
+    </b:if>
 
-    <b:section id='sidebar2' preferred='yes'>
-    <b:widget id='HTML3' locked='false' title='' type='HTML'/>
-    <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
+    <!-- blogger data -->
+    <b:section id='main-blogger' showaddelement='no'>
+    <b:widget id='Blog1' locked='true' title='網誌文章' type='Blog'/>
+    <b:widget id='HTML1' locked='false' title='Disqus for pofeng test' type='HTML'/>
     </b:section>
+
     <p style="clear: both;">&nbsp;</p>
 
 <!-- // content -->
