@@ -229,7 +229,7 @@
 			<div class='post hentry'>
 				<a expr:name='data:post.id'/>
 				<b:if cond='data:post.title'>
-				<h3 class='post-title entry-title'>
+				<h2 class='post-title entry-title'>
 					<b:if cond='data:post.link'>
 						<a expr:href='data:post.link'><data:post.title/></a>
 						<b:else/>
@@ -243,7 +243,7 @@
 							<data:post.title/>
 						</b:if>
 					</b:if>
-				</h3>
+				</h2>
 			</b:if>	
 				<div class='post-header'>
 					<div class='post-header-line-1'/>
@@ -403,7 +403,7 @@
 							&lt;div class=&quot;date-outer&quot;&gt;
 						</b:if>
 						<b:if cond='data:post.dateHeader'>
-							<h2 class='date-header'><span><data:post.dateHeader/></span></h2>
+							<span class='date-header'><span><data:post.dateHeader/></span></span>
 						</b:if>
 						<b:if cond='data:post.isDateStart'>
 							&lt;div class=&quot;date-posts&quot;&gt;
@@ -485,9 +485,9 @@
 					<div class='mobile-post-outer'>
 						<a expr:href='data:post.url'>
 							<div class='mobile-index-title-outer'>
-								<h3 class='mobile-index-title entry-title'>
+								<h2 class='mobile-index-title entry-title'>
 									<data:post.title/>
-								</h3>
+								</h2>
 							</div>
 							<div>
 								<div class='mobile-index-arrow'>
