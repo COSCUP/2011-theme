@@ -23,8 +23,6 @@
    ====================
    <Variable name="startSide" description="Side where text starts in blog language"
              type="automatic" default="left" value="left">
-   <Variable name="endSide" description="Side where text ends in blog language"
-             type="automatic" default="right" value="right">
 */
 
 #navbar {
@@ -38,21 +36,6 @@
     overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
 }
 
-#sidebar-wrapper {
-    width: 288px;
-    float: $endSide;
-    word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
-    overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
-	margin-top: -5px;
-    background-color: #c7d7a0;
-    -moz-box-shadow: 0 0 5px #cccccc;
-    -webkit-box-shadow: 0 0 5px #cccccc;
-    -ms-box-shadow: 0 0 5px #cccccc;
-    -o-box-shadow: 0 0 5px #cccccc;
-    box-shadow: 0 0 5px #cccccc;
-    margin-left: 10px;
-    padding: 22px 11px;
-}
 ]]></b:skin>
 <!-- Google Analytics js code -->
 <script type="text/javascript">
@@ -102,31 +85,24 @@
 	</div>
 </div>
 <div id="content">
-<!-- content // --> 
-    <div id='content-wrapper'>
+<!-- content // -->
 
       <div id='crosscol-wrapper' style='text-align:center'>
         <b:section class='crosscol' id='crosscol'/>
       </div>
 
-      <div id='main-wrapper'>
+    <div id='main-wrapper'>
         <b:section class='main' id='main' showaddelement='no'>
-<b:widget id='Blog1' locked='true' title='網誌文章' type='Blog'/>
-<b:widget id='HTML1' locked='false' title='Disqus for pofeng test' type='HTML'/>
-</b:section>
-      </div>
+        <b:widget id='Blog1' locked='true' title='網誌文章' type='Blog'/>
+        <b:widget id='HTML1' locked='false' title='Disqus for pofeng test' type='HTML'/>
+        </b:section>
+    </div>
 
-      <div id='sidebar-wrapper'>
-        <b:section id='sidebar2' preferred='yes'>
-<b:widget id='HTML3' locked='false' title='' type='HTML'/>
-<b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
-</b:section>
-      </div>
 
-      <!-- spacer for skins that want sidebar and main to be the same height-->
-      <div class='clear'>&#160;</div>
-
-    </div> <!-- end content-wrapper -->
+    <b:section id='sidebar2' preferred='yes'>
+    <b:widget id='HTML3' locked='false' title='' type='HTML'/>
+    <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
+    </b:section>
 
 <!-- // content -->
 </div>
