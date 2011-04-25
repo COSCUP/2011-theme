@@ -30,25 +30,37 @@
 }
 
 #main-wrapper {
-    width: 410px;
+    width: 480px;
     float: $startSide;
     word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
     overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+    padding: 22px 11px;
+}
+@media handheld, screen and (max-width: 480px) {
+#content > #sidebar2, #blog-pager, .blog-feeds {
+    display: none;}
+
+#main-wrapper {
+    width: 400px;
+    float: $startSide;
+    word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+    overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+    padding: 22px 11px;}
 }
 
 ]]></b:skin>
 <!-- Google Analytics js code -->
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12923351-2']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12923351-2']);
+        _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
 </script>
 </head>
@@ -86,23 +98,24 @@
 </div>
 <div id="content">
 <!-- content // -->
-
-      <div id='crosscol-wrapper' style='text-align:center'>
+    <div id='crosscol-wrapper' style='text-align:center'>
         <b:section class='crosscol' id='crosscol'/>
-      </div>
+    </div>
 
     <div id='main-wrapper'>
-        <b:section class='main' id='main' showaddelement='no'>
+        <b:section id='main-blogger' showaddelement='no'>
         <b:widget id='Blog1' locked='true' title='網誌文章' type='Blog'/>
         <b:widget id='HTML1' locked='false' title='Disqus for pofeng test' type='HTML'/>
         </b:section>
     </div>
 
-
-    <b:section id='sidebar2' preferred='yes'>
-    <b:widget id='HTML3' locked='false' title='' type='HTML'/>
-    <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
-    </b:section>
+    <div id='sidebar2'>
+        <b:section id='sidebar3' preferred='yes'>
+        <b:widget id='HTML3' locked='false' title='' type='HTML'/>
+        <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
+        </b:section>
+    </div>
+    <p style="clear: both;">&nbsp;</p>
 
 <!-- // content -->
 </div>
