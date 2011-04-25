@@ -33,9 +33,10 @@
     text-decoration: underline;
 }
 @media handheld, screen and (max-width: 480px) {
-#content > #sidebar2, #blog-pager, .blog-feeds {
-    display: none;}
-
+	#blog-pager, .blog-feeds {
+	    display: none;
+	}
+}
 ]]></b:skin>
 <!-- Google Analytics js code -->
 <script type='text/javascript'>
@@ -87,7 +88,7 @@
 <div id='content'>
 <!-- content // -->
 	<b:if cond='data:blog.url == data:blog.homepageUrl'>
-		<b:section id='sidebar2' preferred='yes'>
+		<b:section id='sidebar2' class="hideInMobile" preferred='yes'>
 			<b:widget id='HTML3' locked='false' title='' type='HTML'>
 				<b:includable id='main'>
 					<div class='widget-content'>
