@@ -36,6 +36,21 @@
     overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
     padding: 22px 11px;
 }
+
+.post-title, .entry-title {
+    -moz-transition: width 0.2s;
+    -webkit-transition: width 0.2s;
+    -ms-transition: width 0.2s;
+    -o-transition: width 0.2s;
+    transition: width 0.2s;
+    background: #42B535;
+    -moz-box-shadow: 0 0 5px #333333;
+    -webkit-box-shadow: 0 0 5px #333333;
+    -ms-box-shadow: 0 0 5px #333333;
+    -o-box-shadow: 0 0 5px #333333;
+    box-shadow: 0 0 5px #333333;
+    padding-left:15px;
+}
 @media handheld, screen and (max-width: 480px) {
 #content > #sidebar2, #blog-pager, .blog-feeds {
     display: none;}
@@ -109,12 +124,10 @@
         </b:section>
     </div>
 
-    <div id='sidebar2'>
-        <b:section id='sidebar3' preferred='yes'>
-        <b:widget id='HTML3' locked='false' title='' type='HTML'/>
-        <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
-        </b:section>
-    </div>
+    <b:section id='sidebar2' preferred='yes'>
+    <b:widget id='HTML3' locked='false' title='' type='HTML'/>
+    <b:widget id='BlogArchive1' locked='false' title='網誌存檔' type='BlogArchive'/>
+    </b:section>
     <p style="clear: both;">&nbsp;</p>
 
 <!-- // content -->
