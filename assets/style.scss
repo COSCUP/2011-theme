@@ -552,7 +552,7 @@ $msg_arrow: $line_height / 2;
 			width: ($col * $sidebar2_width + $gutter  * ($sidebar2_width - 1)) - $line_height;
 			margin-left: $gutter;
 			padding: $line_height ($line_height / 2);
-			> h2 {
+			h2 {
 				font-size: 100%;
 				margin: $line_height (-$line_height / 2);
 				padding: 0 ($line_height / 2);
