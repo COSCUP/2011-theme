@@ -25,12 +25,20 @@
              type="automatic" default="left" value="left">
 */
 
-#navbar, #blog-pager, .blog-feeds {
+#navbar, #blog-pager .home-link, .blog-feeds {
     display: none;
 }
 
-.post-title, .entry-title > a {
-    text-decoration: underline;
+.date-header {
+	float: right;
+}
+
+.post-title {
+    border-bottom: 2px solid #333;
+}
+
+#sidebar2 iframe {
+	background-color: #fff;
 }
 
 .fb_iframe_widget {
@@ -411,7 +419,7 @@
 								&lt;div class=&quot;date-outer&quot;&gt;
 							</b:if>
 							<b:if cond='data:post.dateHeader'>
-								<span class='date-header'><span><data:post.dateHeader/></span></span>
+								<span class='date-header'><data:post.dateHeader/></span>
 							</b:if>
 							<b:if cond='data:post.isDateStart'>
 								&lt;div class=&quot;date-posts&quot;&gt;
@@ -486,7 +494,7 @@
 				<b:if cond='data:post.dateHeader'>
 					<div class='mobile-index-date'>
 						<div class='date-header'>
-							<span><data:post.dateHeader/></span>
+							<data:post.dateHeader/>
 						</div>
 					</div>
 				</b:if>	
@@ -648,16 +656,6 @@
 						</div>
 					</div>
 				</div>
-			</b:includable>
-		</b:widget>
-		<b:widget id='HTML1' locked='false' type='HTML'>
-			<b:includable id='main'>
-				<!-- only display title if it's non-empty -->
-				<b:if cond='data:title != &quot;&quot;'>
-					<h2 class='title'><data:title/></h2>
-				</b:if>
-				<data:content/>
-				<b:include name='quickedit'/>
 			</b:includable>
 		</b:widget>
 	</b:section>
