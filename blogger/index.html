@@ -33,6 +33,14 @@
     text-decoration: underline;
 }
 
+.fb_iframe_widget {
+	display: block !important;
+}
+
+.fb_iframe_widget iframe {
+	width: 100% !important;
+}
+
 ]]></b:skin>
 <!-- Google Analytics js code -->
 <script type='text/javascript'>
@@ -532,8 +540,8 @@
 				<b:includable id='comments' var='post'>
 					<div class='comments' id='comments'>
 						<a name='comments'/>
-						<iframe allowTransparency='true' expr:src='&quot;http://www.facebook.com/plugins/like.php?href=&quot; + data:post.url + &quot;&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;font&amp;colorscheme=light&amp;height=80&quot;' frameborder='0' scrolling='no' style='border:none; overflow:hidden; width:450px; height:80px;'/>
-						<div id='fb-root'/><script src='http://connect.facebook.net/zh_TW/all.js#appId=APP_ID&amp;xfbml=1'/><fb:comments expr:href='data:post.url' num_posts='2' width='400'/>
+						<iframe allowTransparency='true' expr:src='&quot;http://www.facebook.com/plugins/like.php?href=&quot; + data:post.url + &quot;&amp;layout=standard&amp;show_faces=true&amp;action=like&amp;font&amp;colorscheme=light&amp;height=80&quot;' frameborder='0' scrolling='no' style='border:none; overflow:hidden; width: 100%; height:80px;'/>
+						<div id='fb-root'/><script src='http://connect.facebook.net/zh_TW/all.js#appId=APP_ID&amp;xfbml=1'/><fb:comments expr:href='data:post.url' num_posts='2' width="500" />
 						<b:if cond='data:post.allowComments'>
 							<h4>
 								<b:if cond='data:post.numComments == 1'>
