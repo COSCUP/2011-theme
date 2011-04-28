@@ -1,62 +1,62 @@
-COSCUP 2011 佈景主題
+COSCUP 2011 布景主題
 ===================
 
-## 目錄配置
+## 目录配置
 
 ### assets
 
-共用 CSS / JS / 圖片，
-各個網站的佈景主題應該連到 http://coscup.org/2011-theme/assets/
-共用這些資料（不然每次修改會 port 的很辛苦）。
+共用 CSS / JS / 图片，
+各种网站的布景主题应该连到 http://coscup.org/2011-theme/assets/
+共用这些资料（不然每次修改会 port 的很辛苦）。
 
 ### mockup
 
-假頁面，從 empty.html 這邊開始抄需要的 HTML 做佈景主題。
+假页面，从 empty.html 这边开始抄需要的HTML做布景主题。
 
-請在 mockup 搜尋 "assets" 這個字取代路徑 + 把引用的 script 加上 .min.js。
-*最後請記得上 Google Analytics*。
+请在 mockup 搜寻 "assets" 这个字取代路径 + 把引用的 script 加上 .min.js。
+*最后请记得上 Google Analytics*。
 
 ### deploy
 
-php 程式，自動從 github 用 svn 拉檔案到 shared hosting 環境
+php 程序，自动从 github 用 svn 下载文件到 shared hosting 环境
 
 ### drupal
 
-贊助表單用的佈景主題
+赞助表单用的布景主题
 
 ### blogger
 
-COSCUP blog 用的佈景主題
+COSCUP blog 用的布景主題
 
 ### marksite
 
-主網站用佈景主題
+主网站用布景主题
 
 ### wordpress
 
-今年不會用到（希望不會）
+今年不会用到（希望不会）
 
 ### 其他
 
-* 報名系統也是 https://code.google.com/p/eva-fun/
+* 报名系统也是 https://code.google.com/p/eva-fun/
 
-## 原則
+## 原则
 
-1. assets 共用（如前述）
-2. 沒有用 CSS Reset，故內文的 HTML 會以瀏覽器預設值呈現。
-不夠用的話當然歡迎自己加 site-specific style
-3. style.css 用 SASS 做，手動修的話我會人工 port 回 scss。
-（當然還是建議從 scss 改啦）
+1. assets 共用（如上述）
+2. 沒有用 CSS Reset，故內文的 HTML 会以浏览器预设值呈现。
+不够用的话当然欢迎自己加 site-specific style
+3. style.css 用 SASS 做，手动修的话我会人工 port 回 scss。
+（当然还是建议从 scss 改啦）
 4. Script minify 使用 Closure Complier，可用 http://closure-compiler.appspot.com/home 
 或是 https://github.com/gugod/bin/raw/master/closure-compiler.pl
 
 ## Commit Rule
 
-覺得不用 review 的就自己 commit，覺得需要就送 pull request，
-*自由心證*。我也有可能會 review 完之後叫你自己 push 上來。
+觉得不用 review 的就自己 commit，觉得需要就送 pull request，
+*自由心证*。我也有可能會 review 完之后叫你自己 push 上來。
 
-### 自動 Deploy
+### 自动 Deploy
 
-前述的 deploy script 已經設定在 Github 的 post-receive URL：
+上述的 deploy script 已经设定在 Github 的 post-receive URL：
 http://help.github.com/post-receive-hooks/
-所以 commit 會直接 live。
+所以 commit 会直接 live。
