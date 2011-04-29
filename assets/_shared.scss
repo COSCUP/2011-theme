@@ -62,12 +62,13 @@ h1, h2, h3 {
 	@include largeFont;
 }
 
-.sprite {display: block; background: transparent url('favicons.png') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
-.coscup { background-position: 0 0;}
-.facebook { background-position: -18px 0;}
-.twitter { background-position: -36px 0;}
-.plurk { background-position: -54px 0;}
-.gcal { background-position: -72px 0;}
-.flickr { background-position: -90px 0;}
-.rss { background-position: -108px 0;}
-.wordpress { background-position: -126px 0;}
+.sprite {display: block; background: transparent url('favicons.png?2') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
+.coscup { background-position: 0 0; width: 16px; height: 16px}
+.newspaper { background-position: -18px 0; width: 16px; height: 16px}
+.twitter { background-position: -36px 0; width: 16px; height: 16px}
+.plurk { background-position: -54px 0; width: 16px; height: 16px}
+.facebook { background-position: -72px 0; width: 16px; height: 16px}
+.gcal { background-position: -90px 0; width: 16px; height: 16px}
+.flickr { background-position: -108px 0; width: 16px; height: 16px}
+.rss { background-position: -126px 0; width: 16px; height: 16px}
+.wordpress { background-position: -144px 0; width: 16px; height: 16px}

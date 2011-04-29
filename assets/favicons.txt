@@ -1,10 +1,12 @@
 ＃ http://timc.idv.tw/canvas-css-sprites/en/
 
 coscup: http://coscup.org/2011/favicon.ico
-facebook: http://www.facebook.com/favicon.ico
+newspaper: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlpJREFUeNqcU99Lk1EYfr7vOwsmuPkjyzEXagQVuizBXXhhSVTghYQtwoH0l0UUUthNd9IialAXa8ytKEfCLKfQhSFiTt12fvS+59vULiToHYfz7Zz3fc7zPO85zpP55y+1UtNaa5wUjuPY0XW6Gw1pXuzv1++7rmv3hJJy+uFcCv+K0vI3ZPN5xEevJssraxv1er2PQYRSyibMP1uA53n2pONhDKC0QupBEpn3HxA52wOqif4orxNIo08YzqA4qNUQEIIJt0oPQaSUdlZKIhg4hWikF57rRb+X1xaE1n7ivZm7xMC1DBiTgVvg7A87lEgkkE6/IWgD1/EQCIiksAm0sLj4ykrwGRimidt3buHp40eYuDGJYmEJs7MpxIcvw3UdfP66jHyuAMGHNKSiAn3oNp+slbYiRkauWdDRsTFkP+YQDAYtqyvxOHLZJVgPyFHUyQMpjySwXk3maSLEKj3TbKfrWUkHVGOM9gH4z9T0FGc0BdCPqiTJ+FIsINY/gHA4jI1KBe00M8DAYL9lKvx04G06je4zPcRCoa2tDb82N5EYH8dMKnXY2ovDw7avXNggdlwofLfpcDIw1NGJlVIJfbEYOjo7rfbM63e2O2jdD/aHGFy/Oel3wwJA2/29vSouDQ1hZ2enWUAyKFlxUXPwN68Zx7QkALVaw9KpH9SwWf2JUDiE7a0tMrcBJdks7zgBay7v2bfA+lZXK+iOnDu6ujS3d/XS+jpigxd895s31DRvaLlcseuiuvs7s/ypOAFj/n4DrZd48hPFXnU3w/vnaXTg/2L7jwADAJciRZLQsjJGAAAAAElFTkSuQmCC
 twitter: http://twitter.com/favicon.ico
 plurk: http://www.plurk.com/favicon.ico
+facebook: http://www.facebook.com/favicon.ico
 gcal: http://www.phenodays.com/images/share-google-calendar.gif
 flickr: http://www.flickr.com/favicon.ico
 rss: http://idealady.com/themes/cp_global_images/rss_icon.png
 wordpress: http://www.wordpress.org/favicon.ico
+

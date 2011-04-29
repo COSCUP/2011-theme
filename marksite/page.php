@@ -74,6 +74,7 @@ switch($this->current[0])
 		<div id="connect_box">
 			<ul>
 				<li><a title="<?php echo $lc->_("加到 Google 日曆");?>" target="_blank" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=COSCUP+2011&amp;dates=20110820T010000Z/20110821T100000Z&amp;details=http%3A%2F%2Fcoscup.org/2011/&amp;trp=true&amp;sprop=http%3A%2F%2Fcoscup.org/2011/&amp;sprop=name:COSCUP"><span class="sprite gcal"></span></a></li>
+				<li><a title="<?php echo $lc->_("訂閱電子報");?>" target="_blank" href="http://coscup.org/2011/zh-tw/contact/#subscribe"><span class="sprite newspaper"></span></a></li>
 				<li><a title="<?php echo $lc->_("Facebook 粉絲團");?>" href="https://www.facebook.com/coscup" target="_blank"><span class="sprite facebook"></span></a></li>
 				<li><a title="<?php echo $lc->_("Twitter");?>" href="https://twitter.com/coscup" target="_blank"><span class="sprite twitter"></span></a></li>
 				<li><a title="<?php echo $lc->_("噗浪");?>" href="http://www.plurk.com/coscup" target="_blank"><span class="sprite plurk"></span></a></li>
