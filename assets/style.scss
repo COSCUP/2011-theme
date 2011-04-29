@@ -529,6 +529,14 @@ $msg_arrow: $line_height / 2;
 		padding-top: $gutter / 2;
 		@include grid($width - $sidebar_width);
 		
+		a {
+			color: #000;
+			text-decoration: underline;
+			&:hover {
+				color: #333;
+			}
+		}
+		
 		body.no_sidebar > & {
 			@include grid($width);
 		}

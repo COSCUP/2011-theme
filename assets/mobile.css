@@ -91,6 +91,11 @@ h1, h2, h3 {
     -ms-transition: 0;
     -o-transition: 0;
     transition: 0; }
+    #content a {
+      color: #000;
+      text-decoration: underline; }
+      #content a:hover {
+        color: #333; }
     #content > #sidebar2 {
       background-color: #c7d7a0;
       -moz-box-shadow: 0 0 5px #cccccc;

@@ -23,6 +23,15 @@
 	#content {
 		margin: 0; padding: 0;
 		@include prefix(transition, 0);
+		
+		a {
+			color: #000;
+			text-decoration: underline;
+			&:hover {
+				color: #333;
+			}
+		}
+		
 		> #sidebar2 {
 			background-color: $light;
 			@include prefix(box-shadow, 0 0 5px #ccc);
