@@ -54,7 +54,7 @@ switch($this->current[0])
 		<h1><a href="<?php echo $home_path.$lc->_("HOME_URI_APPENDS");?>" title="<?php echo $lc->_("首頁");?>">COSCUP</a></h1>
 		<p id="title"><?php echo $lc->_("開源人年會");?></p>
 		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span id="users">Users</span> and <span id="promoters">Promoters</span></p>
-		<p id="date_place" title="<?php echo $lc->_("2011 年 8 月 20 - 21 日");?>"><span id="date">8/20 - 21, 2011</span><span id="place"><?php echo $lc->_("台灣台北"); ?></span></p>
+		<p id="date_place" title="<?php echo $lc->_("2011 年 8 月 20 – 21 日");?>"><span id="date">8/20 – 21, 2011</span><span id="place"><?php echo $lc->_("台灣台北"); ?></span></p>
 		<div id="nav">
 			<ul>
 				<?php echo $this->menu(1,2); ?>

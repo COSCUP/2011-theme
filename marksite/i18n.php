@@ -13,7 +13,7 @@ class i18n
 		 'Twitter' => 'Twitter',
 		 '噗浪' => 'Plurk',
 		 '部落格 RSS Feed' => 'Blog RSS Feed',
-		 '2011 年 8 月 20 - 21 日' => 'August 20th - 21st, 2011',
+		 '2011 年 8 月 20 - 21 日' => 'August 20th – 21st, 2011',
 		 'HOME_URI_APPENDS' => 'en/',
 		 'COPYRIGHT' => '&copy; 2011 COSCUP. <a href="http://coscup.org/2011-beta/en/contact/">Contact us</a>.'
 		 ),
