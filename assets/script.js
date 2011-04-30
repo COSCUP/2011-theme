@@ -236,9 +236,13 @@ jQuery(function ($) {
 	}
 	loadPage();
 
+	var getPageXhr;
+
 	function getPage(href) {
 		var $content = $('#content').empty();
-		$.ajax(
+
+		if (getPageXhr) getPageXhr.abort();
+		getPageXhr = $.ajax(
 			{
 				url: href,
 				dataType: 'html',
