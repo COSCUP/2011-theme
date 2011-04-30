@@ -242,7 +242,11 @@ jQuery(function ($) {
 						status === "success"
 						|| status === "notmodified"
 					) {
-						var $h = $('<div />').append(res.responseText.match(/<body\b([^\u0000]+)<\/body>/)[0]);
+						var $h = $('<div />').append(
+							res.responseText
+							.match(/<body\b([^\u0000]+)<\/body>/)[0]
+							.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+						);
 
 						document.title = res.responseText.match(/<title>(.+)<\/title>/)[1];
 						$content.html($h.find('#content').children());
