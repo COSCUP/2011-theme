@@ -282,6 +282,7 @@ jQuery(function ($) {
 				if (
 					this.hostname !== window.location.hostname
 					|| !/2011/.test(this.pathname)
+					|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
 				) return true;
 
 				getPage(this.href);
