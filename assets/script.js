@@ -151,30 +151,36 @@ jQuery(function ($) {
 		}
 	);
 
-	function fullLoad() {
-		// imagesTile on #sidebar2
-		if ($('#sidebar2 > .images').length) {
-			$.ajax(
-				{
-					url: 'http://coscup.org/2011-theme/assets/imagetile.min.js',
-					dataType: 'script',
-					cache: true,
-					success: function () {
-						$('#sidebar2 > .images').imageTile(
-							{
-								num: 12,
-								photos: yuren_54,
-								beforeImageLoad: function ($img, i) {
-									$img.css('opacity', 0);
-								},
-								imageLoad: function ($img, i) {
-									$img.css('opacity', 1);
-								}
-							}
-						);
-					}
+	// imagesTile on #sidebar2
+	function imageTile() {
+		$('#sidebar2 > .images').imageTile(
+			{
+				num: 12,
+				photos: yuren_54,
+				beforeImageLoad: function ($img, i) {
+					$img.css('opacity', 0);
+				},
+				imageLoad: function ($img, i) {
+					$img.css('opacity', 1);
 				}
-			);
+			}
+		);
+	}
+
+	function fullLoad() {
+		if ($('#sidebar2 > .images').length) {
+			if (!$.fn.imageTile) {
+				$.ajax(
+					{
+						url: 'http://coscup.org/2011-theme/assets/imagetile.min.js',
+						dataType: 'script',
+						cache: true,
+						success: imageTile 
+					}
+				);
+			} else {
+				imageTile();
+			}
 		}
 	}
 
