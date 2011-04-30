@@ -246,6 +246,7 @@ jQuery(function ($) {
 
 	function getPage(href) {
 		var $content = $('#content').addClass('loading');
+		$(window).unbind('resize.defer');
 
 		if (getPageXhr) getPageXhr.abort();
 		getPageXhr = $.ajax(
