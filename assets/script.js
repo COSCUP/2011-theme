@@ -260,6 +260,9 @@ jQuery(function ($) {
 						if (!$h.find('#nav').is('.empty')) {
 							$('#nav').html($h.find('#nav').children());
 						}
+						
+						if (window._gaq) _gaq.push(['_trackPageview']);
+						
 						loadPage();
 					} else {
 						window.location.replace(href);
