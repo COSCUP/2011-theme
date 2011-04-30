@@ -1,5 +1,22 @@
 "use stricts";
 
+/*
+
+載入步驟：
+
+1. getPage() 或是 HTML 載入內容
+2. loadPage() 加入載入內容後需要的函式（無論是手機或桌面版面）
+2.1 如果是手機版面
+2.1.1 執行 deferLoad() 把不該載入的 iframe 洗掉
+2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
+2.2 如果是桌面版面
+2.2.1 執行 fullLoad()
+
+getPage() 是在 HTML5 History API 存在的情況下才會使用的 partial loading 方法。
+
+*/
+
+
 jQuery(function ($) {
 
 	var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase();
@@ -19,6 +36,8 @@ jQuery(function ($) {
 		// 先寫隨機選的，銷售組要給正確的分級演算法
 
 		var $sponsors = $('#sidebar > .sponsors a');
+		
+		$('#mobileSponsorLogo').remove();
 		
 		if ($sponsors.length) {
 			$('#nav').after(
@@ -84,12 +103,9 @@ jQuery(function ($) {
 						$sponsors.append($u);
 					}
 				);
-				
 				mobileSponsorLogo();
 			}
 		);
-	} else {
-		mobileSponsorLogo();
 	}
 
 	/*
@@ -135,16 +151,6 @@ jQuery(function ($) {
 		}
 	);
 
-	$('#header').css(
-		'background-position',
-		'center -' + (75*Math.floor(Math.random()*4)).toString(10) + 'px'
-	);
-
-	$('#footer').css(
-		'background-position',
-		'center -' + (75*Math.floor(Math.random()*6)).toString(10) + 'px'
-	);
-
 	function fullLoad() {
 		// imagesTile on #sidebar2
 		if ($('#sidebar2 > .images').length) $.getScript(
@@ -183,29 +189,108 @@ jQuery(function ($) {
 		);
 	}
 
-	// Find out if we are currently on mobile layout
-	// if so, defer/stop imagetile and iframe from loading
-	// removing 'src' in <img> won't help so not doing it
-	if (!$('#title:visible').length) {
+	function loadPage() {
+		mobileSponsorLogo();
+	
+		$('#header').css(
+			'background-position',
+			'center -' + (75*Math.floor(Math.random()*4)).toString(10) + 'px'
+		);
+	
+		$('#footer').css(
+			'background-position',
+			'center -' + (75*Math.floor(Math.random()*6)).toString(10) + 'px'
+		);
 
-		if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', this.href]);
+		// Find out if we are currently on mobile layout
+		// if so, defer/stop imagetile and iframe from loading
+		// removing 'src' in <img> won't help so not doing it
+		if (!$('#title:visible').length) {
+	
+			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', this.href]);
+	
+			$(window).bind(
+				'resize.defer',
+				function () {
+					if (!$('#title:visible').length) return; // still in Mobile
+					$(this).unbind('resize.defer');
+	
+					// load desktop stuff and stuff unloaded;
+					fullLoad();
+					resumeLoad();
+				}
+			);
+	
+			// unload stuff
+			deferLoad();
+		} else {
+			// load desktop stuff
+			fullLoad();
+		}
+	}
+	loadPage();
 
-		$(window).bind(
-			'resize.defer',
-			function () {
-				if (!$('#title:visible').length) return; // still in Mobile
-				$(this).unbind('resize.defer');
+	function getPage(href) {
+		var $content = $('#content').empty();
+		$.ajax(
+			{
+				url: href,
+				dataType: 'html',
+				cache: true,
+				complete: function (res, status) {
+					if (
+						status === "success"
+						|| status === "notmodified"
+					) {
+						var $h = $('<div />').append(res.responseText.match(/<body\b([^\u0000]+)<\/body>/)[0]);
 
-				// load desktop stuff and stuff unloaded;
-				fullLoad();
-				resumeLoad();
+						document.title = res.responseText.match(/<title>(.+)<\/title>/)[1];
+						$content.html($h.find('#content').children());
+
+						if (!$h.find('#nav').is('.empty')) {
+							$('#nav').html($h.find('#nav').children());
+						}
+						loadPage();
+					} else {
+						window.location.replace(href);
+					}
+				}
+			}
+		)
+	}
+
+	if (
+		window.history
+		&& history.pushState
+	) {	
+		$('a').live(
+			'click',
+			function (ev) {
+				// skip mid/right/cmd click
+				if (ev.which == 2 || ev.metaKey) return true;
+				// skip external links
+				if (
+					this.hostname !== window.location.hostname
+					|| !/2011/.test(this.pathname)
+				) return true;
+
+				getPage(this.href);
+				history.pushState(true, '', this.href);
+				return false;
 			}
 		);
 
-		// unload stuff
-		deferLoad();
-	} else {
-		// load desktop stuff
-		fullLoad();
+		var firstpop = true;
+		window.onpopstate = function (ev) {
+			if (firstpop && !ev.state) {
+				firstpop = false;
+				// Webkit nightly fire popstate for no reason at first load
+				// Wordaround: skip if it's the first popstate firing and
+				// is not actually triggered by a pushState being and user action.
+				return;
+			}
+			firstpop = false;
+			getPage(window.location.href);
+		};
 	}
 });
