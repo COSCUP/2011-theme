@@ -24,11 +24,33 @@
 		margin: 0; padding: 0;
 		@include prefix(transition, 0);
 		
+		min-height: 40 * 2 + 60px;
+		
 		a {
 			color: #000;
 			text-decoration: underline;
 			&:hover {
 				color: #333;
+			}
+		}
+		
+		&.loading {
+			> * {
+				opacity: 0.3;
+			}			
+			position: relative;
+
+			&:before {
+				content: '';
+				opacity: 1;
+				background: rgba(#fff, 0.8) url('./loading.gif') center center no-repeat;
+				position: absolute;
+				top: 40px;
+				left: 50%;
+				z-index: 2;
+				width: 60px; height: 60px;
+				margin-left: -30px;
+				@include prefix(border-radius, 5px);
 			}
 		}
 		

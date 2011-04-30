@@ -245,7 +245,7 @@ jQuery(function ($) {
 	var getPageXhr;
 
 	function getPage(href) {
-		var $content = $('#content').empty();
+		var $content = $('#content').addClass('loading');
 
 		if (getPageXhr) getPageXhr.abort();
 		getPageXhr = $.ajax(
@@ -265,7 +265,7 @@ jQuery(function ($) {
 						);
 
 						document.title = res.responseText.match(/<title>(.+)<\/title>/)[1];
-						$content.html($h.find('#content').children());
+						$content.html($h.find('#content').children()).removeClass('loading');
 
 						if (!$h.find('#nav').is('.empty')) {
 							$('#nav').html($h.find('#nav').children());
