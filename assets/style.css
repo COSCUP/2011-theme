@@ -488,7 +488,8 @@ h1, h2, h3 {
             width: 178px;
             height: 72px; }
     #sidebar .sponsors > p, #sidebar .sponsors-after > p {
-      margin: 22px 11px; }
+      margin: 22px 11px;
+      font-size: 85%; }
 
   #content {
     float: left;
