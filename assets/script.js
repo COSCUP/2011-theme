@@ -180,7 +180,7 @@ jQuery(function ($) {
 						$('<span class="text" />').html(t.text)
 					).append(
 						'<span class="meta">'
-						+ '<a href="https://twitter.com/#!/' + t.from_user_str + '/status/' + t.id_str + '">@' + t.from_user + '</a>'
+						+ '<a href="https://twitter.com/#!/' + t.from_user + '/status/' + t.id_str + '">@' + t.from_user + '</a>'
 						+ '</span>'
 					)
 				);
