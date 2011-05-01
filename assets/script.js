@@ -1,4 +1,4 @@
-//"use stricts";
+"use stricts";
 
 /*
 
@@ -33,23 +33,37 @@ jQuery(function ($) {
 	}
 	
 	function mobileSponsorLogo() {
-		// 先寫隨機選的，銷售組要給正確的分級演算法
+		var pool = [],
+		multi = {
+			diamond: 10,
+			gold: 5,
+			silver: 2,
+			bronze: 1
+		};
 
-		var $sponsors = $('#sidebar > .sponsors a');
-		
 		$('#mobileSponsorLogo').remove();
 		
-		if ($sponsors.length) {
-			$('#nav').after(
-				$('<p id="mobileSponsorLogo" />').append(
-					$sponsors.eq(
-						Math.floor(
-							$sponsors.length * Math.random()
-						)
-					).clone()
-				)
-			);
-		}
+		$.each(
+			multi,
+			function (level, m) {
+				$('#sidebar > .sponsors .' + level + ' a').each(
+					function () {
+						var i = m;
+						while (i--) {
+							pool.push(this);
+						}
+					}
+				);
+			}
+		);
+
+		if (pool.length === 0) return;
+
+		$('#nav').after(
+			$('<p id="mobileSponsorLogo" />').append(
+				$(pool[Math.floor(pool.length * Math.random())]).clone()
+			)
+		);
 	}
 	
 	if ($('#sidebar > .sponsors.empty').length) {
