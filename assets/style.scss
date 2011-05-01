@@ -582,6 +582,14 @@ $msg_arrow: $line_height / 2;
 			width: ($col * $sidebar2_width + $gutter  * ($sidebar2_width - 1)) - $line_height;
 			margin-left: $gutter;
 			padding: $line_height ($line_height / 2);
+			
+			a {
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			
 			h2 {
 				font-size: 100%;
 				margin: $line_height (-$line_height / 2);
@@ -628,6 +636,22 @@ $msg_arrow: $line_height / 2;
 			> .video {
 				//margin: ($line_height / 2) 0;
 			}
+			
+			> .socialbuzz > ul {
+				margin: 0; padding: 0 0 0 1em;
+				text-align: left;
+				font-size: 14px;
+				line-height: 18px;
+				> li {
+					list-style: square;
+					padding-bottom: 6px;
+				}
+				.meta {
+					display: block;
+					text-align: right;
+				}
+			}
+			
 			.more {
 				clear: both;
 				padding: 0; margin: 0;

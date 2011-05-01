@@ -547,6 +547,10 @@ h1, h2, h3 {
       width: 288px;
       margin-left: 10px;
       padding: 22px 11px; }
+      #content > #sidebar2 a {
+        text-decoration: none; }
+        #content > #sidebar2 a:hover {
+          text-decoration: underline; }
       #content > #sidebar2 h2 {
         font-size: 100%;
         margin: 22px -11px;
@@ -577,6 +581,18 @@ h1, h2, h3 {
           height: 75px; }
           #content > #sidebar2 > .images > a > img {
             border: none; }
+      #content > #sidebar2 > .socialbuzz > ul {
+        margin: 0;
+        padding: 0 0 0 1em;
+        text-align: left;
+        font-size: 14px;
+        line-height: 18px; }
+        #content > #sidebar2 > .socialbuzz > ul > li {
+          list-style: square;
+          padding-bottom: 6px; }
+        #content > #sidebar2 > .socialbuzz > ul .meta {
+          display: block;
+          text-align: right; }
       #content > #sidebar2 .more {
         clear: both;
         padding: 0;

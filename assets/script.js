@@ -1,4 +1,4 @@
-"use stricts";
+//"use stricts";
 
 /*
 
@@ -167,6 +167,43 @@ jQuery(function ($) {
 		);
 	}
 
+	function showSocialBuzz(plurks, twits) {
+		var $u = $('<ul />');
+		
+		// 應該要把兩個時間混在一起然後找最新的 4 篇，不過我懶 = =
+		
+		if (twits) $.each(
+			twits.results.slice(0, 2),
+			function (i, t) {
+				$u.append(
+					$('<li />').append(
+						$('<span class="text" />').html(t.text)
+					).append(
+						'<span class="meta">'
+						+ '<a href="https://twitter.com/#!/' + t.from_user_str + '/status/' + t.id_str + '">@' + t.from_user + '</a>'
+						+ '</span>'
+					)
+				);
+			}
+		);
+		if (plurks) $.each(
+			plurks.plurks.slice(0, 2),
+			function (i, t) {
+				if (!plurks.users[t.user_id]) return; // Plurk API quirk
+				$u.append(
+					$('<li />').append(
+						$('<span class="text" />').html(t.content)
+					).append(
+						'<span class="meta">'
+						+ '<a href="http://www.plurk.com/p/' + t.plurk_id.toString(36) + '">@' + plurks.users[t.user_id].nick_name + '</a>'
+						+ '</span>'
+					)
+				);
+			}
+		);
+		$('#sidebar2 > .socialbuzz').empty().append($u);
+	}
+
 	function fullLoad() {
 		if ($('#sidebar2 > .images').length) {
 			if (!$.fn.imageTile) {
@@ -181,6 +218,24 @@ jQuery(function ($) {
 			} else {
 				imageTile();
 			}
+		}
+		
+		if ($('#sidebar2 > .socialbuzz').length) {
+			var plurks, twits;
+			$.getJSON(
+				'http://coscup.org/2011-beta/api/plurk/',
+				function (data) {
+					plurks = data;
+					showSocialBuzz(plurks, twits);
+				}
+			);
+			$.getJSON(
+				'https://search.twitter.com/search.json?q=coscup+OR+from%3Acoscup&callback=?',
+				function (data) {
+					twits = data;
+					showSocialBuzz(plurks, twits);
+				}
+			);
 		}
 	}
 
