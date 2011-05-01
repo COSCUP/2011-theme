@@ -113,7 +113,6 @@ h1, h2, h3 {
     text-align: justify; }
   #content > iframe:first-child {
     margin-top: 22px; } }
-
 @media screen {
   body {
     width: 1120px;
@@ -325,7 +324,7 @@ h1, h2, h3 {
             -o-transition: background 0.2s ease-in;
             transition: background 0.2s ease-in; }
         #header > .info > #language li {
-          border-right: none!important;
+          border-right: none !important;
           padding-right: 2px; }
           #header > .info > #language li:last-child {
             padding-right: 0; }
@@ -601,7 +600,6 @@ h1, h2, h3 {
         margin: 0;
         text-align: right;
         font-size: 92%; } }
-
 @media screen and (min-width: 481px) and (max-width: 1180px) {
   body {
     width: 1000px; }
