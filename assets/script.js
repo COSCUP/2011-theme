@@ -24,7 +24,7 @@ jQuery(function ($) {
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011-beta/api/menu/?callback=?',
+			'http://coscup.org/2011/api/menu/?callback=?',
 			function (data) {
 				var $nav = $('#nav').removeClass('empty');
 				$nav.html(data[lang]);
@@ -69,7 +69,7 @@ jQuery(function ($) {
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011-beta/api/sponsors/?callback=?',
+			'http://coscup.org/2011/api/sponsors/?callback=?',
 			function (data) {
 				var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
 				var titles = (
@@ -237,7 +237,7 @@ jQuery(function ($) {
 		if ($('#sidebar2 > .socialbuzz').length) {
 			var plurks, twits;
 			$.getJSON(
-				'http://coscup.org/2011-beta/api/plurk/',
+				'http://coscup.org/2011/api/plurk/',
 				function (data) {
 					plurks = data;
 					showSocialBuzz(plurks, twits);
