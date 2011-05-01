@@ -547,7 +547,12 @@ $msg_arrow: $line_height / 2;
 		html[lang="zh-CN"] & {
 			text-align: justify;
 		}
-		
+
+		&:before {
+			content: '';
+			background: rgba(#fff, 0.8) url('./loading.gif') center center no-repeat;
+		}
+
 		&.loading {
 			> * {
 				opacity: 0.3;
@@ -555,9 +560,7 @@ $msg_arrow: $line_height / 2;
 			position: relative;
 
 			&:before {
-				content: '';
 				opacity: 1;
-				background: rgba(#fff, 0.8) url('./loading.gif') center center no-repeat;
 				position: absolute;
 				top: 40px;
 				left: 50%;

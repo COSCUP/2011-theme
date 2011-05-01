@@ -97,14 +97,15 @@ h1, h2, h3 {
       text-decoration: underline; }
       #content a:hover {
         color: #333; }
+    #content:before {
+      content: '';
+      background: rgba(255, 255, 255, 0.8) url("./loading.gif") center center no-repeat; }
     #content.loading {
       position: relative; }
       #content.loading > * {
         opacity: 0.3; }
       #content.loading:before {
-        content: '';
         opacity: 1;
-        background: rgba(255, 255, 255, 0.8) url("./loading.gif") center center no-repeat;
         position: absolute;
         top: 40px;
         left: 50%;
