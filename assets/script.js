@@ -288,7 +288,7 @@ jQuery(function ($) {
 		// removing 'src' in <img> won't help so not doing it
 		if (!$('#title:visible').length) {
 	
-			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', this.href]);
+			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', window.location.href]);
 	
 			$(window).bind(
 				'resize.defer',
