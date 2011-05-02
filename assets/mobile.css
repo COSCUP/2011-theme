@@ -6,6 +6,9 @@ a {
     color: #666;
     text-decoration: underline; }
 
+img {
+  border: none; }
+
 h1, h2, h3 {
   font-family: 'Cabin', arial, sans-serif; }
 
@@ -91,6 +94,8 @@ h1, h2, h3 {
     -ms-transition: 0;
     -o-transition: 0;
     transition: 0;
+    width: 100%;
+    overflow: hidden;
     min-height: 140px; }
     #content a {
       color: #000;
@@ -101,6 +106,8 @@ h1, h2, h3 {
       width: 100%;
       overflow: auto;
       background-color: #f0f0f0; }
+    #content .alignleft, #content .alignright, #content .aligncenter, #content .fullwidth {
+      width: 100%; }
     #content:before {
       content: '';
       background: rgba(255, 255, 255, 0.8) url("./loading.gif") center center no-repeat; }

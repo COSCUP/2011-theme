@@ -550,6 +550,31 @@ $msg_arrow: $line_height / 2;
 			background-color: #f0f0f0;
 		}
 		
+		.alignleft {
+			float: left;
+			display: block;
+			width: $gutter * 7 + $col * 8;
+			margin-right: $gutter;
+		}
+
+		.alignright {
+			float: right;
+			display: block;
+			width: $gutter * 7 + $col * 8;
+			margin-left: $gutter;
+		}
+
+		.aligncenter {
+			margin: 0 auto;
+			display: block;
+			width: $gutter * 7 + $col * 8;
+		}
+
+		.fullwidth {
+			width: 100%;
+			display: block;
+		}
+		
 		html[lang="zh-TW"] &,
 		html[lang="zh-CN"] & {
 			text-align: justify;

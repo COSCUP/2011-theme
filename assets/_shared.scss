@@ -58,6 +58,10 @@ a {
 	}
 }
 
+img {
+	border: none;
+}
+
 h1, h2, h3 {
 	@include largeFont;
 }

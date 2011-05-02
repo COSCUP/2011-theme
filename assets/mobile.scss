@@ -24,6 +24,9 @@
 		margin: 0; padding: 0;
 		@include prefix(transition, 0);
 		
+		width: 100%;
+		overflow: hidden;
+		
 		min-height: 40 * 2 + 60px;
 		
 		a {
@@ -38,6 +41,10 @@
 			width: 100%;
 			overflow: auto;
 			background-color: #f0f0f0;
+		}
+		
+		.alignleft, .alignright, .aligncenter, .fullwidth {
+			width: 100%;
 		}
 		
 		&:before {

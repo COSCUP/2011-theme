@@ -7,6 +7,9 @@ a {
     color: #666;
     text-decoration: underline; }
 
+img {
+  border: none; }
+
 h1, h2, h3 {
   font-family: 'Cabin', arial, sans-serif; }
 
@@ -515,6 +518,23 @@ h1, h2, h3 {
       width: 100%;
       overflow: auto;
       background-color: #f0f0f0; }
+    #content .alignleft {
+      float: left;
+      display: block;
+      width: 310px;
+      margin-right: 10px; }
+    #content .alignright {
+      float: right;
+      display: block;
+      width: 310px;
+      margin-left: 10px; }
+    #content .aligncenter {
+      margin: 0 auto;
+      display: block;
+      width: 310px; }
+    #content .fullwidth {
+      width: 100%;
+      display: block; }
     html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
       text-align: justify; }
     #content:before {
