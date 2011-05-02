@@ -511,6 +511,10 @@ h1, h2, h3 {
       width: 1110px;
       margin-left: 5px;
       margin-right: 5px; }
+    #content pre {
+      width: 100%;
+      overflow: auto;
+      background-color: #f0f0f0; }
     html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
       text-align: justify; }
     #content:before {

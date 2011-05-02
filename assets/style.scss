@@ -544,6 +544,12 @@ $msg_arrow: $line_height / 2;
 			@include grid($width);
 		}
 		
+		pre {
+			width: 100%;
+			overflow: auto;
+			background-color: #f0f0f0;
+		}
+		
 		html[lang="zh-TW"] &,
 		html[lang="zh-CN"] & {
 			text-align: justify;

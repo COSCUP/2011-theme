@@ -97,6 +97,10 @@ h1, h2, h3 {
       text-decoration: underline; }
       #content a:hover {
         color: #333; }
+    #content pre {
+      width: 100%;
+      overflow: auto;
+      background-color: #f0f0f0; }
     #content:before {
       content: '';
       background: rgba(255, 255, 255, 0.8) url("./loading.gif") center center no-repeat; }

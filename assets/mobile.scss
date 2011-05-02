@@ -34,6 +34,12 @@
 			}
 		}
 		
+		pre {
+			width: 100%;
+			overflow: auto;
+			background-color: #f0f0f0;
+		}
+		
 		&:before {
 			content: '';
 			background: rgba(#fff, 0.8) url('./loading.gif') center center no-repeat;
