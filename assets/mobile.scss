@@ -48,6 +48,8 @@
 		}
 		
 		&:before {
+			position: absolute;
+			top: -1px; height: 1px;
 			content: '';
 			background: rgba(#fff, 0.8) url('./loading.gif') center center no-repeat;
 		}
@@ -60,7 +62,6 @@
 
 			&:before {
 				opacity: 1;
-				position: absolute;
 				top: 40px;
 				left: 50%;
 				z-index: 2;

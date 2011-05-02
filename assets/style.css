@@ -538,6 +538,9 @@ h1, h2, h3 {
     html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
       text-align: justify; }
     #content:before {
+      position: absolute;
+      top: -1px;
+      height: 1px;
       content: '';
       background: rgba(255, 255, 255, 0.8) url("./loading.gif") center center no-repeat; }
     #content.loading {
@@ -546,7 +549,6 @@ h1, h2, h3 {
         opacity: 0.3; }
       #content.loading:before {
         opacity: 1;
-        position: absolute;
         top: 40px;
         left: 50%;
         z-index: 2;
