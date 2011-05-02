@@ -19,7 +19,7 @@ switch($this->current[0])
 <!DOCTYPE html>
 <html lang="<?php echo $lc->lang ?>">
 <head>
-	<meta charset=UTF-8>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title><?php echo $title; ?> | COSCUP 2011</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>mobile.css" media="handheld, screen and (max-width: 480px)" />
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen and (min-width: 481px)" />
