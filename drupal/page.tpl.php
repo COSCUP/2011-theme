@@ -66,6 +66,10 @@
 	</div>
 <?php  } ?>
 
+<?php	if ($show_messages && $messages)
+		 print $messages;
+?>
+
 <?php	print $content; ?>
 			
 </div>
