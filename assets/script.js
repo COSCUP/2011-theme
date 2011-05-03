@@ -28,6 +28,7 @@ jQuery(function ($) {
 			function (data) {
 				var $nav = $('#nav').removeClass('empty');
 				$nav.html(data[lang]);
+				$('#nav a[href*="' + window.location.hostname + '"]').parent().addClass('current');
 			}
 		);
 	}
