@@ -1,3 +1,7 @@
 COSCUP 2011 Blogger Theme
+=========================
 
-Demo Site: http://pofeng-test.blogspot.com/
+To deploy, paste `index.html` to 
+
+http://www.blogger.com/html?blogID=1507397902127725653&tpl=true
+
