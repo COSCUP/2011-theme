@@ -33,7 +33,7 @@ switch($this->current[0])
 	<link rel="apple-touch-icon" href="<?php echo $theme_assets_uri;?>coscup-icon-iphone.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $theme_assets_uri;?>coscup-icon-ipad.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $theme_assets_uri;?>coscup-icon-iphone4.png" />
-
+	<link rel="apple-touch-startup-image" href="<?php echo $theme_assets_uri;?>coscup-startup.png" />
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
