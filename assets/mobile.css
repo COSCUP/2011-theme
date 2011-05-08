@@ -164,20 +164,22 @@ h1, h2, h3 {
     background: rgba(255, 255, 255, 0.85);
     margin: 5px 0;
     padding-top: 5px;
-    padding-bottom: 33px; }
+    padding-bottom: 33px;
+    position: relative; }
     #header > .info > h1 {
-      margin: 10px 10px 5px 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px 0 5px 0;
       padding: 0;
-      background: transparent url("coscup-140x48.png") center right no-repeat;
-      float: left;
-      width: 40%;
+      background: transparent url("coscup-140x48.png") right center no-repeat;
+      width: 47%;
       height: 72px;
       overflow: visible; }
       #header > .info > h1 > a {
         display: block;
-        width: 240%;
+        width: 212%;
         height: 100%;
-        position: relative;
         z-index: 4;
         text-indent: -10000%; }
     #header > .info > #date_place {
@@ -196,8 +198,8 @@ h1, h2, h3 {
       line-height: 26px; }
       #header > .info > #date_place > #date, #header > .info > #date_place > #place {
         display: block;
-        margin-left: 47%;
-        width: 50%;
+        margin-left: 45%;
+        padding-left: 10px;
         white-space: nowrap;
         overflow: hidden; }
     #header > .info > #nav, #header > .info #language {
@@ -317,5 +319,5 @@ h1, h2, h3 {
     display: none; } }
 @media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   #header > .info > h1 {
-    background: transparent url("coscup.png") center right no-repeat;
-    background-size: contain; } }
+    background: transparent url("coscup.png") right 15px no-repeat;
+    background-size: 140px; } }

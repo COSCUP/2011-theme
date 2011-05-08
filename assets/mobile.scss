@@ -105,15 +105,19 @@
 			margin: $gutter / 2 0;
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
+			
+			position: relative;
+			
 			> h1 {
-				margin: $gutter $gutter $gutter / 2 $gutter; padding: 0;
-				background: transparent url('coscup-140x48.png') center right no-repeat;
-				float: left; width: 40%; height: 72px;
+				position: absolute;
+				top: 0; left: 0;
+				margin: $gutter 0 $gutter / 2 0; padding: 0;
+				background: transparent url('coscup-140x48.png') right center no-repeat;
+				width: 47%; height: 72px;
 				overflow: visible;
 				> a {
 					display: block;
-					width: 240%; height: 100%;
-					position: relative;
+					width: 212%; height: 100%;
 					z-index: 4;
 					text-indent: -10000%;
 				}
@@ -129,8 +133,8 @@
 				line-height: 26px;
 				> #date, > #place {
 					display: block;
-					margin-left: 47%;
-					width: 50%;
+					margin-left: 45%;
+					padding-left: $gutter;
 					white-space: nowrap;
 					overflow: hidden;
 				}
@@ -278,8 +282,8 @@
 	#header {
 		> .info {
 			> h1 {
-				background: transparent url('coscup.png') center right no-repeat;
-				background-size: contain;
+				background: transparent url('coscup.png') right 15px no-repeat;
+				background-size: 140px;
 			}
 		}
 	}
