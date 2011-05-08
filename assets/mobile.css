@@ -315,7 +315,7 @@ h1, h2, h3 {
 
   #message, #mascot_icon, #connect_box, #sidebar, .hideInMobile, #title, #title_en, #tagline {
     display: none; } }
-    @media handheld, screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-      #header > .info > h1 {
-        background: transparent url("coscup.png") center right no-repeat;
-        background-size: contain; } }
+@media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  #header > .info > h1 {
+    background: transparent url("coscup.png") center right no-repeat;
+    background-size: contain; } }

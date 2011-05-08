@@ -108,12 +108,6 @@
 			> h1 {
 				margin: $gutter $gutter $gutter / 2 $gutter; padding: 0;
 				background: transparent url('coscup-140x48.png') center right no-repeat;
-
-				@media (-webkit-min-device-pixel-ratio: 2) {
-					background: transparent url('coscup.png') center right no-repeat;
-					background-size: contain;
-				}
-
 				float: left; width: 40%; height: 72px;
 				overflow: visible;
 				> a {
@@ -276,5 +270,17 @@
 	
 	#message, #mascot_icon, #connect_box, #sidebar, .hideInMobile, #title, #title_en, #tagline {
 		display: none;
+	}
+}
+
+@media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+	// iPhone 4 Retina
+	#header {
+		> .info {
+			> h1 {
+				background: transparent url('coscup.png') center right no-repeat;
+				background-size: contain;
+			}
+		}
 	}
 }
