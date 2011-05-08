@@ -1,6 +1,6 @@
 <?php 
 include_once "i18n.php";
-$theme_assets_uri = "http://coscup.org/2011-theme/assets/";
+$theme_assets_uri = "/2011-theme/assets/";
 $lc = new i18n;
 switch($this->current[0])
 {
