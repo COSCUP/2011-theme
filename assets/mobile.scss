@@ -106,13 +106,19 @@
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
 			> h1 {
-				margin: $gutter $gutter $gutter / 2 0; padding: 0;
+				margin: $gutter $gutter $gutter / 2 $gutter; padding: 0;
 				background: transparent url('coscup-140x48.png') center right no-repeat;
-				float: left; width: 47%; height: 72px;
+
+				@media (-webkit-min-device-pixel-ratio: 2) {
+					background: transparent url('coscup.png') center right no-repeat;
+					background-size: contain;
+				}
+
+				float: left; width: 40%; height: 72px;
 				overflow: visible;
 				> a {
 					display: block;
-					width: 200%; height: 100%;
+					width: 240%; height: 100%;
 					position: relative;
 					z-index: 4;
 					text-indent: -10000%;

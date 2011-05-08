@@ -166,16 +166,16 @@ h1, h2, h3 {
     padding-top: 5px;
     padding-bottom: 33px; }
     #header > .info > h1 {
-      margin: 10px 10px 5px 0;
+      margin: 10px 10px 5px 10px;
       padding: 0;
       background: transparent url("coscup-140x48.png") center right no-repeat;
       float: left;
-      width: 47%;
+      width: 40%;
       height: 72px;
       overflow: visible; }
       #header > .info > h1 > a {
         display: block;
-        width: 200%;
+        width: 240%;
         height: 100%;
         position: relative;
         z-index: 4;
@@ -315,3 +315,7 @@ h1, h2, h3 {
 
   #message, #mascot_icon, #connect_box, #sidebar, .hideInMobile, #title, #title_en, #tagline {
     display: none; } }
+    @media handheld, screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+      #header > .info > h1 {
+        background: transparent url("coscup.png") center right no-repeat;
+        background-size: contain; } }
