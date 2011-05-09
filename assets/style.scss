@@ -156,6 +156,11 @@ $msg_arrow: $line_height / 2;
 					width: $h_left_width;
 					height: $h_left_width / 2.52066;
 					background: transparent url('coscup.png') center center no-repeat;
+					
+					@media (-webkit-min-device-pixel-ratio: 2) {
+						background: transparent url('coscup.svg') center center no-repeat;
+					}
+					
 					background-size: cover;
 					text-indent: -10000px;
 				}

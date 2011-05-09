@@ -626,6 +626,9 @@ h1, h2, h3 {
         margin: 0;
         text-align: right;
         font-size: 92%; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+          #header > .info > h1 > a {
+            background: transparent url("coscup.svg") center center no-repeat; } }
 @media screen and (min-width: 481px) and (max-width: 1180px) {
   body {
     width: 1000px; }

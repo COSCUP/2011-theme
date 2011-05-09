@@ -319,5 +319,5 @@ h1, h2, h3 {
     display: none; } }
 @media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   #header > .info > h1 {
-    background: transparent url("coscup.png") right 15px no-repeat;
+    background: transparent url("coscup.svg") right 15px no-repeat;
     background-size: 140px; } }
