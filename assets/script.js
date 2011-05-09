@@ -27,7 +27,7 @@ jQuery(function ($) {
 			'http://coscup.org/2011/api/menu/?callback=?',
 			function (data) {
 				var $nav = $('#nav').removeClass('empty');
-				$nav.html(data[lang]);
+				$nav.html(data[lang].replace(/href="(\/[^\/])/g, 'href="http://coscup.org$1'));
 				$('#nav a[href*="' + window.location.hostname + '"]').parent().addClass('current');
 			}
 		);
