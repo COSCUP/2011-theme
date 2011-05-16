@@ -13,6 +13,43 @@ img {
 h1, h2, h3 {
   font-family: 'Cabin', arial, sans-serif; }
 
+#content > ul.types > li:before {
+  display: inline-block;
+  margin-right: 6px; }
+#content > ul.types > li:before,
+#content > table.program td:before {
+  content: '';
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  padding: 6px; }
+#content > ul.types > li.program_type_0:before,
+#content > table.program td.program_type_0:before {
+  content: none; }
+#content > ul.types > li.program_type_1:before,
+#content > table.program td.program_type_1:before {
+  background-color: red; }
+#content > ul.types > li.program_type_2:before,
+#content > table.program td.program_type_2:before {
+  background-color: yellow; }
+#content > ul.types > li.program_type_3:before,
+#content > table.program td.program_type_3:before {
+  background-color: lime; }
+#content > ul.types > li.program_type_4:before,
+#content > table.program td.program_type_4:before {
+  background-color: aqua; }
+#content > ul.types > li.program_type_5:before,
+#content > table.program td.program_type_5:before {
+  background-color: blue; }
+#content > ul.types > li.program_type_6:before,
+#content > table.program td.program_type_6:before {
+  background-color: fuchsia; }
+#content > table.program td:before {
+  display: block;
+  float: right; }
+
 .sprite {
   display: block;
   background: transparent url("favicons.png?2") no-repeat;
@@ -625,7 +662,60 @@ h1, h2, h3 {
         padding: 0;
         margin: 0;
         text-align: right;
-        font-size: 92%; } }
+        font-size: 92%; }
+    #content > ul.types {
+      margin: 0 -6px 0 0;
+      padding: 0; }
+      #content > ul.types > li {
+        display: inline-block;
+        margin: 6px 6px 6px 0; }
+    #content > table.program {
+      width: 100%;
+      border-collapse: collapse; }
+      #content > table.program th, #content > table.program td {
+        vertical-align: top;
+        text-align: left;
+        border: 1px solid #ccc; }
+      #content > table.program th {
+        font-weight: bold; }
+      #content > table.program thead th {
+        text-align: center;
+        background-color: #c7d7a0;
+        border-bottom: 3px solid #42b535; }
+        #content > table.program thead th:first-child {
+          border-right: 3px solid #42b535; }
+      #content > table.program tbody th {
+        width: 10%;
+        background-color: #c7d7a0;
+        padding: 0.5em 0;
+        font-weight: normal;
+        white-space: nowrap;
+        text-indent: 0.5em;
+        border-right: 3px solid #42b535; }
+        #content > table.program tbody th > span {
+          font-weight: bold;
+          font-size: 120%;
+          display: block;
+          text-indent: 0.5em/1.2; }
+      #content > table.program td {
+        width: 30%;
+        padding: 0.5em 0; }
+        #content > table.program td.program_room_0 {
+          text-indent: 30%; }
+        #content > table.program td > p {
+          padding: 0 0.5em; }
+          #content > table.program td > p.name {
+            font-weight: bold;
+            margin: 0 0 0.5em 0; }
+          #content > table.program td > p.room {
+            display: none; }
+          #content > table.program td > p.speaker, #content > table.program td > p.speakerTitle {
+            margin: 0;
+            color: #484848; }
+        #content > table.program td:before {
+          margin: 0 6px; }
+      #content > table.program:last-child {
+        margin-bottom: 2em; } }
         @media screen and (-webkit-min-device-pixel-ratio: 2) {
           #header > .info > h1 > a {
             background: transparent url("coscup.svg") center center no-repeat; } }

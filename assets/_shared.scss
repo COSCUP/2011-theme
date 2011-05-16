@@ -66,6 +66,55 @@ h1, h2, h3 {
 	@include largeFont;
 }
 
+#content {
+	> ul.types {
+		> li {
+			//border: 1px solid #ccc;
+			//padding: 6px 2px;
+			//@include prefix(border-radius, 6px);
+			&:before {
+				display: inline-block;
+				margin-right: 6px;
+			}
+		}
+	}
+	
+	> ul.types > li,
+	> table.program td {
+		&:before {
+			content: '';
+			@include prefix(border-radius, 6px);
+			padding: 6px;
+			//background-color: #ccc;
+		}
+		&.program_type_0:before {
+			content: none; // cancel type indication for type = 0;
+		}
+		&.program_type_1:before {
+			background-color: hsla(0, 100%, 50%, 1);
+		}
+		&.program_type_2:before {
+			background-color: hsla(360 / 6 * 1, 100%, 50%, 1);
+		}
+		&.program_type_3:before {
+			background-color: hsla(360 / 6 * 2, 100%, 50%, 1);
+		}
+		&.program_type_4:before {
+			background-color: hsla(360 / 6 * 3, 100%, 50%, 1);
+		}
+		&.program_type_5:before {
+			background-color: hsla(360 / 6 * 4, 100%, 50%, 1);
+		}
+		&.program_type_6:before {
+			background-color: hsla(360 / 6 * 5, 100%, 50%, 1);
+		}
+	}
+	> table.program td:before {
+		display: block;
+		float: right;
+	}
+}
+
 .sprite {display: block; background: transparent url('favicons.png?2') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
 .coscup { background-position: 0 0; width: 16px; height: 16px}
 .newspaper { background-position: -18px 0; width: 16px; height: 16px}

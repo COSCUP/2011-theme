@@ -85,6 +85,64 @@
 				border-bottom: 3px solid $dark;
 			}
 		}
+
+		> ul.types {
+			margin: 0 $gutter;
+			padding: 0;
+			> li {
+				display: block;
+			}
+		}
+
+		> table.program {
+			display: block;
+			border-bottom: 1px solid #ccc;
+			thead {
+				display: none;
+			}
+			tbody, tr {
+				display: block;
+			}
+			th, td {
+				display: block;
+				text-align: left;
+			}
+			th {
+				border-bottom: 3px solid $dark;
+				background-color: $light;
+				padding: 0.25em $gutter;
+				color: $light;
+				> span {
+					color: #000;
+				}
+			}
+			td {
+				border-bottom: 1px solid #ccc;
+				padding: 0.5em $gutter;
+				&:last-child {
+					border: none;
+				}
+				> p {
+					margin: 0;
+					&.name {
+						font-weight: bold;
+					}
+					&.speaker, &.speakerTitle {
+						color: #333;
+					}
+					&.room {
+						color: #666;
+						float: right;
+					}
+				}
+				&:before {
+					margin-left: 6px;
+				}
+			}
+			&:last-child {
+				margin-bottom: 1em;
+			}
+		}
 	}
 	
 	#header, #footer {

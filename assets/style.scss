@@ -703,6 +703,79 @@ $msg_arrow: $line_height / 2;
 				}
 			}
 		}
+		
+		> ul.types {
+			margin: 0 -6px 0 0;
+			padding: 0;
+			> li {
+				display: inline-block;
+				margin: 6px 6px 6px 0;
+			}
+		}
+		
+		> table.program {
+			width: 100%;
+			border-collapse: collapse;
+			th, td {
+				vertical-align: top;
+				text-align: left;
+				border: 1px solid #ccc;
+			}
+			th {
+				font-weight: bold;
+			}
+			thead th {
+				text-align: center;
+				background-color: $light;
+				border-bottom: 3px solid $dark;
+				&:first-child {
+					border-right: 3px solid $dark;
+				}
+			}
+			tbody th {
+				width: 10%;
+				background-color: $light;
+				padding: 0.5em 0;
+				font-weight: normal;
+				white-space: nowrap;
+				text-indent: 0.5em;
+				border-right: 3px solid $dark;
+				> span {
+					font-weight: bold;
+					font-size: 120%;
+					display: block;
+					text-indent: 0.5em / 1.2;
+				}
+			}
+			td {
+				width: 30%;
+				padding: 0.5em 0;
+				&.program_room_0 {
+					text-indent: 30%;
+				}
+				> p {
+					padding: 0 0.5em;
+					&.name {
+						font-weight: bold;
+						margin: 0 0 0.5em 0;
+					}
+					&.room {
+						display: none;
+					}
+					&.speaker, &.speakerTitle {
+						margin: 0;
+						color: #484848;
+					}
+				}
+				&:before {
+					margin: 0 6px;
+				}
+			}
+			&:last-child {
+				margin-bottom: 2em;
+			}
+		}
+		
 	}
 }
 
