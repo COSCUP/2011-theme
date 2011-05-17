@@ -123,7 +123,9 @@ h1, h2, h3 {
 		&.program_lang_zh > p.name:before {
 			background-color: #fff;
 			color: #000;
-			content: '中';
+			content: '漢';
+			// 「現代標準漢語」，不用地域性稱呼例如「華語」、「國語」、「普通話」
+			// https://secure.wikimedia.org/wikipedia/zh/w/index.php?title=%E7%8F%BE%E4%BB%A3%E6%A8%99%E6%BA%96%E6%BC%A2%E8%AA%9E&variant=zh-tw
 		}
 		> p.name:before {
 			margin: 0 0 6px 6px;

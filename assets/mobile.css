@@ -56,7 +56,7 @@ h1, h2, h3 {
 #content > table.program td.program_lang_zh > p.name:before {
   background-color: #fff;
   color: #000;
-  content: '中'; }
+  content: '漢'; }
 #content > table.program td > p.name:before {
   margin: 0 0 6px 6px;
   float: right;
