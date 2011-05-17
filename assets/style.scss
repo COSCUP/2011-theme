@@ -709,6 +709,7 @@ $msg_arrow: $line_height / 2;
 			padding: 0;
 			> li {
 				display: inline-block;
+				width: 27%;
 				margin: 6px 6px 6px 0;
 			}
 		}
@@ -720,44 +721,52 @@ $msg_arrow: $line_height / 2;
 				vertical-align: top;
 				text-align: left;
 				border: 1px solid #ccc;
+				padding: 0.5em 0;
 			}
 			th {
 				font-weight: bold;
 			}
-			thead th {
+			> thead th {
 				text-align: center;
 				background-color: $light;
 				border-bottom: 3px solid $dark;
+				font-size: 120%;
+				border-right: 1px solid #fff;
 				&:first-child {
 					border-right: 3px solid $dark;
 				}
+				&:last-child {
+					border-right: 1px solid $light;
+				}
 			}
-			tbody th {
-				width: 10%;
+			> tbody th {
+				padding: 0.5em $gutter;
 				background-color: $light;
-				padding: 0.5em 0;
 				font-weight: normal;
 				white-space: nowrap;
-				text-indent: 0.5em;
 				border-right: 3px solid $dark;
+				border-bottom: 1px solid #fff;
 				> span {
 					font-weight: bold;
 					font-size: 120%;
 					display: block;
-					text-indent: 0.5em / 1.2;
 				}
+			}
+			> tbody > tr:last-child > th {
+				border-bottom: 1px solid $light;
 			}
 			td {
 				width: 30%;
-				padding: 0.5em 0;
 				&.program_room_0 {
-					text-indent: 30%;
+					padding-left: 29%;
 				}
 				> p {
-					padding: 0 0.5em;
+					padding: 0 $gutter;
 					&.name {
 						font-weight: bold;
 						margin: 0 0 0.5em 0;
+						&:before {
+						}
 					}
 					&.room {
 						display: none;
@@ -768,7 +777,7 @@ $msg_arrow: $line_height / 2;
 					}
 				}
 				&:before {
-					margin: 0 6px;
+					margin-right: $gutter;
 				}
 			}
 			&:last-child {

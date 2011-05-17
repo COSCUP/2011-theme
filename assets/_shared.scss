@@ -109,9 +109,34 @@ h1, h2, h3 {
 			background-color: hsla(360 / 6 * 5, 100%, 50%, 1);
 		}
 	}
-	> table.program td:before {
-		display: block;
-		float: right;
+	> table.program td {
+		&:before {
+			margin: 0 0 6px 6px;
+			display: block;
+			float: right;
+		}
+		&.program_lang_en > p.name:before {
+			background-color: #666;
+			color: #fff;
+			content: 'En';
+		}
+		&.program_lang_zh > p.name:before {
+			background-color: #fff;
+			color: #000;
+			content: '中';
+		}
+		> p.name:before {
+			margin: 0 0 6px 6px;
+			float: right;
+			clear: right;
+			font-size: $font_size * .5;
+			line-height: 150%;
+			width: 10px; height: 10px;
+			border: 1px solid #333;
+			@include prefix(border-radius, 6px);
+			//background-color: #ccc;
+			text-align: center;
+		}
 	}
 }
 

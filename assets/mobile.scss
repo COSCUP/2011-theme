@@ -126,17 +126,22 @@
 					margin: 0;
 					&.name {
 						font-weight: bold;
+						margin-right: 60px;
+						&:before {
+							margin-right: -60px;
+						}
 					}
 					&.speaker, &.speakerTitle {
 						color: #333;
+						margin-right: 20%;
 					}
 					&.room {
 						color: #666;
 						float: right;
+						clear: right;
+						font-size: 82%;
+						//padding-bottom: 0.5em;
 					}
-				}
-				&:before {
-					margin-left: 6px;
 				}
 			}
 			&:last-child {

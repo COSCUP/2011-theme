@@ -47,8 +47,32 @@ h1, h2, h3 {
 #content > table.program td.program_type_6:before {
   background-color: fuchsia; }
 #content > table.program td:before {
+  margin: 0 0 6px 6px;
   display: block;
   float: right; }
+#content > table.program td.program_lang_en > p.name:before {
+  background-color: #666;
+  color: #fff;
+  content: 'En'; }
+#content > table.program td.program_lang_zh > p.name:before {
+  background-color: #fff;
+  color: #000;
+  content: '中'; }
+#content > table.program td > p.name:before {
+  margin: 0 0 6px 6px;
+  float: right;
+  clear: right;
+  font-size: 8px;
+  line-height: 150%;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #333;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  text-align: center; }
 
 .sprite {
   display: block;
@@ -668,6 +692,7 @@ h1, h2, h3 {
       padding: 0; }
       #content > ul.types > li {
         display: inline-block;
+        width: 27%;
         margin: 6px 6px 6px 0; }
     #content > table.program {
       width: 100%;
@@ -675,35 +700,39 @@ h1, h2, h3 {
       #content > table.program th, #content > table.program td {
         vertical-align: top;
         text-align: left;
-        border: 1px solid #ccc; }
+        border: 1px solid #ccc;
+        padding: 0.5em 0; }
       #content > table.program th {
         font-weight: bold; }
-      #content > table.program thead th {
+      #content > table.program > thead th {
         text-align: center;
         background-color: #c7d7a0;
-        border-bottom: 3px solid #42b535; }
-        #content > table.program thead th:first-child {
+        border-bottom: 3px solid #42b535;
+        font-size: 120%;
+        border-right: 1px solid #fff; }
+        #content > table.program > thead th:first-child {
           border-right: 3px solid #42b535; }
-      #content > table.program tbody th {
-        width: 10%;
+        #content > table.program > thead th:last-child {
+          border-right: 1px solid #c7d7a0; }
+      #content > table.program > tbody th {
+        padding: 0.5em 10px;
         background-color: #c7d7a0;
-        padding: 0.5em 0;
         font-weight: normal;
         white-space: nowrap;
-        text-indent: 0.5em;
-        border-right: 3px solid #42b535; }
-        #content > table.program tbody th > span {
+        border-right: 3px solid #42b535;
+        border-bottom: 1px solid #fff; }
+        #content > table.program > tbody th > span {
           font-weight: bold;
           font-size: 120%;
-          display: block;
-          text-indent: 0.5em/1.2; }
+          display: block; }
+      #content > table.program > tbody > tr:last-child > th {
+        border-bottom: 1px solid #c7d7a0; }
       #content > table.program td {
-        width: 30%;
-        padding: 0.5em 0; }
+        width: 30%; }
         #content > table.program td.program_room_0 {
-          text-indent: 30%; }
+          padding-left: 29%; }
         #content > table.program td > p {
-          padding: 0 0.5em; }
+          padding: 0 10px; }
           #content > table.program td > p.name {
             font-weight: bold;
             margin: 0 0 0.5em 0; }
@@ -713,7 +742,7 @@ h1, h2, h3 {
             margin: 0;
             color: #484848; }
         #content > table.program td:before {
-          margin: 0 6px; }
+          margin-right: 10px; }
       #content > table.program:last-child {
         margin-bottom: 2em; } }
         @media screen and (-webkit-min-device-pixel-ratio: 2) {

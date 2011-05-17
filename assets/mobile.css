@@ -46,8 +46,32 @@ h1, h2, h3 {
 #content > table.program td.program_type_6:before {
   background-color: fuchsia; }
 #content > table.program td:before {
+  margin: 0 0 6px 6px;
   display: block;
   float: right; }
+#content > table.program td.program_lang_en > p.name:before {
+  background-color: #666;
+  color: #fff;
+  content: 'En'; }
+#content > table.program td.program_lang_zh > p.name:before {
+  background-color: #fff;
+  color: #000;
+  content: '中'; }
+#content > table.program td > p.name:before {
+  margin: 0 0 6px 6px;
+  float: right;
+  clear: right;
+  font-size: 8px;
+  line-height: 150%;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #333;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  text-align: center; }
 
 .sprite {
   display: block;
@@ -212,14 +236,18 @@ h1, h2, h3 {
         #content > table.program td > p {
           margin: 0; }
           #content > table.program td > p.name {
-            font-weight: bold; }
+            font-weight: bold;
+            margin-right: 60px; }
+            #content > table.program td > p.name:before {
+              margin-right: -60px; }
           #content > table.program td > p.speaker, #content > table.program td > p.speakerTitle {
-            color: #333; }
+            color: #333;
+            margin-right: 20%; }
           #content > table.program td > p.room {
             color: #666;
-            float: right; }
-        #content > table.program td:before {
-          margin-left: 6px; }
+            float: right;
+            clear: right;
+            font-size: 82%; }
       #content > table.program:last-child {
         margin-bottom: 1em; }
 
