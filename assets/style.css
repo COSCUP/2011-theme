@@ -557,6 +557,7 @@ h1, h2, h3 {
   #content {
     float: left;
     padding-top: 5px;
+    position: relative;
     width: 870px;
     margin-left: 5px;
     margin-right: 5px;
@@ -744,7 +745,66 @@ h1, h2, h3 {
         #content > table.program td:before {
           margin-right: 10px; }
       #content > table.program:last-child {
-        margin-bottom: 2em; } }
+        margin-bottom: 2em; }
+    #content > #programCard {
+      position: absolute;
+      -moz-box-shadow: 0 0 10px #cccccc;
+      -webkit-box-shadow: 0 0 10px #cccccc;
+      -ms-box-shadow: 0 0 10px #cccccc;
+      -o-box-shadow: 0 0 10px #cccccc;
+      box-shadow: 0 0 10px #cccccc;
+      width: 60%;
+      left: 10%;
+      margin: -5px;
+      border: 5px solid rgba(255, 255, 255, 0.95);
+      background-color: rgba(255, 255, 255, 0.95); }
+      #content > #programCard > .info {
+        width: 50%;
+        height: 100%;
+        float: left;
+        background-color: #f8f8f8;
+        padding: 0.5em 0;
+        text-align: left;
+        -moz-box-shadow: 0 0 10px #cccccc inset;
+        -webkit-box-shadow: 0 0 10px #cccccc inset;
+        -ms-box-shadow: 0 0 10px #cccccc inset;
+        -o-box-shadow: 0 0 10px #cccccc inset;
+        box-shadow: 0 0 10px #cccccc inset; }
+        #content > #programCard > .info > p {
+          padding: 0 10px; }
+          #content > #programCard > .info > p.name {
+            font-weight: bold;
+            margin: 0 0 0.5em 0; }
+          #content > #programCard > .info > p.room {
+            display: none; }
+          #content > #programCard > .info > p.speaker, #content > #programCard > .info > p.speakerTitle {
+            margin: 0;
+            color: #484848; }
+      #content > #programCard > p {
+        width: 50%;
+        float: right; }
+      #content > #programCard > div {
+        clear: both; }
+        #content > #programCard > div p {
+          margin: 0;
+          padding: 11px 10px; }
+      #content > #programCard.program_room_0 {
+        width: 90%; }
+        #content > #programCard.program_room_0 > .info {
+          float: none;
+          width: auto;
+          padding-left: 29%; }
+        #content > #programCard.program_room_0 > p {
+          float: none;
+          width: auto; }
+      #content > #programCard.program_room_2 {
+        margin-left: 30%; }
+      #content > #programCard.program_room_3 {
+        margin-left: 30%; }
+        #content > #programCard.program_room_3 > .info {
+          float: right; }
+        #content > #programCard.program_room_3 > p {
+          float: left; } }
         @media screen and (-webkit-min-device-pixel-ratio: 2) {
           #header > .info > h1 > a {
             background: transparent url("coscup.svg") center center no-repeat; } }

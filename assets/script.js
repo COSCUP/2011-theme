@@ -219,6 +219,91 @@ jQuery(function ($) {
 		$('#sidebar2 > .socialbuzz').empty().append($u);
 	}
 
+
+	// preload program wherever page we are on the main site
+
+	var programs;
+
+	if (
+		/(ipv6\.)?coscup\.org\.?/.test(window.location.domain)
+		|| window.location.protocol === 'file:'
+	) {
+		$.getJSON(
+			'http://coscup.org/2011/api/program/?callback=?',
+			function (data) {
+				programs = data;
+//		window.programs = programs;
+			}
+		);
+	}
+	
+	var cardTimer;
+	
+	$('table.program td').live(
+		'mouseenter',
+		function () {
+			if (!programs) return;
+
+			var $this = $(this),
+			program = programs[$this.data('pid')];
+
+			if (!program || program.type === 0) return;
+
+			$('#programCard').remove();
+			
+			var $card = $('<div id="programCard" />').append(
+				$('<div />').append(
+					$('<div class="abstract" />').html(program.abstract)
+				).append(
+					$('<div class="bio" />').html(program.bio)
+				)
+			).addClass('program_room_' + program.room)
+			.css({
+				top: $(this).position().top.toString(10) + 'px'
+			});
+			
+			var $meta = $('<p />');
+			
+			if (program.lang === 'en') {
+				$meta.append('<span class="program_lang_en">English</span>');
+			} else if (program.lang === 'zh') {
+				$meta.append('<span class="program_lang_zh">漢語</span>');
+			}
+
+			$card
+			.prepend($meta)
+			.prepend(
+				$('<div class="info" />').append(
+					$this.children().clone()
+				).css('height', (this.offsetHeight - 12).toString(10) + 'px')
+			);
+
+			$('#content').append($card);
+		}
+	).live(
+		'mouseleave',
+		function () {
+			cardTimer = setTimeout(
+				function () {
+					$('#programCard').remove();
+				},
+				0
+			);
+		}
+	);
+	
+	$('#programCard .info').live(
+		'mouseenter',
+		function () {
+			clearTimeout(cardTimer);
+		}
+	).live(
+		'mouseleave',
+		function () {
+			$('#programCard').remove();
+		}
+	);
+
 	function fullLoad() {
 		if ($('#sidebar2 > .images').length) {
 			if (!$.fn.imageTile) {
