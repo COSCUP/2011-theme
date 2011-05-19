@@ -103,7 +103,7 @@ jQuery(function ($) {
 					data,
 					function (level, sponsors) {
 						$sponsors.append('<h2>' + titles[level] + '</h2>');
-						var $u = $('<ul />');
+						var $u = $('<ul class="' + level + '" />');
 						$.each(
 							sponsors,
 							function (i, sponsor) {
