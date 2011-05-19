@@ -221,7 +221,7 @@ jQuery(function ($) {
 				t = plurks.plurks.shift();
 				if (!t) break;
 				if (!plurks.users[t.user_id]) continue; // Plurk API quirk
-				if (/plurk\.com\/\p\//.test(t.content)) continue; // RePlurk, contain a Plurk URL within this Plurk
+				if (/plurk\.com\/(m\/)?\p\//.test(t.content)) continue; // RePlurk, contain a Plurk URL within this Plurk
 				if ($.inArray(plurks.users[t.user_id].nick_name, usernames) !== -1) continue; // same username, possible 3rd party sync
 				usernames.push(plurks.users[t.user_id].nick_name);
 
