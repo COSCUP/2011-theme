@@ -81,6 +81,11 @@ $msg_arrow: $line_height / 2;
 				padding: $line_height 0;
 				margin: 0;
 			}
+			html[lang="zh-TW"] & > #title_en,
+			html[lang="zh-CN"] & > #title_en,
+			html[lang="en"] & > #title {
+				display: none;
+			}
 		}
 	}
 	

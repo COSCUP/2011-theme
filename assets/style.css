@@ -172,6 +172,8 @@ h1, h2, h3 {
     margin: 0; }
     #header > .info > #title:before, #header > .info #title_en:before {
       content: '．'; }
+  html[lang="zh-TW"] #header > .info > #title_en, html[lang="zh-CN"] #header > .info > #title_en, html[lang="en"] #header > .info > #title {
+    display: none; }
 
   html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
     text-align: justify; }
