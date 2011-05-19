@@ -185,11 +185,24 @@ jQuery(function ($) {
 	function showSocialBuzz(plurks, twits) {
 		var $u = $('<ul />');
 		
-		// 應該要把兩個時間混在一起然後找最新的 4 篇，不過我懶 = =
+		/* 
+		* 一個 username 只會出現一次（跨 Twitter / Plurk 比對）
+		* 跳過從 Plurk 送過來的 Twitter
+		* 跳過 Retweet / RePlurk
+		*/
 		
-		if (twits) $.each(
-			twits.results.slice(0, 2),
-			function (i, t) {
+		var usernames = [];
+
+		if (twits) {
+			var i = 0, t;
+			while (i < 2) {
+				t = twits.results.shift();
+				if (!t) break;
+				if (/plurk\.com/.test(t.source)) continue; // sync from Plurk
+				if (/^RT/.test(t.text)) continue; // Retweet
+				if ($.inArray(t.from_user, usernames) !== -1) continue; // same username
+				usernames.push(t.from_user);
+
 				$u.append(
 					$('<li />').append(
 						$('<span class="text" />').html(t.text)
@@ -199,12 +212,19 @@ jQuery(function ($) {
 						+ '</span>'
 					)
 				);
+				i++;
 			}
-		);
-		if (plurks) $.each(
-			plurks.plurks.slice(0, 2),
-			function (i, t) {
-				if (!plurks.users[t.user_id]) return; // Plurk API quirk
+		}
+		if (plurks) {
+			var i = 0, t;
+			while (i < 2) {
+				t = plurks.plurks.shift();
+				if (!t) break;
+				if (!plurks.users[t.user_id]) continue; // Plurk API quirk
+				if (/plurk\.com\/\p\//.test(t.content)) continue; // RePlurk, contain a Plurk URL within this Plurk
+				if ($.inArray(plurks.users[t.user_id].nick_name, usernames) !== -1) continue; // same username, possible 3rd party sync
+				usernames.push(plurks.users[t.user_id].nick_name);
+
 				$u.append(
 					$('<li />').append(
 						$('<span class="text" />').html(t.content)
@@ -214,8 +234,9 @@ jQuery(function ($) {
 						+ '</span>'
 					)
 				);
+				i++;
 			}
-		);
+		}
 		$('#sidebar2 > .socialbuzz').empty().append($u);
 	}
 
