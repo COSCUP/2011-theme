@@ -377,7 +377,10 @@ jQuery(function ($) {
 	if (
 		window.history
 		&& history.pushState
-	) {	
+	) {
+
+		var pped = false;
+
 		$('a').live(
 			'click',
 			function (ev) {
@@ -391,21 +394,21 @@ jQuery(function ($) {
 				) return true;
 
 				getPage(this.href);
-				history.pushState(true, '', this.href);
+				history.pushState(null, '', this.href);
+				pped = true;
 				return false;
 			}
 		);
 
-		var firstpop = true;
 		window.onpopstate = function (ev) {
-			if (firstpop && !ev.state) {
-				firstpop = false;
-				// Webkit nightly fire popstate for no reason at first load
-				// Wordaround: skip if it's the first popstate firing and
-				// is not actually triggered by a pushState being and user action.
+			if (!pped) {
+				pped = true;
+				// Webkit nightly and Chrome 11 fire popState for no reason at first load
+				// Wordaround: skip if it's the first popstate firing provided that
+				// the user have not yet clicked on any link.
 				return;
 			}
-			firstpop = false;
+			pped = true;
 			getPage(window.location.href);
 		};
 	}
