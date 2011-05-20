@@ -378,9 +378,6 @@ jQuery(function ($) {
 		window.history
 		&& history.pushState
 	) {
-
-		var pped = false;
-
 		$('a').live(
 			'click',
 			function (ev) {
@@ -394,21 +391,21 @@ jQuery(function ($) {
 				) return true;
 
 				getPage(this.href);
-				history.pushState(null, '', this.href);
-				pped = true;
+				history.pushState({'is':'pushed'}, '', this.href);
 				return false;
 			}
 		);
 
+		// http://stackoverflow.com/questions/4688164/window-bind-popstate
+		// Deal with popstate fire on first load 
+
+		var popped = ('state' in window.history), initialURL = location.href;
 		window.onpopstate = function (ev) {
-			if (!pped) {
-				pped = true;
-				// Webkit nightly and Chrome 11 fire popState for no reason at first load
-				// Wordaround: skip if it's the first popstate firing provided that
-				// the user have not yet clicked on any link.
-				return;
-			}
-			pped = true;
+			// Ignore inital popstate that some browsers fire on page load
+			var initialPop = (!popped && location.href == initialURL);
+			popped = true;
+			if (initialPop) return;
+
 			getPage(window.location.href);
 		};
 	}
