@@ -224,10 +224,10 @@ jQuery(function ($) {
 
 	var programs;
 
-	if (
-		/(ipv6\.)?coscup\.org\.?/.test(window.location.domain)
-		|| window.location.protocol === 'file:'
-	) {
+//	if (
+//		/(ipv6\.)?coscup\.org\.?/.test(window.location.domain)
+//		|| window.location.protocol === 'file:'
+//	) {
 		$.getJSON(
 			'http://coscup.org/2011/api/program/?callback=?',
 			function (data) {
@@ -235,7 +235,7 @@ jQuery(function ($) {
 //		window.programs = programs;
 			}
 		);
-	}
+//	}
 	
 	var cardTimer;
 	
