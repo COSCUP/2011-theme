@@ -378,6 +378,12 @@ jQuery(function ($) {
 		window.history
 		&& history.pushState
 	) {
+		// http://stackoverflow.com/questions/4688164/window-bind-popstate
+		// Deal with popstate fire on first load
+		// See also https://hacks.mozilla.org/2011/03/history-api-changes-in-firefox-4/
+		// on difference between Safari 5 vs Fx4.
+		var popped = ('state' in window.history), initialURL = location.href;
+
 		$('a').live(
 			'click',
 			function (ev) {
@@ -392,14 +398,15 @@ jQuery(function ($) {
 
 				getPage(this.href);
 				history.pushState({'is':'pushed'}, '', this.href);
+
+				// Given the fact we had pushed a new state,
+				// the next popState event must not be initialPop even with initialURL.
+				popped = true;
+
 				return false;
 			}
 		);
 
-		// http://stackoverflow.com/questions/4688164/window-bind-popstate
-		// Deal with popstate fire on first load 
-
-		var popped = ('state' in window.history), initialURL = location.href;
 		window.onpopstate = function (ev) {
 			// Ignore inital popstate that some browsers fire on page load
 			var initialPop = (!popped && location.href == initialURL);
