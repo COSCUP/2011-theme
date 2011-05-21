@@ -752,13 +752,23 @@ h1, h2, h3 {
       #content > table.program:last-child {
         margin-bottom: 2em; }
     #content.bigtable {
-      overflow-x: scroll; }
+      overflow-x: scroll;
+      position: relative; }
       #content.bigtable table.program {
-        width: 1545px; }
+        width: 1580px; }
+        #content.bigtable table.program thead > tr > th {
+          width: 495px; }
+          #content.bigtable table.program thead > tr > th:nth-child(1) {
+            width: 88px;
+            position: absolute;
+            z-index: 110; }
         #content.bigtable table.program tbody > tr > th {
-          width: 45px; }
+          width: 68px;
+          position: absolute;
+          z-index: 100;
+          border-top: 1px solid #fff; }
         #content.bigtable table.program tbody > tr > td {
-          width: 500px; }
+          width: 495px; }
           #content.bigtable table.program tbody > tr > td > p {
             max-width: 500px; }
             #content.bigtable table.program tbody > tr > td > p.abstract, #content.bigtable table.program tbody > tr > td > p.bio {

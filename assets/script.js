@@ -275,8 +275,8 @@ jQuery(function ($) {
 	$('#content:not(.bigtable) table.program td').live(
 		'click',
 		function () {
-			$this = $(this);
-			$content = $('#content');
+			var $this = $(this);
+			var $content = $('#content');
 
 			$content.addClass('bigtable');
 			$(window).scrollTop($this.offset().top-50);
@@ -293,6 +293,11 @@ jQuery(function ($) {
 				$content.scrollLeft(1000);
 			}
 
+			$('table.program tbody>tr>th').each(function(){
+				var $this = $(this);
+				$this.height($this.parent().height()-($this.outerHeight()-$this.height())+1);
+			});
+
 			$content.scroll();
 
 		}
@@ -306,8 +311,8 @@ jQuery(function ($) {
 	$('#content.bigtable table.program td').live(
 		'click',
 		function () {
-			$this = $(this);
-			$content = $('#content');
+			var $this = $(this);
+			var $content = $('#content');
 
 
 			if ( ( ($this.hasClass("program_room_0") || $this.hasClass("program_room_2")) && displayingColumn === 2 )
@@ -315,8 +320,13 @@ jQuery(function ($) {
 				|| ( $this.hasClass("program_room_3") && displayingColumn === 3 )
 			   )
 			{
-				$content.removeClass('bigtable');
-				$('table.program tbody>tr>td').css('opacity', 1);
+				relativePosition = $this.offset().top - $(window).scrollTop();
+				if (relativePosition >= 0 && ((relativePosition+$this.height()) <= $(window).height() || relativePosition <= 100))
+				{
+					$content.removeClass('bigtable');
+					$('table.program tbody>tr>td').css('opacity', 1);
+					$('table.program tbody>tr>th').css('height', '');
+				}
 			}
 			else
 			{
@@ -339,39 +349,50 @@ jQuery(function ($) {
 	);
 
 
-	$('#content').scroll(
-		function()
-		{
-			$content = $('#content');
+	$('#content').scroll(function(){
+		var $content = $('#content');
 
-			if (!$content.hasClass('bigtable'))
-			{
-				return;
-			}
-
-			scrollLeft = $content.scrollLeft();
-
-
-			$('table.program tbody>tr>td').css('opacity', 0.5);
-
-			if (scrollLeft >= 575)
-			{
-				$('table.program tbody>tr>td.program_room_3').css('opacity', 1);
-				displayingColumn = 3;
-			}
-			else if (scrollLeft >= 190)
-			{
-				$('table.program tbody>tr>td.program_room_2, table.program tbody>tr>td.program_room_0').css('opacity', 1);
-				displayingColumn = 2;
-			}
-			else
-			{
-				$('table.program tbody>tr>td.program_room_1').css('opacity', 1);
-				displayingColumn = 1;
-			}
-
+		if (!$content.hasClass('bigtable')) {
+			return;
 		}
-	);
+
+		var scrollLeft = $content.scrollLeft();
+
+
+		$('table.program tbody>tr>td').css('opacity', 0.5);
+
+		if (scrollLeft >= 575) {
+			$('table.program tbody>tr>td.program_room_3').css('opacity', 1);
+			displayingColumn = 3;
+		} else if (scrollLeft >= 190) {
+			$('table.program tbody>tr>td.program_room_2, table.program tbody>tr>td.program_room_0').css('opacity', 1);
+			displayingColumn = 2;
+		} else {
+			$('table.program tbody>tr>td.program_room_1').css('opacity', 1);
+			displayingColumn = 1;
+		}
+
+		$('table.program tbody>tr>th').css('left', scrollLeft);
+		$('table.program thead>tr>th:nth-child(1)').css('left', scrollLeft);
+
+	});
+
+	/*
+	$(window).scroll(function(){
+		if (!$('#content').hasClass('bigtable')) {
+			return;
+		}
+		$('table.program').each(function() {
+			$this = $(this);
+			var offsetTop = $this.offset().top-$(window).scrollTop();
+			if(offsetTop < 0 && offsetTop+$this.height() >= 0) {
+				$this.children('thead').css({position: 'absolute', top: $(window).scrollTop()-$this.offset().top});
+			} else {
+				$this.children('thead').css({position: '', top: ''});
+			}
+		});
+	});
+	*/
 
 
 

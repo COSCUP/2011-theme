@@ -793,16 +793,30 @@ $msg_arrow: $line_height / 2;
 		
 		&.bigtable {
 			overflow-x: scroll;
+			position: relative;
 
 			table.program {
-				width: 1545px;
+				width: 1580px;
+
+				thead > tr > th{
+					width: 495px;
+
+					&:nth-child(1){
+						width: 88px;
+						position: absolute;
+						z-index: 110;
+					}
+				}
 
 				tbody > tr {
 					> th {
-						width: 45px;
+						width: 68px;
+						position: absolute;
+						z-index: 100;
+						border-top: 1px solid #fff;
 					}
 					> td {
-						width: 500px;
+						width: 495px;
 						> p
 						{
 							max-width: 500px;
