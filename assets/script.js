@@ -279,7 +279,7 @@ jQuery(function ($) {
 			var $content = $('#content');
 
 			$content.addClass('bigtable');
-			$(window).scrollTop($this.offset().top-50);
+			$(window).scrollTop($this.offset().top);
 			if( $this.hasClass("program_room_0") || $this.hasClass("program_room_2") )
 			{
 				$content.scrollLeft(400);
@@ -344,7 +344,7 @@ jQuery(function ($) {
 				}
 			}
 
-			$(window).scrollTop($this.offset().top-50);
+			$(window).scrollTop($this.offset().top);
 		}
 	);
 
