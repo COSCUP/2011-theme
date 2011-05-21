@@ -541,7 +541,7 @@ $msg_arrow: $line_height / 2;
 		@include grid($width - $sidebar_width);
 		
 		min-height: 50%;
-		
+
 		a {
 			color: #000;
 			text-decoration: underline;
@@ -773,7 +773,7 @@ $msg_arrow: $line_height / 2;
 						&:before {
 						}
 					}
-					&.room {
+					&.room, &.abstract, &.bio{
 						display: none;
 					}
 					&.speaker, &.speakerTitle {
@@ -788,8 +788,32 @@ $msg_arrow: $line_height / 2;
 			&:last-child {
 				margin-bottom: 2em;
 			}
+
 		}
 		
+		&.bigtable {
+			overflow-x: scroll;
+
+			table.program {
+				width: 1545px;
+
+				tbody > tr {
+					> th {
+						width: 45px;
+					}
+					> td {
+						width: 500px;
+						> p
+						{
+							max-width: 500px;
+							&.abstract, &.bio {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
