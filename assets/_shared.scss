@@ -66,6 +66,13 @@ h1, h2, h3 {
 	@include largeFont;
 }
 
+code {
+	background-color: ghostWhite;
+	color: #444;
+	padding: 0px 0.2em;
+	border: 1px solid #dedede;
+}
+
 #content {
 	> ul.types {
 		> li {

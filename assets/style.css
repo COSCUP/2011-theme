@@ -13,6 +13,12 @@ img {
 h1, h2, h3 {
   font-family: 'Cabin', arial, sans-serif; }
 
+code {
+  background-color: ghostWhite;
+  color: #444;
+  padding: 0px 0.2em;
+  border: 1px solid #dedede; }
+
 #content > ul.types > li:before {
   display: inline-block;
   margin-right: 6px; }
