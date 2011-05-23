@@ -185,6 +185,7 @@ code {
     text-align: justify; }
   #content > iframe:first-child {
     margin-top: 22px; } }
+
 @media screen {
   body {
     width: 1120px;
@@ -247,6 +248,9 @@ code {
           width: 270px;
           height: 107.115px;
           background: transparent url("coscup.png") center center no-repeat;
+          @media (-webkit-min-device-pixel-ratio: 2) {
+            background: transparent url("coscup.svg") center center no-repeat; }
+
           background-size: cover;
           text-indent: -10000px; }
       #header > .info > #title {
@@ -396,7 +400,7 @@ code {
             -o-transition: background 0.2s ease-in;
             transition: background 0.2s ease-in; }
         #header > .info > #language li {
-          border-right: none !important;
+          border-right: none!important;
           padding-right: 2px; }
           #header > .info > #language li:last-child {
             padding-right: 0; }
@@ -744,7 +748,7 @@ code {
           #content > table.program td > p.name {
             font-weight: bold;
             margin: 0 0 0.5em 0; }
-          #content > table.program td > p.room {
+          #content > table.program td > p.room, #content > table.program td > p.abstract, #content > table.program td > p.bio {
             display: none; }
           #content > table.program td > p.speaker, #content > table.program td > p.speakerTitle {
             margin: 0;
@@ -752,10 +756,30 @@ code {
         #content > table.program td:before {
           margin-right: 10px; }
       #content > table.program:last-child {
-        margin-bottom: 2em; } }
-        @media screen and (-webkit-min-device-pixel-ratio: 2) {
-          #header > .info > h1 > a {
-            background: transparent url("coscup.svg") center center no-repeat; } }
+        margin-bottom: 2em; }
+    #content.bigtable {
+      overflow-x: scroll;
+      position: relative; }
+      #content.bigtable table.program {
+        width: 1580px; }
+        #content.bigtable table.program thead > tr > th {
+          width: 495px; }
+          #content.bigtable table.program thead > tr > th:nth-child(1) {
+            width: 88px;
+            position: absolute;
+            z-index: 110; }
+        #content.bigtable table.program tbody > tr > th {
+          width: 68px;
+          position: absolute;
+          z-index: 100;
+          border-top: 1px solid #fff; }
+        #content.bigtable table.program tbody > tr > td {
+          width: 495px; }
+          #content.bigtable table.program tbody > tr > td > p {
+            max-width: 500px; }
+            #content.bigtable table.program tbody > tr > td > p.abstract, #content.bigtable table.program tbody > tr > td > p.bio {
+              display: block; } }
+
 @media screen and (min-width: 481px) and (max-width: 1180px) {
   body {
     width: 1000px; }
