@@ -4,13 +4,15 @@
 
 載入步驟：
 
-1. getPage() 或是 HTML 載入內容
+1. HTML 載入內容，或是 getPage() 從 pages / xhr 抓到內容後由 insertPage() 處理
 2. loadPage() 加入載入內容後需要的函式（無論是手機或桌面版面）
 2.1 如果是手機版面
 2.1.1 執行 deferLoad() 把不該載入的 iframe 洗掉
 2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
 2.2 如果是桌面版面
 2.2.1 執行 fullLoad()
+2.2.2 掃描網頁上的 <a>，如果是站內連結加入 prefetchQueue，起始 fetchPage() 執行背景抓取
+2.2.3 fetchPage() 抓到頁面會將 HTML 存入 pages Array
 
 getPage() 是在 HTML5 History API 存在的情況下才會使用的 partial loading 方法。
 
@@ -329,18 +331,89 @@ jQuery(function ($) {
 		} else {
 			// load desktop stuff
 			fullLoad();
+
+			if (
+				window.history
+				&& history.pushState
+			) {
+				// prefetch other pages
+				$('a').each(
+					function () {
+						// skip external links
+						if (
+							this.hostname !== window.location.hostname
+							|| !/2011/.test(this.pathname)
+							|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
+							|| this.href === window.location.href
+							|| pages[this.href]
+						) return;
+
+						prefetchQueue.push(this.href);
+						pages[this.href] = 'fetching';
+
+						// start the sequence
+						if (prefetchQueue.length === 1) fetchPage();
+					}
+				);
+			}
 		}
 	}
-	loadPage();
 
-	var getPageXhr;
+	var getPageXhr, pages = {}, prefetchQueue = [];
 
-	function getPage(href) {
-		var $content = $('#content').addClass('loading');
+	function getPage(href, samepage) {
 		$(window).unbind('resize.defer');
 
 		if (getPageXhr) getPageXhr.abort();
-		getPageXhr = $.ajax(
+
+		if (!samepage && pages[href] && pages[href] !== 'fetching') {
+			insertPage(pages[href]);
+		} else {
+			var $content = $('#content').addClass('loading');
+			getPageXhr = $.ajax(
+				{
+					url: href,
+					dataType: 'html',
+					cache: !samepage, // nocache if user attempt to load the same page again
+					complete: function (res, status) {
+						if (
+							status === "success"
+							|| status === "notmodified"
+						) {
+							$content.removeClass('loading');
+							pages[href] = res.responseText;
+							insertPage(res.responseText);
+						} else {
+							window.location.replace(href);
+						}
+					}
+				}
+			);
+		}
+	}
+
+	function insertPage(html) {
+		var $h = $('<div />').append(
+			html
+			.match(/<body\b([^\u0000]+)<\/body>/)[0]
+			.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+		);
+
+		document.title = html.match(/<title>(.+)<\/title>/)[1];
+		$('#content').html($h.find('#content').children()).removeClass('loading');
+
+		if (!$h.find('#nav').is('.empty')) {
+			$('#nav').html($h.find('#nav').children());
+		}
+
+		if (window._gaq) _gaq.push(['_trackPageview']);
+
+		loadPage();
+	}
+
+	function fetchPage() {
+		var href = prefetchQueue.shift();
+		$.ajax(
 			{
 				url: href,
 				dataType: 'html',
@@ -350,29 +423,15 @@ jQuery(function ($) {
 						status === "success"
 						|| status === "notmodified"
 					) {
-						var $h = $('<div />').append(
-							res.responseText
-							.match(/<body\b([^\u0000]+)<\/body>/)[0]
-							.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-						);
-
-						document.title = res.responseText.match(/<title>(.+)<\/title>/)[1];
-						$content.html($h.find('#content').children()).removeClass('loading');
-
-						if (!$h.find('#nav').is('.empty')) {
-							$('#nav').html($h.find('#nav').children());
-						}
-						
-						if (window._gaq) _gaq.push(['_trackPageview']);
-						
-						loadPage();
-					} else {
-						window.location.replace(href);
+						pages[href] = res.responseText;
 					}
+					if (prefetchQueue.length !== 0) fetchPage();
 				}
 			}
-		)
+		);
 	}
+
+	loadPage();
 
 	if (
 		window.history
@@ -396,8 +455,10 @@ jQuery(function ($) {
 					|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
 				) return true;
 
-				getPage(this.href);
+				var samepage = (this.href === window.location.href);
+
 				history.pushState({'is':'pushed'}, '', this.href);
+				getPage(this.href, samepage);
 
 				// Given the fact we had pushed a new state,
 				// the next popState event must not be initialPop even with initialURL.
@@ -413,7 +474,7 @@ jQuery(function ($) {
 			popped = true;
 			if (initialPop) return;
 
-			getPage(window.location.href);
+			getPage(window.location.href, false);
 		};
 	}
 });
