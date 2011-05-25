@@ -546,7 +546,7 @@ code {
         #sidebar .sponsors > ul > li > a, #sidebar .sponsors-after > ul > li > a {
           display: block;
           width: 178px;
-          padding: 4px 26px;
+          padding: 9px 26px;
           -moz-transition: padding 0.2s;
           -webkit-transition: padding 0.2s;
           -ms-transition: padding 0.2s;
@@ -784,7 +784,7 @@ code {
     margin-left: 5px;
     margin-right: 5px; }
     #sidebar .sponsors > ul > li > a {
-      padding: 4px 6px; }
+      padding: 9px 6px; }
 
   #content {
     width: 790px;

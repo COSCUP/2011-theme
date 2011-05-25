@@ -516,7 +516,7 @@ $msg_arrow: $line_height / 2;
 					> a {
 						display: block;
 						width: 178px;
-						padding: (80px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
+						padding: (90px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
 						@include prefix(transition, padding .2s);
 						height: 72px;
 						> img {
@@ -836,7 +836,7 @@ $msg_arrow: $line_height / 2;
 	#sidebar {
 		@include grid($sidebar_width);
 		.sponsors > ul > li > a {
-			padding: (80px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
+			padding: (90px - 72px) / 2 (($gutter * ($sidebar_width - 1) + $col * $sidebar_width ) - 178px) / 2;
 		}
 	}
 
