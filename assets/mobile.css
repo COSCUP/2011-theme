@@ -364,19 +364,12 @@ code {
         -webkit-border-bottom-right-radius: 8px;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px; }
-      #header > .info > #nav > ul > li:last-child.current > a, #header > .info > #nav > ul > li:last-child.current-ancestor > a {
+      #header > .info > #nav > ul > li:last-child.current > a:not(:last-child), #header > .info > #nav > ul > li:last-child.current-ancestor > a:not(:last-child) {
         -moz-border-radius: 0;
         -webkit-border-radius: 0;
         -ms-border-radius: 0;
         -o-border-radius: 0;
         border-radius: 0; }
-      #header > .info > #nav > ul > li:last-child.current > a:last-child, #header > .info > #nav > ul > li:last-child.current-ancestor > a:last-child {
-        -moz-border-radius-bottomleft: 8px;
-        -moz-border-radius-bottomright: 8px;
-        -webkit-border-bottom-left-radius: 8px;
-        -webkit-border-bottom-right-radius: 8px;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px; }
       #header > .info > #nav > ul > li > ul {
         display: none; }
       #header > .info > #nav > ul > li.current > ul, #header > .info > #nav > ul > li.current-ancestor > ul {

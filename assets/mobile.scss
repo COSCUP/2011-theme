@@ -260,16 +260,9 @@
 							border-bottom-left-radius: 8px;
 							border-bottom-right-radius: 8px;
 						}
-						&.current > a, &.current-ancestor > a { // when there is a sub-menu
+						&.current > a:not(:last-child),
+						&.current-ancestor > a:not(:last-child) { // when there is a sub-menu
 							@include prefix(border-radius, 0);
-						}
-						&.current > a:last-child, &.current-ancestor > a:last-child { // when there actually isnt
-							-moz-border-radius-bottomleft: 8px;
-							-moz-border-radius-bottomright: 8px;
-							-webkit-border-bottom-left-radius: 8px;
-							-webkit-border-bottom-right-radius: 8px;
-							border-bottom-left-radius: 8px;
-							border-bottom-right-radius: 8px;
 						}
 					}
 					> ul {
