@@ -455,10 +455,14 @@ jQuery(function ($) {
 					|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
 				) return true;
 
-				var samepage = (this.href === window.location.href);
+				var href = this.href,
+				samepage = (this.href === window.location.href);
 
-				history.pushState({'is':'pushed'}, '', this.href);
-				getPage(this.href, samepage);
+				// Must be called before getPage() so relative links on the new page could be resolved properly
+				history.pushState({'is':'pushed'}, '', href);
+
+				// However, this.href will change for a relative link beyond this point
+				getPage(href, samepage);
 
 				// Given the fact we had pushed a new state,
 				// the next popState event must not be initialPop even with initialURL.
