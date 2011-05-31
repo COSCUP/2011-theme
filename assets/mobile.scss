@@ -25,8 +25,10 @@
 		@include prefix(transition, 0);
 		
 		width: 100%;
-		overflow: hidden;
 		
+		div {
+			overflow: hidden;
+		}
 		min-height: 40 * 2 + 60px;
 		
 		a {
@@ -97,6 +99,9 @@
 		> table.program {
 			display: block;
 			border-bottom: 1px solid #ccc;
+			margin: 0 -5px;
+			overflow: hidden;
+
 			thead {
 				display: none;
 			}
@@ -106,6 +111,7 @@
 			th, td {
 				display: block;
 				text-align: left;
+				margin: 0 5px;
 			}
 			th {
 				border-bottom: 3px solid $dark;
@@ -122,7 +128,7 @@
 				&:last-child {
 					border: none;
 				}
-				> p {
+				p {
 					margin: 0;
 					&.name {
 						font-weight: bold;
@@ -141,6 +147,48 @@
 						clear: right;
 						font-size: 82%;
 						//padding-bottom: 0.5em;
+					}
+				}
+				&.expend > .info {
+					display: block;
+				}
+				> .info {
+					background-color: #e8e8e8;
+					@include prefix(box-shadow, 0 0 5px #666 inset);
+					position: relative;
+					margin: ($line_height / 2) (- $gutter - 5px - 5px);
+					padding: 10px ($gutter + 5px + 5px) 0.5em ($gutter + 5px + 5px);
+					p {
+						margin: ($line_height / 2) 0;
+					}
+					overflow: hidden;
+					display: none;
+					&:before {
+						content: '';
+						position: absolute;
+						top: - 10 * 1.4142px; left: 50%;
+						width: 20px; height: 20px;
+						margin-left: -10px;
+						background-color: #f8f8f8;
+						@include prefix(box-shadow, 0 0 3.53px #666);
+						@include prefix(transform, matrix(1, 1, -1, 1, 0, 0));
+					}
+					.meta {
+						padding: ($line_height / 2) 0;
+						margin: 0;
+						display: block;
+						color: #666;
+						font-size: 82%;
+						> li {
+							display: inline;
+							list-style: none;
+							&:not(:first-child):before {
+								content: '．';
+							}
+						}
+					}
+					> :not(:first-child) {
+						border-top: 1px solid #d0d0d0;
 					}
 				}
 			}

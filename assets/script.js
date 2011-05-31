@@ -296,6 +296,7 @@ jQuery(function ($) {
 
 	function loadPage() {
 		mobileSponsorLogo();
+		insertProgramInfo();
 	
 		$('#header').css(
 			'background-position',
@@ -481,4 +482,66 @@ jQuery(function ($) {
 			getPage(window.location.href, false);
 		};
 	}
+
+	function insertProgramInfo() {
+		if (!programs) return;
+
+		var types = (function () {
+			var types = {};
+			$('.types li').each(
+				function (i, el) {
+					types[(i+1).toString(10)] = $(this).text();
+				}
+			);
+			return types;
+		})();
+
+		$('table.program td').each(
+			function () {
+				var $this = $(this),
+				program = programs[$this.data('pid')];
+
+				if (!program || program.type === 0) return;
+
+				var $meta = $('<ul class="meta" />'),
+				lang = ({'en': 'English', 'zh': '\u6f22\u8a9e'})[(this.className.match(/program_lang_(\w+)\b/) || [])[1]],
+				type = types[(this.className.match(/program_type_(\w+)\b/) || [])[1]];
+
+				if (lang) $meta.append($('<li />').text(lang));
+				if (type) $meta.append($('<li />').text(type));
+
+				var $info = $('<div class="info" />').append(
+					$('<div class="abstract" />').html(program['abstract'])
+				).append(
+					$('<div class="bio" />').html(program.bio)
+				);
+
+				if ($meta.children().length) $info.append($meta);
+
+				$this.append($info);
+			}
+		);
+	}
+
+	// preload program wherever page we are on the main site
+	var programs;
+
+	if (
+		!/((blog|sponsor|register)\.)?coscup\.org\.?/.test(window.location.domain)
+	) {
+		$.getJSON(
+			'http://coscup.org/2011/api/program/?callback=?',
+			function (data) {
+				programs = data;
+				insertProgramInfo();
+			}
+		);
+	}
+
+	$('table.program td').live(
+		'click',
+		function () {
+			$(this).toggleClass('expend');
+		}
+	);
 });

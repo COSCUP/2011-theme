@@ -781,6 +781,9 @@ $msg_arrow: $line_height / 2;
 						color: #484848;
 					}
 				}
+				> .info {
+					display: none;
+				}
 				&:before {
 					margin-right: $gutter;
 				}

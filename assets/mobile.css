@@ -162,8 +162,9 @@ code {
     -o-transition: 0;
     transition: 0;
     width: 100%;
-    overflow: hidden;
     min-height: 140px; }
+    #content div {
+      overflow: hidden; }
     #content a {
       color: #000;
       text-decoration: underline; }
@@ -219,14 +220,17 @@ code {
         display: block; }
     #content > table.program {
       display: block;
-      border-bottom: 1px solid #ccc; }
+      border-bottom: 1px solid #ccc;
+      margin: 0 -5px;
+      overflow: hidden; }
       #content > table.program thead {
         display: none; }
       #content > table.program tbody, #content > table.program tr {
         display: block; }
       #content > table.program th, #content > table.program td {
         display: block;
-        text-align: left; }
+        text-align: left;
+        margin: 0 5px; }
       #content > table.program th {
         border-bottom: 3px solid #42b535;
         background-color: #c7d7a0;
@@ -239,21 +243,69 @@ code {
         padding: 0.5em 10px; }
         #content > table.program td:last-child {
           border: none; }
-        #content > table.program td > p {
+        #content > table.program td p {
           margin: 0; }
-          #content > table.program td > p.name {
+          #content > table.program td p.name {
             font-weight: bold;
             margin-right: 60px; }
-            #content > table.program td > p.name:before {
+            #content > table.program td p.name:before {
               margin-right: -60px; }
-          #content > table.program td > p.speaker, #content > table.program td > p.speakerTitle {
+          #content > table.program td p.speaker, #content > table.program td p.speakerTitle {
             color: #333;
             margin-right: 20%; }
-          #content > table.program td > p.room {
+          #content > table.program td p.room {
             color: #666;
             float: right;
             clear: right;
             font-size: 82%; }
+        #content > table.program td.expend > .info {
+          display: block; }
+        #content > table.program td > .info {
+          background-color: #e8e8e8;
+          -moz-box-shadow: 0 0 5px #666666 inset;
+          -webkit-box-shadow: 0 0 5px #666666 inset;
+          -ms-box-shadow: 0 0 5px #666666 inset;
+          -o-box-shadow: 0 0 5px #666666 inset;
+          box-shadow: 0 0 5px #666666 inset;
+          position: relative;
+          margin: 11px -20px;
+          padding: 10px 20px 0.5em 20px;
+          overflow: hidden;
+          display: none; }
+          #content > table.program td > .info p {
+            margin: 11px 0; }
+          #content > table.program td > .info:before {
+            content: '';
+            position: absolute;
+            top: -14.142px;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+            background-color: #f8f8f8;
+            -moz-box-shadow: 0 0 3.53px #666666;
+            -webkit-box-shadow: 0 0 3.53px #666666;
+            -ms-box-shadow: 0 0 3.53px #666666;
+            -o-box-shadow: 0 0 3.53px #666666;
+            box-shadow: 0 0 3.53px #666666;
+            -moz-transform: matrix(1, 1, -1, 1, 0, 0);
+            -webkit-transform: matrix(1, 1, -1, 1, 0, 0);
+            -ms-transform: matrix(1, 1, -1, 1, 0, 0);
+            -o-transform: matrix(1, 1, -1, 1, 0, 0);
+            transform: matrix(1, 1, -1, 1, 0, 0); }
+          #content > table.program td > .info .meta {
+            padding: 11px 0;
+            margin: 0;
+            display: block;
+            color: #666;
+            font-size: 82%; }
+            #content > table.program td > .info .meta > li {
+              display: inline;
+              list-style: none; }
+              #content > table.program td > .info .meta > li:not(:first-child):before {
+                content: '．'; }
+          #content > table.program td > .info > :not(:first-child) {
+            border-top: 1px solid #d0d0d0; }
       #content > table.program:last-child {
         margin-bottom: 1em; }
 

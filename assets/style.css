@@ -749,6 +749,8 @@ code {
           #content > table.program td > p.speaker, #content > table.program td > p.speakerTitle {
             margin: 0;
             color: #484848; }
+        #content > table.program td > .info {
+          display: none; }
         #content > table.program td:before {
           margin-right: 10px; }
       #content > table.program:last-child {
