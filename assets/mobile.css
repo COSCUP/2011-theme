@@ -163,7 +163,7 @@ code {
     transition: 0;
     width: 100%;
     min-height: 140px; }
-    #content div {
+    #content > #main-blogger {
       overflow: hidden; }
     #content a {
       color: #000;
