@@ -166,11 +166,11 @@
 					&:before {
 						content: '';
 						position: absolute;
-						top: -20px; left: 50%;
+						top: -24px; left: 50%;
 						width: 20px; height: 20px;
 						background-color: #f8f8f8;
 						@include prefix(box-shadow, 0 0 3.53px #666);
-						@include prefix(transform, matrix(1, 1, -1, 1, -10, 5));
+						@include prefix(transform, matrix(1, 1, -1, 1, -10, 9));
 					}
 					.meta {
 						padding: ($line_height / 2) 0;
