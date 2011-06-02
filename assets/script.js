@@ -454,6 +454,7 @@ jQuery(function ($) {
 					this.hostname !== window.location.hostname
 					|| !/2011/.test(this.pathname)
 					|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
+					|| this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
 				) return true;
 
 				var href = this.href,
