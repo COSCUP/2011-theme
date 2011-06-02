@@ -520,6 +520,11 @@ jQuery(function ($) {
 
 				$this.append($info);
 			}
+		).bind(
+			'click',
+			function () {
+				$(this).toggleClass('expend');
+			}
 		);
 	}
 
@@ -537,11 +542,4 @@ jQuery(function ($) {
 			}
 		);
 	}
-
-	$('table.program td').live(
-		'click',
-		function () {
-			$(this).toggleClass('expend');
-		}
-	);
 });
