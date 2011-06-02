@@ -695,6 +695,8 @@ code {
         margin: 0;
         text-align: right;
         font-size: 92%; }
+    #content > ul.shortcuts {
+      display: none; }
     #content > ul.types {
       margin: 0 -6px 0 0;
       padding: 0; }

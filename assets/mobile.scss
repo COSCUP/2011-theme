@@ -87,6 +87,50 @@
 				border-bottom: 3px solid $dark;
 			}
 		}
+		
+		> ul.shortcuts {
+			margin: $line_height $gutter;
+			padding: 0;
+			display: block;
+			background-color: #eee;
+			//border: 1px solid #ccc;
+			border-top: 1px solid #ccc;
+			border-left: 1px solid #ccc;
+			overflow: hidden;
+			@include prefix(border-radius, 8px);
+			> li {
+				display: block; float: left;
+				margin: 0; padding: 0;
+				width: 50%;
+
+				&.fullwidth {
+					width: 100%;
+				}
+
+				> a {
+					display: block;
+					margin: 0; padding: 6px 0;
+					text-align: center;
+					width: 100%;
+					font-size: 18px;
+					text-decoration: none;
+					margin-left: -1px;
+					border-bottom: 1px solid #ccc;
+					border-right: 1px solid #ccc;
+				}
+
+				&:last-child a {
+					-moz-border-radius-bottomright: 8px;
+					-webkit-border-bottom-right-radius: 8px;
+					border-bottom-right-radius: 8px;
+				}
+			}
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
 
 		> ul.types {
 			margin: 0 $gutter;

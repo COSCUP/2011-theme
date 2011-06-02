@@ -709,6 +709,10 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 		
+		> ul.shortcuts {
+			display: none;
+		}
+		
 		> ul.types {
 			margin: 0 -6px 0 0;
 			padding: 0;

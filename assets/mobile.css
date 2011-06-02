@@ -213,6 +213,46 @@ code {
         margin: 22px -11px;
         padding: 0 11px;
         border-bottom: 3px solid #42b535; }
+    #content > ul.shortcuts {
+      margin: 22px 10px;
+      padding: 0;
+      display: block;
+      background-color: #eee;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      overflow: hidden;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+      border-radius: 8px; }
+      #content > ul.shortcuts > li {
+        display: block;
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 50%; }
+        #content > ul.shortcuts > li.fullwidth {
+          width: 100%; }
+        #content > ul.shortcuts > li > a {
+          display: block;
+          margin: 0;
+          padding: 6px 0;
+          text-align: center;
+          width: 100%;
+          font-size: 18px;
+          text-decoration: none;
+          margin-left: -1px;
+          border-bottom: 1px solid #ccc;
+          border-right: 1px solid #ccc; }
+        #content > ul.shortcuts > li:last-child a {
+          -moz-border-radius-bottomright: 8px;
+          -webkit-border-bottom-right-radius: 8px;
+          border-bottom-right-radius: 8px; }
+      #content > ul.shortcuts:after {
+        content: '';
+        display: block;
+        clear: both; }
     #content > ul.types {
       margin: 0 10px;
       padding: 0; }
