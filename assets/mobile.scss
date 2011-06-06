@@ -140,7 +140,7 @@
 			}
 		}
 
-		> table.program {
+		table.program {
 			display: block;
 			border-bottom: 1px solid #ccc;
 			margin: 0 -5px;
@@ -171,6 +171,11 @@
 				padding: 0.5em $gutter;
 				&:last-child {
 					border: none;
+				}
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
 				}
 				p {
 					margin: 0;
@@ -213,25 +218,11 @@
 						top: -24px; left: 50%;
 						width: 20px; height: 20px;
 						background-color: #f8f8f8;
-						@include prefix(box-shadow, 0 0 3.53px #666);
-						@include prefix(transform, matrix(1, 1, -1, 1, -10, 9));
-					}
-					.meta {
-						padding: ($line_height / 2) 0;
-						margin: 0;
-						display: block;
-						color: #666;
-						font-size: 82%;
-						> li {
-							display: inline;
-							list-style: none;
-							&:not(:first-child):before {
-								content: '．';
-							}
-						}
+						@include prefix(box-shadow, 0 0 4.41px #666);
+						@include prefix(transform, matrix(0.8, 1, -0.8, 1, -10, 9));
 					}
 					> :not(:first-child) {
-						border-top: 1px solid #d0d0d0;
+						border-top: 1px dashed #aaa;
 					}
 				}
 			}

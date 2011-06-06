@@ -22,7 +22,7 @@ code {
   display: inline-block;
   margin-right: 6px; }
 #content > ul.types > li:before,
-#content > table.program td:before {
+#content table.program td:before {
   content: '';
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -31,39 +31,49 @@ code {
   border-radius: 6px;
   padding: 6px; }
 #content > ul.types > li.program_type_0:before,
-#content > table.program td.program_type_0:before {
+#content table.program td.program_type_0:before {
   content: none; }
 #content > ul.types > li.program_type_1:before,
-#content > table.program td.program_type_1:before {
+#content table.program td.program_type_1:before {
   background-color: red; }
 #content > ul.types > li.program_type_2:before,
-#content > table.program td.program_type_2:before {
+#content table.program td.program_type_2:before {
   background-color: yellow; }
 #content > ul.types > li.program_type_3:before,
-#content > table.program td.program_type_3:before {
+#content table.program td.program_type_3:before {
   background-color: lime; }
 #content > ul.types > li.program_type_4:before,
-#content > table.program td.program_type_4:before {
+#content table.program td.program_type_4:before {
   background-color: aqua; }
 #content > ul.types > li.program_type_5:before,
-#content > table.program td.program_type_5:before {
+#content table.program td.program_type_5:before {
   background-color: blue; }
 #content > ul.types > li.program_type_6:before,
-#content > table.program td.program_type_6:before {
+#content table.program td.program_type_6:before {
   background-color: fuchsia; }
-#content > table.program td:before {
+#content table.program td:before {
   margin: 0 0 6px 6px;
   display: block;
   float: right; }
-#content > table.program td.program_lang_en > p.name:before {
+#content table.program td.program_lang_en > p.name:before {
   background-color: #666;
   color: #fff;
   content: 'En'; }
-#content > table.program td.program_lang_zh > p.name:before {
+#content table.program td.program_lang_zh > p.name:before {
   background-color: #fff;
   color: #000;
   content: '漢'; }
-#content > table.program td > p.name:before {
+#content table.program td.program_break {
+  text-align: center;
+  padding: 1em 0; }
+  #content table.program td.program_break:before {
+    display: none; }
+  #content table.program td.program_break > p.name {
+    color: #666;
+    margin: 0; }
+    #content table.program td.program_break > p.name:before {
+      display: none; }
+#content table.program td > p.name:before {
   margin: 0 0 6px 6px;
   float: right;
   clear: right;
@@ -78,6 +88,17 @@ code {
   -o-border-radius: 6px;
   border-radius: 6px;
   text-align: center; }
+#content table.program td > .info .meta {
+  padding: 11px 0;
+  margin: 0;
+  display: block;
+  color: #666;
+  font-size: 82%; }
+  #content table.program td > .info .meta > li {
+    display: inline;
+    list-style: none; }
+    #content table.program td > .info .meta > li:not(:first-child):before {
+      content: '．'; }
 
 .sprite {
   display: block;
@@ -258,49 +279,53 @@ code {
       padding: 0; }
       #content > ul.types > li {
         display: block; }
-    #content > table.program {
+    #content table.program {
       display: block;
       border-bottom: 1px solid #ccc;
       margin: 0 -5px;
       overflow: hidden; }
-      #content > table.program thead {
+      #content table.program thead {
         display: none; }
-      #content > table.program tbody, #content > table.program tr {
+      #content table.program tbody, #content table.program tr {
         display: block; }
-      #content > table.program th, #content > table.program td {
+      #content table.program th, #content table.program td {
         display: block;
         text-align: left;
         margin: 0 5px; }
-      #content > table.program th {
+      #content table.program th {
         border-bottom: 3px solid #42b535;
         background-color: #c7d7a0;
         padding: 0.25em 10px;
         color: #c7d7a0; }
-        #content > table.program th > span {
+        #content table.program th > span {
           color: #000; }
-      #content > table.program td {
+      #content table.program td {
         border-bottom: 1px solid #ccc;
         padding: 0.5em 10px; }
-        #content > table.program td:last-child {
+        #content table.program td:last-child {
           border: none; }
-        #content > table.program td p {
+        #content table.program td:after {
+          content: '';
+          display: block;
+          clear: both; }
+        #content table.program td p {
           margin: 0; }
-          #content > table.program td p.name {
+          #content table.program td p.name {
             font-weight: bold;
             margin-right: 60px; }
-            #content > table.program td p.name:before {
+            #content table.program td p.name:before {
               margin-right: -60px; }
-          #content > table.program td p.speaker, #content > table.program td p.speakerTitle {
+          #content table.program td p.speaker, #content table.program td p.speakerTitle {
             color: #333;
             margin-right: 20%; }
-          #content > table.program td p.room {
+          #content table.program td p.room {
             color: #666;
             float: right;
             clear: right;
             font-size: 82%; }
-        #content > table.program td.expend > .info {
+        #content table.program td.expend > .info {
           display: block; }
-        #content > table.program td > .info {
+        #content table.program td > .info {
           background-color: #e8e8e8;
           -moz-box-shadow: 0 0 5px #666666 inset;
           -webkit-box-shadow: 0 0 5px #666666 inset;
@@ -312,9 +337,9 @@ code {
           padding: 10px 20px 0.5em 20px;
           overflow: hidden;
           display: none; }
-          #content > table.program td > .info p {
+          #content table.program td > .info p {
             margin: 11px 0; }
-          #content > table.program td > .info:before {
+          #content table.program td > .info:before {
             content: '';
             position: absolute;
             top: -24px;
@@ -322,30 +347,19 @@ code {
             width: 20px;
             height: 20px;
             background-color: #f8f8f8;
-            -moz-box-shadow: 0 0 3.53px #666666;
-            -webkit-box-shadow: 0 0 3.53px #666666;
-            -ms-box-shadow: 0 0 3.53px #666666;
-            -o-box-shadow: 0 0 3.53px #666666;
-            box-shadow: 0 0 3.53px #666666;
-            -moz-transform: matrix(1, 1, -1, 1, -10, 9);
-            -webkit-transform: matrix(1, 1, -1, 1, -10, 9);
-            -ms-transform: matrix(1, 1, -1, 1, -10, 9);
-            -o-transform: matrix(1, 1, -1, 1, -10, 9);
-            transform: matrix(1, 1, -1, 1, -10, 9); }
-          #content > table.program td > .info .meta {
-            padding: 11px 0;
-            margin: 0;
-            display: block;
-            color: #666;
-            font-size: 82%; }
-            #content > table.program td > .info .meta > li {
-              display: inline;
-              list-style: none; }
-              #content > table.program td > .info .meta > li:not(:first-child):before {
-                content: '．'; }
-          #content > table.program td > .info > :not(:first-child) {
-            border-top: 1px solid #d0d0d0; }
-      #content > table.program:last-child {
+            -moz-box-shadow: 0 0 4.41px #666666;
+            -webkit-box-shadow: 0 0 4.41px #666666;
+            -ms-box-shadow: 0 0 4.41px #666666;
+            -o-box-shadow: 0 0 4.41px #666666;
+            box-shadow: 0 0 4.41px #666666;
+            -moz-transform: matrix(0.8, 1, -0.8, 1, -10, 9);
+            -webkit-transform: matrix(0.8, 1, -0.8, 1, -10, 9);
+            -ms-transform: matrix(0.8, 1, -0.8, 1, -10, 9);
+            -o-transform: matrix(0.8, 1, -0.8, 1, -10, 9);
+            transform: matrix(0.8, 1, -0.8, 1, -10, 9); }
+          #content table.program td > .info > :not(:first-child) {
+            border-top: 1px dashed #aaa; }
+      #content table.program:last-child {
         margin-bottom: 1em; }
 
   #header, #footer {

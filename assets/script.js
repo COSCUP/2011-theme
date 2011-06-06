@@ -497,6 +497,50 @@ jQuery(function ($) {
 			return types;
 		})();
 
+		$.fn.translateTo = function (left) {
+			if (left) {
+				left += 10;
+				return this.addClass('translate').css({
+					'-webkit-transform': 'translateX(' + left.toString(10) + 'px)',
+					'-moz-transform': 'translateX(' + left.toString(10) + 'px)',
+					'-ms-transform': 'translateX(' + left.toString(10) + 'px)',
+					'transform': 'translateX(' + left.toString(10) + 'px)'
+				});
+			} else {
+				return this.removeClass('translate').css({
+					'-webkit-transform': '',
+					'-moz-transform': '',
+					'-ms-transform': '',
+					'transform': ''
+				});
+			}
+		};
+
+		var scrollTimer;
+
+		$('table.program').each(
+			function () {
+				var $this = $(this),
+				$prev = $this.prev();
+				$prev.after(
+					$('<div class="program" />').append($this).bind(
+						'scroll',
+						function () {
+							var $that = $(this);
+							$that.find('thead th:first, tbody th').translateTo(0);
+							clearTimeout(scrollTimer);
+							scrollTimer = setTimeout(
+								function () {
+									$that.find('thead th:first, tbody th').translateTo($that.scrollLeft());
+								},
+								200
+							);
+						}
+					)
+				);
+			}
+		);
+
 		$('table.program td').each(
 			function () {
 				var $this = $(this),
@@ -511,20 +555,54 @@ jQuery(function ($) {
 				if (lang) $meta.append($('<li />').text(lang));
 				if (type) $meta.append($('<li />').text(type));
 
-				var $info = $('<div class="info" />').append(
-					$('<div class="abstract" />').html(program['abstract'])
-				).append(
-					$('<div class="bio" />').html(program.bio)
-				);
+				var $info = $('<div class="info" />');
+
+				if (program['abstract']) { // abstract is a reserved word
+					$info.append(
+						$('<div class="abstract" />').html(program['abstract'])
+					);
+				}
+
+				if (program.bio) {
+					$info.append(
+						$('<div class="bio" />').html(program.bio)
+					);
+				}
 
 				if ($meta.children().length) $info.append($meta);
 
-				$this.append($info);
+				if ($info.children().length) $this.append($info);
 			}
 		).bind(
 			'click',
 			function () {
+				var $this = $(this),
+				$div = $this.parents('div.program'),
+				room_id = parseInt((this.className.match(/program_room_(\w+)\b/) || [])[1]),
+				y = $(window).scrollTop() - $this.offset().top;
+
+				// For mobile
 				$(this).toggleClass('expend');
+
+				// For desktop
+				$div.toggleClass('expend');
+				$div.find('thead th:first, tbody th').translateTo($div.scrollLeft());
+
+				switch (room_id) {
+					case 1:
+					$div.scrollLeft(0);
+					break;
+					case 0:
+					case 2:
+					$div.scrollLeft($div[0].scrollWidth*0.28);
+					break;
+					case 3:
+					$div.scrollLeft($div[0].scrollWidth);
+					break;
+				}
+				$(window).scrollTop(
+					$this.offset().top + y
+				);
 			}
 		);
 	}

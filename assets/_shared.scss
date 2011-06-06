@@ -87,7 +87,7 @@ code {
 	}
 	
 	> ul.types > li,
-	> table.program td {
+	table.program td {
 		&:before {
 			content: '';
 			@include prefix(border-radius, 6px);
@@ -116,7 +116,7 @@ code {
 			background-color: hsla(360 / 6 * 5, 100%, 50%, 1);
 		}
 	}
-	> table.program td {
+	table.program td {
 		&:before {
 			margin: 0 0 6px 6px;
 			display: block;
@@ -134,17 +134,54 @@ code {
 			// 「現代標準漢語」，不用地域性稱呼例如「華語」、「國語」、「普通話」
 			// https://secure.wikimedia.org/wikipedia/zh/w/index.php?title=%E7%8F%BE%E4%BB%A3%E6%A8%99%E6%BA%96%E6%BC%A2%E8%AA%9E&variant=zh-tw
 		}
+		&.program_break {
+			text-align: center;
+			padding: 1em 0;
+			&:before {
+				display: none;
+			}
+			> p.name {
+				color: #666;
+				//font-weight: normal;
+				//font-size: 120%;
+				margin: 0;
+				&:before {
+					display: none;
+				}
+			}
+		}
 		> p.name:before {
 			margin: 0 0 6px 6px;
 			float: right;
 			clear: right;
-			font-size: $font_size * .5;
+			font-size: $font_size * 0.5;
 			line-height: 150%;
 			width: 10px; height: 10px;
 			border: 1px solid #333;
 			@include prefix(border-radius, 6px);
+			//font-size: $font_size;
+			//width: 20px; height: 20px;
+			//@include prefix(border-radius, 12px);
+			//$val: scale(0.5) translate(10px, -10px);
+			//@include prefix(transform, $val);
 			//background-color: #ccc;
 			text-align: center;
+		}
+		> .info {
+			.meta {
+				padding: ($line_height / 2) 0;
+				margin: 0;
+				display: block;
+				color: #666;
+				font-size: 82%;
+				> li {
+					display: inline;
+					list-style: none;
+					&:not(:first-child):before {
+						content: '．';
+					}
+				}
+			}
 		}
 	}
 }

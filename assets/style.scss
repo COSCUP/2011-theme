@@ -722,10 +722,60 @@ $msg_arrow: $line_height / 2;
 				margin: 6px 6px 6px 0;
 			}
 		}
-		
-		> table.program {
+
+		> div.program.expend {
+			overflow: auto;
+			position: relative;
+			&:last-child {
+				margin-bottom: 2em;
+			}
+			@include prefix(box-shadow, 0 0 10px #ccc inset);
+			> table.program {
+				margin: 0;
+				width: 200%;
+				td {
+					width: 32%;
+					//width: auto;
+					> .info {
+						display: block;
+						padding: 0 10px;
+						> :not(:first-child) {
+							border-top: 1px dashed #d0d0d0;
+						}
+					}
+				}
+				td.program_room_0 {
+					width: auto;
+					padding-left: 32%;
+					padding-right: 32%;
+				}
+				> tbody th,
+				> thead th:first-child {
+					// position: relative; // Wont work in Fx
+					//width: 80px;
+					//&:after {
+					//	content: '';
+					//	position: absolute;
+					//	top: 0; left: -1px;
+					//	height: 100%; width: 80px;
+					//	border-left: 1px solid #ccc;
+					//	border-right: 3px solid $dark;
+					//}
+					&.translate {
+						background-color: rgba($light, 0.9);
+					}
+				}
+				> tbody th:after {
+					border-bottom: 1px solid #fff;
+				}
+			}
+		}
+
+		table.program {
 			width: 100%;
 			border-collapse: collapse;
+			//cool transition but break scrollTop
+			//@include prefix(transition, width 0.2s);
 			th, td {
 				vertical-align: top;
 				text-align: left;
@@ -743,6 +793,7 @@ $msg_arrow: $line_height / 2;
 				border-right: 1px solid #fff;
 				&:first-child {
 					border-right: 3px solid $dark;
+					@include transtrans(0.2s);
 				}
 				&:last-child {
 					border-right: 1px solid $light;
@@ -755,6 +806,7 @@ $msg_arrow: $line_height / 2;
 				white-space: nowrap;
 				border-right: 3px solid $dark;
 				border-bottom: 1px solid #fff;
+				@include transtrans(0.2s);
 				> span {
 					font-weight: bold;
 					font-size: 120%;
@@ -766,8 +818,9 @@ $msg_arrow: $line_height / 2;
 			}
 			td {
 				width: 30%;
-				&.program_room_0 {
+				&.program_room_0:not(.program_break) {
 					padding-left: 29%;
+					width: auto;
 				}
 				> p {
 					padding: 0 $gutter;
