@@ -728,11 +728,11 @@ code {
     #content > div.program.expend {
       overflow: auto;
       position: relative;
-      -moz-box-shadow: 0 0 10px #cccccc inset;
-      -webkit-box-shadow: 0 0 10px #cccccc inset;
-      -ms-box-shadow: 0 0 10px #cccccc inset;
-      -o-box-shadow: 0 0 10px #cccccc inset;
-      box-shadow: 0 0 10px #cccccc inset; }
+      -moz-box-shadow: 0 0 5px #cccccc;
+      -webkit-box-shadow: 0 0 5px #cccccc;
+      -ms-box-shadow: 0 0 5px #cccccc;
+      -o-box-shadow: 0 0 5px #cccccc;
+      box-shadow: 0 0 5px #cccccc; }
       #content > div.program.expend:last-child {
         margin-bottom: 2em; }
       #content > div.program.expend > table.program {

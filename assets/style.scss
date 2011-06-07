@@ -726,10 +726,10 @@ $msg_arrow: $line_height / 2;
 		> div.program.expend {
 			overflow: auto;
 			position: relative;
+			@include prefix(box-shadow, 0 0 5px #ccc);
 			&:last-child {
 				margin-bottom: 2em;
 			}
-			@include prefix(box-shadow, 0 0 10px #ccc inset);
 			> table.program {
 				margin: 0;
 				width: 200%;
