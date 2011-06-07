@@ -275,6 +275,26 @@ jQuery(function ($) {
 				}
 			);
 		}
+
+		if ($('#ipv6block').length) {
+			if (window.location.hostname === 'ipv6.coscup.org') {
+				$('#ipv6block').addClass('show').append(
+					'<h2>IPv6 Connectivity</h2>'
+					+ '<p>You are currently using IPv6 connection.</p>'
+				);
+			} else {
+				$.getJSON(
+					// See http://ipv6-test.com/api/
+					'http://v6.ipv6-test.com/api/myip.php?json&callback=?',
+					function (data) {
+						$('#ipv6block').addClass('show').append(
+							'<h2>Connect using IPv6</h2>'
+							+ '<p>Your network is IPv6 ready. Try it now by connect to <a href="http://ipv6.coscup.org/">ipv6.coscup.org</a>.</p>'
+						);
+					}
+				);
+			}
+		}		
 	}
 
 	function deferLoad() {

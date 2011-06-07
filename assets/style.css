@@ -664,10 +664,6 @@ code {
       width: 288px;
       margin-left: 10px;
       padding: 22px 11px; }
-      #content > #sidebar2 a {
-        text-decoration: none; }
-        #content > #sidebar2 a:hover {
-          text-decoration: underline; }
       #content > #sidebar2 h2 {
         font-size: 100%;
         margin: 22px -11px;
@@ -698,6 +694,33 @@ code {
           height: 75px; }
           #content > #sidebar2 > .images > a > img {
             border: none; }
+      #content > #sidebar2 > #ipv6block {
+        min-height: 103px;
+        position: relative;
+        display: none; }
+        #content > #sidebar2 > #ipv6block.show {
+          display: block; }
+        #content > #sidebar2 > #ipv6block > p {
+          padding-right: 84px; }
+        #content > #sidebar2 > #ipv6block:after {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 74px;
+          height: 103px;
+          background: transparent url("ipv6day-logo.png") center right no-repeat;
+          right: 0;
+          bottom: 0;
+          -moz-box-shadow: 0 0 5px #333333;
+          -webkit-box-shadow: 0 0 5px #333333;
+          -ms-box-shadow: 0 0 5px #333333;
+          -o-box-shadow: 0 0 5px #333333;
+          box-shadow: 0 0 5px #333333;
+          -moz-border-radius: 3px;
+          -webkit-border-radius: 3px;
+          -ms-border-radius: 3px;
+          -o-border-radius: 3px;
+          border-radius: 3px; }
       #content > #sidebar2 > .socialbuzz > ul {
         margin: 0;
         padding: 0 0 0 1em;
@@ -710,12 +733,20 @@ code {
         #content > #sidebar2 > .socialbuzz > ul .meta {
           display: block;
           text-align: right; }
+          #content > #sidebar2 > .socialbuzz > ul .meta a {
+            text-decoration: none; }
+            #content > #sidebar2 > .socialbuzz > ul .meta a:hover {
+              text-decoration: underline; }
       #content > #sidebar2 .more {
         clear: both;
         padding: 0;
         margin: 0;
         text-align: right;
         font-size: 92%; }
+        #content > #sidebar2 .more a {
+          text-decoration: none; }
+          #content > #sidebar2 .more a:hover {
+            text-decoration: underline; }
     #content > ul.shortcuts {
       display: none; }
     #content > ul.types {

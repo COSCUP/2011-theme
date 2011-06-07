@@ -629,13 +629,6 @@ $msg_arrow: $line_height / 2;
 			margin-left: $gutter;
 			padding: $line_height ($line_height / 2);
 			
-			a {
-				text-decoration: none;
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-			
 			h2 {
 				font-size: 100%;
 				margin: $line_height (-$line_height / 2);
@@ -683,6 +676,29 @@ $msg_arrow: $line_height / 2;
 				//margin: ($line_height / 2) 0;
 			}
 			
+			> #ipv6block {
+				min-height: 103px;
+				position: relative;
+				display: none;
+				&.show {
+					display: block;
+				}
+				> p {
+					padding-right: 74px + $gutter;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					display: block;
+					width: 74px; height: 103px;
+					background: transparent url('ipv6day-logo.png') center right no-repeat;
+					right: 0;
+					bottom: 0;
+					@include prefix(box-shadow, 0 0 5px #333);
+					@include prefix(border-radius, 3px);
+				}
+			}
+			
 			> .socialbuzz > ul {
 				margin: 0; padding: 0 0 0 1em;
 				text-align: left;
@@ -695,6 +711,12 @@ $msg_arrow: $line_height / 2;
 				.meta {
 					display: block;
 					text-align: right;
+					a {
+						text-decoration: none;
+						&:hover {
+							text-decoration: underline;
+						}
+					}
 				}
 			}
 			
@@ -703,8 +725,11 @@ $msg_arrow: $line_height / 2;
 				padding: 0; margin: 0;
 				text-align: right;
 				font-size: 92%;
-				> a {
-					
+				a {
+					text-decoration: none;
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
