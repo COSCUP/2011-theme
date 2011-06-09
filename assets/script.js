@@ -102,12 +102,19 @@ jQuery(function ($) {
 				)[lang];
 			
 				$.each(
-					data,
-					function (level, sponsors) {
+					[
+						'diamond',
+						'gold',
+						'silver',
+						'bronze',
+						'media'
+					],
+					function (i, level) {
+						if (!data[level]) return;
 						$sponsors.append('<h2>' + titles[level] + '</h2>');
 						var $u = $('<ul class="' + level + '" />');
 						$.each(
-							sponsors,
+							data[level],
 							function (i, sponsor) {
 								// Assume that there is no special chars to escape
 								$u.append(
