@@ -361,6 +361,19 @@ code {
             border-top: 1px dashed #aaa; }
       #content table.program:last-child {
         margin-bottom: 1em; }
+    #content > .sponsors > h3 {
+      margin: 0.5em 0 0 0;
+      padding: 10px 10px 0 10px;
+      background-color: #fff;
+      font-size: 1.4em;
+      text-align: center; }
+      #content > .sponsors > h3 img {
+        margin: 0 auto;
+        display: block; }
+    #content > .sponsors > .sponsor_content {
+      margin: 0;
+      padding: 10px;
+      background-color: #fff; }
 
   #header, #footer {
     background: #ddd;

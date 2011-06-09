@@ -846,7 +846,24 @@ code {
         #content table.program td:before {
           margin-right: 10px; }
       #content table.program:last-child {
-        margin-bottom: 2em; } }
+        margin-bottom: 2em; }
+    #content > .sponsors > h2 {
+      clear: both; }
+    #content > .sponsors > h3 {
+      clear: both;
+      margin: 0.5em 0 0 0;
+      padding: 10px 10px 0 10px;
+      background-color: #fff;
+      border-left: 10px solid #ccc;
+      font-size: 1.4em; }
+      #content > .sponsors > h3 img {
+        float: left;
+        margin: 0 10px 10px 0; }
+    #content > .sponsors > .sponsor_content {
+      margin: 0;
+      padding: 10px;
+      background-color: #fff;
+      border-left: 10px solid #ccc; } }
         @media screen and (-webkit-min-device-pixel-ratio: 2) {
           #header > .info > h1 > a {
             background: transparent url("coscup.svg") center center no-repeat; } }

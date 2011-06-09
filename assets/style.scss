@@ -874,7 +874,29 @@ $msg_arrow: $line_height / 2;
 				margin-bottom: 2em;
 			}
 		}
-		
+		> .sponsors {
+			> h2 {
+				clear: both;
+			}
+			> h3 {
+				clear: both;
+				margin: 0.5em 0 0 0;
+				padding: $gutter $gutter 0 $gutter;
+				background-color: #fff;
+				border-left: 10px solid #ccc;
+				font-size: 1.4em;
+				img {
+					float: left;
+					margin: 0 $gutter $gutter 0;
+				}
+			}
+			> .sponsor_content {
+				margin: 0;
+				padding: $gutter;
+				background-color: #fff;
+				border-left: 10px solid #ccc;
+			}
+		}
 	}
 }
 

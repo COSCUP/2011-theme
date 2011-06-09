@@ -230,6 +230,24 @@
 				margin-bottom: 1em;
 			}
 		}
+		> .sponsors {
+			> h3 {
+				margin: 0.5em 0 0 0;
+				padding: $gutter $gutter 0 $gutter;
+				background-color: #fff;
+				font-size: 1.4em;
+				text-align: center;
+				img {
+					margin: 0 auto;
+					display: block;
+				}
+			}
+			> .sponsor_content {
+				margin: 0;
+				padding: $gutter;
+				background-color: #fff;
+			}
+		}
 	}
 	
 	#header, #footer {
