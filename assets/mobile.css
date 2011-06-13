@@ -458,6 +458,11 @@ code {
         background-color: #333;
         border-color: #333;
         color: #fff; }
+      #header > .info > #nav li.loading > a, #header > .info #language li.loading > a {
+        background-color: grey;
+        background-image: -webkit-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px);
+        background-image: -moz-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px);
+        background-image: -i-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px); }
     #header > .info > #nav > ul {
       -moz-border-radius: 8px;
       -webkit-border-radius: 8px;

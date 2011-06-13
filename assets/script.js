@@ -486,6 +486,8 @@ jQuery(function ($) {
 					|| this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
 				) return true;
 
+				$(this).parent('#nav li').addClass('loading');
+
 				var href = this.href,
 				samepage = (this.href === window.location.href);
 
