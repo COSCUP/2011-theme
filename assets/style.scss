@@ -755,6 +755,12 @@ $msg_arrow: $line_height / 2;
 			&:last-child {
 				margin-bottom: 2em;
 			}
+			&.movestart {
+				cursor: url('./grab.cur'), default !important;
+			}
+			&.moving {
+				cursor: url('./grabbing.cur'), default !important;
+			}
 			> table.program {
 				margin: 0;
 				width: 200%;

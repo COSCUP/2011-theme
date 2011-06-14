@@ -417,7 +417,7 @@ code {
             -o-transition: background 0.2s ease-in;
             transition: background 0.2s ease-in; }
         #header > .info > #language li {
-          border-right: none !important;
+          border-right: none!important;
           padding-right: 2px; }
           #header > .info > #language li:last-child {
             padding-right: 0; }
@@ -766,6 +766,10 @@ code {
       box-shadow: 0 0 5px #cccccc; }
       #content > div.program.expend:last-child {
         margin-bottom: 2em; }
+      #content > div.program.expend.movestart {
+        cursor: url("./grab.cur"), default !important; }
+      #content > div.program.expend.moving {
+        cursor: url("./grabbing.cur"), default !important; }
       #content > div.program.expend > table.program {
         margin: 0;
         width: 200%; }

@@ -567,6 +567,39 @@ jQuery(function ($) {
 								200
 							);
 						}
+					).bind(
+						'selectstart',
+						function () {
+							return false;
+						}
+					).bind(
+						'touchstart mousedown',
+						function (ev) {
+							var $this = $(this),
+							pos = ev.clientX || ev.originalEvent.touches[0].clientX;
+							if (!$this.hasClass('expend')) return;
+							$this.addClass('movestart').bind(
+								'touchmove mousemove',
+								function (ev) {
+									ev.preventDefault();
+									$this.removeClass('movestart').addClass('moving').scrollLeft($this.scrollLeft() + pos - (ev.clientX || ev.originalEvent.touches[0].clientX));
+									pos = ev.clientX || ev.originalEvent.touches[0].clientX;
+								}
+							).bind(
+								'touchend mouseup',
+								function (ev) {
+									$this.unbind('touchmove mousemove');
+									ev.preventDefault();
+									setTimeout(
+										function () {
+											$this.removeClass('moving movestart');
+										},
+										0
+									);
+									return false;
+								}
+							);	
+						}
 					)
 				);
 			}
@@ -611,6 +644,8 @@ jQuery(function ($) {
 				$div = $this.parents('div.program'),
 				room_id = parseInt((this.className.match(/program_room_(\w+)\b/) || [])[1]),
 				y = $(window).scrollTop() - $this.offset().top;
+
+				if ($div.hasClass('moving')) return false;
 
 				// For mobile
 				$(this).toggleClass('expend');
