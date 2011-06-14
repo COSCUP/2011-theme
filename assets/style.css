@@ -750,12 +750,18 @@ code {
     #content > ul.shortcuts {
       display: none; }
     #content > ul.types {
-      margin: 0 -6px 0 0;
+      text-align: left;
       padding: 0; }
       #content > ul.types > li {
-        display: inline-block;
-        width: 27%;
-        margin: 6px 6px 6px 0; }
+        display: block;
+        float: left;
+        width: 50%; }
+      #content > ul.types:after {
+        content: '';
+        display: block;
+        clear: both; }
+      #content > ul.types + * {
+        clear: both; }
     #content > div.program.expend {
       overflow: auto;
       position: relative;
