@@ -131,8 +131,10 @@ $msg_arrow: $line_height / 2;
 		> .info {
 			position: absolute;
 			background: #f0f0f0; // IE7 (must use bg: instead of bg-color: )
-			background: rgba(255,255,255,0.85);
+			background: rgba(255,255,255,0.9);
 			width: 100%;
+			$val: 0 0 5px #fff, 0 0 3px #fff;
+			@include prefix(box-shadow, $val);
 	
 			> h1, p {
 				margin: 0; padding: 0;
@@ -153,7 +155,7 @@ $msg_arrow: $line_height / 2;
 				top: $info_top;
 				width: $h_left_width + $gutter;
 				height: $header_height - $header_tb * 2 - $line_height * 2 + $gutter;
-				background: rgba(#fff, 0.75);
+				//background: rgba(#fff, 0.75);
 				> a {
 					position: absolute;
 					top: $gutter / 2;

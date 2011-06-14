@@ -386,11 +386,15 @@ code {
     -o-box-shadow: 0 0 5px #333333;
     box-shadow: 0 0 5px #333333; }
     #header > .info, #footer > .info {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
+      -moz-box-shadow: 0 0 5px white, 0 0 3px white;
+      -webkit-box-shadow: 0 0 5px white, 0 0 3px white;
+      -ms-box-shadow: 0 0 5px white, 0 0 3px white;
+      -o-box-shadow: 0 0 5px white, 0 0 3px white;
+      box-shadow: 0 0 5px white, 0 0 3px white;
       margin: 5px 0; }
 
   #header > .info {
-    background: rgba(255, 255, 255, 0.85);
     margin: 5px 0;
     padding-top: 5px;
     padding-bottom: 33px;
@@ -462,7 +466,7 @@ code {
         background-color: grey;
         background-image: -webkit-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px);
         background-image: -moz-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px);
-        background-image: -i-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px); }
+        background-image: -o-repeating-linear-gradient(315deg, transparent, transparent 35px, rgba(255, 255, 255, 0.5) 35px, rgba(255, 255, 255, 0.5) 70px); }
     #header > .info > #nav > ul {
       -moz-border-radius: 8px;
       -webkit-border-radius: 8px;

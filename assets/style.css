@@ -243,8 +243,13 @@ code {
     #header > .info, #footer > .info {
       position: absolute;
       background: #f0f0f0;
-      background: rgba(255, 255, 255, 0.85);
-      width: 100%; }
+      background: rgba(255, 255, 255, 0.9);
+      width: 100%;
+      -moz-box-shadow: 0 0 5px white, 0 0 3px white;
+      -webkit-box-shadow: 0 0 5px white, 0 0 3px white;
+      -ms-box-shadow: 0 0 5px white, 0 0 3px white;
+      -o-box-shadow: 0 0 5px white, 0 0 3px white;
+      box-shadow: 0 0 5px white, 0 0 3px white; }
       #header > .info > h1, #header > .info p, #footer > .info > h1, #footer > .info p {
         margin: 0;
         padding: 0; }
@@ -259,8 +264,7 @@ code {
         left: 35px;
         top: 17px;
         width: 280px;
-        height: 161px;
-        background: rgba(255, 255, 255, 0.75); }
+        height: 161px; }
         #header > .info > h1 > a {
           position: absolute;
           top: 5px;

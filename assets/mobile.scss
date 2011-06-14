@@ -257,14 +257,15 @@
 		background: #ddd url('./coscup-tile-bg-s.jpg') center center;
 		@include prefix(box-shadow, 0 0 5px #333);
 		> .info {
-			background: rgba(255,255,255,0.85);
+			background: rgba(255,255,255,0.9);
+			$val: 0 0 5px #fff, 0 0 3px #fff;
+			@include prefix(box-shadow, $val);
 			margin: $gutter / 2 0;
 		}
 	}
 	
 	#header {
 		> .info {
-			background: rgba(255,255,255,0.85);
 			margin: $gutter / 2 0;
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
