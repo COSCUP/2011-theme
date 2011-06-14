@@ -23,6 +23,10 @@ jQuery(function ($) {
 
 	var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase();
 
+	function isMobileLayout() {
+		return !$('#title:visible').length;
+	}
+
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
 		$.getJSON(
@@ -340,7 +344,7 @@ jQuery(function ($) {
 		// Find out if we are currently on mobile layout
 		// if so, defer/stop imagetile and iframe from loading
 		// removing 'src' in <img> won't help so not doing it
-		if (!$('#title:visible').length) {
+		if (isMobileLayout()) {
 	
 			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', window.location.href]);
 	
@@ -576,20 +580,31 @@ jQuery(function ($) {
 						'touchstart mousedown',
 						function (ev) {
 							var $this = $(this),
-							pos = ev.clientX || ev.originalEvent.touches[0].clientX;
-							if (!$this.hasClass('expend')) return;
-							$this.addClass('movestart').bind(
+							$window = $(window),
+							posX = ev.clientX || ev.originalEvent.touches[0].clientX;
+							posY = ev.clientY || ev.originalEvent.touches[0].clientY;
+							if (!$this.hasClass('expend') || isMobileLayout()) return;
+							$this.addClass('movestart');
+							$window.bind(
 								'touchmove mousemove',
 								function (ev) {
-									ev.preventDefault();
-									$this.removeClass('movestart').addClass('moving').scrollLeft($this.scrollLeft() + pos - (ev.clientX || ev.originalEvent.touches[0].clientX));
-									pos = ev.clientX || ev.originalEvent.touches[0].clientX;
+									$this.removeClass('movestart').addClass('moving').scrollLeft(
+										$this.scrollLeft()
+										+ posX
+										- (ev.clientX || ev.originalEvent.touches[0].clientX)
+									);
+									$window.scrollTop(
+										$window.scrollTop()
+										+ posY
+										- (ev.clientY || ev.originalEvent.touches[0].clientY)
+									);
+									posX = ev.clientX || ev.originalEvent.touches[0].clientX;
+									posY = ev.clientY || ev.originalEvent.touches[0].clientY;
 								}
 							).bind(
 								'touchend mouseup',
 								function (ev) {
-									$this.unbind('touchmove mousemove');
-									ev.preventDefault();
+									$window.unbind('touchmove mousemove touchend mouseup');
 									setTimeout(
 										function () {
 											$this.removeClass('moving movestart');
