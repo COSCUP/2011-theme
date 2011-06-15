@@ -229,11 +229,15 @@ code {
       box-shadow: 0 0 5px #cccccc;
       margin: 22px 0;
       padding: 22px 11px; }
-      #content > #sidebar2 > h2 {
+      #content > #sidebar2 h2 {
         font-size: 100%;
         margin: 22px -11px;
         padding: 0 11px;
         border-bottom: 3px solid #42b535; }
+      #content > #sidebar2 .banner {
+        margin: 0;
+        padding: 0;
+        text-align: center; }
     #content > ul.shortcuts {
       margin: 22px 10px;
       padding: 0;
