@@ -689,6 +689,14 @@ jQuery(function ($) {
 				);
 			}
 		);
+		
+		$('.program a').bind(
+			'click',
+			function (ev) {
+				if (ev.which == 2 || ev.metaKey) return true;
+				ev.preventDefault();
+			}
+		);
 	}
 
 	// preload program wherever page we are on the main site
