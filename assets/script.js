@@ -397,12 +397,13 @@ jQuery(function ($) {
 
 	var getPageXhr, pages = {}, prefetchQueue = [];
 
-	function getPage(href, samepage) {
+	function getPage(href, samepage, resetScroll) {
 		$(window).unbind('resize.defer');
 
 		if (getPageXhr) getPageXhr.abort();
 
 		if (!samepage && pages[href] && pages[href] !== 'fetching') {
+			if (resetScroll) $(window).scrollTop(0);
 			insertPage(pages[href]);
 		} else {
 			var $content = $('#content').addClass('loading');
@@ -418,6 +419,7 @@ jQuery(function ($) {
 						) {
 							$content.removeClass('loading');
 							pages[href] = res.responseText;
+							if (resetScroll) $(window).scrollTop(0);
 							insertPage(res.responseText);
 						} else {
 							window.location.replace(href);
@@ -502,7 +504,7 @@ jQuery(function ($) {
 				history.pushState({'is':'pushed'}, '', href);
 
 				// However, this.href will change for a relative link beyond this point
-				getPage(href, samepage);
+				getPage(href, samepage, true);
 
 				// Given the fact we had pushed a new state,
 				// the next popState event must not be initialPop even with initialURL.
@@ -518,7 +520,7 @@ jQuery(function ($) {
 			popped = true;
 			if (initialPop) return;
 
-			getPage(window.location.href, false);
+			getPage(window.location.href, false, false);
 		};
 	}
 
