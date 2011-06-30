@@ -380,6 +380,7 @@ jQuery(function ($) {
 							|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
 							|| this.href === window.location.href
 							|| pages[this.href]
+							|| pages[this.href] === 'fetching'
 							|| (/nocache/.test(this.getAttribute('rel')))
 						) return;
 
