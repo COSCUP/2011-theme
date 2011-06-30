@@ -380,6 +380,7 @@ jQuery(function ($) {
 							|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
 							|| this.href === window.location.href
 							|| pages[this.href]
+							|| (/nocache/.test(this.getAttribute('rel')))
 						) return;
 
 						prefetchQueue.push(this.href);
@@ -488,6 +489,7 @@ jQuery(function ($) {
 					|| !/2011/.test(this.pathname)
 					|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
 					|| this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
+					|| (/nocache/.test(this.getAttribute('rel')))
 				) return true;
 
 				$(this).parent('#nav li').addClass('loading');
