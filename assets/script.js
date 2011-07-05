@@ -680,9 +680,12 @@ jQuery(function ($) {
 					break;
 					case 0:
 					case 2:
-					$div.scrollLeft($div[0].scrollWidth*0.28);
+					$div.scrollLeft($div[0].scrollWidth*0.20);
 					break;
 					case 3:
+					$div.scrollLeft($div[0].scrollWidth*0.40);
+					break;
+					case 4:
 					$div.scrollLeft($div[0].scrollWidth);
 					break;
 				}

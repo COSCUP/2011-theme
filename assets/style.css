@@ -841,7 +841,7 @@ code {
       #content table.program > tbody > tr:last-child > th {
         border-bottom: 1px solid #c7d7a0; }
       #content table.program td {
-        width: 30%; }
+        width: 22.5%; }
         #content table.program td.program_room_0:not(.program_break) {
           padding-left: 29%;
           width: auto; }
