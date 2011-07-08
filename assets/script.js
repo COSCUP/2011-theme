@@ -21,7 +21,8 @@ getPage() 是在 HTML5 History API 存在的情況下才會使用的 partial loa
 
 jQuery(function ($) {
 
-	var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase();
+	var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase(),
+	ctTimer;
 
 	function isMobileLayout() {
 		return !$('#title:visible').length;
@@ -307,7 +308,17 @@ jQuery(function ($) {
 					}
 				);
 			}
-		}		
+		}
+
+		if ($('#countdown-time').length) {
+			ctTimer = setInterval(
+				updateCountDown,
+				1000
+			);
+
+			updateCountDown();
+			$('#countdown').addClass('show');
+		}
 	}
 
 	function deferLoad() {
@@ -330,6 +341,7 @@ jQuery(function ($) {
 	function loadPage() {
 		mobileSponsorLogo();
 		insertProgramInfo();
+		clearTimeout(ctTimer);
 	
 		$('#header').css(
 			'background-position',
@@ -717,5 +729,52 @@ jQuery(function ($) {
 				insertProgramInfo();
 			}
 		);
+	}
+
+	var registranoUrl = 'http://registrano.com/events/coscup2011-regist';
+
+	function updateCountDown() {
+		//new Date("Fri Jul 15 2011 20:00:00 GMT+0800 (CST)").getTime();
+		var dt = 1310731200 - Math.floor(new Date().getTime()/1E3);
+
+		if (dt < 0) {
+			clearTimeout(ctTimer);
+			$('#countdown').html(
+				{
+					en: '<a href="' + registranoUrl + '?locale=en">Register Now!</a>',
+					'zh-tw': '<a href="' + registranoUrl + '">立刻報名！</a>',
+					'zh-cn': '<a href="' + registranoUrl + '">立刻报名！</a>'	
+				}[lang]
+			);
+		}
+
+		s = [];
+
+		s[0] = /*((dt%60 < 10)?'0':'') + */ (dt%60).toString(10) + {
+			en: ' seconds',
+			'zh-cn': ' 秒',
+			'zh-tw': ' 秒'
+		}[lang];
+		dt = Math.floor(dt/60);
+		s[1] = /*((dt%60 < 10)?'0':'') + */ (dt%60).toString(10) + {
+			en: ' minutes ',
+			'zh-cn': ' 分 ',
+			'zh-tw': ' 分 '
+		}[lang];
+		dt = Math.floor(dt/60);
+		s[2] = (dt%24).toString(10) + {
+			en: ' hours ',
+			'zh-cn': ' 时 ',
+			'zh-tw': ' 時 '
+		}[lang];
+		dt = Math.floor(dt/24);
+		if (dt) {
+			s[3] = dt.toString(10) + {
+				en: ' days ',
+				'zh-cn': ' 天 ',
+				'zh-tw': ' 天 '
+			}[lang];
+		}
+		$('#countdown-time').text(s.reverse().join(''));
 	}
 });

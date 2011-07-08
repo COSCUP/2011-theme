@@ -725,6 +725,16 @@ code {
           -ms-border-radius: 3px;
           -o-border-radius: 3px;
           border-radius: 3px; }
+      #content > #sidebar2 > #countdown {
+        display: none; }
+        #content > #sidebar2 > #countdown.show {
+          display: block; }
+        #content > #sidebar2 > #countdown #countdown-time, #content > #sidebar2 > #countdown a {
+          display: block;
+          font-size: 1.5em;
+          font-weight: bold;
+          text-align: center;
+          margin: 10px 0; }
       #content > #sidebar2 > .socialbuzz > ul {
         margin: 0;
         padding: 0 0 0 1em;
