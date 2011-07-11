@@ -790,24 +790,24 @@ code {
         cursor: url("./grab.cur"), default !important; }
       #content > div.program.expend.moving {
         cursor: url("./grabbing.cur"), default !important; }
-      #content > div.program.expend > table.program {
+      #content > div.program.expend table.program {
         margin: 0;
         width: 200%; }
-        #content > div.program.expend > table.program td {
+        #content > div.program.expend table.program td {
           width: 24%; }
-          #content > div.program.expend > table.program td > .info {
+          #content > div.program.expend table.program td > .info {
             display: block;
             padding: 0 10px; }
-            #content > div.program.expend > table.program td > .info > :not(:first-child) {
+            #content > div.program.expend table.program td > .info > :not(:first-child) {
               border-top: 1px dashed #d0d0d0; }
-        #content > div.program.expend > table.program td.program_room_0 {
+        #content > div.program.expend table.program td.program_room_0 {
           width: auto;
           padding-left: 32%;
           padding-right: 32%; }
-        #content > div.program.expend > table.program > tbody th.translate,
-        #content > div.program.expend > table.program > thead th:first-child.translate {
+        #content > div.program.expend table.program > tbody th.translate,
+        #content > div.program.expend table.program > thead th:first-child.translate {
           background-color: rgba(199, 215, 160, 0.9); }
-        #content > div.program.expend > table.program > tbody th:after {
+        #content > div.program.expend table.program > tbody th:after {
           border-bottom: 1px solid #fff; }
     #content table.program {
       width: 100%;

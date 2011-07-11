@@ -785,7 +785,7 @@ $msg_arrow: $line_height / 2;
 			&.moving {
 				cursor: url('./grabbing.cur'), default !important;
 			}
-			> table.program {
+			table.program {
 				margin: 0;
 				width: 200%;
 				td {
