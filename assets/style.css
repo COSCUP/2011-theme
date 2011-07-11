@@ -845,7 +845,7 @@ code {
       #content table.program td {
         width: 22.5%; }
         #content table.program td.program_room_0:not(.program_break) {
-          padding-left: 29%;
+          padding-left: 22%;
           width: auto; }
         #content table.program td > p {
           padding: 0 10px; }
