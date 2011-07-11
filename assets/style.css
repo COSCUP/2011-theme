@@ -794,7 +794,7 @@ code {
         margin: 0;
         width: 200%; }
         #content > div.program.expend > table.program td {
-          width: 32%; }
+          width: 24%; }
           #content > div.program.expend > table.program td > .info {
             display: block;
             padding: 0 10px; }
