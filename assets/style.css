@@ -826,11 +826,7 @@ code {
         font-size: 120%;
         border-right: 1px solid #fff; }
         #content table.program > thead th:first-child {
-          border-right: 3px solid #42b535;
-          -moz-transition: -moz-transform 0.2s;
-          -webkit-transition: -webkit-transform 0.2s;
-          -ms-transition: -ms-transform 0.2s;
-          -o-transition: -o-transform 0.2s; }
+          border-right: 3px solid #42b535; }
         #content table.program > thead th:last-child {
           border-right: 1px solid #c7d7a0; }
       #content table.program > tbody th {
@@ -839,11 +835,7 @@ code {
         font-weight: normal;
         white-space: nowrap;
         border-right: 3px solid #42b535;
-        border-bottom: 1px solid #fff;
-        -moz-transition: -moz-transform 0.2s;
-        -webkit-transition: -webkit-transform 0.2s;
-        -ms-transition: -ms-transform 0.2s;
-        -o-transition: -o-transform 0.2s; }
+        border-bottom: 1px solid #fff; }
         #content table.program > tbody th > span {
           font-weight: bold;
           font-size: 120%;

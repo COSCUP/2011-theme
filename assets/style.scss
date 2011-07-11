@@ -848,7 +848,7 @@ $msg_arrow: $line_height / 2;
 				border-right: 1px solid #fff;
 				&:first-child {
 					border-right: 3px solid $dark;
-					@include transtrans(0.2s);
+					//@include transtrans(0.2s);
 				}
 				&:last-child {
 					border-right: 1px solid $light;
@@ -861,7 +861,7 @@ $msg_arrow: $line_height / 2;
 				white-space: nowrap;
 				border-right: 3px solid $dark;
 				border-bottom: 1px solid #fff;
-				@include transtrans(0.2s);
+				//@include transtrans(0.2s);
 				> span {
 					font-weight: bold;
 					font-size: 120%;
