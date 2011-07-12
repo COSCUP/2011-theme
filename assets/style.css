@@ -79,7 +79,7 @@ code {
   float: right;
   clear: right;
   font-size: 8px;
-  line-height: 150%;
+  line-height: 120%;
   width: 10px;
   height: 10px;
   border: 1px solid #333;
@@ -88,7 +88,8 @@ code {
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
   border-radius: 6px;
-  text-align: center; }
+  text-align: center;
+  -webkit-text-size-adjust: none; }
 #content table.program td > .info .meta {
   padding: 11px 0;
   margin: 0;

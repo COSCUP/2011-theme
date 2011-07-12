@@ -155,7 +155,7 @@ code {
 			float: right;
 			clear: right;
 			font-size: $font_size * 0.5;
-			line-height: 150%;
+			line-height: 120%;
 			width: 10px; height: 10px;
 			border: 1px solid #333;
 			@include prefix(border-radius, 6px);
@@ -166,6 +166,7 @@ code {
 			//@include prefix(transform, $val);
 			//background-color: #ccc;
 			text-align: center;
+			-webkit-text-size-adjust: none; // min font-size workaround
 		}
 		> .info {
 			.meta {
