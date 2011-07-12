@@ -101,19 +101,31 @@ code {
 			background-color: hsla(0, 100%, 50%, 1);
 		}
 		&.program_type_2:before {
-			background-color: hsla(360 / 6 * 1, 100%, 50%, 1);
+			background-color: hsla(360 / 10 * 1, 100%, 50%, 1);
 		}
 		&.program_type_3:before {
-			background-color: hsla(360 / 6 * 2, 100%, 50%, 1);
+			background-color: hsla(360 / 10 * 2, 100%, 50%, 1);
 		}
 		&.program_type_4:before {
-			background-color: hsla(360 / 6 * 3, 100%, 50%, 1);
+			background-color: hsla(360 / 10 * 3, 100%, 50%, 1);
 		}
 		&.program_type_5:before {
-			background-color: hsla(360 / 6 * 4, 100%, 50%, 1);
+			background-color: hsla(360 / 10 * 4, 100%, 50%, 1);
 		}
 		&.program_type_6:before {
-			background-color: hsla(360 / 6 * 5, 100%, 50%, 1);
+			background-color: hsla(360 / 10 * 5, 100%, 50%, 1);
+		}
+		&.program_type_7:before {
+			background-color: hsla(360 / 10 * 6, 100%, 50%, 1);
+		}
+		&.program_type_8:before {
+			background-color: hsla(360 / 10 * 7, 100%, 50%, 1);
+		}
+		&.program_type_9:before {
+			background-color: hsla(360 / 10 * 8, 100%, 50%, 1);
+		}
+		&.program_type_10:before {
+			background-color: hsla(360 / 10 * 9, 100%, 50%, 1);
 		}
 	}
 	table.program td {
