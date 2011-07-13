@@ -600,13 +600,13 @@ jQuery(function ($) {
 								200
 							);
 						}
-					).bind(
+					)/*.bind(
 						'selectstart',
 						function () {
 							return false;
 						}
-					).bind(
-						'touchstart mousedown',
+					)*/.bind(
+						'touchstart', //mousedown
 						function (ev) {
 							var $this = $(this),
 							$window = $(window),
@@ -615,7 +615,7 @@ jQuery(function ($) {
 							if (!$this.hasClass('expend') || isMobileLayout()) return;
 							$this.addClass('movestart');
 							$window.bind(
-								'touchmove mousemove',
+								'touchmove', //mousemove
 								function (ev) {
 									$this.removeClass('movestart').addClass('moving').scrollLeft(
 										$this.scrollLeft()
@@ -631,9 +631,9 @@ jQuery(function ($) {
 									posY = ev.clientY || ev.originalEvent.touches[0].clientY;
 								}
 							).bind(
-								'touchend mouseup',
+								'touchend', //mouseup
 								function (ev) {
-									$window.unbind('touchmove mousemove touchend mouseup');
+									$window.unbind('touchmove touchend'); //mousemove mouseup
 									setTimeout(
 										function () {
 											$this.removeClass('moving movestart');
