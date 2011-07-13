@@ -375,7 +375,7 @@ jQuery(function ($) {
 			$(window).bind(
 				'resize.defer',
 				function () {
-					if (!$('#title:visible').length) return; // still in Mobile
+					if (isMobileLayout()) return;
 					$(this).unbind('resize.defer');
 	
 					// load desktop stuff and stuff unloaded;
