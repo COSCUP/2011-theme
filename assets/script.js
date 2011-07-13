@@ -691,6 +691,8 @@ jQuery(function ($) {
 
 				if ($div.hasClass('moving')) return false;
 
+				if (window._gaq) _gaq.push(['_trackEvent', 'Program 2011', this.hash]);
+
 				// For mobile
 				$(this).toggleClass('expend');
 
