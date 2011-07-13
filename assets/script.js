@@ -162,6 +162,18 @@ jQuery(function ($) {
 		}
 	);
 
+	// in iOS standalone mode, use javascript instead of hashtag scroll
+
+	$('.shortcuts a').live(
+		'click',
+		function (ev) {
+			if (!navigator.standalone) return;
+
+			ev.preventDefault();
+			$(this.hash)[0].scrollIntoView(true);
+		}
+	);
+
 	// CSS hover menu alternative for touch devices
 	// Need to test on actual device
 	
