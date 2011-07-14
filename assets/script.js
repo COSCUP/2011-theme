@@ -633,9 +633,8 @@ jQuery(function ($) {
 
 		$('table.program').each(
 			function () {
-				var $this = $(this),
-				$prev = $this.prev();
-				$prev.after(
+				var $this = $(this);
+				$this.prev().after(
 					$('<div class="program" />').append($this).bind(
 						'scroll',
 						function () {
@@ -666,6 +665,7 @@ jQuery(function ($) {
 							$window.bind(
 								'touchmove', //mousemove
 								function (ev) {
+									ev.preventDefault();
 									$this.removeClass('movestart').addClass('moving').scrollLeft(
 										$this.scrollLeft()
 										+ posX
