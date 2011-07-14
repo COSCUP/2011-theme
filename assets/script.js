@@ -73,7 +73,55 @@ jQuery(function ($) {
 			)
 		);
 	}
-	
+
+	function currentSessionShortcut() {
+		// Program page only
+		if (!$('.shortcuts')) return;
+
+		// Not running after the event
+		if (
+			(new Date()).getTime()
+			> parseInt($('.program tbody th:last').attr('rel') + '000', 10)
+		) return;
+
+		var $a = $('<a href="#" />').text(
+			{
+				'zh-tw': '目前議程',
+				'zh-cn': '目前议程',
+				'en': 'Current Session'
+			}[lang]
+		);
+
+
+		$a.bind(
+			'click',
+			function (ev) {
+				var ct = (new Date()).getTime(),
+				target;
+				ev.stopPropagation();
+				ev.preventDefault();
+
+				$('.program tbody th').each(
+					function (i, el) {
+						var ot = parseInt($(el).attr('rel') + '000', 10);
+						if (ct > ot && target) {
+							target.scrollIntoView(true);
+							return false;
+						}
+						if (ct > ot) {
+							target = el;
+						}
+					}
+				);
+				if (!target) {
+					$('.program tbody th:first')[0].scrollIntoView(true);
+				}
+			}
+		);
+
+		$('.shortcuts').append($('<li class="fullwidth" />').append($a));
+	}
+
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
 		$.getJSON(
@@ -353,6 +401,7 @@ jQuery(function ($) {
 	function loadPage() {
 		mobileSponsorLogo();
 		insertProgramInfo();
+		currentSessionShortcut();
 		clearTimeout(ctTimer);
 	
 		$('#header').css(
