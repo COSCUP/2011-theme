@@ -769,11 +769,20 @@ jQuery(function ($) {
 				);
 			}
 		);
-		
-		$('.program a').bind(
+
+		$('.program p.name a').bind(
 			'click',
 			function (ev) {
 				if (ev.which == 2 || ev.metaKey) return true;
+				ev.preventDefault();
+			}
+		);
+
+		$('.program div a').live(
+			'click',
+			function (ev) {
+				if (ev.which == 2 || ev.metaKey) return true;
+				window.open(this.href);
 				ev.preventDefault();
 			}
 		);
