@@ -658,24 +658,26 @@ jQuery(function ($) {
 						function (ev) {
 							var $this = $(this),
 							$window = $(window),
-							posX = ev.clientX || ev.originalEvent.touches[0].clientX;
+							posX = ev.clientX || ev.originalEvent.touches[0].clientX,
 							posY = ev.clientY || ev.originalEvent.touches[0].clientY;
 							if (!$this.hasClass('expend') || isMobileLayout()) return;
 							$this.addClass('movestart');
 							$window.bind(
 								'touchmove', //mousemove
 								function (ev) {
-									ev.preventDefault();
 									$this.removeClass('movestart').addClass('moving').scrollLeft(
 										$this.scrollLeft()
 										+ posX
 										- (ev.clientX || ev.originalEvent.touches[0].clientX)
 									);
-									$window.scrollTop(
-										$window.scrollTop()
-										+ posY
-										- (ev.clientY || ev.originalEvent.touches[0].clientY)
-									);
+									if (ev.type !== 'touchmove') {
+										// not to conflict y-dir scroll with non-cancelable(?) browser action
+										$window.scrollTop(
+											$window.scrollTop()
+											+ posY
+											- (ev.clientY || ev.originalEvent.touches[0].clientY)
+										);
+									}
 									posX = ev.clientX || ev.originalEvent.touches[0].clientX;
 									posY = ev.clientY || ev.originalEvent.touches[0].clientY;
 								}
