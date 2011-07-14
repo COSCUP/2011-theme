@@ -750,10 +750,12 @@ jQuery(function ($) {
 				$div.find('thead th:first, tbody th').translateTo($div.scrollLeft());
 
 				switch (room_id) {
+					case 0:
+					$div.scrollLeft($div[0].scrollWidth*0.26);
+					break;
 					case 1:
 					$div.scrollLeft(0);
 					break;
-					case 0:
 					case 2:
 					$div.scrollLeft($div[0].scrollWidth*0.13);
 					break;
