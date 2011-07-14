@@ -755,10 +755,10 @@ jQuery(function ($) {
 					break;
 					case 0:
 					case 2:
-					$div.scrollLeft($div[0].scrollWidth*0.20);
+					$div.scrollLeft($div[0].scrollWidth*0.13);
 					break;
 					case 3:
-					$div.scrollLeft($div[0].scrollWidth*0.40);
+					$div.scrollLeft($div[0].scrollWidth*0.38);
 					break;
 					case 4:
 					$div.scrollLeft($div[0].scrollWidth);
