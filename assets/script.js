@@ -780,12 +780,13 @@ jQuery(function ($) {
 			}
 		);
 
-		$('.program div a').live(
+		$('.program div a').bind(
 			'click',
 			function (ev) {
 				if (ev.which == 2 || ev.metaKey) return true;
 				window.open(this.href);
 				ev.preventDefault();
+				ev.stopPropagation();
 			}
 		);
 	}
