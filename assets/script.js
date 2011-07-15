@@ -808,8 +808,6 @@ jQuery(function ($) {
 		);
 	}
 
-	var registranoUrl = 'http://registrano.com/events/coscup2011-regist';
-
 	function updateCountDown() {
 		//new Date("Fri Jul 15 2011 20:00:00 GMT+0800 (CST)").getTime();
 		var dt = 1310731200 - Math.floor(new Date().getTime()/1E3);
@@ -818,9 +816,9 @@ jQuery(function ($) {
 			clearTimeout(ctTimer);
 			$('#countdown').html(
 				{
-					en: '<a href="' + registranoUrl + '?locale=en">Register Now!</a>',
-					'zh-tw': '<a href="' + registranoUrl + '">立刻報名！</a>',
-					'zh-cn': '<a href="' + registranoUrl + '">立刻报名！</a>'	
+					en: '<a href="http://registrano.com/events/coscup2011-regist?locale=en">Register Now!</a>',
+					'zh-tw': '<a href="http://registrano.com/events/coscup2011-regist">立刻報名！</a>',
+					'zh-cn': '<a href="http://registrano.com/events/coscup2011-regist">立刻报名！</a>'	
 				}[lang]
 			);
 		}
