@@ -716,6 +716,8 @@ jQuery(function ($) {
 
 				var $info = $('<div class="info" />');
 
+				if ($meta.children().length) $info.append($meta);
+
 				if (program['abstract']) { // abstract is a reserved word
 					$info.append(
 						$('<div class="abstract" />').html(program['abstract'])
@@ -727,8 +729,6 @@ jQuery(function ($) {
 						$('<div class="bio" />').html(program.bio)
 					);
 				}
-
-				if ($meta.children().length) $info.append($meta);
 
 				if ($info.children().length) $this.append($info);
 			}
