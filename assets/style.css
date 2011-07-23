@@ -60,13 +60,13 @@ code {
   background-color: fuchsia; }
 #content > ul.types > li.program_type_9:before,
 #content table.program td.program_type_9:before {
-  background-color: yellow; }
+  background-color: blue; }
 #content > ul.types > li.program_type_10:before,
 #content table.program td.program_type_10:before {
   background-color: aqua; }
 #content > ul.types > li.program_type_11:before,
 #content table.program td.program_type_11:before {
-  background-color: blue; }
+  background-color: yellow; }
 #content > ul.types > li.program_type_12:before,
 #content table.program td.program_type_12:before {
   background-color: #ff0080; }
