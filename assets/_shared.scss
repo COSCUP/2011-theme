@@ -98,40 +98,40 @@ code {
 			content: none; // cancel type indication for type = 0;
 		}
 		&.program_type_1:before {
-			background-color: hsla(0, 100%, 50%, 1);
+			background-color: hsla(0, 100%, 50%, 1); // 1
 		}
 		&.program_type_2:before {
-			background-color: hsla(360 / 12 * 1, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 3, 100%, 50%, 1); // 1
 		}
 		&.program_type_3:before {
-			background-color: hsla(360 / 12 * 2, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 6, 100%, 50%, 1); // 1
 		}
 		&.program_type_4:before {
-			background-color: hsla(360 / 12 * 3, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 9, 100%, 50%, 1); // 1
 		}
 		&.program_type_5:before {
-			background-color: hsla(360 / 12 * 4, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 1, 100%, 50%, 1); // 2
 		}
 		&.program_type_6:before {
-			background-color: hsla(360 / 12 * 5, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 4, 100%, 50%, 1); // 2
 		}
 		&.program_type_7:before {
-			background-color: hsla(360 / 12 * 6, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 7, 100%, 50%, 1); // 2
 		}
 		&.program_type_8:before {
-			background-color: hsla(360 / 12 * 7, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 10, 100%, 50%, 1); // 2
 		}
 		&.program_type_9:before {
-			background-color: hsla(360 / 12 * 8, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 2, 100%, 50%, 1); // 3
 		}
 		&.program_type_10:before {
-			background-color: hsla(360 / 12 * 9, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 6, 100%, 50%, 1); // 3
 		}
 		&.program_type_11:before {
-			background-color: hsla(360 / 12 * 10, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 8, 100%, 50%, 1); // 3
 		}
 		&.program_type_12:before {
-			background-color: hsla(360 / 12 * 11, 100%, 50%, 1);
+			background-color: hsla(360 / 12 * 11, 100%, 50%, 1); // 3
 		}
 	}
 	table.program td {
