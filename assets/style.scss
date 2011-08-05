@@ -912,6 +912,18 @@ $msg_arrow: $line_height / 2;
 				margin-bottom: 2em;
 			}
 		}
+
+		> .article:target { // program/abstract/
+			position: relative;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0; left: -20px;
+				border: 12px solid transparent;
+				border-left-color: #ccc;
+			}
+		}
+
 		> .sponsors {
 			> h2 {
 				clear: both;

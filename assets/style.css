@@ -888,6 +888,15 @@ code {
           margin-right: 10px; }
       #content table.program:last-child {
         margin-bottom: 2em; }
+    #content > .article:target {
+      position: relative; }
+      #content > .article:target:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -20px;
+        border: 12px solid transparent;
+        border-left-color: #ccc; }
     #content > .sponsors > h2 {
       clear: both; }
     #content > .sponsors > h3 {
