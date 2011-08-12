@@ -708,11 +708,16 @@ jQuery(function ($) {
 				if (!program || program.type === 0) return;
 
 				var $meta = $('<ul class="meta" />'),
-				lang = ({'en': 'English', 'zh': '\u6f22\u8a9e'})[(this.className.match(/program_lang_(\w+)\b/) || [])[1]],
-				type = types[(this.className.match(/program_type_(\w+)\b/) || [])[1]];
+				program_lang = ({'en': 'English', 'zh': '\u6f22\u8a9e'})[(this.className.match(/program_lang_(\w+)\b/) || [])[1]],
+				program_type = types[(this.className.match(/program_type_(\w+)\b/) || [])[1]];
 
-				if (lang) $meta.append($('<li />').text(lang));
-				if (type) $meta.append($('<li />').text(type));
+				if (program_lang) $meta.append($('<li />').text(program_lang));
+				if (program_type) $meta.append($('<li />').text(program_type));
+				if (program.slide) {
+					$meta.append(
+						'<li><a href="' + program.slide + '">' + {en:'Slide Download', 'zh-tw':'投影片下載', 'zh-cn': '投影片下载'}[lang || en] + '</a></li>'
+					);
+				}
 
 				var $info = $('<div class="info" />');
 
