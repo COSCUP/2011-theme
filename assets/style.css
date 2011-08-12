@@ -913,7 +913,52 @@ code {
       margin: 0;
       padding: 10px;
       background-color: #fff;
-      border-left: 10px solid #ccc; } }
+      border-left: 10px solid #ccc; }
+
+  #video_modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10001; }
+
+  #video_iframe {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10002;
+    width: 854px;
+    height: 483px;
+    margin-top: -241.5px;
+    margin-left: -427px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.797) 0px 5px 25px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.797) 0px 5px 25px;
+    -ms-box-shadow: rgba(0, 0, 0, 0.797) 0px 5px 25px;
+    -o-box-shadow: rgba(0, 0, 0, 0.797) 0px 5px 25px;
+    box-shadow: rgba(0, 0, 0, 0.797) 0px 5px 25px;
+    background-color: #000; }
+
+  #video_close_button {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10003;
+    width: 30px;
+    height: 30px;
+    margin-top: -256.5px;
+    margin-left: 412px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    background: transparent url("./closebox.png") center center no-repeat;
+    cursor: pointer; } }
         @media screen and (-webkit-min-device-pixel-ratio: 2) {
           #header > .info > h1 > a {
             background: transparent url("coscup.svg") center center no-repeat; } }

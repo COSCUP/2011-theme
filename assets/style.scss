@@ -948,6 +948,43 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 	}
+	#video_modal {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		z-index: 10001;
+	}
+	#video_iframe {
+		display: block;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		z-index: 10002;
+		width: 854px;
+		height: 483px;
+		margin-top: - 483px / 2;
+		margin-left: - 854px / 2;
+		@include prefix(box-shadow, rgba(0, 0, 0, 0.796875) 0px 5px 25px);
+		background-color: #000;
+	}
+	#video_close_button {
+		display: block;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		z-index: 10003;
+		width: 30px;
+		height: 30px;
+		margin-top: (- 483px - 30px) / 2;
+		margin-left: (854px - 30px) / 2;
+		@include prefix(border-radius, 30px / 2);
+		background: transparent url('./closebox.png') center center no-repeat;
+		cursor: pointer;
+	}
 }
 
 @media screen and (min-width: 481px) and (max-width: 1180px) {

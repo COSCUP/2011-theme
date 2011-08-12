@@ -715,7 +715,16 @@ jQuery(function ($) {
 				if (program_type) $meta.append($('<li />').text(program_type));
 				if (program.slide) {
 					$meta.append(
-						'<li><a href="' + program.slide + '">' + {en:'Slide Download', 'zh-tw':'投影片下載', 'zh-cn': '投影片下载'}[lang || en] + '</a></li>'
+						'<li><a href="' + program.slide + '">' + {en:'Slide Download', 'zh-tw':'投影片下載', 'zh-cn':'投影片下载'}[lang || 'en'] + '</a></li>'
+					);
+				}
+				if (program.youtube) {
+					var list = [].concat(program.youtube),
+					program_embed_url = 'http://www.youtube.com/embed/' + list.shift();
+
+					if (program.youtube.length) program_embed_url += '?playlist=' + list.join(',');
+					$meta.append(
+						'<li><a href="' + program_embed_url + '" class="youtube_video">' + {en:'Video', 'zh-tw':'演講錄影', 'zh-cn':'演讲录影'}[lang || 'en'] + '</a></li>'
 					);
 				}
 
@@ -791,12 +800,30 @@ jQuery(function ($) {
 			'click',
 			function (ev) {
 				if (ev.which == 2 || ev.metaKey) return true;
-				window.open(this.href);
+				if ($(this).hasClass('youtube_video') && !isMobileLayout()) {
+					$(document.body).append(
+						'<div id="video_modal" class="video_box" />'
+					).append(
+						'<iframe id="video_iframe" class="video_box" title="YouTube video player" width="854" height="483"  src="' + this.href + '" frameborder="0"  allowfullscreen="allowfullscreen"></iframe>'
+					).append(
+						'<div id="video_close_button" class="video_box" />'
+					);
+					// window.open(this.href, 'coscup_youtube_video', 'width=854,height=483'); // 480p video size on youtube
+				} else {
+					window.open(this.href);
+				}
 				ev.preventDefault();
 				ev.stopPropagation();
 			}
 		);
 	}
+
+	$('#video_modal, #video_close_button').live(
+		'click',
+		function () {
+			$('.video_box').remove();
+		}
+	);
 
 	// preload program wherever page we are on the main site
 	var programs;
