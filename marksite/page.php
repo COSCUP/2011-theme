@@ -19,13 +19,13 @@ switch($this->current[0])
 <!DOCTYPE html>
 <html lang="<?php echo $lc->lang ?>">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $title; ?> | COSCUP 2011</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>mobile.css" media="handheld, screen and (max-width: 480px)" />
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen and (min-width: 481px)" />
 	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen"/><![endif]-->
     <link rel="shortcut icon" href="<?php echo $theme_assets_uri;?>favicon.ico" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width" />
     <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
