@@ -720,9 +720,9 @@ jQuery(function ($) {
 				}
 				if (program.youtube) {
 					var list = [].concat(program.youtube),
-					program_embed_url = 'http://www.youtube.com/embed/' + list.shift();
+					program_embed_url = 'http://www.youtube.com/embed/' + list.shift() + '?hd=1';
 
-					if (program.youtube.length) program_embed_url += '?playlist=' + list.join(',');
+					if (program.youtube.length) program_embed_url += '&playlist=' + list.join(',');
 					$meta.append(
 						'<li><a href="' + program_embed_url + '" class="youtube_video">' + {en:'Video', 'zh-tw':'演講錄影', 'zh-cn':'演讲录影'}[lang || 'en'] + '</a></li>'
 					);
