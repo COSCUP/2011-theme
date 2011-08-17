@@ -314,6 +314,14 @@ jQuery(function ($) {
 		$('#sidebar2 > .socialbuzz').empty().append($u);
 	}
 
+	$('.socialbuzz a').live(
+		'click',
+		function () {
+			window.open(this.href);
+			return false;
+		}
+	);
+
 	function fullLoad() {
 		if ($('#sidebar2 > .images').length) {
 			if (!$.fn.imageTile) {
