@@ -97,6 +97,75 @@ $msg_arrow: $line_height / 2;
 		> iframe:first-child {
 			margin-top: $line_height;
 		}
+		> ul.shortcuts, ul.types {
+			display: none;
+		}
+		table.program {
+			width: 100%;
+			border-collapse: collapse;
+			margin: $line_height 0;
+			font-size: 82%;
+			line-height: 1.2em;
+			tr {
+				page-break-inside: avoid;
+			}
+			th, td {
+				page-break-inside: avoid;
+				vertical-align: top;
+				text-align: left;
+				border: 1px solid #ccc;
+				padding: 0.5em 0;
+			}
+			th {
+				font-weight: bold;
+			}
+			> thead th {
+				text-align: center;
+				border-bottom: 3px solid #333;
+				font-size: 120%;
+				&:first-child {
+					border-right: 3px solid #333;
+				}
+			}
+			> tbody th {
+				padding: 0.5em $gutter;
+				font-weight: normal;
+				white-space: nowrap;
+				border-right: 3px solid #333;
+				> span {
+					font-weight: bold;
+					font-size: 120%;
+					display: block;
+				}
+			}
+			td {
+				width: 22.5%;
+				padding: 0.5em;
+				> .info {
+					display: none;
+				}
+				&:before {
+					content: none;
+				}
+				> p {
+					padding: 0 $gutter;
+					margin: 0;
+					&.name {
+						font-weight: bold;
+						margin-bottom: $line_height / 2;
+						> a {
+							text-decoration: none;
+						}
+						&:before {
+							display: none;
+						}
+					}
+					&.room {
+						display: none;
+					}
+				}
+			}
+		}
 	}
 }
 

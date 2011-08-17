@@ -224,7 +224,59 @@ code {
   html[lang="zh-TW"] #content, html[lang="zh-CN"] #content {
     text-align: justify; }
   #content > iframe:first-child {
-    margin-top: 22px; } }
+    margin-top: 22px; }
+  #content > ul.shortcuts, #content ul.types {
+    display: none; }
+  #content table.program {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    font-size: 82%;
+    line-height: 1.2em; }
+    #content table.program tr {
+      page-break-inside: avoid; }
+    #content table.program th, #content table.program td {
+      page-break-inside: avoid;
+      vertical-align: top;
+      text-align: left;
+      border: 1px solid #ccc;
+      padding: 0.5em 0; }
+    #content table.program th {
+      font-weight: bold; }
+    #content table.program > thead th {
+      text-align: center;
+      border-bottom: 3px solid #333;
+      font-size: 120%; }
+      #content table.program > thead th:first-child {
+        border-right: 3px solid #333; }
+    #content table.program > tbody th {
+      padding: 0.5em 10px;
+      font-weight: normal;
+      white-space: nowrap;
+      border-right: 3px solid #333; }
+      #content table.program > tbody th > span {
+        font-weight: bold;
+        font-size: 120%;
+        display: block; }
+    #content table.program td {
+      width: 22.5%;
+      padding: 0.5em; }
+      #content table.program td > .info {
+        display: none; }
+      #content table.program td:before {
+        content: none; }
+      #content table.program td > p {
+        padding: 0 10px;
+        margin: 0; }
+        #content table.program td > p.name {
+          font-weight: bold;
+          margin-bottom: 11px; }
+          #content table.program td > p.name > a {
+            text-decoration: none; }
+          #content table.program td > p.name:before {
+            display: none; }
+        #content table.program td > p.room {
+          display: none; } }
 @media screen {
   body {
     width: 1120px;
