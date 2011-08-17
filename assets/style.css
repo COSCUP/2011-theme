@@ -227,6 +227,8 @@ code {
     margin-top: 22px; }
   #content > ul.shortcuts, #content ul.types {
     display: none; }
+  #content h2, #content h3, #content h4, #content h5, #content h6 {
+    page-break-after: avoid; }
   #content table.program {
     width: 100%;
     border-collapse: collapse;
