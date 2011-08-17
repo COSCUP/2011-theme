@@ -103,6 +103,9 @@ $msg_arrow: $line_height / 2;
 		h2, h3, h4, h5, h6 {
 			page-break-after: avoid;
 		}
+		#day2 {
+			page-break-before: always;
+		}
 		table.program {
 			width: 100%;
 			border-collapse: collapse;

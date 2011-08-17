@@ -229,6 +229,8 @@ code {
     display: none; }
   #content h2, #content h3, #content h4, #content h5, #content h6 {
     page-break-after: avoid; }
+  #content #day2 {
+    page-break-before: always; }
   #content table.program {
     width: 100%;
     border-collapse: collapse;
