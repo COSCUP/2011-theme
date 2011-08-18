@@ -842,7 +842,7 @@ code {
           text-decoration: none; }
           #content > #sidebar2 .more a:hover {
             text-decoration: underline; }
-    #content > ul.shortcuts {
+    #content > ul.shortcuts, #content .mobile_top {
       display: none; }
     #content > ul.types {
       text-align: left;

@@ -137,6 +137,32 @@
 			}
 		}
 
+		> .mobile_top {
+			display: none;
+			&.show {
+				display: block;
+			}
+			position: absolute;
+			right: $gutter;
+			top: 0;
+			z-index: 20;
+			margin: 0; padding: 0;
+			width: $line_height + 12px; height: $line_height + 12px;
+			border: 1px solid #ccc;
+			background-color: #eee;
+			opacity: 0.8;
+			@include prefix(border-radius, $line_height / 2 + 6px);
+			&:before {
+				content: '';
+				border: 10px solid transparent;
+				border-bottom-color: #666;
+				display: block;
+				position: absolute;
+				top: $line_height / 2 + 6px - 15	px;
+				left: $line_height / 2 + 6px - 10px;
+			}
+		}
+
 		> ul.types {
 			margin: 0 $gutter;
 			padding: 0;

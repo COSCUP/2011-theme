@@ -106,6 +106,7 @@ jQuery(function ($) {
 						var ot = parseInt($(el).attr('rel') + '000', 10);
 						if (ct > ot && target) {
 							target.scrollIntoView(true);
+							$(window).trigger('scroll');
 							return false;
 						}
 						if (ct > ot) {
@@ -115,11 +116,64 @@ jQuery(function ($) {
 				);
 				if (!target) {
 					$('.program tbody th:first')[0].scrollIntoView(true);
+					$(window).trigger('scroll');
 				}
 			}
 		);
 
 		$('.shortcuts').append($('<li class="fullwidth" />').append($a));
+
+		// back button
+		
+		$('.shortcuts').after(
+			'<a class="mobile_top" href="#"></a>'
+		);
+
+		var $mobile_top = $('.mobile_top'),
+		mtTimer;
+		
+		$mobile_top.bind(
+			'click',
+			function () {
+				$(document.body).animate(
+					{
+						'scrollTop': $('.shortcuts').offset().top - 20
+					},
+					400
+				);
+				return false;
+			}
+		);
+
+
+		$(window).bind(
+			'resize.mt scroll.mt',
+			function () {
+				$mobile_top.removeClass('show');
+				clearTimeout(mtTimer);
+				mtTimer = setTimeout(
+					function () {
+						if ($('.shortcuts').offset().top < $(document.body).scrollTop()) {
+							$mobile_top.css(
+								'top',
+								$(document.body).scrollTop()
+								+ (window.innerHeight || $(window).height()) // innerHeight reports the correct viewpoint height in iPhone
+								- $mobile_top.height()
+								- 15
+							).addClass('show');
+						}
+					},
+					200
+				);
+			}
+		);
+		$(window).bind(
+			'pageload',
+			function (ev) {
+				clearTimeout(mtTimer);
+				$(window).unbind('resize.mt scroll.mt').unbind(ev);
+			}
+		);
 	}
 
 	if ($('#sidebar > .sponsors.empty').length) {
@@ -215,8 +269,9 @@ jQuery(function ($) {
 	$('.shortcuts a').live(
 		'click',
 		function (ev) {
-			if (!navigator.standalone) return;
+			$(window).trigger('scroll');
 
+			if (!navigator.standalone) return;
 			ev.preventDefault();
 			$(this.hash)[0].scrollIntoView(true);
 		}
@@ -407,6 +462,8 @@ jQuery(function ($) {
 	}
 
 	function loadPage() {
+		$(window).trigger('pageload');
+
 		mobileSponsorLogo();
 		insertProgramInfo();
 		currentSessionShortcut();
