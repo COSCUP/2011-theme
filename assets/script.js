@@ -537,7 +537,6 @@ jQuery(function ($) {
 			}
 		}
 	}
-	$(window).bind('pageload', insertProgramInfo);
 
 	var getPageXhr, pages = {}, prefetchQueue = [];
 
@@ -888,6 +887,7 @@ jQuery(function ($) {
 			}
 		);
 	}
+	$(window).bind('pageload', insertProgramInfo);
 
 	$('#video_modal, #video_close_button').live(
 		'click',
