@@ -225,7 +225,7 @@ code {
     text-align: justify; }
   #content > iframe:first-child {
     margin-top: 22px; }
-  #content > ul.shortcuts, #content ul.types {
+  #content > ul.shortcuts, #content ul.types, #content .mobile_top {
     display: none; }
   #content h2, #content h3, #content h4, #content h5, #content h6 {
     page-break-after: avoid; }
