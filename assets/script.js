@@ -5,7 +5,7 @@
 載入步驟：
 
 1. HTML 載入內容，或是 getPage() 從 pages / xhr 抓到內容後由 insertPage() 處理
-2. loadPage() 加入載入內容後需要的函式（無論是手機或桌面版面）
+2. loadPage() 觸發 pageload event ，載入加入內容後需要的函式（無論是手機或桌面版面）
 2.1 如果是手機版面
 2.1.1 執行 deferLoad() 把不該載入的 iframe 洗掉
 2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
@@ -73,6 +73,7 @@ jQuery(function ($) {
 			)
 		);
 	}
+	$(window).bind('pageload', mobileSponsorLogo);
 
 	function currentSessionShortcut() {
 		// Program page only
@@ -175,6 +176,7 @@ jQuery(function ($) {
 			}
 		);
 	}
+	$(window).bind('pageload', currentSessionShortcut);
 
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
@@ -439,6 +441,14 @@ jQuery(function ($) {
 				1000
 			);
 
+			$(window).bind(
+				'pageload',
+				function (ev) {
+					clearTimeout(ctTimer);
+					$(window).unbind(ev);
+				}
+			);
+
 			updateCountDown();
 			$('#countdown').addClass('show');
 		}
@@ -463,11 +473,6 @@ jQuery(function ($) {
 
 	function loadPage() {
 		$(window).trigger('pageload');
-
-		mobileSponsorLogo();
-		insertProgramInfo();
-		currentSessionShortcut();
-		clearTimeout(ctTimer);
 	
 		$('#header').css(
 			'background-position',
@@ -532,6 +537,7 @@ jQuery(function ($) {
 			}
 		}
 	}
+	$(window).bind('pageload', insertProgramInfo);
 
 	var getPageXhr, pages = {}, prefetchQueue = [];
 
