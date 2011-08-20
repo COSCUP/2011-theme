@@ -106,7 +106,12 @@ jQuery(function ($) {
 					function (i, el) {
 						var ot = parseInt($(el).attr('rel') + '000', 10);
 						if (ct < ot && target) {
-							target.scrollIntoView(true);
+							$(document.body).animate(
+								{
+									'scrollTop': $(target).offset().top - 20
+								},
+								180
+							);
 							$(window).trigger('scroll');
 							return false;
 						}
@@ -116,7 +121,12 @@ jQuery(function ($) {
 					}
 				);
 				if (!target) {
-					$('.program tbody th:first')[0].scrollIntoView(true);
+					$(document.body).animate(
+						{
+							'scrollTop': $('.program tbody th:first').offset().top - 20
+						},
+						180
+					);
 					$(window).trigger('scroll');
 				}
 			}
@@ -136,11 +146,12 @@ jQuery(function ($) {
 		$mobile_top.bind(
 			'click',
 			function () {
+				$(window).trigger('scroll');
 				$(document.body).animate(
 					{
 						'scrollTop': $('.shortcuts').offset().top - 20
 					},
-					400
+					180
 				);
 				return false;
 			}
@@ -272,10 +283,14 @@ jQuery(function ($) {
 		'click',
 		function (ev) {
 			$(window).trigger('scroll');
-
-			if (!navigator.standalone) return;
+			//if (!navigator.standalone) return;
 			ev.preventDefault();
-			$(this.hash)[0].scrollIntoView(true);
+			$(document.body).animate(
+				{
+					'scrollTop': $(this.hash).offset().top - 20
+				},
+				180
+			);
 		}
 	);
 
