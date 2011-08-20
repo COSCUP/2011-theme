@@ -105,7 +105,7 @@ jQuery(function ($) {
 				$('.program tbody th').each(
 					function (i, el) {
 						var ot = parseInt($(el).attr('rel') + '000', 10);
-						if (ct > ot && target) {
+						if (ct < ot && target) {
 							target.scrollIntoView(true);
 							$(window).trigger('scroll');
 							return false;
