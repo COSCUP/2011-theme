@@ -877,6 +877,9 @@ $msg_arrow: $line_height / 2;
 					> .info {
 						display: block;
 						padding: 0 10px;
+						.meta {
+							padding: ($line_height / 2) 0;
+						}
 						> :not(:first-child) {
 							border-top: 1px dashed #d0d0d0;
 						}
@@ -975,6 +978,9 @@ $msg_arrow: $line_height / 2;
 						margin: 0;
 						color: #484848;
 					}
+				}
+				.meta {
+					padding: 0 $gutter;
 				}
 				> .info {
 					display: none;

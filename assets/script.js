@@ -793,14 +793,15 @@ jQuery(function ($) {
 				if (!program || program.type === 0) return;
 
 				var $meta = $('<ul class="meta" />'),
+				$outerMeta = $('<ul class="meta" />'),
 				program_lang = ({'en': 'English', 'zh': '\u6f22\u8a9e'})[(this.className.match(/program_lang_(\w+)\b/) || [])[1]],
 				program_type = types[(this.className.match(/program_type_(\w+)\b/) || [])[1]];
 
 				if (program_lang) $meta.append($('<li />').text(program_lang));
 				if (program_type) $meta.append($('<li />').text(program_type));
 				if (program.slide) {
-					$meta.append(
-						'<li><a href="' + program.slide + '">' + {en:'Slide Download', 'zh-tw':'投影片下載', 'zh-cn':'投影片下载'}[lang || 'en'] + '</a></li>'
+					$outerMeta.append(
+						'<li><a href="' + program.slide + '">' + {en:'Slide', 'zh-tw':'投影片', 'zh-cn':'投影片'}[lang || 'en'] + '</a></li>'
 					);
 				}
 				if (program.youtube) {
@@ -808,7 +809,7 @@ jQuery(function ($) {
 					program_embed_url = 'http://www.youtube.com/embed/' + list.shift() + '?hd=1';
 
 					if (program.youtube.length) program_embed_url += '&playlist=' + list.join(',');
-					$meta.append(
+					$outerMeta.append(
 						'<li><a href="' + program_embed_url + '" class="youtube_video">' + {en:'Video', 'zh-tw':'演講錄影', 'zh-cn':'演讲录影'}[lang || 'en'] + '</a></li>'
 					);
 				}
@@ -829,6 +830,7 @@ jQuery(function ($) {
 					);
 				}
 
+				if ($outerMeta.children().length) $this.append($outerMeta);
 				if ($info.children().length) $this.append($info);
 			}
 		).bind(

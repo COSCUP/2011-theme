@@ -107,16 +107,16 @@ code {
   border-radius: 6px;
   text-align: center;
   -webkit-text-size-adjust: none; }
-#content table.program td > .info .meta {
+#content table.program td .meta {
   padding: 11px 0;
   margin: 0;
   display: block;
   color: #666;
   font-size: 82%; }
-  #content table.program td > .info .meta > li {
+  #content table.program td .meta > li {
     display: inline;
     list-style: none; }
-    #content table.program td > .info .meta > li:not(:first-child):before {
+    #content table.program td .meta > li:not(:first-child):before {
       content: '．'; }
 
 .sprite {

@@ -108,16 +108,16 @@ code {
   border-radius: 6px;
   text-align: center;
   -webkit-text-size-adjust: none; }
-#content table.program td > .info .meta {
+#content table.program td .meta {
   padding: 11px 0;
   margin: 0;
   display: block;
   color: #666;
   font-size: 82%; }
-  #content table.program td > .info .meta > li {
+  #content table.program td .meta > li {
     display: inline;
     list-style: none; }
-    #content table.program td > .info .meta > li:not(:first-child):before {
+    #content table.program td .meta > li:not(:first-child):before {
       content: '．'; }
 
 .sprite {
@@ -879,6 +879,8 @@ code {
           #content > div.program.expend table.program td > .info {
             display: block;
             padding: 0 10px; }
+            #content > div.program.expend table.program td > .info .meta {
+              padding: 11px 0; }
             #content > div.program.expend table.program td > .info > :not(:first-child) {
               border-top: 1px dashed #d0d0d0; }
         #content > div.program.expend table.program td.program_room_0 {
@@ -938,6 +940,8 @@ code {
           #content table.program td > p.speaker, #content table.program td > p.speakerTitle {
             margin: 0;
             color: #484848; }
+        #content table.program td .meta {
+          padding: 0 10px; }
         #content table.program td > .info {
           display: none; }
         #content table.program td:before {
