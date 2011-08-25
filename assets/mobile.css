@@ -374,6 +374,8 @@ code {
             float: right;
             clear: right;
             font-size: 82%; }
+        #content table.program td.expend > .meta {
+          display: none; }
         #content table.program td.expend > .info {
           display: block; }
         #content table.program td > .info {

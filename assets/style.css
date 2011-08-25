@@ -876,6 +876,8 @@ code {
         width: 200%; }
         #content > div.program.expend table.program td {
           width: 24%; }
+          #content > div.program.expend table.program td > .meta {
+            display: none; }
           #content > div.program.expend table.program td > .info {
             display: block;
             padding: 0 10px; }

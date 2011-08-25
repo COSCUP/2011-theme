@@ -229,8 +229,13 @@
 						//padding-bottom: 0.5em;
 					}
 				}
-				&.expend > .info {
-					display: block;
+				&.expend {
+					> .meta {
+						display: none;
+					}
+					> .info {
+						display: block;
+					}
 				}
 				> .info {
 					background-color: #e8e8e8;

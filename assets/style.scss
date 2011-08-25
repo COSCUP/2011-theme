@@ -874,6 +874,9 @@ $msg_arrow: $line_height / 2;
 				td {
 					width: 24%;
 					//width: auto;
+					> .meta {
+						display: none;
+					}
 					> .info {
 						display: block;
 						padding: 0 10px;
