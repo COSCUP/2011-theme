@@ -886,7 +886,7 @@ jQuery(function ($) {
 			}
 		);
 
-		$('.program div a').bind(
+		$('.program .meta a, .program .info a').bind(
 			'click',
 			function (ev) {
 				if (ev.which == 2 || ev.metaKey) return true;
