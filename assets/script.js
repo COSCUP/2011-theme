@@ -898,6 +898,27 @@ jQuery(function ($) {
 					).append(
 						'<div id="video_close_button" class="video_box" />'
 					);
+
+					if ($('#video_modal').css('position') !== 'fixed') { // devices that doesn't support fixed position
+						$('.video_box').css('position', 'absolute');
+						var repositionVideo = function () {
+							$('#video_modal').css('top', $(window).scrollTop());
+							$('#video_iframe, #video_close_button').css(
+								'top',
+								$(window).scrollTop() + (window.innerHeight || $(window).height())/2
+							);
+						}
+						repositionVideo();
+						$(window).bind(
+							'scroll.repositionvideo resize.repositionvideo',
+							repositionVideo
+						).bind(
+							'pageload',
+							function (ev) {
+								$(window).unbind('scroll.repositionvideo resize.repositionvideo').unbind(ev);
+							}
+						);
+					}
 					// window.open(this.href, 'coscup_youtube_video', 'width=854,height=483'); // 480p video size on youtube
 				} else {
 					window.open(this.href);
