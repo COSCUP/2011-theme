@@ -899,7 +899,7 @@ jQuery(function ($) {
 						'<div id="video_close_button" class="video_box" />'
 					);
 
-					if ($('#video_modal').css('position') !== 'fixed') { // devices that doesn't support fixed position
+					if ($('#video_modal').offset().top === 0) { // devices that doesn't support fixed position
 						$('.video_box').css('position', 'absolute');
 						var repositionVideo = function () {
 							$('#video_modal').css('top', $(window).scrollTop());
