@@ -904,9 +904,10 @@ jQuery(function ($) {
 						var repositionVideo = function () {
 							$('#video_modal').css(
 								{
-									top: $(window).scrollTop(),
-									width: (window.innerWidth || $(window).width()),
-									height: (window.innerHeight || $(window).height())
+									top: 0,
+									left: 0,
+									width: document.body.scrollWidth,
+									height: document.body.scrollHeight
 								}
 							);
 							$('#video_iframe, #video_close_button').css(
