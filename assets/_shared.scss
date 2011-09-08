@@ -196,7 +196,7 @@ code {
 				display: inline;
 				list-style: none;
 				&:not(:first-child):before {
-					content: '．';
+					content: '·';
 				}
 			}
 		}

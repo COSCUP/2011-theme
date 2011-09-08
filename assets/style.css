@@ -118,7 +118,7 @@ code {
     display: inline;
     list-style: none; }
     #content table.program td .meta > li:not(:first-child):before {
-      content: '．'; }
+      content: '·'; }
 
 .sprite {
   display: block;
@@ -217,7 +217,7 @@ code {
     padding: 22px 0;
     margin: 0; }
     #header > .info > #title:before, #header > .info #title_en:before {
-      content: '．'; }
+      content: '·'; }
   html[lang="zh-TW"] #header > .info > #title_en, html[lang="zh-CN"] #header > .info > #title_en, html[lang="en"] #header > .info > #title {
     display: none; }
 
