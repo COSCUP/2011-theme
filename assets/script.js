@@ -902,10 +902,18 @@ jQuery(function ($) {
 					if ($('#video_modal').offset().top === 0) { // devices that doesn't support fixed position
 						$('.video_box').css('position', 'absolute');
 						var repositionVideo = function () {
-							$('#video_modal').css('top', $(window).scrollTop());
+							$('#video_modal').css(
+								{
+									top: $(window).scrollTop(),
+									width: (window.innerWidth || $(window).width()),
+									height: (window.innerHeight || $(window).height())
+								}
+							);
 							$('#video_iframe, #video_close_button').css(
-								'top',
-								$(window).scrollTop() + (window.innerHeight || $(window).height())/2
+								{
+									top: $(window).scrollTop() + (window.innerHeight || $(window).height())/2,
+									left: $(window).scrollLeft() + (window.innerWidth || $(window).width())/2
+								}
 							);
 						}
 						repositionVideo();
@@ -913,7 +921,7 @@ jQuery(function ($) {
 							'scroll.repositionvideo resize.repositionvideo',
 							repositionVideo
 						).bind(
-							'pageload',
+							'pageload.repositionvideo',
 							function (ev) {
 								$(window).unbind('scroll.repositionvideo resize.repositionvideo').unbind(ev);
 							}
@@ -934,6 +942,7 @@ jQuery(function ($) {
 		'click',
 		function () {
 			$('.video_box').remove();
+			$(window).unbind('scroll.repositionvideo resize.repositionvideo pageload.repositionvideo');
 		}
 	);
 
