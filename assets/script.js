@@ -790,7 +790,28 @@ jQuery(function ($) {
 				var $this = $(this),
 				program = programs[$this.data('pid')];
 
-				if (!program || program.type === 0) return;
+				if (!program) return;
+
+				if (program.type === 0) {
+					var $outerMeta = $('<ul class="meta" />');
+					if (program.slide) {
+						var $slide = $('<li><a href="' + program.slide + '">' + {en:'Slide', 'zh-tw':'投影片', 'zh-cn':'投影片'}[lang || 'en'] + '</a></li>');
+						$outerMeta.append($slide);
+					}
+					if (program.youtube) {
+						var list = [].concat(program.youtube),
+						program_embed_url = 'http://www.youtube.com/embed/' + list.shift() + '?hd=1',
+						$youtube;
+	
+						if (program.youtube.length) program_embed_url += '&playlist=' + list.join(',');
+	
+						$youtube = $('<li><a href="' + program_embed_url + '" class="youtube_video">' + {en:'Video', 'zh-tw':'演講錄影', 'zh-cn':'演讲录影'}[lang || 'en'] + '</a></li>');
+	
+						$outerMeta.append($youtube);
+					}
+					if ($outerMeta.children().length) $this.append($outerMeta);
+					return;
+				}
 
 				var $meta = $('<ul class="meta" />'),
 				$outerMeta = $('<ul class="meta" />'),
