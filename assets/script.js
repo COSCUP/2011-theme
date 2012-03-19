@@ -11,10 +11,6 @@
 2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
 2.2 如果是桌面版面
 2.2.1 執行 fullLoad()
-2.2.2 掃描網頁上的 <a>，如果是站內連結加入 prefetchQueue，起始 fetchPage() 執行背景抓取
-2.2.3 fetchPage() 抓到頁面會將 HTML 存入 pages Array
-
-getPage() 是在 HTML5 History API 存在的情況下才會使用的 partial loading 方法。
 
 */
 
@@ -39,7 +35,7 @@ jQuery(function ($) {
 			}
 		);
 	}
-	
+
 	function mobileSponsorLogo() {
 		var pool = [],
 		multi = {
@@ -50,7 +46,7 @@ jQuery(function ($) {
 		};
 
 		$('#mobileSponsorLogo').remove();
-		
+
 		$.each(
 			multi,
 			function (level, m) {
@@ -135,14 +131,14 @@ jQuery(function ($) {
 		$('.shortcuts').append($('<li class="fullwidth" />').append($a));
 
 		// back button
-		
+
 		$('.shortcuts').after(
 			'<a class="mobile_top" href="#"></a>'
 		);
 
 		var $mobile_top = $('.mobile_top'),
 		mtTimer;
-		
+
 		$mobile_top.bind(
 			'click',
 			function () {
@@ -220,7 +216,7 @@ jQuery(function ($) {
 						}
 					}
 				)[lang];
-			
+
 				$.each(
 					[
 						'diamond',
@@ -259,8 +255,8 @@ jQuery(function ($) {
 		$(document.body).addClass('no_sidebar');
 	}
 	*/
-	
-	
+
+
 	// Analytics tracking for Sponsors
 	$('.sponsors a, #mobileSponsorLogo a').live(
 		'click',
@@ -296,7 +292,7 @@ jQuery(function ($) {
 
 	// CSS hover menu alternative for touch devices
 	// Need to test on actual device
-	
+
 	$('#nav > ul > li').bind(
 		'touchstart',
 		function () {
@@ -330,13 +326,13 @@ jQuery(function ($) {
 
 	function showSocialBuzz(plurks, twits) {
 		var $u = $('<ul />');
-		
-		/* 
+
+		/*
 		* 一個 username 只會出現一次（跨 Twitter / Plurk 比對）
 		* 跳過從 Plurk 送過來的 Twitter
 		* 跳過 Retweet / RePlurk
 		*/
-		
+
 		var usernames = [];
 
 		if (twits) {
@@ -402,14 +398,14 @@ jQuery(function ($) {
 						url: 'http://coscup.org/2011-theme/assets/imagetile.min.js',
 						dataType: 'script',
 						cache: true,
-						success: imageTile 
+						success: imageTile
 					}
 				);
 			} else {
 				imageTile();
 			}
 		}
-		
+
 		if ($('#sidebar2 > .socialbuzz').length) {
 			var plurks, twits;
 			$.getJSON(
@@ -477,7 +473,7 @@ jQuery(function ($) {
 			}
 		);
 	}
-	
+
 	function resumeLoad() {
 		$('#sidebar2 iframe').each(
 			function () {
@@ -488,12 +484,12 @@ jQuery(function ($) {
 
 	function loadPage() {
 		$(window).trigger('pageload');
-	
+
 		$('#header').css(
 			'background-position',
 			'center -' + (75*Math.floor(Math.random()*4)).toString(10) + 'px'
 		);
-	
+
 		$('#footer').css(
 			'background-position',
 			'center -' + (75*Math.floor(Math.random()*6)).toString(10) + 'px'
@@ -503,184 +499,30 @@ jQuery(function ($) {
 		// if so, defer/stop imagetile and iframe from loading
 		// removing 'src' in <img> won't help so not doing it
 		if (isMobileLayout()) {
-	
+
 			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', window.location.href]);
-	
+
 			$(window).bind(
 				'resize.defer',
 				function () {
 					if (isMobileLayout()) return;
 					$(this).unbind('resize.defer');
-	
+
 					// load desktop stuff and stuff unloaded;
 					fullLoad();
 					resumeLoad();
 				}
 			);
-	
+
 			// unload stuff
 			deferLoad();
 		} else {
 			// load desktop stuff
 			fullLoad();
-
-			if (
-				window.history
-				&& history.pushState
-			) {
-				// prefetch other pages
-				$('a').each(
-					function () {
-						// skip external links
-						if (
-							this.hostname !== window.location.hostname
-							|| !/2011/.test(this.pathname)
-							|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
-							|| this.href === window.location.href
-							|| pages[this.href]
-							|| pages[this.href] === 'fetching'
-							|| (/nocache/.test(this.getAttribute('rel')))
-						) return;
-
-						prefetchQueue.push(this.href);
-						pages[this.href] = 'fetching';
-
-						// start the sequence
-						if (prefetchQueue.length === 1) fetchPage();
-					}
-				);
-			}
 		}
-	}
-
-	var getPageXhr, pages = {}, prefetchQueue = [];
-
-	function getPage(href, samepage, resetScroll) {
-		$(window).unbind('resize.defer');
-
-		if (getPageXhr) getPageXhr.abort();
-
-		if (!samepage && pages[href] && pages[href] !== 'fetching') {
-			if (resetScroll) $(window).scrollTop(0);
-			insertPage(pages[href]);
-		} else {
-			var $content = $('#content').addClass('loading');
-			getPageXhr = $.ajax(
-				{
-					url: href,
-					dataType: 'html',
-					cache: !samepage, // nocache if user attempt to load the same page again
-					complete: function (res, status) {
-						if (
-							status === "success"
-							|| status === "notmodified"
-						) {
-							$content.removeClass('loading');
-							pages[href] = res.responseText;
-							if (resetScroll) $(window).scrollTop(0);
-							insertPage(res.responseText);
-						} else {
-							window.location.replace(href);
-						}
-					}
-				}
-			);
-		}
-	}
-
-	function insertPage(html) {
-		var $h = $('<div />').append(
-			html
-			.match(/<body\b([^\u0000]+)<\/body>/)[0]
-			.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-		);
-
-		document.title = html.match(/<title>(.+)<\/title>/)[1];
-		$('#content').html($h.find('#content').children()).removeClass('loading');
-
-		if (!$h.find('#nav').is('.empty')) {
-			$('#nav').html($h.find('#nav').children());
-		}
-
-		if (window._gaq) _gaq.push(['_trackPageview']);
-
-		loadPage();
-	}
-
-	function fetchPage() {
-		var href = prefetchQueue.shift();
-		$.ajax(
-			{
-				url: href,
-				dataType: 'html',
-				cache: true,
-				complete: function (res, status) {
-					if (
-						status === "success"
-						|| status === "notmodified"
-					) {
-						pages[href] = res.responseText;
-					}
-					if (prefetchQueue.length !== 0) fetchPage();
-				}
-			}
-		);
 	}
 
 	loadPage();
-
-	if (
-		window.history
-		&& history.pushState
-	) {
-		// http://stackoverflow.com/questions/4688164/window-bind-popstate
-		// Deal with popstate fire on first load
-		// See also https://hacks.mozilla.org/2011/03/history-api-changes-in-firefox-4/
-		// on difference between Safari 5 vs Fx4.
-		var popped = ('state' in window.history), initialURL = location.href;
-
-		$('a').live(
-			'click',
-			function (ev) {
-				// skip mid/right/cmd click
-				if (ev.which == 2 || ev.metaKey) return true;
-				// skip external links
-				if (
-					this.hostname !== window.location.hostname
-					|| !/2011/.test(this.pathname)
-					|| !(new RegExp(lang)).test(this.pathname.toLowerCase())
-					|| this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
-					|| (/nocache/.test(this.getAttribute('rel')))
-				) return true;
-
-				$(this).parent('#nav li').addClass('loading');
-
-				var href = this.href,
-				samepage = (this.href === window.location.href);
-
-				// Must be called before getPage() so relative links on the new page could be resolved properly
-				history.pushState({'is':'pushed'}, '', href);
-
-				// However, this.href will change for a relative link beyond this point
-				getPage(href, samepage, true);
-
-				// Given the fact we had pushed a new state,
-				// the next popState event must not be initialPop even with initialURL.
-				popped = true;
-
-				return false;
-			}
-		);
-
-		window.onpopstate = function (ev) {
-			// Ignore inital popstate that some browsers fire on page load
-			var initialPop = (!popped && location.href == initialURL);
-			popped = true;
-			if (initialPop) return;
-
-			getPage(window.location.href, false, false);
-		};
-	}
 
 	function insertProgramInfo() {
 		if (!programs) return;
@@ -778,7 +620,7 @@ jQuery(function ($) {
 									);
 									return false;
 								}
-							);	
+							);
 						}
 					)
 				);
@@ -802,11 +644,11 @@ jQuery(function ($) {
 						var list = [].concat(program.youtube),
 						program_embed_url = 'http://www.youtube.com/embed/' + list.shift() + '?hd=1',
 						$youtube;
-	
+
 						if (program.youtube.length) program_embed_url += '&playlist=' + list.join(',');
-	
+
 						$youtube = $('<li><a href="' + program_embed_url + '" class="youtube_video">' + {en:'Video', 'zh-tw':'演講錄影', 'zh-cn':'演讲录影'}[lang || 'en'] + '</a></li>');
-	
+
 						$outerMeta.append($youtube);
 					}
 					if ($outerMeta.children().length) $this.append($outerMeta);
@@ -993,7 +835,7 @@ jQuery(function ($) {
 				{
 					en: '<a href="http://registrano.com/events/coscup2011-regist?locale=en">Register Now!</a>',
 					'zh-tw': '<a href="http://registrano.com/events/coscup2011-regist">立刻報名！</a>',
-					'zh-cn': '<a href="http://registrano.com/events/coscup2011-regist">立刻报名！</a>'	
+					'zh-cn': '<a href="http://registrano.com/events/coscup2011-regist">立刻报名！</a>'
 				}[lang]
 			);
 		}
