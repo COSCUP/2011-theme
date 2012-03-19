@@ -27,7 +27,7 @@ jQuery(function ($) {
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011/api/menu/?callback=?',
+			'http://coscup.org/2012/api/menu/?callback=?',
 			function (data) {
 				var $nav = $('#nav').removeClass('empty');
 				$nav.html(data[lang].replace(/href="(\/[^\/])/g, 'href="http://coscup.org$1'));
@@ -188,7 +188,7 @@ jQuery(function ($) {
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011/api/sponsors/?callback=?',
+			'http://coscup.org/2012/api/sponsors/?callback=?',
 			function (data) {
 				var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
 				var titles = (
@@ -261,14 +261,14 @@ jQuery(function ($) {
 	$('.sponsors a, #mobileSponsorLogo a').live(
 		'click',
 		function () {
-			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2011', this.href]);
+			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2012', this.href]);
 			return true;
 		}
 	);
 	$('#mobileSponsorLogo a').live(
 		'click',
 		function () {
-			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2011 (Mobile only)', this.href]);
+			if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2012 (Mobile only)', this.href]);
 			return true;
 		}
 	);
@@ -395,7 +395,7 @@ jQuery(function ($) {
 			if (!$.fn.imageTile) {
 				$.ajax(
 					{
-						url: 'http://coscup.org/2011-theme/assets/imagetile.min.js',
+						url: 'http://coscup.org/2012-theme/assets/imagetile.min.js',
 						dataType: 'script',
 						cache: true,
 						success: imageTile
@@ -409,7 +409,7 @@ jQuery(function ($) {
 		if ($('#sidebar2 > .socialbuzz').length) {
 			var plurks, twits;
 			$.getJSON(
-				'http://coscup.org/2011/api/plurk/',
+				'http://coscup.org/2012/api/plurk/',
 				function (data) {
 					plurks = data;
 					showSocialBuzz(plurks, twits);
@@ -426,7 +426,7 @@ jQuery(function ($) {
 
 		if ($('#ipv6block').length) {
 			if (window.location.hostname === 'ipv6.coscup.org') {
-					if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2011', 'connected']);
+					if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2012', 'connected']);
 				$('#ipv6block').addClass('show').append(
 					'<h2>IPv6 Connectivity</h2>'
 					+ '<p>You are currently using IPv6 connection.</p>'
@@ -436,7 +436,7 @@ jQuery(function ($) {
 					// See http://ipv6-test.com/api/
 					'http://v6.ipv6-test.com/api/myip.php?json&callback=?',
 					function (data) {
-						if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2011', 'ready but not connected']);
+						if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2012', 'ready but not connected']);
 						$('#ipv6block').addClass('show').append(
 							'<h2>Connect using IPv6</h2>'
 							+ '<p>Your network is IPv6 ready. Try it now by connect to <a href="http://ipv6.coscup.org/">ipv6.coscup.org</a>.</p>'
@@ -500,7 +500,7 @@ jQuery(function ($) {
 		// removing 'src' in <img> won't help so not doing it
 		if (isMobileLayout()) {
 
-			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2011', window.location.href]);
+			if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2012', window.location.href]);
 
 			$(window).bind(
 				'resize.defer',
@@ -709,7 +709,7 @@ jQuery(function ($) {
 
 				if ($div.hasClass('moving')) return false;
 
-				if (window._gaq) _gaq.push(['_trackEvent', 'Program 2011', this.hash]);
+				if (window._gaq) _gaq.push(['_trackEvent', 'Program 2012', this.hash]);
 
 				// For mobile
 				$(this).toggleClass('expend');
@@ -817,7 +817,7 @@ jQuery(function ($) {
 		!/((blog|sponsor|register)\.)?coscup\.org\.?/.test(window.location.domain)
 	) {
 		$.getJSON(
-			'http://coscup.org/2011/api/program/?callback=?',
+			'http://coscup.org/2012/api/program/?callback=?',
 			function (data) {
 				programs = data;
 				insertProgramInfo();
@@ -826,16 +826,17 @@ jQuery(function ($) {
 	}
 
 	function updateCountDown() {
-		//new Date("Fri Jul 15 2011 20:00:00 GMT+0800 (CST)").getTime();
-		var dt = 1310731200 - Math.floor(new Date().getTime()/1E3);
+		// 報名時間 -- 目前還沒確定，暫時用去年 +1yr
+		var dt = new Date("Fri Jul 15 2012 20:00:00 GMT+0800 (CST)").getTime()
+			- Math.floor(new Date().getTime()/1E3);
 
 		if (dt < 0) {
 			clearTimeout(ctTimer);
 			$('#countdown').html(
 				{
-					en: '<a href="http://registrano.com/events/coscup2011-regist?locale=en">Register Now!</a>',
-					'zh-tw': '<a href="http://registrano.com/events/coscup2011-regist">立刻報名！</a>',
-					'zh-cn': '<a href="http://registrano.com/events/coscup2011-regist">立刻报名！</a>'
+					en: '<a href="http://registrano.com/events/coscup2012-regist?locale=en">Register Now!</a>',
+					'zh-tw': '<a href="http://registrano.com/events/coscup2012-regist">立刻報名！</a>',
+					'zh-cn': '<a href="http://registrano.com/events/coscup2012-regist">立刻报名！</a>'
 				}[lang]
 			);
 		}
