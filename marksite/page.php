@@ -17,7 +17,7 @@ switch($this->current[0])
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo $lc->lang ?>">
+<html manifest="<?php echo $home_path ?>site.appcache" lang="<?php echo $lc->lang ?>">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $title; ?> | COSCUP 2012</title>
