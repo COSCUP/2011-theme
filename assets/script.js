@@ -829,8 +829,11 @@ jQuery(function ($) {
   }
 
   function updateCountDown() {
-    var dt = new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
-      - Math.floor(new Date().getTime()/1E3);
+    var dt = Math.floor(
+    	(new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
+    		- Date.now())
+    	/ 1E3
+    );
 
     if (dt < 0) {
       clearTimeout(ctTimer);
