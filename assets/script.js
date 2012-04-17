@@ -76,7 +76,7 @@ jQuery(function ($) {
 
   function currentSessionShortcut() {
     // Program page only
-    if (!$('.shortcuts')) return;
+    if (!$('.shortcuts').length) return;
 
     // Not running after the event
     if (
