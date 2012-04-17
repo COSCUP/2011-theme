@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import "shared";
+@import "appcacheui";
 
 @media handheld, screen and (max-width: 480px) {
 	// mobile layout
@@ -14,23 +15,23 @@
 		line-height: $line_height;
 		background: #f8f8f8;
 	}
-	
+
 	#header, #footer {
 		margin: 0 -5px; padding: 0;
 		@include prefix(transition, 0);
 	}
-	
+
 	#content {
 		margin: 0; padding: 0;
 		@include prefix(transition, 0);
-		
+
 		width: 100%;
-		
+
 		> #main-blogger {
 			overflow: hidden;
 		}
 		min-height: 40 * 2 + 60px;
-		
+
 		a {
 			color: #000;
 			text-decoration: underline;
@@ -38,28 +39,28 @@
 				color: #333;
 			}
 		}
-		
+
 		pre {
 			width: 100%;
 			overflow: auto;
 			background-color: #f0f0f0;
 		}
-		
+
 		.alignleft, .alignright, .aligncenter, .fullwidth {
 			width: 100%;
 		}
-		
+
 		&:before {
 			position: absolute;
 			top: -1px; height: 1px;
 			content: '';
 			background: rgba(#fff, 0.8) url('./loading.gif') center center no-repeat;
 		}
-		
+
 		&.loading {
 			> * {
 				opacity: 0.3;
-			}			
+			}
 			position: relative;
 
 			&:before {
@@ -72,7 +73,7 @@
 				@include prefix(border-radius, 5px);
 			}
 		}
-		
+
 		> #sidebar2 {
 			background-color: $light;
 			@include prefix(box-shadow, 0 0 5px #ccc);
@@ -92,7 +93,7 @@
 				text-align: center;
 			}
 		}
-		
+
 		> ul.shortcuts {
 			margin: $line_height $gutter;
 			padding: 0;
@@ -285,7 +286,7 @@
 			}
 		}
 	}
-	
+
 	#header, #footer {
 		background: #ddd;
 		border-top: 8px solid $dark;
@@ -299,15 +300,15 @@
 			margin: $gutter / 2 0;
 		}
 	}
-	
+
 	#header {
 		> .info {
 			margin: $gutter / 2 0;
 			padding-top: $gutter / 2;
 			padding-bottom: ($gutter / 2 + $line_height + 6);
-			
+
 			position: relative;
-			
+
 			> h1 {
 				position: absolute;
 				top: 0; left: 0;
@@ -341,7 +342,7 @@
 			}
 			> #nav, #language {
 				clear: both;
-				padding: 10px 20px;				
+				padding: 10px 20px;
 				ul {
 					list-style: none;
 					margin: 0; padding: 0;
@@ -416,7 +417,7 @@
 					}
 				}
 			}
-			
+
 			> #mobileSponsorLogo {
 				margin: 0 $gutter / 2; padding: $gutter / 2 0;
 				background-color: #fff;
@@ -452,7 +453,7 @@
 			}
 		}
 	}
-	
+
 	#footer {
 		> .info > p {
 			margin: 0;
@@ -470,7 +471,7 @@
 			}
 		}
 	}
-	
+
 	#message, #mascot_icon, #connect_box, #sidebar, .hideInMobile, #title, #title_en, #tagline {
 		display: none;
 	}

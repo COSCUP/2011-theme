@@ -3,6 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Cabin:regular,bold);
 
 @import "shared";
+@import "appcacheui";
 
 // Variables needed for desktop and 1024px desktop
 
@@ -88,7 +89,7 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 	}
-	
+
 	#content {
 		html[lang="zh-TW"] &,
 		html[lang="zh-CN"] & {
@@ -184,7 +185,7 @@ $msg_arrow: $line_height / 2;
 		@include prefix(transition, width .2s);
 		margin: 0 auto;
 		padding: 0;
-	
+
 		font: $font_size sans-serif;
 		line-height: $line_height;
 		background: #f8f8f8;
@@ -202,7 +203,7 @@ $msg_arrow: $line_height / 2;
 		@include prefix(box-shadow, 0 0 5px #333);
 		position: relative;
 		overflow: hidden;
-		
+
 		> .info {
 			position: absolute;
 			background: #f0f0f0; // IE7 (must use bg: instead of bg-color: )
@@ -210,20 +211,20 @@ $msg_arrow: $line_height / 2;
 			width: 100%;
 			$val: 0 0 5px #fff, 0 0 3px #fff;
 			@include prefix(box-shadow, $val);
-	
+
 			> h1, p {
 				margin: 0; padding: 0;
 			}
 		}
 	}
-	
+
 	#header {
 		height: $header_height;
-		
+
 		> .info {
 			top: $header_tb;
 			height: $header_height - $header-tb * 2;
-	
+
 			> h1 {
 				position: absolute;
 				left: $col + $gutter - $gutter / 2;
@@ -238,16 +239,16 @@ $msg_arrow: $line_height / 2;
 					width: $h_left_width;
 					height: $h_left_width / 2.52066;
 					background: transparent url('coscup.png') center center no-repeat;
-					
+
 					@media (-webkit-min-device-pixel-ratio: 2) {
 						background: transparent url('coscup.svg') center center no-repeat;
 					}
-					
+
 					background-size: cover;
 					text-indent: -10000px;
 				}
 			}
-			
+
 			> #title {
 				position: absolute;
 				top: $line_height * 0 + $h_left_width / 2.52066 + 10px;
@@ -260,7 +261,7 @@ $msg_arrow: $line_height / 2;
 				letter-spacing: ($h_left_width - $font_size * 1.1 * 5) / 5;
 				white-space: nowrap;
 			}
-			
+
 			> #title_en {
 				position: absolute;
 				top: $line_height * 0 + $h_left_width / 2.52066 + $font_size * 2;
@@ -269,16 +270,16 @@ $msg_arrow: $line_height / 2;
 				text-align: justify;
 				color: #666;
 				> #coders {
-				
+
 				}
 				> #users {
-				
+
 				}
 				> #promoters {
-				
+
 				}
 			}
-	
+
 			> #date_place {
 				position: absolute;
 				left: ( $col + $gutter ) * ($h_left + 2);
@@ -297,7 +298,7 @@ $msg_arrow: $line_height / 2;
 					content: " :: ";
 				}
 			}
-	
+
 			> #language, > #nav {
 				position: absolute;
 				top: $info_top;
@@ -324,7 +325,7 @@ $msg_arrow: $line_height / 2;
 					}
 				}
 			}
-	
+
 			> #nav {
 				left: ( $col + $gutter ) * ($h_left + 2) - ($gutter / 2);
 				width: $h_right_width - ($gutter * 2 + $col * 3);
@@ -404,14 +405,14 @@ $msg_arrow: $line_height / 2;
 					width: $col * 2 + $gutter;
 					@include prefix(border-radius, 8px);
 					@include prefix(transition, background .2s ease-out);
-					
+
 					word-wrap: break-word;
 					white-space: normal;
 					overflow: hidden;
 					width: $col - 5 * 2px;
 					height: $line_height;
 					padding: 0 4px;
-	
+
 					&:hover {
 						background: $light;
 						background: rgba($light, 0.8);
@@ -421,13 +422,13 @@ $msg_arrow: $line_height / 2;
 				li {
 					border-right: none!important;
 					padding-right: 2px;
-	
+
 					&:last-child {
 						padding-right: 0;
 					}
 				}
 			}
-			
+
 			> #mobileSponsorLogo {
 				display: none;
 			}
@@ -456,9 +457,9 @@ $msg_arrow: $line_height / 2;
 					border: $msg_arrow solid transparent;
 					border-left: $msg_arrow solid rgba($light, 0.5);
 				}
-				
+
 				color: #666;
-				
+
 				em {
 					font-size: 115%;
 					font-weight: bold;
@@ -466,7 +467,7 @@ $msg_arrow: $line_height / 2;
 					color: #000;
 				}
 			}
-	
+
 			#mascot_icon {
 				position: absolute;
 				right: ( $col + $gutter );
@@ -478,14 +479,14 @@ $msg_arrow: $line_height / 2;
 				text-indent: -10000px;
 				@include prefix(transform, rotate(10deg));
 			}
-			
+
 			> #connect_box {
 				position: absolute;
 				bottom: $info_top;
 				right: ( $col + $gutter );
 				height: 16px;
 				width: (16 + 8) * 6px;
-	
+
 				ul {
 					margin: 0; padding: 0;
 					list-style: none;
@@ -507,29 +508,29 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 	}
-	
+
 	$footer_tb: 15px;
-	
+
 	#footer {
 		height: 75px;
 		clear: both;
-	
+
 		> .info {
 			top: $footer_tb;
 			height: 75px - $footer_tb * 2;
 			color: #333;
 			font-size: 85%;
-	
+
 			> #copyright, > #tagline, > #archives {
 				position: absolute;
 				top: (75px - $footer_tb * 2) / 2 - $line_height / 2;
 				@include gridNoMargin(8);
 			}
-			
+
 			> #copyright {
 				left: ($col + $gutter);
 			}
-	
+
 			> #tagline {
 				left: ($col + $gutter) * 10;
 				@include gridNoMargin(8);
@@ -540,7 +541,7 @@ $msg_arrow: $line_height / 2;
 					color: violet;
 				}
 			}
-	
+
 			> #archives {
 				right: ($col + $gutter);
 				text-align: right;
@@ -555,23 +556,23 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 	}
-	
+
 	#sidebar {
 		float: right;
 		margin-bottom: $line_height;
-	
+
 		@include grid($sidebar_width);
-		
+
 		body.no_sidebar > & {
 			display: none;
 		}
-		
+
 		@include prefix(transition, width .2s);
 		@include largeFont;
-	
+
 		background-color: #fff;
 		@include prefix(box-shadow, 0 0 5px #ccc);
-	
+
 		.sponsors, .sponsors-after {
 			//padding: $line_height 0;
 			> h2 {
@@ -611,14 +612,14 @@ $msg_arrow: $line_height / 2;
 			}
 		}
 	}
-	
+
 	#content {
 		float: left;
 		padding-top: $gutter / 2;
 		@include grid($width - $sidebar_width);
-		
+
 		min-height: 50%;
-		
+
 		a {
 			color: #000;
 			text-decoration: underline;
@@ -626,17 +627,17 @@ $msg_arrow: $line_height / 2;
 				color: #333;
 			}
 		}
-		
+
 		body.no_sidebar > & {
 			@include grid($width);
 		}
-		
+
 		pre {
 			width: 100%;
 			overflow: auto;
 			background-color: #f0f0f0;
 		}
-		
+
 		.alignleft {
 			float: left;
 			display: block;
@@ -661,7 +662,7 @@ $msg_arrow: $line_height / 2;
 			width: 100%;
 			display: block;
 		}
-		
+
 		html[lang="zh-TW"] &,
 		html[lang="zh-CN"] & {
 			text-align: justify;
@@ -677,7 +678,7 @@ $msg_arrow: $line_height / 2;
 		&.loading {
 			> * {
 				opacity: 0.3;
-			}			
+			}
 			position: relative;
 
 			&:before {
@@ -690,9 +691,9 @@ $msg_arrow: $line_height / 2;
 				@include prefix(border-radius, 5px);
 			}
 		}
-		
+
 		@include prefix(transition, width .2s);
-		
+
 		> iframe:first-child {
 			margin-top: $line_height;
 		}
@@ -705,7 +706,7 @@ $msg_arrow: $line_height / 2;
 			width: ($col * $sidebar2_width + $gutter  * ($sidebar2_width - 1)) - $line_height;
 			margin-left: $gutter;
 			padding: $line_height ($line_height / 2);
-			
+
 			h2 {
 				font-size: 100%;
 				margin: $line_height (-$line_height / 2);
@@ -730,9 +731,9 @@ $msg_arrow: $line_height / 2;
 					color: #ddd;
 				}
 			}
-			
+
 			$img_gutter: 8px;
-			
+
 			> .images {
 				height: (75px + $img_gutter) * 3;
 				//margin: ($line_height / 2) (- $img_gutter) ($line_height / 2) 0;
@@ -752,7 +753,7 @@ $msg_arrow: $line_height / 2;
 			> .video {
 				//margin: ($line_height / 2) 0;
 			}
-			
+
 			> #ipv6block {
 				min-height: 103px;
 				position: relative;
@@ -775,7 +776,7 @@ $msg_arrow: $line_height / 2;
 					@include prefix(border-radius, 3px);
 				}
 			}
-			
+
 			> #countdown {
 				display: none;
 				&.show {
@@ -818,7 +819,7 @@ $msg_arrow: $line_height / 2;
 					}
 				}
 			}
-			
+
 			.more {
 				clear: both;
 				padding: 0; margin: 0;
@@ -832,11 +833,11 @@ $msg_arrow: $line_height / 2;
 				}
 			}
 		}
-		
+
 		> ul.shortcuts, .mobile_top {
 			display: none;
 		}
-		
+
 		> ul.types {
 			text-align: left;
 			padding: 0;
@@ -1076,7 +1077,7 @@ $msg_arrow: $line_height / 2;
 
 	$width: 25;
 	$sidebar_width: 5;
-	
+
 	body {
 		width: $width * ( $col + $gutter );
 	}
@@ -1120,7 +1121,7 @@ $msg_arrow: $line_height / 2;
 
 	#content {
 		@include grid($width - $sidebar_width);
-		
+
 		body.no_sidebar > & {
 			@include grid($width);
 		}
