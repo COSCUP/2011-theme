@@ -1,6 +1,6 @@
-<?php 
+<?php
 include_once "i18n.php";
-$theme_assets_uri = "/2011-theme/assets/";
+$theme_assets_uri = "/2012-theme/assets/";
 $lc = new i18n;
 switch($this->current[0])
 {
@@ -17,16 +17,16 @@ switch($this->current[0])
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo $lc->lang ?>">
+<html manifest="<?php echo $home_path ?>site.appcache" lang="<?php echo $lc->lang ?>">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><?php echo $title; ?> | COSCUP 2011</title>
+	<title><?php echo $title; ?> | COSCUP 2012</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>mobile.css" media="handheld, screen and (max-width: 480px)" />
     <link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen and (min-width: 481px)" />
 	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="<?php echo $theme_assets_uri;?>style.css" media="print, screen"/><![endif]-->
     <link rel="shortcut icon" href="<?php echo $theme_assets_uri;?>favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    <meta property="og:image" content="http://coscup.org/2011-theme/assets/coscup.png" />
+    <meta property="og:image" content="http://coscup.org/2012-theme/assets/coscup.png" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="apple-touch-fullscreen" content="yes" />
@@ -55,7 +55,7 @@ switch($this->current[0])
 		<h1><a href="<?php echo $home_path.$lc->_("HOME_URI_APPENDS");?>" title="<?php echo $lc->_("首頁");?>">COSCUP</a></h1>
 		<p id="title"><?php echo $lc->_("開源人年會");?></p>
 		<p id="title_en">Conference for Open Source <span id="coders">Coders</span>, <span id="users">Users</span> and <span id="promoters">Promoters</span></p>
-		<p id="date_place" title="<?php echo $lc->_("2011 年 8 月 20 – 21 日");?>"><span id="date">8/20 – 21, 2011</span><span id="place"><?php echo $lc->_("台灣台北"); ?></span></p>
+		<p id="date_place" title="<?php echo $lc->_("2012 年 8 月 18 – 19 日");?>"><span id="date">8/18 – 19, 2012</span><span id="place"><?php echo $lc->_("台灣台北"); ?></span></p>
 		<div id="nav">
 			<ul>
 				<?php echo $this->menu(1,2); ?>
@@ -69,13 +69,13 @@ switch($this->current[0])
 			</ul>
 		</div>
 		<div id="message">
-			<p>Come on rock with <em>Gadgets beyond Smartphones</em>!</p>
+			<p>Open Device, Seamless Apps Experience</p>
 		</div>
 		<p id="mascot_icon"></p>
 		<div id="connect_box">
 			<ul>
-				<li><a title="<?php echo $lc->_("加到 Google 日曆");?>" target="_blank" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=COSCUP+2011&amp;dates=20110820T010000Z/20110821T100000Z&amp;details=http%3A%2F%2Fcoscup.org/2011/&amp;trp=true&amp;sprop=http%3A%2F%2Fcoscup.org/2011/&amp;sprop=name:COSCUP"><span class="sprite gcal"></span></a></li>
-				<li><a title="<?php echo $lc->_("訂閱電子報");?>" target="_blank" href="http://coscup.org/2011/zh-tw/contact/#subscribe"><span class="sprite newspaper"></span></a></li>
+				<li><a title="<?php echo $lc->_("加到 Google 日曆");?>" target="_blank" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=COSCUP+2012&amp;dates=20120818T010000Z/20120819T100000Z&amp;details=http%3A%2F%2Fcoscup.org/2012/&amp;trp=true&amp;sprop=http%3A%2F%2Fcoscup.org/2012/&amp;sprop=name:COSCUP"><span class="sprite gcal"></span></a></li>
+				<li><a title="<?php echo $lc->_("訂閱電子報");?>" target="_blank" href="http://coscup.org/2012/zh-tw/contact/#subscribe"><span class="sprite newspaper"></span></a></li>
 				<li><a title="<?php echo $lc->_("Facebook 粉絲團");?>" href="https://www.facebook.com/coscup" target="_blank"><span class="sprite facebook"></span></a></li>
 				<li><a title="<?php echo $lc->_("Twitter");?>" href="https://twitter.com/coscup" target="_blank"><span class="sprite twitter"></span></a></li>
 				<li><a title="<?php echo $lc->_("噗浪");?>" href="http://www.plurk.com/coscup" target="_blank"><span class="sprite plurk"></span></a></li>
@@ -89,33 +89,33 @@ switch($this->current[0])
 </div>
 <div id="sidebar">
 	<div class="sponsors">
-<?php 
+<?php
 switch($this->current[0])
 {
 	case "zh-tw":
-		echo $this->block['sponsors-zh-tw']; 
+		echo $this->block['sponsors-zh-tw'];
 		break;
 	case "zh-cn":
-		echo $this->block['sponsors-zh-cn']; 
+		echo $this->block['sponsors-zh-cn'];
 		break;
 	default:
-		echo $this->block['sponsors']; 
+		echo $this->block['sponsors'];
 		break;
 }
 ?>
 	</div>
 	<div class="sponsors-after">
-<?php 
+<?php
 switch($this->current[0])
 {
 	case "zh-tw":
-		echo $this->block['sponsors-after-zh-tw']; 
+		echo $this->block['sponsors-after-zh-tw'];
 		break;
 	case "zh-cn":
-		echo $this->block['sponsors-after-zh-cn']; 
+		echo $this->block['sponsors-after-zh-cn'];
 		break;
 	default:
-		echo $this->block['sponsors-after']; 
+		echo $this->block['sponsors-after'];
 		break;
 }
 ?>
@@ -131,6 +131,7 @@ switch($this->current[0])
 			<span class="separator"> | </span><a href="http://coscup.org/2008/">2008</a>
 			<span class="separator"> | </span><a href="http://coscup.org/2009/">2009</a>
 			<span class="separator"> | </span><a href="http://coscup.org/2010/">2010</a>
+			<span class="separator"> | </span><a href="http://coscup.org/2011/">2011</a>
 		</p>
 	</div>
 </div>
