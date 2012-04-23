@@ -11,6 +11,8 @@
 2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
 2.2 如果是桌面版面
 2.2.1 執行 fullLoad()
+2.2.2 掃描網頁上的 <a>，如果是站內連結加入 prefetchQueue，起始 fetchPage() 執行背景抓取
+2.2.3 fetchPage() 抓到頁面會將 HTML 存入 pages Array
 
 */
 
@@ -522,10 +524,164 @@ jQuery(function ($) {
     } else {
       // load desktop stuff
       fullLoad();
+
+      if (
+        window.history
+        && history.pushState
+      ) {
+        // prefetch other pages
+        $('a').each(
+          function () {
+            // skip external links
+            if (
+              this.hostname !== window.location.hostname
+              || !/2011/.test(this.pathname)
+              || !(new RegExp(lang)).test(this.pathname.toLowerCase())
+              || this.href === window.location.href
+              || pages[this.href]
+              || pages[this.href] === 'fetching'
+              || (/nocache/.test(this.getAttribute('rel')))
+            ) return;
+
+            prefetchQueue.push(this.href);
+            pages[this.href] = 'fetching';
+
+            // start the sequence
+            if (prefetchQueue.length === 1) fetchPage();
+          }
+        );
+      }
     }
   }
 
+  var getPageXhr, pages = {}, prefetchQueue = [];
+
+  function getPage(href, samepage, resetScroll) {
+    $(window).unbind('resize.defer');
+
+    if (getPageXhr) getPageXhr.abort();
+
+    if (!samepage && pages[href] && pages[href] !== 'fetching') {
+      if (resetScroll) $(window).scrollTop(0);
+      insertPage(pages[href]);
+    } else {
+      var $content = $('#content').addClass('loading');
+      getPageXhr = $.ajax(
+        {
+          url: href,
+          dataType: 'html',
+          cache: !samepage, // nocache if user attempt to load the same page again
+          complete: function (res, status) {
+            if (
+              status === "success"
+              || status === "notmodified"
+            ) {
+              $content.removeClass('loading');
+              pages[href] = res.responseText;
+              if (resetScroll) $(window).scrollTop(0);
+              insertPage(res.responseText);
+            } else {
+              window.location.replace(href);
+            }
+          }
+        }
+      );
+    }
+  }
+
+  function insertPage(html) {
+    var $h = $('<div />').append(
+      html
+      .match(/<body\b([^\u0000]+)<\/body>/)[0]
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    );
+
+    document.title = html.match(/<title>(.+)<\/title>/)[1];
+    $('#content').html($h.find('#content').children()).removeClass('loading');
+
+    if (!$h.find('#nav').is('.empty')) {
+      $('#nav').html($h.find('#nav').children());
+    }
+
+    if (window._gaq) _gaq.push(['_trackPageview']);
+
+    loadPage();
+  }
+
+  function fetchPage() {
+    var href = prefetchQueue.shift();
+    $.ajax(
+      {
+        url: href,
+        dataType: 'html',
+        cache: true,
+        complete: function (res, status) {
+          if (
+            status === "success"
+            || status === "notmodified"
+          ) {
+            pages[href] = res.responseText;
+          }
+          if (prefetchQueue.length !== 0) fetchPage();
+        }
+      }
+    );
+  }
+
   loadPage();
+
+  if (
+    window.history
+    && history.pushState
+  ) {
+    // http://stackoverflow.com/questions/4688164/window-bind-popstate
+    // Deal with popstate fire on first load
+    // See also https://hacks.mozilla.org/2011/03/history-api-changes-in-firefox-4/
+    // on difference between Safari 5 vs Fx4.
+    var popped = ('state' in window.history), initialURL = location.href;
+
+    $('a').live(
+      'click',
+      function (ev) {
+        // skip mid/right/cmd click
+        if (ev.which == 2 || ev.metaKey) return true;
+        // skip external links
+        if (
+          this.hostname !== window.location.hostname
+          || !/2011/.test(this.pathname)
+          || !(new RegExp(lang)).test(this.pathname.toLowerCase())
+          || this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
+          || (/nocache/.test(this.getAttribute('rel')))
+        ) return true;
+
+        $(this).parent('#nav li').addClass('loading');
+
+        var href = this.href,
+        samepage = (this.href === window.location.href);
+
+        // Must be called before getPage() so relative links on the new page could be resolved properly
+        history.pushState({'is':'pushed'}, '', href);
+
+        // However, this.href will change for a relative link beyond this point
+        getPage(href, samepage, true);
+
+        // Given the fact we had pushed a new state,
+        // the next popState event must not be initialPop even with initialURL.
+        popped = true;
+
+        return false;
+      }
+    );
+
+    window.onpopstate = function (ev) {
+      // Ignore inital popstate that some browsers fire on page load
+      var initialPop = (!popped && location.href == initialURL);
+      popped = true;
+      if (initialPop) return;
+
+      getPage(window.location.href, false, false);
+    };
+  }
 
   function insertProgramInfo() {
     if (!programs) return;
@@ -830,9 +986,9 @@ jQuery(function ($) {
 
   function updateCountDown() {
     var dt = Math.floor(
-    	(new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
-    		- Date.now())
-    	/ 1E3
+      (new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
+        - Date.now())
+      / 1E3
     );
 
     if (dt < 0) {
