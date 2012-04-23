@@ -4,7 +4,7 @@
 
 載入步驟：
 
-1. HTML 載入內容，或是 getPage() 從 pages / xhr 抓到內容後由 insertPage() 處理
+1. HTML 載入內容，或是 getPage() 從 xhr 抓到內容後由 insertPage() 處理
 2. loadPage() 觸發 pageload event ，載入加入內容後需要的函式（無論是手機或桌面版面）
 2.1 如果是手機版面
 2.1.1 執行 deferLoad() 把不該載入的 iframe 洗掉
@@ -527,38 +527,32 @@ jQuery(function ($) {
     }
   }
 
-  var getPageXhr, pages = {};
+  var getPageXhr;
 
   function getPage(href, samepage, resetScroll) {
     $(window).unbind('resize.defer');
+    if (getPageXhr)
+      getPageXhr.abort();
 
-    if (getPageXhr) getPageXhr.abort();
-
-    if (!samepage && pages[href] && pages[href] !== 'fetching') {
-      if (resetScroll) $(window).scrollTop(0);
-      insertPage(pages[href]);
-    } else {
-      var $content = $('#content').addClass('loading');
-      getPageXhr = $.ajax(
-        {
-          url: href,
-          dataType: 'html',
-          complete: function (res, status) {
-            if (
-              status === "success"
-              || status === "notmodified"
-            ) {
-              $content.removeClass('loading');
-              pages[href] = res.responseText;
-              if (resetScroll) $(window).scrollTop(0);
-              insertPage(res.responseText);
-            } else {
-              window.location.replace(href);
-            }
+    var $content = $('#content').addClass('loading');
+    getPageXhr = $.ajax(
+      {
+        url: href,
+        dataType: 'html',
+        complete: function (res, status) {
+          if (
+            status === "success"
+            || status === "notmodified"
+          ) {
+            $content.removeClass('loading');
+            if (resetScroll) $(window).scrollTop(0);
+            insertPage(res.responseText);
+          } else {
+            window.location.replace(href);
           }
         }
-      );
-    }
+      }
+    );
   }
 
   function insertPage(html) {
