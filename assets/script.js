@@ -11,8 +11,8 @@
 2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
 2.2 如果是桌面版面
 2.2.1 執行 fullLoad()
-2.2.2 掃描網頁上的 <a>，如果是站內連結加入 prefetchQueue，起始 fetchPage() 執行背景抓取
-2.2.3 fetchPage() 抓到頁面會將 HTML 存入 pages Array
+2.3 如果是 navigator.standalone // iOS standalone Web App
+2.3.1 對 <a> 掛 live hook，將站內連結導向 getPage() -> insertPage()，用抽換內容的方式更新網頁
 
 */
 
@@ -524,37 +524,10 @@ jQuery(function ($) {
     } else {
       // load desktop stuff
       fullLoad();
-
-      if (
-        window.history
-        && history.pushState
-      ) {
-        // prefetch other pages
-        $('a').each(
-          function () {
-            // skip external links
-            if (
-              this.hostname !== window.location.hostname
-              || !/2012/.test(this.pathname)
-              || !(new RegExp(lang)).test(this.pathname.toLowerCase())
-              || this.href === window.location.href
-              || pages[this.href]
-              || pages[this.href] === 'fetching'
-              || (/nocache/.test(this.getAttribute('rel')))
-            ) return;
-
-            prefetchQueue.push(this.href);
-            pages[this.href] = 'fetching';
-
-            // start the sequence
-            if (prefetchQueue.length === 1) fetchPage();
-          }
-        );
-      }
     }
   }
 
-  var getPageXhr, pages = {}, prefetchQueue = [];
+  var getPageXhr, pages = {};
 
   function getPage(href, samepage, resetScroll) {
     $(window).unbind('resize.defer');
@@ -570,7 +543,6 @@ jQuery(function ($) {
         {
           url: href,
           dataType: 'html',
-          cache: !samepage, // nocache if user attempt to load the same page again
           complete: function (res, status) {
             if (
               status === "success"
@@ -608,31 +580,11 @@ jQuery(function ($) {
     loadPage();
   }
 
-  function fetchPage() {
-    var href = prefetchQueue.shift();
-    $.ajax(
-      {
-        url: href,
-        dataType: 'html',
-        cache: true,
-        complete: function (res, status) {
-          if (
-            status === "success"
-            || status === "notmodified"
-          ) {
-            pages[href] = res.responseText;
-          }
-          if (prefetchQueue.length !== 0) fetchPage();
-        }
-      }
-    );
-  }
-
   loadPage();
 
   if (
-    window.history
-    && history.pushState
+    window.history.pushState
+    && window.navigator.standalone
   ) {
     // http://stackoverflow.com/questions/4688164/window-bind-popstate
     // Deal with popstate fire on first load
