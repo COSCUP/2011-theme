@@ -242,43 +242,43 @@ body.appcache-allinfo #appcache_info.appcache-error,
   content: 'Reload Now'; }
 
 #appcache_info.appcache-checking:before {
-  content: "Checking for updates ..."; }
+  content: "Checking for offline content updates ..."; }
 
 #appcache_info.appcache-downloading:before,
 #appcache_info.appcache-progress:before {
-  content: "Downloading updates ..."; }
+  content: "Downloading offline content ..."; }
 
 #appcache_info.appcache-updateready:before {
   content: 'A new version is available.'; }
 
 #appcache_info.appcache-noupdate:before {
-  content: 'No updates.'; }
+  content: 'No updates available for now.'; }
 
 #appcache_info.appcache-obsolete:before {
   content: 'This website is obsolete. Reload to see new version.'; }
 
 #appcache_info.appcache-error:before {
-  content: 'Unable to check updates.'; }
+  content: 'Unable to check for offline content updates.'; }
 
 #appcache_info.appcache-cached:before {
-  content: 'Download complete.'; }
+  content: 'Download complete. Ready to be accessed offline.'; }
 
 /* zh-tw strings */
 #appcache_info:lang(zh-tw) a:before {
   content: '立刻重新載入'; }
 
 #appcache_info:lang(zh-tw).appcache-checking:before {
-  content: "正在檢查網站更新 ..."; }
+  content: "正在檢查網站離線內容更新 ..."; }
 
 #appcache_info:lang(zh-tw).appcache-downloading:before,
 #appcache_info:lang(zh-tw).appcache-progress:before {
-  content: "正在下載網站更新 ..."; }
+  content: "正在下載網站離線內容 ..."; }
 
 #appcache_info:lang(zh-tw).appcache-updateready:before {
   content: '最新版本已下載完畢。'; }
 
 #appcache_info:lang(zh-tw).appcache-noupdate:before {
-  content: '沒有新的更新。'; }
+  content: '沒有新的離線內容更新。'; }
 
 #appcache_info:lang(zh-tw).appcache-obsolete:before {
   content: '網站已過時。重新載入以存取最新網站。'; }
@@ -287,24 +287,24 @@ body.appcache-allinfo #appcache_info.appcache-error,
   content: '無法檢查更新。'; }
 
 #appcache_info:lang(zh-tw).appcache-cached:before {
-  content: '下載完畢。'; }
+  content: '下載完畢。網站可離線使用。'; }
 
 /* zh-cn strings */
 #appcache_info:lang(zh-cn) a:before {
   content: '立刻重新载入'; }
 
 #appcache_info:lang(zh-cn).appcache-checking:before {
-  content: "正在检查网站更新 ..."; }
+  content: "正在检查网站离线内容更新 ..."; }
 
 #appcache_info:lang(zh-cn).appcache-downloading:before,
 #appcache_info:lang(zh-cn).appcache-progress:before {
-  content: "正在下载网站更新 ..."; }
+  content: "正在下载网站离线内容 ..."; }
 
 #appcache_info:lang(zh-cn).appcache-updateready:before {
   content: '最新版本已下载完毕。'; }
 
 #appcache_info:lang(zh-cn).appcache-noupdate:before {
-  content: '没有新的更新。'; }
+  content: '没有新的离线内容更新。'; }
 
 #appcache_info:lang(zh-cn).appcache-obsolete:before {
   content: '网站已过时。重新载入以存取最新网站。'; }
@@ -313,7 +313,7 @@ body.appcache-allinfo #appcache_info.appcache-error,
   content: '无法检查更新。'; }
 
 #appcache_info:lang(zh-cn).appcache-cached:before {
-  content: '下载完毕。'; }
+  content: '下载完毕。网站可离线使用。'; }
 
 @media handheld, screen and (max-width: 480px) {
   body {
