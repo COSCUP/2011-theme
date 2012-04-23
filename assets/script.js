@@ -535,7 +535,7 @@ jQuery(function ($) {
             // skip external links
             if (
               this.hostname !== window.location.hostname
-              || !/2011/.test(this.pathname)
+              || !/2012/.test(this.pathname)
               || !(new RegExp(lang)).test(this.pathname.toLowerCase())
               || this.href === window.location.href
               || pages[this.href]
@@ -648,7 +648,7 @@ jQuery(function ($) {
         // skip external links
         if (
           this.hostname !== window.location.hostname
-          || !/2011/.test(this.pathname)
+          || !/2012/.test(this.pathname)
           || !(new RegExp(lang)).test(this.pathname.toLowerCase())
           || this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
           || (/nocache/.test(this.getAttribute('rel')))
