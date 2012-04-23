@@ -4,13 +4,15 @@
 
 載入步驟：
 
-1. HTML 載入內容，或是 getPage() 從 pages / xhr 抓到內容後由 insertPage() 處理
+1. HTML 載入內容，或是 getPage() 從 xhr 抓到內容後由 insertPage() 處理
 2. loadPage() 觸發 pageload event ，載入加入內容後需要的函式（無論是手機或桌面版面）
 2.1 如果是手機版面
 2.1.1 執行 deferLoad() 把不該載入的 iframe 洗掉
 2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
 2.2 如果是桌面版面
 2.2.1 執行 fullLoad()
+2.3 如果是 navigator.standalone // iOS standalone Web App
+2.3.1 對 <a> 掛 live hook，將站內連結導向 getPage() -> insertPage()，用抽換內容的方式更新網頁
 
 */
 
@@ -525,7 +527,107 @@ jQuery(function ($) {
     }
   }
 
+  var getPageXhr;
+
+  function getPage(href, samepage, resetScroll) {
+    $(window).unbind('resize.defer');
+    if (getPageXhr)
+      getPageXhr.abort();
+
+    var $content = $('#content').addClass('loading');
+    getPageXhr = $.ajax(
+      {
+        url: href,
+        dataType: 'html',
+        complete: function (res, status) {
+          if (
+            status === "success"
+            || status === "notmodified"
+          ) {
+            $content.removeClass('loading');
+            if (resetScroll) $(window).scrollTop(0);
+            insertPage(res.responseText);
+          } else {
+            window.location.replace(href);
+          }
+        }
+      }
+    );
+  }
+
+  function insertPage(html) {
+    var $h = $('<div />').append(
+      html
+      .match(/<body\b([^\u0000]+)<\/body>/)[0]
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    );
+
+    document.title = html.match(/<title>(.+)<\/title>/)[1];
+    $('#content').html($h.find('#content').children()).removeClass('loading');
+
+    if (!$h.find('#nav').is('.empty')) {
+      $('#nav').html($h.find('#nav').children());
+    }
+
+    if (window._gaq) _gaq.push(['_trackPageview']);
+
+    loadPage();
+  }
+
   loadPage();
+
+  if (
+    window.history.pushState
+    && window.navigator.standalone
+  ) {
+    // http://stackoverflow.com/questions/4688164/window-bind-popstate
+    // Deal with popstate fire on first load
+    // See also https://hacks.mozilla.org/2011/03/history-api-changes-in-firefox-4/
+    // on difference between Safari 5 vs Fx4.
+    var popped = ('state' in window.history), initialURL = location.href;
+
+    $('a').live(
+      'click',
+      function (ev) {
+        // skip mid/right/cmd click
+        if (ev.which == 2 || ev.metaKey) return true;
+        // skip external links
+        if (
+          this.hostname !== window.location.hostname
+          || !/2012/.test(this.pathname)
+          || !(new RegExp(lang)).test(this.pathname.toLowerCase())
+          || this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
+          || (/nocache/.test(this.getAttribute('rel')))
+        ) return true;
+
+        $(this).parent('#nav li').addClass('loading');
+
+        var href = this.href,
+        samepage = (this.href === window.location.href);
+
+        // Must be called before getPage() so relative links on the new page could be resolved properly
+        history.pushState({'is':'pushed'}, '', href);
+
+        // However, this.href will change for a relative link beyond this point
+        getPage(href, samepage, true);
+
+        // Given the fact we had pushed a new state,
+        // the next popState event must not be initialPop even with initialURL.
+        popped = true;
+
+        return false;
+      }
+    );
+
+    window.onpopstate = function (ev) {
+      // Ignore inital popstate that some browsers fire on page load
+      var initialPop = (!popped && location.href == initialURL);
+      popped = true;
+      if (initialPop) return;
+
+      getPage(window.location.href, false, false);
+    };
+  }
 
   function insertProgramInfo() {
     if (!programs) return;
@@ -830,9 +932,9 @@ jQuery(function ($) {
 
   function updateCountDown() {
     var dt = Math.floor(
-    	(new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
-    		- Date.now())
-    	/ 1E3
+      (new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
+        - Date.now())
+      / 1E3
     );
 
     if (dt < 0) {
