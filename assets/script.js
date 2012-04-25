@@ -977,4 +977,43 @@ jQuery(function ($) {
     }
     $('#countdown-time').text(s.reverse().join(''));
   }
+
+  if (window.applicationCache && window.applicationCache.status !== 0) {
+    //  This is a cached HTML. Let's insert date as version.
+    (function insertVersion() {
+      var strings = {
+        'en': [
+          'ver: v',
+          'Check for update now'
+        ],
+        'zh-tw': [
+          '版本： v',
+          '立刻檢查更新'
+        ],
+        'zh-cn': [
+          '版本： v',
+          '立刻检查更新'
+        ]
+      };
+
+      var $copyright = $('#copyright');
+      var $a = $(
+        '<a href="#" title="' + strings[lang][1] + '">' +
+        strings[lang][0] +
+        document.lastModified.replace(/[^\d]/g, '') + '</a>'
+      );
+      $a.bind('click', function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        $(document.body).addClass('appcache-allinfo');
+        window.applicationCache.update();
+
+        return false;
+      });
+
+      $copyright.append('<span class="separator"> | </span>');
+      $copyright.append($a);
+    })();
+  }
 });

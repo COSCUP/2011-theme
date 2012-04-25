@@ -524,7 +524,7 @@ $msg_arrow: $line_height / 2;
       > #copyright, > #tagline, > #archives {
         position: absolute;
         top: (75px - $footer_tb * 2) / 2 - $line_height / 2;
-        @include gridNoMargin(8);
+        @include gridNoMargin(9);
       }
 
       > #copyright {
