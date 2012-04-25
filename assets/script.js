@@ -983,15 +983,15 @@ jQuery(function ($) {
     (function insertVersion() {
       var strings = {
         'en': [
-          'ver: v',
+          'Ver: ',
           'Check for update now'
         ],
         'zh-tw': [
-          '版本： v',
+          '版本：',
           '立刻檢查更新'
         ],
         'zh-cn': [
-          '版本： v',
+          '版本：',
           '立刻检查更新'
         ]
       };
@@ -1000,14 +1000,17 @@ jQuery(function ($) {
       var $a = $(
         '<a href="#" title="' + strings[lang][1] + '">' +
         strings[lang][0] +
-        document.lastModified.replace(/[^\d]/g, '') + '</a>'
+        'v' + document.lastModified.replace(/[^\d]/g, '') + '</a>'
       );
       $a.bind('click', function (ev) {
         ev.preventDefault();
         ev.stopPropagation();
 
         $(document.body).addClass('appcache-allinfo');
-        window.applicationCache.update();
+        $('#appcache_info')[0].className = 'appcache-checking';
+        setTimeout(function () {
+          window.applicationCache.update();
+        }, 500);
 
         return false;
       });
