@@ -996,11 +996,25 @@ jQuery(function ($) {
         ]
       };
 
+      // date string is consider in local time here
+      var lastModified = new Date(document.lastModified);
+
+      // only WebKit report lastModified date in UTC, correct it
+      if (window.navigator.userAgent.indexOf('AppleWebKit') !== -1)
+        lastModified = new Date(
+          lastModified.getTime() - lastModified.getTimezoneOffset() * 6E4);
+
+      var pad = function (s) { return ((s < 10)?'0':'') + s; };
       var $copyright = $('#copyright');
       var $a = $(
         '<a href="#" title="' + strings[lang][1] + '">' +
-        strings[lang][0] +
-        'v' + document.lastModified.replace(/[^\d]/g, '') + '</a>'
+          strings[lang][0] +
+          'v' + lastModified.getFullYear() +
+          pad(lastModified.getMonth() + 1) +
+          pad(lastModified.getDate()) + '.' +
+          pad(lastModified.getHours()) +
+          pad(lastModified.getMinutes()) +
+        '</a>'
       );
       $a.bind('click', function (ev) {
         ev.preventDefault();
