@@ -932,8 +932,8 @@ jQuery(function ($) {
 
   function updateCountDown() {
     var dt = Math.floor(
-      (new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)").getTime()
-        - Date.now())
+      (new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)")
+        - new Date())
       / 1E3
     );
 
