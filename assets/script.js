@@ -980,7 +980,7 @@ jQuery(function ($) {
 
   if (window.applicationCache && window.applicationCache.status !== 0) {
     //  This is a cached HTML. Let's insert date as version.
-    (function insertVersion() {
+    function insertVersion(data, status, xhr) {
       var strings = {
         'en': [
           'Ver: ',
@@ -997,12 +997,7 @@ jQuery(function ($) {
       };
 
       // date string is consider in local time here
-      var lastModified = new Date(document.lastModified);
-
-      // only WebKit report lastModified date in UTC, correct it
-      if (window.navigator.userAgent.indexOf('AppleWebKit') !== -1)
-        lastModified = new Date(
-          lastModified.getTime() - lastModified.getTimezoneOffset() * 6E4);
+      var lastModified = new Date(xhr.getResponseHeader('Last-Modified'));
 
       var pad = function (s) { return ((s < 10)?'0':'') + s; };
       var $copyright = $('#copyright');
@@ -1031,6 +1026,11 @@ jQuery(function ($) {
 
       $copyright.append('<span class="separator"> | </span>');
       $copyright.append($a);
-    })();
+    }
+
+    $.ajax({
+      url: '',
+      success: insertVersion
+    });
   }
 });
