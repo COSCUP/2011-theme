@@ -1009,11 +1009,11 @@ jQuery(function ($) {
       var $a = $(
         '<a href="#" title="' + strings[lang][1] + '">' +
           strings[lang][0] +
-          'v' + lastModified.getFullYear() +
-          pad(lastModified.getMonth() + 1) +
-          pad(lastModified.getDate()) + '.' +
-          pad(lastModified.getHours()) +
-          pad(lastModified.getMinutes()) +
+          'v' + lastModified.getUTCFullYear() +
+          pad(lastModified.getUTCMonth() + 1) +
+          pad(lastModified.getUTCDate()) + '.' +
+          pad(lastModified.getUTCHours()) +
+          pad(lastModified.getUTCMinutes()) +
         '</a>'
       );
       $a.bind('click', function (ev) {
