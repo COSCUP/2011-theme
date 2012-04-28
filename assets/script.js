@@ -574,8 +574,6 @@ jQuery(function ($) {
     loadPage();
   }
 
-  loadPage();
-
   if (
     window.history.pushState
     && window.navigator.standalone
@@ -1036,4 +1034,8 @@ jQuery(function ($) {
       success: insertVersion
     });
   }
+
+  // First time loadPage() to trigger everything.
+  loadPage();
+
 });
