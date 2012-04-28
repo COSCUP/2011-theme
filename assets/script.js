@@ -2,17 +2,14 @@
 
 /*
 
-載入步驟：
+請使用 PageHandler 事件來執行您需要的 Javascript
 
-1. HTML 載入內容，或是 getPage() 從 xhr 抓到內容後由 insertPage() 處理
-2. loadPage() 觸發 pageload event ，載入加入內容後需要的函式（無論是手機或桌面版面）
-2.1 如果是手機版面
-2.1.1 執行 deferLoad() 把不該載入的 iframe 洗掉
-2.1.2 掛上 resize event，如果視窗被回復成桌面大小，執行 resumeLoad() 和 fullLoad()
-2.2 如果是桌面版面
-2.2.1 執行 fullLoad()
-2.3 如果是 navigator.standalone // iOS standalone Web App
-2.3.1 對 <a> 掛 live hook，將站內連結導向 getPage() -> insertPage()，用抽換內容的方式更新網頁
+* pageload: 頁面內容 HTML 被載入，無論是新載入的網頁，還是 AJAX 動態更新內容。
+* fullpageload: 頁面的樣式是桌面瀏覽器，或是
+* deferpageload: 頁面的樣式是手機瀏覽器，如果之後視窗被放大到桌面瀏覽器的樣子則會有
+* resumepageload: 頁面的樣式回到桌面瀏覽器
+
+如果是 Header/footer/sidebar 的範圍的 Javascript 操作，則不需要使用 PageHandler 事件。
 
 */
 
@@ -22,13 +19,166 @@ e)})}else console.log("Premature init. Put the <script> in <body>.")},handleEven
 
 jQuery(function ($) {
 
-  var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase(),
-  ctTimer;
+  var lang = ($('html').attr('lang') || 'zh-TW').toLowerCase();
 
+  // FIXME: CSS dependent test
   function isMobileLayout() {
     return !$('#title:visible').length;
   }
 
+  // init: the PageHandler that trigger
+  // pageload/fullpageload/deferpageload/resumepageload events
+  var PageHandler = {
+    // init
+    init: function () {
+      this._loadPage();
+
+      // partial page update to href using XHR
+      // we only do this in browsers with History API
+      if (window.history.pushState) {
+        // http://stackoverflow.com/questions/4688164/window-bind-popstate
+        // Deal with popstate fire on first load
+        // See also https://hacks.mozilla.org/2011/03/history-api-changes-in-firefox-4/
+        // on difference between Safari 5 vs Fx4.
+        var popped = ('state' in window.history),
+          initialURL = location.href;
+
+        $('a').live(
+          'click',
+          function (ev) {
+            // skip mid/right/cmd click
+            if (ev.which == 2 || ev.metaKey) return true;
+            // skip external links
+            if (
+              this.hostname !== window.location.hostname
+              || !/2012/.test(this.pathname)
+              || !(new RegExp(lang)).test(this.pathname.toLowerCase())
+              || this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
+              || (/nocache/.test(this.getAttribute('rel')))
+            ) return true;
+
+            $(this).parent('#nav li').addClass('loading');
+
+            var href = this.href,
+            samepage = (this.href === window.location.href);
+
+            // Must be called before getPage() so relative links on the new page could be resolved properly
+            history.pushState({'is':'pushed'}, '', href);
+
+            // However, this.href will change for a relative link beyond this point
+            PageHandler._getPage(href, samepage, true);
+
+            // Given the fact we had pushed a new state,
+            // the next popState event must not be initialPop even with initialURL.
+            popped = true;
+
+            return false;
+          }
+        );
+
+        window.onpopstate = function (ev) {
+          // Ignore inital popstate that some browsers fire on page load
+          var initialPop = (!popped && location.href == initialURL);
+          popped = true;
+          if (initialPop) return;
+
+          PageHandler._getPage(window.location.href, false, false);
+        };
+      }
+    },
+    // partial page update to href using XHR
+    _getPage: function (href, samepage, resetScroll) {
+      $(window).unbind('resize.defer');
+      if (this._xhr)
+        this._xhr.abort();
+
+      var $content = $('#content').addClass('loading');
+      this._xhr = $.ajax(
+        {
+          url: href,
+          dataType: 'html',
+          complete: function (res, status) {
+            if (status !== "success" && status !== "notmodified") {
+              // error
+              window.location.replace(href);
+              return;
+            }
+            $content.removeClass('loading');
+            if (resetScroll)
+              $(window).scrollTop(0);
+
+            var $h = $('<div />').append(
+              html
+              .match(/<body\b([^\u0000]+)<\/body>/)[0]
+              .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+            );
+
+            document.title = html.match(/<title>(.+)<\/title>/)[1];
+            $('#content').html($h.find('#content').children()).removeClass('loading');
+
+            if (!$h.find('#nav').is('.empty')) {
+              $('#nav').html($h.find('#nav').children());
+            }
+
+            if (window._gaq)
+              _gaq.push(['_trackPageview']);
+
+            this._loadPage();
+          }
+        }
+      );
+    },
+    _xhr: undefined,
+    // happens every time the HTML is updated
+    _loadPage: function () {
+      // trigger other functions to load on this page
+      $(window).trigger('pageload');
+
+      // Find out if we are currently on mobile layout
+      // if so, defer/stop imagetile and iframe from loading
+      // removing 'src' in <img> won't help so not doing it
+      if (!isMobileLayout()) {
+        // load desktop stuff
+        this._fullLoad();
+        return;
+      }
+
+      // mobile layout
+      if (window._gaq)
+        _gaq.push(['_trackEvent', 'Mobile 2012', window.location.href]);
+
+      // Make sure we give back the desktop stuff if the user
+      // had load the page in mobile layout but then resize the window
+      // to full desktop
+      $(window).bind(
+        'resize.defer',
+        function () {
+          if (isMobileLayout())
+            return;
+          $(this).unbind('resize.defer');
+
+          // load desktop stuff and stuff unloaded;
+          PageHandler._fullLoad();
+          PageHandler._resumeLoad();
+        }
+      );
+
+      // unload stuff that is desktop only
+      this._deferLoad();
+    },
+    _deferLoad: function () {
+      $(window).trigger('deferpageload');
+    },
+    _resumeLoad: function () {
+      $(window).trigger('resumepageload');
+    },
+    _fullLoad: function() {
+      $(window).trigger('fullpageload');
+    }
+  };
+
+  // init: Load navigation from API if it's empty
+  // happen on sub-domain sites
   if ($('#nav.empty').length) {
     // Fetch site nav from remove JSON api
     $.getJSON(
@@ -41,6 +191,106 @@ jQuery(function ($) {
     );
   }
 
+  // init: Load sponsors from API if it's empty
+  // happen on sub-domain sites
+  if ($('#sidebar > .sponsors.empty').length) {
+    // Fetch sponsors from remove JSON api
+    $.getJSON(
+      'http://coscup.org/2012/api/sponsors/?callback=?',
+      function (data) {
+        var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
+        var titles = (
+          {
+            'en' : {
+              'diamond' : 'Diamond Level Sponsors',
+              'gold' : 'Gold Level Sponsors',
+              'silver' : 'Silver Level Sponsors',
+              'bronze' : 'Bronze Level Sponsors',
+              'media' : 'Media Partners'
+            },
+            'zh-tw' : {
+              'diamond' : '鑽石級贊助',
+              'gold' : '黃金級贊助',
+              'silver' : '白銀級贊助',
+              'bronze' : '青銅級贊助',
+              'media' : '媒體夥伴'
+            },
+            'zh-cn' : {
+              'diamond' : '钻石级赞助',
+              'gold' : '黄金级赞助',
+              'silver' : '白银级赞助',
+              'bronze' : '青铜级赞助',
+              'media' : '媒体伙伴'
+            }
+          }
+        )[lang];
+
+        $.each(
+          [
+            'diamond',
+            'gold',
+            'silver',
+            'bronze',
+            'media'
+          ],
+          function (i, level) {
+            if (!data[level]) return;
+            $sponsors.append('<h2>' + titles[level] + '</h2>');
+            var $u = $('<ul class="' + level + '" />');
+            $.each(
+              data[level],
+              function (i, sponsor) {
+                // Assume that there is no special chars to escape
+                $u.append(
+                  '<li><a href="' + sponsor.url + '" target="_blank">'
+                  + '<img title="' + sponsor.name[lang] + '" src="' + sponsor.logoUrl + '" />'
+                  + '</a></li>'
+                );
+              }
+            );
+            $sponsors.append($u);
+          }
+        );
+        mobileSponsorLogo();
+      }
+    );
+  }
+
+  // init: Analytics tracking for Sponsors
+  $('.sponsors a, #mobileSponsorLogo a').live(
+    'click',
+    function () {
+      if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2012', this.href]);
+      return true;
+    }
+  );
+  $('#mobileSponsorLogo a').live(
+    'click',
+    function () {
+      if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2012 (Mobile only)', this.href]);
+      return true;
+    }
+  );
+
+  // init: CSS hover menu alternative for touch devices
+  // Need to test on actual device
+  $('#nav > ul > li').bind(
+    'touchstart',
+    function () {
+      var $this = $(this);
+      $this.addClass('selected');
+      $(document.body).bind(
+        'touchend',
+        function (ev) {
+          $this.removeClass('selected');
+          $(this).unbind(ev);
+        }
+      );
+    }
+  );
+
+  // pageload: Put random selected mobile logo into header
+  // mobileSponsorLogo() is also called by .sponsors.empty function
   function mobileSponsorLogo() {
     var pool = [],
     multi = {
@@ -76,6 +326,7 @@ jQuery(function ($) {
   }
   $(window).bind('pageload', mobileSponsorLogo);
 
+  // pageload: Put a shortcut to the current section on program page
   function currentSessionShortcut() {
     // Program page only
     if (!$('.shortcuts').length) return;
@@ -190,306 +441,9 @@ jQuery(function ($) {
   }
   $(window).bind('pageload', currentSessionShortcut);
 
-  if ($('#sidebar > .sponsors.empty').length) {
-    // Fetch sponsors from remove JSON api
-    $.getJSON(
-      'http://coscup.org/2012/api/sponsors/?callback=?',
-      function (data) {
-        var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
-        var titles = (
-          {
-            'en' : {
-              'diamond' : 'Diamond Level Sponsors',
-              'gold' : 'Gold Level Sponsors',
-              'silver' : 'Silver Level Sponsors',
-              'bronze' : 'Bronze Level Sponsors',
-              'media' : 'Media Partners'
-            },
-            'zh-tw' : {
-              'diamond' : '鑽石級贊助',
-              'gold' : '黃金級贊助',
-              'silver' : '白銀級贊助',
-              'bronze' : '青銅級贊助',
-              'media' : '媒體夥伴'
-            },
-            'zh-cn' : {
-              'diamond' : '钻石级赞助',
-              'gold' : '黄金级赞助',
-              'silver' : '白银级赞助',
-              'bronze' : '青铜级赞助',
-              'media' : '媒体伙伴'
-            }
-          }
-        )[lang];
-
-        $.each(
-          [
-            'diamond',
-            'gold',
-            'silver',
-            'bronze',
-            'media'
-          ],
-          function (i, level) {
-            if (!data[level]) return;
-            $sponsors.append('<h2>' + titles[level] + '</h2>');
-            var $u = $('<ul class="' + level + '" />');
-            $.each(
-              data[level],
-              function (i, sponsor) {
-                // Assume that there is no special chars to escape
-                $u.append(
-                  '<li><a href="' + sponsor.url + '" target="_blank">'
-                  + '<img title="' + sponsor.name[lang] + '" src="' + sponsor.logoUrl + '" />'
-                  + '</a></li>'
-                );
-              }
-            );
-            $sponsors.append($u);
-          }
-        );
-        mobileSponsorLogo();
-      }
-    );
-  }
-
-  /*
-  if ($('#sidebar > .sponsors:not(.empty)').length
-    && $('#sidebar > .sponsors:not(.empty)').children().length === 0) {
-    // We have no sponsors yet :( hide the block
-    $(document.body).addClass('no_sidebar');
-  }
-  */
-
-
-  // Analytics tracking for Sponsors
-  $('.sponsors a, #mobileSponsorLogo a').live(
-    'click',
-    function () {
-      if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2012', this.href]);
-      return true;
-    }
-  );
-  $('#mobileSponsorLogo a').live(
-    'click',
-    function () {
-      if (window._gaq) _gaq.push(['_trackEvent', 'Sponsors 2012 (Mobile only)', this.href]);
-      return true;
-    }
-  );
-
-  // in iOS standalone mode, use javascript instead of hashtag scroll
-
-  $('.shortcuts a').live(
-    'click',
-    function (ev) {
-      $(window).trigger('scroll');
-      //if (!navigator.standalone) return;
-      ev.preventDefault();
-      $(document.body).animate(
-        {
-          'scrollTop': $(this.hash).offset().top - 20
-        },
-        180
-      );
-    }
-  );
-
-  // CSS hover menu alternative for touch devices
-  // Need to test on actual device
-
-  $('#nav > ul > li').bind(
-    'touchstart',
-    function () {
-      var $this = $(this);
-      $this.addClass('selected');
-      $(document.body).bind(
-        'touchend',
-        function (ev) {
-          $this.removeClass('selected');
-          $(this).unbind(ev);
-        }
-      );
-    }
-  );
-
-  // imagesTile on #sidebar2
-  function imageTile() {
-    $('#sidebar2 > .images').imageTile(
-      {
-        num: 12,
-        photos: yuren_54,
-        beforeImageLoad: function ($img, i) {
-          $img.css('opacity', 0);
-        },
-        imageLoad: function ($img, i) {
-          $img.css('opacity', 1);
-        }
-      }
-    );
-  }
-
-  function showSocialBuzz(plurks, twits) {
-    var $u = $('<ul />');
-
-    /*
-    * 一個 username 只會出現一次（跨 Twitter / Plurk 比對）
-    * 跳過從 Plurk 送過來的 Twitter
-    * 跳過 Retweet / RePlurk
-    */
-
-    var usernames = [];
-
-    if (twits) {
-      var i = 0, t;
-      while (i < 2) {
-        t = twits.results.shift();
-        if (!t) break;
-        if (/plurk\.com/.test(t.source)) continue; // sync from Plurk
-        if (/^RT/.test(t.text)) continue; // Retweet
-        if ($.inArray(t.from_user, usernames) !== -1) continue; // same username
-        usernames.push(t.from_user);
-
-        $u.append(
-          $('<li />').append(
-            $('<span class="text" />').html(t.text)
-          ).append(
-            '<span class="meta">'
-            + '<a href="https://twitter.com/#!/' + t.from_user + '/status/' + t.id_str + '">@' + t.from_user + '</a>'
-            + '</span>'
-          )
-        );
-        i++;
-      }
-    }
-    if (plurks) {
-      var i = 0, t;
-      while (i < 2) {
-        t = plurks.plurks.shift();
-        if (!t) break;
-        if (!plurks.users[t.user_id]) continue; // Plurk API quirk
-        if (/plurk\.com\/(m\/)?\p\//.test(t.content)) continue; // RePlurk, contain a Plurk URL within this Plurk
-        if ($.inArray(plurks.users[t.user_id].nick_name, usernames) !== -1) continue; // same username, possible 3rd party sync
-        usernames.push(plurks.users[t.user_id].nick_name);
-
-        $u.append(
-          $('<li />').append(
-            $('<span class="text" />').html(t.content)
-          ).append(
-            '<span class="meta">'
-            + '<a href="http://www.plurk.com/p/' + t.plurk_id.toString(36) + '">@' + plurks.users[t.user_id].nick_name + '</a>'
-            + '</span>'
-          )
-        );
-        i++;
-      }
-    }
-    $('#sidebar2 > .socialbuzz').empty().append($u);
-  }
-
-  $('.socialbuzz a').live(
-    'click',
-    function () {
-      window.open(this.href);
-      return false;
-    }
-  );
-
-  function fullLoad() {
-    if ($('#sidebar2 > .images').length) {
-      if (!$.fn.imageTile) {
-        $.ajax(
-          {
-            url: 'http://coscup.org/2012-theme/assets/imagetile.min.js',
-            dataType: 'script',
-            cache: true,
-            success: imageTile
-          }
-        );
-      } else {
-        imageTile();
-      }
-    }
-
-    if ($('#sidebar2 > .socialbuzz').length) {
-      var plurks, twits;
-      $.getJSON(
-        'http://coscup.org/2012/api/plurk/',
-        function (data) {
-          plurks = data;
-          showSocialBuzz(plurks, twits);
-        }
-      );
-      $.getJSON(
-        'https://search.twitter.com/search.json?q=coscup+OR+from%3Acoscup&callback=?',
-        function (data) {
-          twits = data;
-          showSocialBuzz(plurks, twits);
-        }
-      );
-    }
-
-    if ($('#ipv6block').length) {
-      if (window.location.hostname === 'ipv6.coscup.org') {
-          if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2012', 'connected']);
-        $('#ipv6block').addClass('show').append(
-          '<h2>IPv6 Connectivity</h2>'
-          + '<p>You are currently using IPv6 connection.</p>'
-        );
-      } else {
-        $.getJSON(
-          // See http://ipv6-test.com/api/
-          'http://v6.ipv6-test.com/api/myip.php?json&callback=?',
-          function (data) {
-            if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2012', 'ready but not connected']);
-            $('#ipv6block').addClass('show').append(
-              '<h2>Connect using IPv6</h2>'
-              + '<p>Your network is IPv6 ready. Try it now by connect to <a href="http://ipv6.coscup.org/">ipv6.coscup.org</a>.</p>'
-            );
-          }
-        );
-      }
-    }
-
-    if ($('#countdown-time').length) {
-      ctTimer = setInterval(
-        updateCountDown,
-        1000
-      );
-
-      $(window).bind(
-        'pageload',
-        function (ev) {
-          clearTimeout(ctTimer);
-          $(window).unbind(ev);
-        }
-      );
-
-      updateCountDown();
-      $('#countdown').addClass('show');
-    }
-  }
-
-  function deferLoad() {
-    $('.hideInMobile iframe').each(
-      function () {
-        $(this).attr('data-src', this.src);
-        this.src = '';
-      }
-    );
-  }
-
-  function resumeLoad() {
-    $('#sidebar2 iframe').each(
-      function () {
-        if ($(this).attr('data-src')) this.src = $(this).attr('data-src');
-      }
-    );
-  }
-
-  function loadPage() {
-    $(window).trigger('pageload');
-
+  // pageload: background candy on header and footer
+  function moveBackground() {
+    // header & footer bg image
     $('#header').css(
       'background-position',
       'center -' + (75*Math.floor(Math.random()*4)).toString(10) + 'px'
@@ -499,136 +453,254 @@ jQuery(function ($) {
       'background-position',
       'center -' + (75*Math.floor(Math.random()*6)).toString(10) + 'px'
     );
-
-    // Find out if we are currently on mobile layout
-    // if so, defer/stop imagetile and iframe from loading
-    // removing 'src' in <img> won't help so not doing it
-    if (isMobileLayout()) {
-
-      if (window._gaq) _gaq.push(['_trackEvent', 'Mobile 2012', window.location.href]);
-
-      $(window).bind(
-        'resize.defer',
-        function () {
-          if (isMobileLayout()) return;
-          $(this).unbind('resize.defer');
-
-          // load desktop stuff and stuff unloaded;
-          fullLoad();
-          resumeLoad();
-        }
-      );
-
-      // unload stuff
-      deferLoad();
-    } else {
-      // load desktop stuff
-      fullLoad();
-    }
   }
+  $(window).bind('pageload', moveBackground);
 
-  var getPageXhr;
+  // fullpageload: imagesTile on homepage #sidebar2
+  function imageTile() {
+    if (!$('#sidebar2 > .images').length)
+      return;
 
-  function getPage(href, samepage, resetScroll) {
-    $(window).unbind('resize.defer');
-    if (getPageXhr)
-      getPageXhr.abort();
-
-    var $content = $('#content').addClass('loading');
-    getPageXhr = $.ajax(
-      {
-        url: href,
-        dataType: 'html',
-        complete: function (res, status) {
-          if (
-            status === "success"
-            || status === "notmodified"
-          ) {
-            $content.removeClass('loading');
-            if (resetScroll) $(window).scrollTop(0);
-            insertPage(res.responseText);
-          } else {
-            window.location.replace(href);
+    var runImageTile = function () {
+      $('#sidebar2 > .images').imageTile(
+        {
+          num: 12,
+          photos: yuren_54,
+          beforeImageLoad: function ($img, i) {
+            $img.css('opacity', 0);
+          },
+          imageLoad: function ($img, i) {
+            $img.css('opacity', 1);
           }
         }
+      );
+    };
+
+    if ($.fn.imageTile) {
+      runImageTile();
+      return;
+    }
+
+    $.ajax(
+      {
+        url: 'http://coscup.org/2012-theme/assets/imagetile.min.js',
+        dataType: 'script',
+        cache: true,
+        success: runImageTile
       }
     );
   }
+  $(window).bind('fullpageload', imageTile);
 
-  function insertPage(html) {
-    var $h = $('<div />').append(
-      html
-      .match(/<body\b([^\u0000]+)<\/body>/)[0]
-      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    );
+  // fullpageload: social buzz on homepage #sidebar2
+  function socialBuzz() {
+    if (!$('#sidebar2 > .socialbuzz').length)
+      return;
 
-    document.title = html.match(/<title>(.+)<\/title>/)[1];
-    $('#content').html($h.find('#content').children()).removeClass('loading');
-
-    if (!$h.find('#nav').is('.empty')) {
-      $('#nav').html($h.find('#nav').children());
-    }
-
-    if (window._gaq) _gaq.push(['_trackPageview']);
-
-    loadPage();
-  }
-
-  if (
-    window.history.pushState
-    && window.navigator.standalone
-  ) {
-    // http://stackoverflow.com/questions/4688164/window-bind-popstate
-    // Deal with popstate fire on first load
-    // See also https://hacks.mozilla.org/2011/03/history-api-changes-in-firefox-4/
-    // on difference between Safari 5 vs Fx4.
-    var popped = ('state' in window.history), initialURL = location.href;
-
-    $('a').live(
+    $('.socialbuzz a').live(
       'click',
-      function (ev) {
-        // skip mid/right/cmd click
-        if (ev.which == 2 || ev.metaKey) return true;
-        // skip external links
-        if (
-          this.hostname !== window.location.hostname
-          || !/2012/.test(this.pathname)
-          || !(new RegExp(lang)).test(this.pathname.toLowerCase())
-          || this.getAttribute('href').substr(0, 1) === '#'  // just a hash link
-          || (/nocache/.test(this.getAttribute('rel')))
-        ) return true;
-
-        $(this).parent('#nav li').addClass('loading');
-
-        var href = this.href,
-        samepage = (this.href === window.location.href);
-
-        // Must be called before getPage() so relative links on the new page could be resolved properly
-        history.pushState({'is':'pushed'}, '', href);
-
-        // However, this.href will change for a relative link beyond this point
-        getPage(href, samepage, true);
-
-        // Given the fact we had pushed a new state,
-        // the next popState event must not be initialPop even with initialURL.
-        popped = true;
-
+      function () {
+        window.open(this.href);
         return false;
       }
     );
 
-    window.onpopstate = function (ev) {
-      // Ignore inital popstate that some browsers fire on page load
-      var initialPop = (!popped && location.href == initialURL);
-      popped = true;
-      if (initialPop) return;
+    var plurks, twits;
+    var showSocialBuzz = function (plurks, twits) {
+      var $u = $('<ul />');
 
-      getPage(window.location.href, false, false);
-    };
+      /*
+      * 一個 username 只會出現一次（跨 Twitter / Plurk 比對）
+      * 跳過從 Plurk 送過來的 Twitter
+      * 跳過 Retweet / RePlurk
+      */
+
+      var usernames = [];
+
+      if (twits) {
+        var i = 0, t;
+        while (i < 2) {
+          t = twits.results.shift();
+          if (!t) break;
+          if (/plurk\.com/.test(t.source)) continue; // sync from Plurk
+          if (/^RT/.test(t.text)) continue; // Retweet
+          if ($.inArray(t.from_user, usernames) !== -1) continue; // same username
+          usernames.push(t.from_user);
+
+          $u.append(
+            $('<li />').append(
+              $('<span class="text" />').html(t.text)
+            ).append(
+              '<span class="meta">'
+              + '<a href="https://twitter.com/#!/' + t.from_user + '/status/' + t.id_str + '">@' + t.from_user + '</a>'
+              + '</span>'
+            )
+          );
+          i++;
+        }
+      }
+      if (plurks) {
+        var i = 0, t;
+        while (i < 2) {
+          t = plurks.plurks.shift();
+          if (!t) break;
+          if (!plurks.users[t.user_id]) continue; // Plurk API quirk
+          if (/plurk\.com\/(m\/)?\p\//.test(t.content)) continue; // RePlurk, contain a Plurk URL within this Plurk
+          if ($.inArray(plurks.users[t.user_id].nick_name, usernames) !== -1) continue; // same username, possible 3rd party sync
+          usernames.push(plurks.users[t.user_id].nick_name);
+
+          $u.append(
+            $('<li />').append(
+              $('<span class="text" />').html(t.content)
+            ).append(
+              '<span class="meta">'
+              + '<a href="http://www.plurk.com/p/' + t.plurk_id.toString(36) + '">@' + plurks.users[t.user_id].nick_name + '</a>'
+              + '</span>'
+            )
+          );
+          i++;
+        }
+      }
+      $('#sidebar2 > .socialbuzz').empty().append($u);
+    }
+
+    $.getJSON(
+      'http://coscup.org/2012/api/plurk/',
+      function (data) {
+        plurks = data;
+        showSocialBuzz(plurks, twits);
+      }
+    );
+    $.getJSON(
+      'https://search.twitter.com/search.json?q=coscup+OR+from%3Acoscup&callback=?',
+      function (data) {
+        twits = data;
+        showSocialBuzz(plurks, twits);
+      }
+    );
   }
+  $(window).bind('fullpageload', socialBuzz);
 
+  // fullpageload: ipv6 block on homepage #sidebar2
+  function ipv6block() {
+    if (!$('#ipv6block').length)
+      return;
+
+    if (window.location.hostname === 'ipv6.coscup.org') {
+        if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2012', 'connected']);
+      $('#ipv6block').addClass('show').append(
+        '<h2>IPv6 Connectivity</h2>'
+        + '<p>You are currently using IPv6 connection.</p>'
+      );
+    } else {
+      $.getJSON(
+        // See http://ipv6-test.com/api/
+        'http://v6.ipv6-test.com/api/myip.php?json&callback=?',
+        function (data) {
+          if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2012', 'ready but not connected']);
+          $('#ipv6block').addClass('show').append(
+            '<h2>Connect using IPv6</h2>'
+            + '<p>Your network is IPv6 ready. Try it now by connect to <a href="http://ipv6.coscup.org/">ipv6.coscup.org</a>.</p>'
+          );
+        }
+      );
+    }
+  }
+  $(window).bind('fullpageload', ipv6block);
+
+  // fullpageload: countdown on homepage #sidebar2
+  function countdown() {
+    clearTimeout(countdownTimer);
+    if (!$('#countdown-time').length)
+      return;
+
+    var updateCountDown = function () {
+      var dt = Math.floor(
+        (new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)")
+          - new Date())
+        / 1E3
+      );
+
+      if (dt < 0) {
+        clearTimeout(ctTimer);
+        $('#countdown').html(
+          {
+            en: '<a href="http://registrano.com/events/coscup2012-regist?locale=en">Register Now!</a>',
+            'zh-tw': '<a href="http://registrano.com/events/coscup2012-regist">立刻報名！</a>',
+            'zh-cn': '<a href="http://registrano.com/events/coscup2012-regist">立刻报名！</a>'
+          }[lang]
+        );
+      }
+
+      s = [];
+
+      s[0] = /*((dt%60 < 10)?'0':'') + */ (dt%60).toString(10) + {
+        en: ' seconds',
+        'zh-cn': ' 秒',
+        'zh-tw': ' 秒'
+      }[lang];
+      dt = Math.floor(dt/60);
+      s[1] = /*((dt%60 < 10)?'0':'') + */ (dt%60).toString(10) + {
+        en: ' minutes ',
+        'zh-cn': ' 分 ',
+        'zh-tw': ' 分 '
+      }[lang];
+      dt = Math.floor(dt/60);
+      s[2] = (dt%24).toString(10) + {
+        en: ' hours ',
+        'zh-cn': ' 时 ',
+        'zh-tw': ' 時 '
+      }[lang];
+      dt = Math.floor(dt/24);
+      if (dt) {
+        s[3] = dt.toString(10) + {
+          en: ' days ',
+          'zh-cn': ' 天 ',
+          'zh-tw': ' 天 '
+        }[lang];
+      }
+      $('#countdown-time').text(s.reverse().join(''));
+    }
+
+    var countdownTimer = setInterval(
+      updateCountDown,
+      1000
+    );
+
+    $(window).one(
+      'pageload',
+      function (ev) {
+        clearTimeout(ctTimer);
+      }
+    );
+  };
+  $(window).bind('fullpageload', countdown);
+
+  // deferpageload: hide iframe in .hideInMobile iframe
+  function deferIframeLoad() {
+    $('.hideInMobile iframe').each(
+      function () {
+        $(this).attr('data-src', this.src);
+        this.src = '';
+      }
+    );
+
+    $(window).bind(
+      'resumepageload',
+      function () {
+        $('.hideInMobile iframe').each(
+          function () {
+            if ($(this).attr('data-src')) this.src
+              = $(this).attr('data-src');
+          }
+        );
+      }
+    );
+  }
+  $(window).bind('deferpageload', deferIframeLoad);
+
+  // pageload: the big program table on program page
   var programs;
-
   function insertProgramInfo() {
     if (!$('table.program').length)
       return;
@@ -647,6 +719,30 @@ jQuery(function ($) {
       );
       return;
     }
+
+    $('#video_modal, #video_close_button').live(
+      'click',
+      function () {
+        $('.video_box').remove();
+        $(window).unbind('scroll.repositionvideo resize.repositionvideo pageload.repositionvideo');
+      }
+    );
+
+    // in iOS standalone mode, use javascript instead of hashtag scroll
+    $('.shortcuts a').live(
+      'click',
+      function (ev) {
+        $(window).trigger('scroll');
+        //if (!navigator.standalone) return;
+        ev.preventDefault();
+        $(document.body).animate(
+          {
+            'scrollTop': $(this.hash).offset().top - 20
+          },
+          180
+        );
+      }
+    );
 
     var types = (function () {
       var types = {};
@@ -923,62 +1019,6 @@ jQuery(function ($) {
   }
   $(window).bind('pageload', insertProgramInfo);
 
-  $('#video_modal, #video_close_button').live(
-    'click',
-    function () {
-      $('.video_box').remove();
-      $(window).unbind('scroll.repositionvideo resize.repositionvideo pageload.repositionvideo');
-    }
-  );
-
-  function updateCountDown() {
-    var dt = Math.floor(
-      (new Date("Fri Jul 16 2012 20:00:00 GMT+0800 (CST)")
-        - new Date())
-      / 1E3
-    );
-
-    if (dt < 0) {
-      clearTimeout(ctTimer);
-      $('#countdown').html(
-        {
-          en: '<a href="http://registrano.com/events/coscup2012-regist?locale=en">Register Now!</a>',
-          'zh-tw': '<a href="http://registrano.com/events/coscup2012-regist">立刻報名！</a>',
-          'zh-cn': '<a href="http://registrano.com/events/coscup2012-regist">立刻报名！</a>'
-        }[lang]
-      );
-    }
-
-    s = [];
-
-    s[0] = /*((dt%60 < 10)?'0':'') + */ (dt%60).toString(10) + {
-      en: ' seconds',
-      'zh-cn': ' 秒',
-      'zh-tw': ' 秒'
-    }[lang];
-    dt = Math.floor(dt/60);
-    s[1] = /*((dt%60 < 10)?'0':'') + */ (dt%60).toString(10) + {
-      en: ' minutes ',
-      'zh-cn': ' 分 ',
-      'zh-tw': ' 分 '
-    }[lang];
-    dt = Math.floor(dt/60);
-    s[2] = (dt%24).toString(10) + {
-      en: ' hours ',
-      'zh-cn': ' 时 ',
-      'zh-tw': ' 時 '
-    }[lang];
-    dt = Math.floor(dt/24);
-    if (dt) {
-      s[3] = dt.toString(10) + {
-        en: ' days ',
-        'zh-cn': ' 天 ',
-        'zh-tw': ' 天 '
-      }[lang];
-    }
-    $('#countdown-time').text(s.reverse().join(''));
-  }
-
   if (window.applicationCache && window.applicationCache.status !== 0) {
     //  This is a cached HTML. Let's insert date as version.
     function insertVersion(data, status, xhr) {
@@ -1035,7 +1075,7 @@ jQuery(function ($) {
     });
   }
 
-  // First time loadPage() to trigger everything.
-  loadPage();
+  // Start everything.
+  PageHandler.init();
 
 });
