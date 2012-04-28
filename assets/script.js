@@ -103,17 +103,18 @@ jQuery(function ($) {
               window.location.replace(href);
               return;
             }
+
             $content.removeClass('loading');
             if (resetScroll)
               $(window).scrollTop(0);
 
             var $h = $('<div />').append(
-              html
+              res.responseText
               .match(/<body\b([^\u0000]+)<\/body>/)[0]
               .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
             );
 
-            document.title = html.match(/<title>(.+)<\/title>/)[1];
+            document.title = res.responseText.match(/<title>(.+)<\/title>/)[1];
             $('#content').html($h.find('#content').children()).removeClass('loading');
 
             if (!$h.find('#nav').is('.empty')) {
