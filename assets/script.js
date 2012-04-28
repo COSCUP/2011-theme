@@ -629,8 +629,26 @@ jQuery(function ($) {
     };
   }
 
+  var programs;
+
   function insertProgramInfo() {
-    if (!programs) return;
+    if (!$('table.program').length)
+      return;
+
+    if (!programs) {
+      var url = window.location.href
+        .match(/^http:\/\/coscup.org\/[^\/]+\//)[0]
+        + 'api/program/';
+
+      $.getJSON(
+        url,
+        function (data) {
+          programs = data.program;
+          insertProgramInfo();
+        }
+      );
+      return;
+    }
 
     var types = (function () {
       var types = {};
@@ -914,21 +932,6 @@ jQuery(function ($) {
       $(window).unbind('scroll.repositionvideo resize.repositionvideo pageload.repositionvideo');
     }
   );
-
-  // preload program wherever page we are on the main site
-  var programs;
-
-  if (
-    !/((blog|sponsor|register)\.)?coscup\.org\.?/.test(window.location.domain)
-  ) {
-    $.getJSON(
-      'http://coscup.org/2012/api/program/?callback=?',
-      function (data) {
-        programs = data;
-        insertProgramInfo();
-      }
-    );
-  }
 
   function updateCountDown() {
     var dt = Math.floor(
