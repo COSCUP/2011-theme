@@ -172,6 +172,7 @@ jQuery(function ($) {
     },
     _resumeLoad: function () {
       $(window).trigger('resumepageload');
+      $(window).trigger('fullpageload');
     },
     _fullLoad: function() {
       $(window).trigger('fullpageload');
