@@ -2,12 +2,13 @@
 
 /*
 
-請使用 PageHandler 事件來執行您需要的 Javascript
+請使用位於 window 的 PageHandler 事件來執行您需要的 Javascript
 
 * pageload: 頁面內容 HTML 被載入，無論是新載入的網頁，還是 AJAX 動態更新內容。
 * fullpageload: 頁面的樣式是桌面瀏覽器，或是
 * deferpageload: 頁面的樣式是手機瀏覽器，如果之後視窗被放大到桌面瀏覽器的樣子則會有
 * resumepageload: 頁面的樣式回到桌面瀏覽器
+* pageunload: 頁面即將被 AJAX 動態替換
 
 如果是 Header/footer/sidebar 的範圍的 Javascript 操作，則不需要使用 PageHandler 事件。
 
@@ -89,6 +90,7 @@ jQuery(function ($) {
     // partial page update to href using XHR
     _getPage: function (href, samepage, resetScroll) {
       $(window).unbind('resize.defer');
+      $(window).trigger('pageunload');
       if (this._xhr)
         this._xhr.abort();
 
@@ -432,11 +434,11 @@ jQuery(function ($) {
         );
       }
     );
-    $(window).bind(
-      'pageload',
+    $(window).one(
+      'pageunload',
       function (ev) {
         clearTimeout(mtTimer);
-        $(window).unbind('resize.mt scroll.mt').unbind(ev);
+        $(window).unbind('resize.mt scroll.mt');
       }
     );
   }
@@ -507,7 +509,7 @@ jQuery(function ($) {
       }
     );
     $(window).one(
-      'pageload',
+      'pageunload',
       function () {
         $('.socialbuzz').undelegate('a', 'click');
       }
@@ -678,9 +680,9 @@ jQuery(function ($) {
     $('#countdown').addClass('show');
 
     $(window).one(
-      'pageload',
+      'pageunload',
       function (ev) {
-        clearTimeout(ctTimer);
+        clearTimeout(countdownTimer);
       }
     );
   }
@@ -757,7 +759,7 @@ jQuery(function ($) {
     );
 
     $(window).one(
-      'pageload',
+      'pageunload',
       function () {
         $(window).undelegate('#video_modal, #video_close_button', 'click');
         $(window).undelegate('.shortcuts a', 'click');
