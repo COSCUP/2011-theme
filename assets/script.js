@@ -159,8 +159,8 @@ jQuery(function ($) {
           $(this).unbind('resize.defer');
 
           // load desktop stuff and stuff unloaded;
-          PageHandler._fullLoad();
           PageHandler._resumeLoad();
+          PageHandler._fullLoad();
         }
       );
 
@@ -172,7 +172,6 @@ jQuery(function ($) {
     },
     _resumeLoad: function () {
       $(window).trigger('resumepageload');
-      $(window).trigger('fullpageload');
     },
     _fullLoad: function() {
       $(window).trigger('fullpageload');
