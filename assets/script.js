@@ -667,6 +667,8 @@ jQuery(function ($) {
       updateCountDown,
       1000
     );
+    updateCountDown();
+    $('#countdown').addClass('show');
 
     $(window).one(
       'pageload',
@@ -674,7 +676,7 @@ jQuery(function ($) {
         clearTimeout(ctTimer);
       }
     );
-  };
+  }
   $(window).bind('fullpageload', countdown);
 
   // deferpageload: hide iframe in .hideInMobile iframe
