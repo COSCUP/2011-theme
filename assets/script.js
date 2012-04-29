@@ -566,7 +566,7 @@ jQuery(function ($) {
     }
 
     $.getJSON(
-      'http://coscup.org/2012/api/plurk/',
+      window.location.href.match(/^http:\/\/coscup.org\/[^\/]+\//)[0] + 'api/plurk/',
       function (data) {
         plurks = data;
         showSocialBuzz(plurks, twits);
