@@ -124,7 +124,7 @@ jQuery(function ($) {
             if (window._gaq)
               _gaq.push(['_trackPageview']);
 
-            this._loadPage();
+            PageHandler._loadPage();
           }
         }
       );
@@ -624,7 +624,7 @@ jQuery(function ($) {
       );
 
       if (dt < 0) {
-        clearTimeout(ctTimer);
+        clearTimeout(countdownTimer);
         $('#countdown').html(
           {
             en: '<a href="http://registrano.com/events/coscup2012-regist?locale=en">Register Now!</a>',
