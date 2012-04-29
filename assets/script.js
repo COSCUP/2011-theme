@@ -498,11 +498,18 @@ jQuery(function ($) {
     if (!$('#sidebar2 > .socialbuzz').length)
       return;
 
-    $('.socialbuzz a').live(
+    $('.socialbuzz').delegate(
+      'a',
       'click',
       function () {
         window.open(this.href);
         return false;
+      }
+    );
+    $(window).one(
+      'pageload',
+      function () {
+        $('.socialbuzz').undelegate('a', 'click');
       }
     );
 
@@ -723,7 +730,8 @@ jQuery(function ($) {
       return;
     }
 
-    $('#video_modal, #video_close_button').live(
+    $(window).delegate(
+      '#video_modal, #video_close_button',
       'click',
       function () {
         $('.video_box').remove();
@@ -732,7 +740,8 @@ jQuery(function ($) {
     );
 
     // in iOS standalone mode, use javascript instead of hashtag scroll
-    $('.shortcuts a').live(
+    $(window).delegate(
+      '.shortcuts a',
       'click',
       function (ev) {
         $(window).trigger('scroll');
@@ -744,6 +753,14 @@ jQuery(function ($) {
           },
           180
         );
+      }
+    );
+
+    $(window).one(
+      'pageload',
+      function () {
+        $(window).undelegate('#video_modal, #video_close_button', 'click');
+        $(window).undelegate('.shortcuts a', 'click');
       }
     );
 
