@@ -459,6 +459,24 @@ jQuery(function ($) {
   }
   $(window).bind('pageload', moveBackground);
 
+  // pageload: checkAppCache
+  // if the browser tab has been opened for kAppCacheCheckingInterval
+  // the next pageload will trigger AppCache check update
+  var kAppCacheCheckingInterval = 60*1000; // a minute
+  var lastTimeCheck = (new Date()).getTime();
+  function checkAppCache() {
+    if (!window.applicationCache || window.applicationCache.status == 0)
+      return;
+
+    var t = (new Date()).getTime();
+    if (t < lastTimeCheck + kAppCacheCheckingInterval)
+      return;
+
+    lastTimeCheck = t;
+    window.applicationCache.update();
+  };
+  $(window).bind('checkAppCache', moveBackground);
+
   // fullpageload: imagesTile on homepage #sidebar2
   function imageTile() {
     if (!$('#sidebar2 > .images').length)
