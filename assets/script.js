@@ -126,16 +126,16 @@ jQuery(function ($) {
             if (window._gaq)
               _gaq.push(['_trackPageview']);
 
-            PageHandler._loadPage();
+            PageHandler._loadPage(samepage);
           }
         }
       );
     },
     _xhr: undefined,
     // happens every time the HTML is updated
-    _loadPage: function () {
+    _loadPage: function (samepage) {
       // trigger other functions to load on this page
-      $(window).trigger('pageload');
+      $(window).trigger('pageload', [samepage]);
 
       // Find out if we are currently on mobile layout
       // if so, defer/stop imagetile and iframe from loading
@@ -464,18 +464,18 @@ jQuery(function ($) {
   // the next pageload will trigger AppCache check update
   var kAppCacheCheckingInterval = 60*1000; // a minute
   var lastTimeCheck = (new Date()).getTime();
-  function checkAppCache() {
+  function checkAppCache(ev, samepage) {
     if (!window.applicationCache || window.applicationCache.status == 0)
       return;
 
     var t = (new Date()).getTime();
-    if (t < lastTimeCheck + kAppCacheCheckingInterval)
+    if (t < lastTimeCheck + kAppCacheCheckingInterval && !samepage)
       return;
 
     lastTimeCheck = t;
     window.applicationCache.update();
   };
-  $(window).bind('checkAppCache', moveBackground);
+  $(window).bind('checkAppCache', checkAppCache);
 
   // fullpageload: imagesTile on homepage #sidebar2
   function imageTile() {
