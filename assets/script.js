@@ -194,9 +194,10 @@ jQuery(function ($) {
     );
   }
 
-  // init: Load sponsors from API if it's empty
-  // happen on sub-domain sites
-  if ($('#sidebar > .sponsors.empty').length) {
+  // init: Load sponsors from API if it's empty (happen on sub-domain sites),
+  // or if the page is loaded from AppCache
+  if ($('#sidebar > .sponsors.empty').length ||
+    (window.applicationCache && window.applicationCache.status !== 0)) {
     // Fetch sponsors from remove JSON api
     $.getJSON(
       'http://coscup.org/2012/api/sponsors/?callback=?',
