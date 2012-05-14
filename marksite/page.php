@@ -29,7 +29,6 @@ switch($this->current[0])
     <meta property="og:image" content="http://coscup.org/2012-theme/assets/coscup.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-touch-fullscreen" content="yes" />
   <link rel="apple-touch-icon" href="<?php echo $theme_assets_uri;?>coscup-icon-iphone.png" />
   <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $theme_assets_uri;?>coscup-icon-ipad.png" />
   <link rel="apple-touch-icon" sizes="114x114" href="<?php echo $theme_assets_uri;?>coscup-icon-iphone4.png" />
