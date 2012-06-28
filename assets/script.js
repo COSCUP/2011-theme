@@ -594,7 +594,7 @@ jQuery(function ($) {
     }
 
     $.getJSON(
-      window.location.href.match(/^http:\/\/[ipv6\.]+coscup.org\/[^\/]+\//)[0] + 'api/plurk/',
+      window.location.href.match(/^http:\/\/[ipv6\.]*coscup.org\/[^\/]+\//)[0] + 'api/plurk/',
       function (data) {
         plurks = data;
         showSocialBuzz(plurks, twits);
@@ -738,7 +738,7 @@ jQuery(function ($) {
 
     if (!programs) {
       var url = window.location.href
-        .match(/^http:\/\/[ipv6\.]+coscup.org\/[^\/]+\//)[0]
+        .match(/^http:\/\/[ipv6\.]*coscup.org\/[^\/]+\//)[0]
         + 'api/program/';
 
       $.getJSON(
