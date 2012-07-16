@@ -172,6 +172,11 @@ code {
   width: 16px;
   height: 16px; }
 
+.youtube {
+  background-position: -162px 0;
+  width: 16px;
+  height: 16px; }
+
 #appcache_info {
   position: absolute;
   position: fixed;
