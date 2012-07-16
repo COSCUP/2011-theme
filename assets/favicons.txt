@@ -9,4 +9,4 @@ gcal: http://www.phenodays.com/images/share-google-calendar.gif
 flickr: http://www.flickr.com/favicon.ico
 rss: http://idealady.com/themes/cp_global_images/rss_icon.png
 wordpress: http://www.wordpress.org/favicon.ico
-
+youtube: http://www.youtube.com/favicon.ico
