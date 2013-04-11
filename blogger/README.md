@@ -1,4 +1,4 @@
-COSCUP 2011 Blogger Theme
+COSCUP 2012 Blogger Theme
 =========================
 
 To deploy, paste `index.html` to 
