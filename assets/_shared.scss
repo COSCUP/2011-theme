@@ -1,0 +1,215 @@
+// SCSS Partial that includes variables and both desktop and mobile
+
+$col: 30px;
+$gutter: 10px;
+$width: 28;
+$sidebar_width: 6;
+$sidebar2_width: 8;
+
+$logo_color: #389F2D;
+$dark: #42b535;
+$light: #C7D7A0;
+$light_yellow: #f3ff32;
+$fluor: #86e17c;
+$bright: #bfffb8;
+
+$font_size: 16px;
+$line_height: 22px;
+
+@mixin grid($w) {
+	@include gridNoMargin($w);
+	margin-left: $gutter/2;
+	margin-right: $gutter/2;
+}
+
+@mixin gridNoMargin($w) {
+	width: $col*$w+$gutter*($w - 1);
+}
+
+@mixin largeFont {
+	// 特別 style 用字，不一定是大字
+	font-family: 'Cabin', arial, sans-serif;	
+}
+
+@mixin prefix($prop, $val) {
+	-moz-#{$prop}: $val;
+	-webkit-#{$prop}: $val;
+	-ms-#{$prop}: $val;
+	-o-#{$prop}: $val;
+	#{$prop}: $val;
+}
+
+@mixin transtrans($val) {
+	-moz-transition: -moz-transform #{$val};
+	-webkit-transition: -webkit-transform #{$val};
+	-ms-transition: -ms-transform #{$val}; // IE9
+	-o-transition: -o-transform  #{$val};
+}
+
+html {
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+	&:hover {
+		color: #666;
+		text-decoration: underline;
+	}
+}
+
+img {
+	border: none;
+}
+
+h1, h2, h3 {
+	@include largeFont;
+}
+
+code {
+	background-color: ghostWhite;
+	color: #444;
+	padding: 0px 0.2em;
+	border: 1px solid #dedede;
+}
+
+#content {
+	> ul.types {
+		> li {
+			//border: 1px solid #ccc;
+			//padding: 6px 2px;
+			//@include prefix(border-radius, 6px);
+			&:before {
+				display: inline-block;
+				margin-right: 6px;
+			}
+		}
+	}
+	
+	> ul.types > li,
+	table.program td {
+		&:before {
+			content: '';
+			@include prefix(border-radius, 6px);
+			padding: 6px;
+			//background-color: #ccc;
+		}
+		&.program_type_0:before {
+			content: none; // cancel type indication for type = 0;
+		}
+		&.program_type_1:before {
+			background-color: hsla(0, 100%, 50%, 1); // 1
+		}
+		&.program_type_2:before {
+			background-color: hsla(360 / 12 * 3, 100%, 50%, 1); // 1
+		}
+		&.program_type_3:before {
+			background-color: hsla(360 / 12 * 6, 100%, 50%, 1); // 1
+		}
+		&.program_type_4:before {
+			background-color: hsla(360 / 12 * 9, 100%, 50%, 1); // 1
+		}
+		&.program_type_5:before {
+			background-color: hsla(360 / 12 * 1, 100%, 50%, 1); // 2
+		}
+		&.program_type_6:before {
+			background-color: hsla(360 / 12 * 4, 100%, 50%, 1); // 2
+		}
+		&.program_type_7:before {
+			background-color: hsla(360 / 12 * 7, 100%, 50%, 1); // 2
+		}
+		&.program_type_8:before {
+			background-color: hsla(360 / 12 * 10, 100%, 50%, 1); // 2
+		}
+		&.program_type_9:before {
+			background-color: hsla(360 / 12 * 8, 100%, 50%, 1); // 3*
+		}
+		&.program_type_10:before {
+			background-color: hsla(360 / 12 * 6, 100%, 50%, 1); // 3
+		}
+		&.program_type_11:before {
+			background-color: hsla(360 / 12 * 2, 100%, 50%, 1); // 3*
+		}
+		&.program_type_12:before {
+			background-color: hsla(360 / 12 * 11, 100%, 50%, 1); // 3
+		}
+	}
+	table.program td {
+		&:before {
+			margin: 0 0 6px 6px;
+			display: block;
+			float: right;
+		}
+		&.program_lang_en > p.name:before {
+			background-color: #666;
+			color: #fff;
+			content: 'En';
+		}
+		&.program_lang_zh > p.name:before {
+			background-color: #fff;
+			color: #000;
+			content: '漢';
+			// 「現代標準漢語」，不用地域性稱呼例如「華語」、「國語」、「普通話」
+			// https://secure.wikimedia.org/wikipedia/zh/w/index.php?title=%E7%8F%BE%E4%BB%A3%E6%A8%99%E6%BA%96%E6%BC%A2%E8%AA%9E&variant=zh-tw
+		}
+		&.program_break {
+			text-align: center;
+			padding: 1em 0;
+			&:before {
+				display: none;
+			}
+			> p.name {
+				color: #666;
+				//font-weight: normal;
+				//font-size: 120%;
+				margin: 0;
+				&:before {
+					display: none;
+				}
+			}
+		}
+		> p.name:before {
+			margin: 0 0 6px 6px;
+			float: right;
+			clear: right;
+			font-size: $font_size * 0.5;
+			line-height: 120%;
+			width: 10px; height: 10px;
+			border: 1px solid #333;
+			@include prefix(border-radius, 6px);
+			//font-size: $font_size;
+			//width: 20px; height: 20px;
+			//@include prefix(border-radius, 12px);
+			//$val: scale(0.5) translate(10px, -10px);
+			//@include prefix(transform, $val);
+			//background-color: #ccc;
+			text-align: center;
+			-webkit-text-size-adjust: none; // min font-size workaround
+		}
+		.meta {
+			padding: ($line_height / 2) 0;
+			margin: 0;
+			display: block;
+			color: #666;
+			font-size: 82%;
+			> li {
+				display: inline;
+				list-style: none;
+				&:not(:first-child):before {
+					content: '·';
+				}
+			}
+		}
+	}
+}
+
+.sprite {display: block; background: transparent url('favicons.png?2') no-repeat; text-indent: -10000px; width: 16px; height: 16px}
+.coscup { background-position: 0 0; width: 16px; height: 16px}
+.newspaper { background-position: -18px 0; width: 16px; height: 16px}
+.twitter { background-position: -36px 0; width: 16px; height: 16px}
+.plurk { background-position: -54px 0; width: 16px; height: 16px}
+.facebook { background-position: -72px 0; width: 16px; height: 16px}
+.gcal { background-position: -90px 0; width: 16px; height: 16px}
+.flickr { background-position: -108px 0; width: 16px; height: 16px}
+.rss { background-position: -126px 0; width: 16px; height: 16px}
+.wordpress { background-position: -144px 0; width: 16px; height: 16px}
