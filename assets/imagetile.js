@@ -125,7 +125,7 @@ var yuren_54 = [
 jQuery.each(
 	yuren_54,
 	function (i, photo) {
-		yuren_54[i].photo_url = 'http://farm5.static.flickr.com/' + photo.photo_url + '_s.jpg';
-		yuren_54[i].link_url = 'http://www.flickr.com/photos/' + photo.link_url;
+		yuren_54[i].photo_url = '//farm5.static.flickr.com/' + photo.photo_url + '_s.jpg';
+		yuren_54[i].link_url = '//www.flickr.com/photos/' + photo.link_url;
 	}
 );

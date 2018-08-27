@@ -31,10 +31,10 @@ jQuery(function ($) {
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011/api/menu/?callback=?',
+			'https://coscup.org/2011/api/menu.json',
 			function (data) {
 				var $nav = $('#nav').removeClass('empty');
-				$nav.html(data[lang].replace(/href="(\/[^\/])/g, 'href="http://coscup.org$1'));
+				$nav.html(data[lang].replace(/href="(\/[^\/])/g, 'href="https://coscup.org$1'));
 				$('#nav a[href*="' + window.location.hostname + '"]').parent().addClass('current');
 			}
 		);
@@ -192,7 +192,7 @@ jQuery(function ($) {
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011/api/sponsors/?callback=?',
+			'https://coscup.org/2011/api/sponsors.json',
 			function (data) {
 				var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
 				var titles = (
@@ -376,7 +376,7 @@ jQuery(function ($) {
 						$('<span class="text" />').html(t.content)
 					).append(
 						'<span class="meta">'
-						+ '<a href="http://www.plurk.com/p/' + t.plurk_id.toString(36) + '">@' + plurks.users[t.user_id].nick_name + '</a>'
+						+ '<a href="//www.plurk.com/p/' + t.plurk_id.toString(36) + '">@' + plurks.users[t.user_id].nick_name + '</a>'
 						+ '</span>'
 					)
 				);
@@ -399,7 +399,7 @@ jQuery(function ($) {
 			if (!$.fn.imageTile) {
 				$.ajax(
 					{
-						url: 'http://coscup.org/2011-theme/assets/imagetile.min.js',
+						url: '//coscup.org/2011-theme/assets/imagetile.min.js',
 						dataType: 'script',
 						cache: true,
 						success: imageTile 
@@ -409,11 +409,11 @@ jQuery(function ($) {
 				imageTile();
 			}
 		}
-		
+		/*
 		if ($('#sidebar2 > .socialbuzz').length) {
 			var plurks, twits;
 			$.getJSON(
-				'http://coscup.org/2011/api/plurk/',
+				'https://coscup.org/2011/api/plurk/',
 				function (data) {
 					plurks = data;
 					showSocialBuzz(plurks, twits);
@@ -427,7 +427,8 @@ jQuery(function ($) {
 				}
 			);
 		}
-
+		*/
+		/*
 		if ($('#ipv6block').length) {
 			if (window.location.hostname === 'ipv6.coscup.org') {
 					if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2011', 'connected']);
@@ -438,7 +439,7 @@ jQuery(function ($) {
 			} else {
 				$.getJSON(
 					// See http://ipv6-test.com/api/
-					'http://v6.ipv6-test.com/api/myip.php?json&callback=?',
+					'https://v6.ipv6-test.com/api/myip.php?json&callback=?',
 					function (data) {
 						if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2011', 'ready but not connected']);
 						$('#ipv6block').addClass('show').append(
@@ -449,7 +450,7 @@ jQuery(function ($) {
 				);
 			}
 		}
-
+		*/
 		if ($('#countdown-time').length) {
 			ctTimer = setInterval(
 				updateCountDown,
@@ -800,7 +801,7 @@ jQuery(function ($) {
 					}
 					if (program.youtube) {
 						var list = [].concat(program.youtube),
-						program_embed_url = 'http://www.youtube.com/embed/' + list.shift() + '?hd=1',
+						program_embed_url = '//www.youtube.com/embed/' + list.shift() + '?hd=1',
 						$youtube;
 	
 						if (program.youtube.length) program_embed_url += '&playlist=' + list.join(',');
@@ -827,7 +828,7 @@ jQuery(function ($) {
 				}
 				if (program.youtube) {
 					var list = [].concat(program.youtube),
-					program_embed_url = 'http://www.youtube.com/embed/' + list.shift() + '?hd=1',
+					program_embed_url = '//www.youtube.com/embed/' + list.shift() + '?hd=1',
 					$youtube;
 
 					if (program.youtube.length) program_embed_url += '&playlist=' + list.join(',');
@@ -975,7 +976,7 @@ jQuery(function ($) {
 		!/((blog|sponsor|register)\.)?coscup\.org\.?/.test(window.location.domain)
 	) {
 		$.getJSON(
-			'http://coscup.org/2011/api/program/?callback=?',
+			'https://coscup.org/2011/api/program.json',
 			function (data) {
 				programs = data;
 				insertProgramInfo();
@@ -991,9 +992,9 @@ jQuery(function ($) {
 			clearTimeout(ctTimer);
 			$('#countdown').html(
 				{
-					en: '<a href="http://registrano.com/events/coscup2011-regist?locale=en">Register Now!</a>',
-					'zh-tw': '<a href="http://registrano.com/events/coscup2011-regist">立刻報名！</a>',
-					'zh-cn': '<a href="http://registrano.com/events/coscup2011-regist">立刻报名！</a>'	
+					en: '<a href="//registrano.com/events/coscup2011-regist?locale=en">Register Now!</a>',
+					'zh-tw': '<a href="//registrano.com/events/coscup2011-regist">立刻報名！</a>',
+					'zh-cn': '<a href="//registrano.com/events/coscup2011-regist">立刻报名！</a>'	
 				}[lang]
 			);
 		}
