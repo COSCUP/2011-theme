@@ -31,7 +31,7 @@ jQuery(function ($) {
 	if ($('#nav.empty').length) {
 		// Fetch site nav from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011/api/menu/?callback=?',
+			'/2011/api/menu.json',
 			function (data) {
 				var $nav = $('#nav').removeClass('empty');
 				$nav.html(data[lang].replace(/href="(\/[^\/])/g, 'href="http://coscup.org$1'));
@@ -192,7 +192,7 @@ jQuery(function ($) {
 	if ($('#sidebar > .sponsors.empty').length) {
 		// Fetch sponsors from remove JSON api
 		$.getJSON(
-			'http://coscup.org/2011/api/sponsors/?callback=?',
+			'/2011/api/sponsors.json',
 			function (data) {
 				var $sponsors = $('#sidebar > .sponsors').removeClass('empty');
 				var titles = (
@@ -410,6 +410,7 @@ jQuery(function ($) {
 			}
 		}
 		
+    /*
 		if ($('#sidebar2 > .socialbuzz').length) {
 			var plurks, twits;
 			$.getJSON(
@@ -427,7 +428,9 @@ jQuery(function ($) {
 				}
 			);
 		}
+    */
 
+    /*
 		if ($('#ipv6block').length) {
 			if (window.location.hostname === 'ipv6.coscup.org') {
 					if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2011', 'connected']);
@@ -438,7 +441,7 @@ jQuery(function ($) {
 			} else {
 				$.getJSON(
 					// See http://ipv6-test.com/api/
-					'http://v6.ipv6-test.com/api/myip.php?json&callback=?',
+					'https://v6.ipv6-test.com/api/myip.php?json&callback=?',
 					function (data) {
 						if (window._gaq) _gaq.push(['_trackEvent', 'IPv6 2011', 'ready but not connected']);
 						$('#ipv6block').addClass('show').append(
@@ -449,6 +452,7 @@ jQuery(function ($) {
 				);
 			}
 		}
+    */
 
 		if ($('#countdown-time').length) {
 			ctTimer = setInterval(
@@ -975,7 +979,7 @@ jQuery(function ($) {
 		!/((blog|sponsor|register)\.)?coscup\.org\.?/.test(window.location.domain)
 	) {
 		$.getJSON(
-			'http://coscup.org/2011/api/program/?callback=?',
+			'/2011/api/program.json',
 			function (data) {
 				programs = data;
 				insertProgramInfo();
